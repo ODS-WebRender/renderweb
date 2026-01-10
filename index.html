@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Old Dog Systems — Bridging Media & Modular Business Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Old Dog Systems is a modular media and software studio, bridging high-impact podcasts with enterprise-grade creator tools."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/Dog 5.png"
+                alt="Old Dog Systems Logo"
+                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-sm font-semibold tracking-tight text-slate-100"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline" aria-current="page"
+              >Home</a
+            >
+
+            <!-- Media mega -->
+            <div class="relative group">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 nav-underline"
+              >
+                <span>Media</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
+              >
+                <div
+                  class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
+                >
+                  <div
+                    class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300"
+                        >Podcast Arm</span
+                      >
+                      <span>Long-form, founder-grade conversations.</span>
+                    </div>
+                    <a
+                      href="./media.html"
+                      class="inline-flex items-center gap-1 text-sky-300 hover:text-sky-200"
+                    >
+                      View Media House
+                      <span class="text-[10px]">↗</span>
+                    </a>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <a
+                      href="./media.html#business-on-purpose"
+                      class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors"
+                    >
+                      <div class="mb-1 flex items-center justify-between gap-3">
+                        <span class="text-slate-50">Business on Purpose</span>
+                        <span
+                          class="tag-pill px-2 py-0.5 text-[10px] text-sky-300"
+                          >Flagship</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400">
+                        Operational clarity for owners building durable systems.
+                      </p>
+                      <p class="mt-2 text-[11px] text-slate-500">
+                        Journals, playbooks, and cohort workshops.
+                      </p>
+                    </a>
+
+                    <a
+                      href="./media.html#when-life-bites"
+                      class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors"
+                    >
+                      <div class="mb-1 flex items-center justify-between gap-3">
+                        <span class="text-slate-50">When Life Bites</span>
+                        <span
+                          class="tag-pill px-2 py-0.5 text-[10px] text-fuchsia-300"
+                          >Human</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400">
+                        Resilient founders navigating grief, pressure, and
+                        high-stakes seasons.
+                      </p>
+                      <p class="mt-2 text-[11px] text-slate-500">
+                        Companion guides, reflection journals, and retreats.
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Software mega -->
+            <div class="relative group">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 nav-underline"
+              >
+                <span>Software</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[460px]"
+              >
+                <div
+                  class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
+                >
+                  <div class="mb-3 flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-2 text-slate-400">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300"
+                        >Studio</span
+                      >
+                      <span>Composable tools for media-first operators.</span>
+                    </div>
+                    <a
+                      href="./studio.html"
+                      class="inline-flex items-center gap-1 text-sky-300 hover:text-sky-200"
+                    >
+                      Explore Studio
+                      <span class="text-[10px]">↗</span>
+                    </a>
+                  </div>
+                  <a
+                    href="./studio.html#podcast-module"
+                    class="flex items-start gap-3 rounded-xl border border-sky-500/60 bg-slate-900/80 p-3 hover:border-sky-400 hover:bg-slate-900 transition-colors"
+                  >
+                    <div
+                      class="mt-0.5 h-8 w-8 rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center text-sky-300 text-xs"
+                    >
+                      α
+                    </div>
+                    <div class="text-sm">
+                      <div class="flex items-center gap-2">
+                        <span class="text-slate-50">Rough Diamond Studio</span>
+                        <span
+                          class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300 ring-1 ring-emerald-500/40"
+                          >Alpha Access</span
+                        >
+                      </div>
+                      <p class="mt-1 text-xs text-slate-400">
+                        Audio podcasting and content systems built for teams
+                        that ship weekly.
+                      </p>
+                      <p class="mt-2 text-[11px] text-slate-500">
+                        Audio pipeline, editorial ops, and asset generation —
+                        all in one studio.
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <a href="./media.html#shop" class="nav-underline">Shop</a>
+            <a href="./index.html#about" class="nav-underline">About</a>
+            <a href="./studio.html#alpha-access" class="nav-underline"
+              >Alpha Access</a
+            >
+          </div>
+
+          <!-- Mobile trigger -->
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="block h-0.5 w-4 rounded-full bg-slate-200 mb-0.5"></span>
+            <span class="block h-0.5 w-4 rounded-full bg-slate-400 mb-0.5"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile nav -->
+        <div
+          id="mobile-nav"
+          class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden"
+        >
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./media.html" class="block">Media House</a>
+            <a href="./studio.html" class="block">Rough Diamond Studio</a>
+            <a href="./media.html#shop" class="block">Unified Shop</a>
+            <a href="./index.html#about" class="block">About</a>
+            <a href="./studio.html#alpha-access" class="block">Alpha Access</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main -->
+      <main class="flex-1">
+        <!-- Hero -->
+        <section class="relative overflow-hidden">
+          <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+          <div
+            class="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-20 pt-16 lg:flex-row lg:items-center lg:pt-20"
+          >
+            <div class="max-w-xl space-y-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                Modular Media & Systems Studio
+              </p>
+              <h1
+                class="text-balance text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl"
+              >
+                Bridging
+                <span class="gradient-text">media</span> &
+                <span class="gradient-text">modular business systems</span>.
+              </h1>
+              <p class="text-balance text-sm text-slate-400 sm:text-base">
+                <span data-brand></span>
+                builds podcasts, products, and pipelines for operators who've been knocked down and gotten back up. From flagship shows to the tools that run them, everything lives under one studio-grade system.
+              </p>
+
+              <div class="flex flex-wrap gap-3">
+                <a
+                  href="./studio.html#alpha-access"
+                  class="inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 shadow-lg shadow-sky-500/30 hover:bg-sky-400"
+                >
+                  Request Alpha Access
+                  <span class="text-xs">↗</span>
+                </a>
+                <a
+                  href="./media.html"
+                  class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-4 py-2 text-sm font-medium text-slate-100 hover:border-sky-500/60 hover:text-sky-100"
+                >
+                  Explore Media House
+                </a>
+              </div>
+
+              <div class="mt-6 grid gap-4 text-xs text-slate-400 sm:grid-cols-3">
+                <div class="space-y-1">
+                  <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                    Media
+                  </p>
+                  <p class="text-slate-200">2 flagship podcasts</p>
+                  <p>Built for founders, operators, and humans navigating real seasons — the ones that don't fit on highlight reels.</p>
+                </div>
+                <div class="space-y-1">
+                  <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                    Studio
+                  </p>
+                  <p class="text-slate-200">Rough Diamond Studio (α)</p>
+                  <p>Composable tools for audio systems, content, and assets.</p>
+                </div>
+                <div class="space-y-1">
+                  <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                    Monetization
+                  </p>
+                  <p class="text-slate-200">Unified digital shop</p>
+                  <p>Courses, journals, and playbooks wired for Stripe/LemonSqueezy.</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex-1 space-y-4 lg:pl-8 xl:pl-12 mt-4 lg:mt-0"
+              aria-label="System overview"
+            >
+              <div
+                class="card-glass rounded-3xl p-4 sm:p-5 border border-slate-800/80"
+              >
+                <div class="mb-4 flex items-center justify-between text-xs">
+                  <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                    >System Graph</span
+                  >
+                  <span class="text-slate-500">Media ↔ Studio ↔ Shop</span>
+                </div>
+                <div class="grid gap-3 text-xs text-slate-300">
+                  <div
+                    class="flex items-center justify-between rounded-2xl border border-slate-700/80 bg-slate-900/80 px-3 py-2.5"
+                  >
+                    <div>
+                      <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                        Media House
+                      </p>
+                      <p class="text-sm text-slate-100">
+                        Business on Purpose · When Life Bites
+                      </p>
+                    </div>
+                    <span
+                      class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] text-emerald-300 ring-1 ring-emerald-500/40"
+                      >Live</span
+                    >
+                  </div>
+                  <div
+                    class="flex items-center justify-between rounded-2xl border border-slate-700/80 bg-slate-900/80 px-3 py-2.5"
+                  >
+                    <div>
+                      <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                        Rough Diamond Studio
+                      </p>
+                      <p class="text-sm text-slate-100">
+                        Audio Podcasting · Content Creation
+                      </p>
+                    </div>
+                    <span
+                      class="rounded-full bg-amber-500/10 px-2 py-0.5 text-[11px] text-amber-300 ring-1 ring-amber-500/40"
+                      >Alpha</span
+                    >
+                  </div>
+                  <div
+                    class="flex items-center justify-between rounded-2xl border border-slate-700/80 bg-slate-900/80 px-3 py-2.5"
+                  >
+                    <div>
+                      <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                        Unified Shop
+                      </p>
+                      <p class="text-sm text-slate-100">
+                        Journals · E‑books · Courses
+                      </p>
+                    </div>
+                    <span
+                      class="rounded-full bg-sky-500/10 px-2 py-0.5 text-[11px] text-sky-300 ring-1 ring-sky-500/40"
+                      >Checkout-Ready</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="card-glass rounded-3xl border border-dashed border-slate-700/80 p-4 text-xs text-slate-400"
+              >
+                <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                  Built by Operators, for Operators
+                </p>
+                <p class="mt-2">
+                  Opinionated defaults for people shipping weekly: clean pipelines, predictable content, and digital products wired for real revenue. Built from the ground up by someone who's been there — and gotten back up.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section
+          id="about"
+          class="border-t border-slate-800/80 bg-slate-950/95"
+        >
+          <div class="mx-auto max-w-4xl px-4 py-16 sm:py-20">
+            <div class="space-y-8">
+              <div>
+                <p
+                  class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400"
+                >
+                  About
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
+                  Old Dog · New Tricks
+                </h2>
+                <p class="mt-3 text-sm text-slate-400 sm:text-base">
+                  The adage goes that you can't teach an old dog new tricks — but here we are, learning coding and apps at 60.
+                </p>
+              </div>
+
+              <div class="card-glass rounded-2xl border border-slate-800/80 p-6 sm:p-8 space-y-6 text-sm text-slate-300">
+                <div>
+                  <h3 class="text-base font-semibold text-slate-50 mb-2">
+                    The Story
+                  </h3>
+                  <p class="text-slate-400 leading-relaxed">
+                    Seven months ago, I ran a construction company. We were doing well. I took on a contract in a coastal town. And then, without any signs or warning, everything just fell apart. We ended up losing it all — back to rock bottom.
+                  </p>
+                  <p class="text-slate-400 leading-relaxed mt-3">
+                    After a period of deep depression and having nowhere to turn, I was doing research on Business systems for Back Office Management — BPO outsourcing — when I came across a site offering training in podcasting. After doing the boot camp, I realized that as a novice, there were other people like me who didn't have the wherewithal to do podcasting. So out of that was born the setting up of a podcasting studio dashboard — first for myself, and then I soon realized the potential of marketing modules for the greater market.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 class="text-base font-semibold text-slate-50 mb-2">
+                    The 9Count
+                  </h3>
+                  <p class="text-slate-400 leading-relaxed">
+                    "9Count" is my reference to a boxing and fighting analogy. I've been down on the canvas with everyone thinking that it's all over — no fight left in me. Yet at the 9-count, I get up, go to my corner, dust off and wash the blood away, and then come back out swinging. (At the count of 10, you are deemed to have lost.)
+                  </p>
+                  <p class="text-slate-400 leading-relaxed mt-3">
+                    That's where both names derived from: <strong class="text-slate-200">Old Dog Systems</strong> — because you can't teach an old dog new tricks, but here I am at 60 learning coding and apps. And <strong class="text-slate-200">9Count Systems</strong> — because we got back up when everyone thought we were done.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 class="text-base font-semibold text-slate-50 mb-2">
+                    What We Build
+                  </h3>
+                  <p class="text-slate-400 leading-relaxed">
+                    <strong class="text-slate-200">Rough Diamond Studio</strong> is the result of many iterations, close to being finalized for alpha testing. Other modular systems for small businesses are also in the initial concept stage, but nothing to proof of concept yet.
+                  </p>
+                  <p class="text-slate-400 leading-relaxed mt-3">
+                    We build for operators who've been there — tools, systems, and content that help you get back up, dust off, and come back swinging.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-800/80 py-6">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
+        >
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="./media.html#shop" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./studio.html#alpha-access" class="hover:text-slate-300"
+              >Contact & Alpha Access</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+

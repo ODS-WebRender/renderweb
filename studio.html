@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rough Diamond Studio — Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Rough Diamond Studio, the flagship software studio at Old Dog Systems for audio podcasting and content creation modules."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+      >
+        <nav
+          class="nav-glass mx-auto mt-2 flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3"
+        >
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/Dog 5.png"
+                alt="Old Dog Systems Logo"
+                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-sm font-semibold tracking-tight text-slate-100"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <div
+            class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex"
+          >
+            <a href="./index.html" class="nav-underline">Home</a>
+
+            <div class="relative group">
+              <button type="button" class="inline-flex items-center gap-1 nav-underline">
+                <span>Media</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
+              >
+                <div
+                  class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
+                >
+                  <div
+                    class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300"
+                        >Podcast Arm</span
+                      >
+                      <span>Long-form, founder-grade conversations.</span>
+                    </div>
+                    <a
+                      href="./media.html"
+                      class="inline-flex items-center gap-1 text-sky-300 hover:text-sky-200"
+                    >
+                      View Media House
+                      <span class="text-[10px]">↗</span>
+                    </a>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <a
+                      href="./media.html#business-on-purpose"
+                      class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors"
+                    >
+                      <div class="mb-1 flex items-center justify-between gap-3">
+                        <span class="text-slate-50">Business on Purpose</span>
+                        <span
+                          class="tag-pill px-2 py-0.5 text-[10px] text-sky-300"
+                          >Flagship</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400">
+                        Operational clarity for owners building durable systems.
+                      </p>
+                    </a>
+
+                    <a
+                      href="./media.html#when-life-bites"
+                      class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors"
+                    >
+                      <div class="mb-1 flex items-center justify-between gap-3">
+                        <span class="text-slate-50">When Life Bites</span>
+                        <span
+                          class="tag-pill px-2 py-0.5 text-[10px] text-fuchsia-300"
+                          >Human</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400">
+                        Resilient founders navigating grief, pressure, and
+                        high-stakes seasons.
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative group">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 nav-underline"
+                aria-current="page"
+              >
+                <span>Software</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[460px]"
+              >
+                <div
+                  class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
+                >
+                  <div class="mb-3 flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-2 text-slate-400">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300"
+                        >Studio</span
+                      >
+                      <span>Composable tools for media-first operators.</span>
+                    </div>
+                    <span class="text-slate-500">You are viewing Studio</span>
+                  </div>
+                  <a
+                    href="#podcast-module"
+                    class="flex items-start gap-3 rounded-xl border border-sky-500/60 bg-slate-900/80 p-3 hover:border-sky-400 hover:bg-slate-900 transition-colors"
+                  >
+                    <div
+                      class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500/15 text-xs text-sky-300 ring-1 ring-sky-400/40"
+                    >
+                      α
+                    </div>
+                    <div class="text-sm">
+                      <div class="flex items-center gap-2">
+                        <span class="text-slate-50">Rough Diamond Studio</span>
+                        <span
+                          class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300 ring-1 ring-emerald-500/40"
+                          >Alpha Access</span
+                        >
+                      </div>
+                      <p class="mt-1 text-xs text-slate-400">
+                        Audio podcasting and content systems built for teams
+                        that ship weekly.
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <a href="./media.html#shop" class="nav-underline">Shop</a>
+            <a href="./index.html#about" class="nav-underline">About</a>
+            <a href="#alpha-access" class="nav-underline">Alpha Access</a>
+          </div>
+
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-200"></span>
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-400"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <div
+          id="mobile-nav"
+          class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden"
+        >
+          <div class="nav-glass space-y-3 rounded-2xl p-4 text-sm text-slate-100">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./media.html" class="block">Media House</a>
+            <a href="./studio.html" class="block">Rough Diamond Studio</a>
+            <a href="./media.html#shop" class="block">Unified Shop</a>
+            <a href="./index.html#about" class="block">About</a>
+            <a href="#alpha-access" class="block">Alpha Access</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <!-- Studio hero -->
+        <section class="border-b border-slate-800/70 bg-slate-950/70">
+          <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+              Rough Diamond Studio
+            </p>
+            <div class="mt-3 grid gap-8 lg:grid-cols-[minmax(0,1.2fr),minmax(0,1fr)]">
+              <div class="space-y-4">
+                <h1
+                  class="text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl"
+                >
+                  A modular studio for
+                  <span class="gradient-text">audio-first systems</span>.
+                </h1>
+                <p class="text-sm text-slate-400 sm:text-base">
+                  Born from real need: as a novice podcaster, I needed tools that didn't exist. So I built them. Rough Diamond Studio started as a dashboard for myself, then evolved into modular systems for the greater market. From podcast intake to content libraries, show notes, and digital products — all under one studio.
+                </p>
+                <div class="flex flex-wrap gap-3 text-xs text-slate-300">
+                  <span class="tag-pill px-3 py-1">Audio podcasting module</span>
+                  <span class="tag-pill px-3 py-1"
+                    >Content creation &amp; asset module</span
+                  >
+                  <span class="tag-pill px-3 py-1">Future modular expansion</span>
+                </div>
+              </div>
+              <div
+                class="card-glass mt-2 rounded-2xl border border-slate-800/80 p-4 text-xs text-slate-400 sm:mt-0"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <span
+                    class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-200"
+                    >Alpha program</span
+                  >
+                  <span class="text-sky-300">Limited seats</span>
+                </div>
+                <p class="mt-2">
+                  We're inviting a small group of operators and studios into an alpha where product decisions are made alongside you — not shipped at you. Built by someone who's been there, for people who are there now.
+                </p>
+                <div class="mt-3 flex gap-3">
+                  <a
+                    href="#alpha-access"
+                    class="inline-flex flex-1 items-center justify-center rounded-full bg-sky-500 px-3 py-1.5 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                  >
+                    Request Alpha Access
+                  </a>
+                  <a
+                    href="#roadmap"
+                    class="inline-flex flex-1 items-center justify-center rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                  >
+                    View Roadmap
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Audio Podcasting Module -->
+        <section
+          id="podcast-module"
+          class="border-b border-slate-800/70 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-950/90"
+        >
+          <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <div class="flex flex-col gap-8 lg:flex-row">
+              <div class="max-w-lg space-y-4">
+                <div class="inline-flex items-center gap-2">
+                  <span
+                    class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-sky-300"
+                    >Module</span
+                  >
+                  <span class="text-xs text-slate-500">Audio Podcasting</span>
+                </div>
+                <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+                  Audio Podcasting Module (Flagship · Alpha)
+                </h2>
+                <p class="text-sm text-slate-400 sm:text-base">
+                  Built for studios and teams who ship weekly. From intake to
+                  publishing, the module tracks episodes, guests, assets, and
+                  sponsorships as one pipeline.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li>– Episode pipelines with status, owners, and due dates.</li>
+                  <li>– Guest intake flows, bios, and release forms.</li>
+                  <li>– Show notes, transcripts, and ad reads in one view.</li>
+                </ul>
+              </div>
+
+              <div class="grid flex-1 gap-4 sm:grid-cols-2">
+                <article
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Pipelines
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Episode Kanban &amp; Calendar
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      A view that finally respects both editorial rhythm and
+                      production reality, with calendar and kanban in sync.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Status · Alpha feature</span>
+                    <button
+                      class="rounded-full bg-sky-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                    >
+                      Request Access
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Assets
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Asset &amp; Transcript Hub
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Centralized episode assets — audio, artwork, clips, and
+                      transcripts — ready to flow into content creation modules.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Status · Alpha feature</span>
+                    <button
+                      class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                    >
+                      Request Demo
+                    </button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Content Creation Module -->
+        <section
+          id="content-module"
+          class="border-b border-slate-800/70 bg-slate-950/90"
+        >
+          <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <div class="flex flex-col gap-8 lg:flex-row-reverse">
+              <div class="max-w-lg space-y-4">
+                <div class="inline-flex items-center gap-2">
+                  <span
+                    class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-emerald-300"
+                    >Module</span
+                  >
+                  <span class="text-xs text-slate-500">Content Creation</span>
+                </div>
+                <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+                  Content Creation Module
+                </h2>
+                <p class="text-sm text-slate-400 sm:text-base">
+                  Turn episodes and raw material into assets: audio books,
+                  manuals, companion guides, and internal training content.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li>– Link episodes to long-form outlines and structures.</li>
+                  <li>– Map ideas into audio books, manuals, or internal guides.</li>
+                  <li>– Track review cycles and publishing-ready states.</li>
+                </ul>
+              </div>
+
+              <div class="grid flex-1 gap-4 sm:grid-cols-2">
+                <article
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Audio Books
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Audio Book Assembly Line
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      From episode runs and workshops to structured audio book
+                      chapters, with change tracking and notes.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Status · In design</span>
+                    <button
+                      class="rounded-full bg-sky-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                    >
+                      Register Interest
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Manuals
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Operating Manual Builder
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Turn your podcast and content into internal playbooks,
+                      ready for teams, franchises, or licensees.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Status · In design</span>
+                    <button
+                      class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                    >
+                      Register Interest
+                    </button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section
+          id="roadmap"
+          class="border-b border-slate-800/70 bg-gradient-to-b from-slate-950/90 via-slate-950 to-slate-950"
+        >
+          <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p
+                  class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400"
+                >
+                  Product Roadmap
+                </p>
+                <h2 class="mt-1 text-xl font-semibold tracking-tight text-slate-50">
+                  Modular expansion into other sectors
+                </h2>
+                <p class="mt-1 text-sm text-slate-400">
+                  A living roadmap built with operators who need media-grade tools
+                  for real businesses.
+                </p>
+              </div>
+              <p class="max-w-sm text-xs text-slate-500">
+                Timelines here are directional, not promises. Alpha partners shape
+                sequencing based on impact, not hype.
+              </p>
+            </div>
+
+            <div
+              class="mt-6 grid gap-4 md:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)]"
+            >
+              <div class="space-y-3 text-xs text-slate-300">
+                <div
+                  class="card-glass rounded-2xl border border-slate-800/80 p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="text-slate-200">Now · Alpha</span>
+                    <span
+                      class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] text-emerald-300 ring-1 ring-emerald-500/40"
+                      >In progress</span
+                    >
+                  </div>
+                  <ul class="mt-2 space-y-1 text-slate-400">
+                    <li>– Audio Podcasting module foundations</li>
+                    <li>– Basic content creation module scaffolding</li>
+                    <li>– Unified product catalog hooks (Shop integration)</li>
+                  </ul>
+                </div>
+
+                <div
+                  class="card-glass rounded-2xl border border-slate-800/80 p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="text-slate-200">Next · Beta</span>
+                    <span
+                      class="rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] text-amber-300 ring-1 ring-amber-500/40"
+                      >Planned</span
+                    >
+                  </div>
+                  <ul class="mt-2 space-y-1 text-slate-400">
+                    <li>– Advanced sponsor &amp; inventory management</li>
+                    <li>– Asset distribution to email, social, and courses</li>
+                    <li>– Team collaboration, approvals, and audit trails</li>
+                  </ul>
+                </div>
+
+                <div
+                  class="card-glass rounded-2xl border border-slate-800/80 p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="text-slate-200">Future · Modular sectors</span>
+                    <span
+                      class="rounded-full bg-slate-700/50 px-2 py-0.5 text-[10px] text-slate-200"
+                      >Exploring</span
+                    >
+                  </div>
+                  <ul class="mt-2 space-y-1 text-slate-400">
+                    <li>– Licensing &amp; franchise-ready documentation</li>
+                    <li>– Events &amp; live experiences module</li>
+                    <li>– Private membership and community integrations</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="card-glass mt-2 rounded-2xl border border-dashed border-slate-700/80 p-4 text-xs text-slate-400 md:mt-0"
+              >
+                <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                  How roadmap decisions are made
+                </p>
+                <p class="mt-2">
+                  Alpha and future beta partners get direct input into what ships.
+                  We prioritize compound leverage: tools that help you ship
+                  consistently, not chase features.
+                </p>
+                <p class="mt-2">
+                  If you&apos;re building a studio, network, or deep niche show,
+                  your use case likely belongs in the roadmap conversation.
+                </p>
+                <a
+                  href="#alpha-access"
+                  class="mt-3 inline-flex items-center gap-2 text-sky-300 hover:text-sky-200"
+                >
+                  Share your roadmap needs
+                  <span class="text-[10px]">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact / Alpha Access -->
+        <section
+          id="alpha-access"
+          class="bg-slate-950/95 pb-12 pt-10 sm:pb-14 sm:pt-12"
+        >
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)]">
+              <div>
+                <p
+                  class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400"
+                >
+                  Contact &amp; Alpha Access
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50">
+                  Talk with the studio, not a funnel.
+                </h2>
+                <p class="mt-2 text-sm text-slate-400 sm:text-base">
+                  Use this form for partnership inquiries, studio collaborations,
+                  or to request access to the Rough Diamond Studio alpha.
+                </p>
+                <ul class="mt-4 space-y-2 text-xs text-slate-400">
+                  <li>– Ideal for studios, networks, and serious operators</li>
+                  <li>– Expect a human response, not an automated sequence</li>
+                  <li>– Alpha seats are limited; clarity helps us route quickly</li>
+                </ul>
+              </div>
+
+              <div>
+                <form
+                  class="card-glass space-y-4 rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div class="grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <label
+                        for="name"
+                        class="mb-1 block text-xs font-medium text-slate-300"
+                        >Name</label
+                      >
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        class="block w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="email"
+                        class="mb-1 block text-xs font-medium text-slate-300"
+                        >Email</label
+                      >
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        class="block w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                        placeholder="you@company.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="company"
+                      class="mb-1 block text-xs font-medium text-slate-300"
+                      >Company / Studio</label
+                    >
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      class="block w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                      placeholder="Studio, network, or brand"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="interest"
+                      class="mb-1 block text-xs font-medium text-slate-300"
+                      >What are you interested in?</label
+                    >
+                    <select
+                      id="interest"
+                      name="interest"
+                      class="block w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                    >
+                      <option value="alpha">
+                        Alpha access to Rough Diamond Studio
+                      </option>
+                      <option value="partnership">
+                        Partnership or studio collaboration
+                      </option>
+                      <option value="media">
+                        Media &amp; podcast sponsorship opportunities
+                      </option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      for="message"
+                      class="mb-1 block text-xs font-medium text-slate-300"
+                      >Context</label
+                    >
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      class="block w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                      placeholder="Share timelines, scope, and what you are building."
+                    ></textarea>
+                  </div>
+
+                  <div class="flex items-center justify-between gap-3 text-xs">
+                    <p class="text-slate-500">
+                      By submitting, you agree to be contacted about the studio
+                      and alpha program.
+                    </p>
+                    <button
+                      type="submit"
+                      class="rounded-full bg-sky-500 px-4 py-2 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                    >
+                      Submit Inquiry
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-800/80 py-6">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
+        >
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="./media.html#shop" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="#alpha-access" class="hover:text-slate-300"
+              >Contact & Alpha Access</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Media House — Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="The Media House at Old Dog Systems, home of Business on Purpose and When Life Bites with dedicated resources and shops."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+    <script src="./shop-filter.js"></script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation (same structure as index) -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+      >
+        <nav
+          class="nav-glass mx-auto mt-2 flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3"
+        >
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/Dog 5.png"
+                alt="Old Dog Systems Logo"
+                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-sm font-semibold tracking-tight text-slate-100"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <div
+            class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex"
+          >
+            <a href="./index.html" class="nav-underline">Home</a>
+
+            <div class="relative group">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 nav-underline"
+                aria-current="page"
+              >
+                <span>Media</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
+              >
+                <div
+                  class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
+                >
+                  <div
+                    class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300"
+                        >Podcast Arm</span
+                      >
+                      <span>Long-form, founder-grade conversations.</span>
+                    </div>
+                    <span class="text-slate-500">You are viewing Media House</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <a
+                      href="#business-on-purpose"
+                      class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors"
+                    >
+                      <div class="mb-1 flex items-center justify-between gap-3">
+                        <span class="text-slate-50">Business on Purpose</span>
+                        <span
+                          class="tag-pill px-2 py-0.5 text-[10px] text-sky-300"
+                          >Flagship</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400">
+                        Systems, leverage, and stewardship for serious operators.
+                      </p>
+                      <p class="mt-2 text-[11px] text-slate-500">
+                        Strategy journals, operating manuals, and live cohorts.
+                      </p>
+                    </a>
+
+                    <a
+                      href="#when-life-bites"
+                      class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors"
+                    >
+                      <div class="mb-1 flex items-center justify-between gap-3">
+                        <span class="text-slate-50">When Life Bites</span>
+                        <span
+                          class="tag-pill px-2 py-0.5 text-[10px] text-fuchsia-300"
+                          >Human</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400">
+                        Navigating loss, pressure, and calling while still
+                        shipping.
+                      </p>
+                      <p class="mt-2 text-[11px] text-slate-500">
+                        Reflection journals, companion guides, and retreats.
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative group">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 nav-underline"
+              >
+                <span>Software</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[460px]"
+              >
+                <div
+                  class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
+                >
+                  <div class="mb-3 flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-2 text-slate-400">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300"
+                        >Studio</span
+                      >
+                      <span>Composable tools for media-first operators.</span>
+                    </div>
+                    <a
+                      href="./studio.html"
+                      class="inline-flex items-center gap-1 text-sky-300 hover:text-sky-200"
+                    >
+                      Explore Studio
+                      <span class="text-[10px]">↗</span>
+                    </a>
+                  </div>
+                  <a
+                    href="./studio.html#podcast-module"
+                    class="flex items-start gap-3 rounded-xl border border-sky-500/60 bg-slate-900/80 p-3 hover:border-sky-400 hover:bg-slate-900 transition-colors"
+                  >
+                    <div
+                      class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500/15 text-xs text-sky-300 ring-1 ring-sky-400/40"
+                    >
+                      α
+                    </div>
+                    <div class="text-sm">
+                      <div class="flex items-center gap-2">
+                        <span class="text-slate-50">Rough Diamond Studio</span>
+                        <span
+                          class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300 ring-1 ring-emerald-500/40"
+                          >Alpha Access</span
+                        >
+                      </div>
+                      <p class="mt-1 text-xs text-slate-400">
+                        Audio podcasting and content systems built for teams
+                        that ship weekly.
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <a href="#shop" class="nav-underline">Shop</a>
+            <a href="./index.html#about" class="nav-underline">About</a>
+            <a href="./studio.html#alpha-access" class="nav-underline"
+              >Alpha Access</a
+            >
+          </div>
+
+          <!-- Mobile trigger -->
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-200"></span>
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-400"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <div
+          id="mobile-nav"
+          class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden"
+        >
+          <div class="nav-glass space-y-3 rounded-2xl p-4 text-sm text-slate-100">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./media.html" class="block">Media House</a>
+            <a href="./studio.html" class="block">Rough Diamond Studio</a>
+            <a href="#shop" class="block">Unified Shop</a>
+            <a href="./index.html#about" class="block">About</a>
+            <a href="./studio.html#alpha-access" class="block">Alpha Access</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <section class="border-b border-slate-800/70 bg-slate-950/60">
+          <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+              Media House
+            </p>
+            <div class="mt-3 flex flex-col justify-between gap-6 sm:flex-row">
+              <div class="max-w-xl space-y-3">
+                <h1
+                  class="text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl"
+                >
+                  Podcast-first storytelling, built for
+                  <span class="gradient-text">operators who've been there</span>.
+                </h1>
+                <p class="text-sm text-slate-400 sm:text-base">
+                  Two complementary shows under one roof — one for systems and stewardship, one for the humans carrying the weight. Built by someone who's been knocked down and gotten back up.
+                </p>
+              </div>
+              <div
+                class="card-glass mt-2 flex flex-col gap-3 rounded-2xl border border-slate-800/80 p-4 text-xs text-slate-400 sm:mt-0 sm:max-w-sm"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <span
+                    class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-200"
+                    >Programming</span
+                  >
+                  <span class="text-slate-500">Weekly cadence</span>
+                </div>
+                <p>
+                  Clean feeds, tight episode arcs, and monetization that actually
+                  fits the listener journey — not bolted-on ads.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Business on Purpose -->
+        <section
+          id="business-on-purpose"
+          data-podcast-section="business-on-purpose"
+          class="border-b border-slate-800/70 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-950/80"
+        >
+          <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <div class="flex flex-col gap-8 lg:flex-row">
+              <div class="max-w-lg space-y-4">
+                <div class="inline-flex items-center gap-2">
+                  <span
+                    class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-sky-300"
+                    >Podcast</span
+                  >
+                  <span class="text-xs text-slate-500">Business on Purpose</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <img
+                    src="./images/bop.png"
+                    alt="Business on Purpose"
+                    class="h-24 w-24 rounded-xl object-cover border border-slate-700/60 flex-shrink-0"
+                  />
+                  <div class="flex-1">
+                    <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+                      Business on Purpose
+                    </h2>
+                    <p class="mt-1 text-xs italic text-slate-400">
+                      Serving God and others through the work of our hands.
+                    </p>
+                  </div>
+                </div>
+                <p class="text-sm text-slate-400 sm:text-base">
+                  Servant leadership in action. Frameworks, field notes, and honest conversations about building durable, profitable businesses — with a focus on helping those who are undervalued and seemingly unappreciated rise.
+                </p>
+                <p class="text-sm text-slate-400">
+                  A leadership attitude of "how can I help you rise" rather than "what can you do for me to rise."
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li>– Deep-dive episodes on systems, back office management, and operational clarity.</li>
+                  <li>– Real conversations with operators who've navigated real challenges.</li>
+                  <li>– Practical tools: policies, procedures, manuals, and back office systems.</li>
+                </ul>
+                <div class="mt-4 flex flex-wrap gap-3 text-xs">
+                  <span class="tag-pill px-3 py-1 text-slate-200"
+                    >Servant Leadership</span
+                  >
+                  <span class="tag-pill px-3 py-1 text-slate-200"
+                    >Built for operators, by operators</span
+                  >
+                </div>
+                <div class="mt-4">
+                  <a
+                    href="#shop"
+                    data-podcast-filter-button
+                    class="inline-flex items-center gap-2 rounded-full border border-sky-500/60 bg-slate-900/70 px-4 py-2 text-xs font-medium text-sky-300 hover:border-sky-400 hover:bg-slate-900 transition-colors"
+                  >
+                    View All Business on Purpose Products
+                    <span class="text-[10px]">↓</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Latest Episode Hero -->
+              <div class="flex-1">
+                <div class="card-glass rounded-2xl border border-slate-800/80 p-6">
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-sky-300 bg-sky-500/10">
+                      Latest Episode
+                    </span>
+                    <span class="text-xs text-slate-500">Episode 47</span>
+                  </div>
+                  <h3 class="text-lg font-semibold text-slate-50 mb-2">
+                    Scaling Systems Without Losing Your Soul
+                  </h3>
+                  <p class="text-sm text-slate-400 mb-4">
+                    A conversation with Sarah Chen about building operational frameworks that support growth while maintaining the human element that makes your business special.
+                  </p>
+                  <div class="flex items-center gap-4 mb-4">
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      42 min
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      2 weeks ago
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <button class="flex items-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-sky-400 transition-colors">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      Listen Now
+                    </button>
+                    <button class="rounded-full border border-slate-600 bg-slate-900 px-4 py-2 text-xs font-medium text-slate-100 hover:border-sky-500/70 transition-colors">
+                      Show Notes
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Resource Module -->
+                <div class="mt-6 card-glass rounded-2xl border border-slate-800/80 p-6">
+                  <h4 class="text-sm font-semibold text-slate-50 mb-4">Episode Resources</h4>
+                  <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    <a href="#" class="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-900/50 p-3 hover:border-sky-500/60 hover:bg-slate-900/70 transition-colors">
+                      <div class="h-8 w-8 rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center">
+                        <svg class="h-4 w-4 text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-medium text-slate-50">Scaling Journal</div>
+                        <div class="text-[10px] text-slate-400">Reflection prompts</div>
+                      </div>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-900/50 p-3 hover:border-sky-500/60 hover:bg-slate-900/70 transition-colors">
+                      <div class="h-8 w-8 rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center">
+                        <svg class="h-4 w-4 text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-medium text-slate-50">Systems E-book</div>
+                        <div class="text-[10px] text-slate-400">Framework guide</div>
+                      </div>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-900/50 p-3 hover:border-sky-500/60 hover:bg-slate-900/70 transition-colors">
+                      <div class="h-8 w-8 rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center">
+                        <svg class="h-4 w-4 text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-medium text-slate-50">Master Class</div>
+                        <div class="text-[10px] text-slate-400">Video course</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Monetization cards -->
+            <div
+              class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              aria-label="Business on Purpose resources & shop"
+            >
+                <article
+                  data-product="business-on-purpose"
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Back Office Tools
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Back Office Management Systems
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Practical tools and frameworks for managing the back office operations that keep your business running smoothly — built from real experience.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Digital · Templates & Guides</span>
+                    <button
+                      class="rounded-full bg-sky-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                    >
+                      Access Now
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  data-product="business-on-purpose"
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Policies & Procedures
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Policies & Procedures Library
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Ready-to-adapt policy templates and procedure frameworks that help you build systems that scale — without starting from scratch.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Digital · Templates</span>
+                    <button
+                      class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                    >
+                      Purchase
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  data-product="business-on-purpose"
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Manuals
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Operating Manuals & Playbooks
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Comprehensive operating manuals and playbooks that turn your podcast insights into actionable systems for your team.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Digital · PDF / EPUB</span>
+                    <button
+                      class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                    >
+                      Purchase
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  data-product="business-on-purpose"
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Other Resources
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Additional Tools & Resources
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Journals, frameworks, and other practical resources aligned with Business on Purpose principles and real-world application.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Digital · Various Formats</span>
+                    <button
+                      class="rounded-full bg-sky-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                    >
+                      Browse
+                    </button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- When Life Bites -->
+        <section
+          id="when-life-bites"
+          data-podcast-section="when-life-bites"
+          class="border-b border-slate-800/70 bg-slate-950/80"
+        >
+          <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <div class="flex flex-col gap-8 lg:flex-row-reverse">
+              <div class="max-w-lg space-y-4">
+                <div class="inline-flex items-center gap-2">
+                  <span
+                    class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-fuchsia-300"
+                    >Podcast</span
+                  >
+                  <span class="text-xs text-slate-500">When Life Bites</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <img
+                    src="./images/wlb.png"
+                    alt="When Life Bites"
+                    class="h-24 w-24 rounded-xl object-cover border border-slate-700/60 flex-shrink-0"
+                  />
+                  <div class="flex-1">
+                    <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+                      When Life Bites
+                    </h2>
+                    <p class="mt-1 text-xs italic text-slate-400">
+                      Faith, hope, and perspective in life's toughest moments.
+                    </p>
+                  </div>
+                </div>
+                <p class="text-sm text-slate-400 sm:text-base">
+                  Honest, grounded conversations about grief, trauma, infidelity, loss, and the kind of pressure that doesn't fit on a highlight reel. Dealing with life when life throws you a curveball.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li>– Stories from founders, creatives, and leaders who've been in the fire.</li>
+                  <li>– Gentle but direct conversations, zero performance — just real humans navigating real seasons.</li>
+                  <li>– Space to process, without losing the thread of calling or purpose.</li>
+                </ul>
+                <div class="mt-4 flex flex-wrap gap-3 text-xs">
+                  <span class="tag-pill px-3 py-1 text-slate-200"
+                    >For founders in transition</span
+                  >
+                  <span class="tag-pill px-3 py-1 text-slate-200"
+                    >Real conversations, real hope</span
+                  >
+                </div>
+                <div class="mt-4">
+                  <a
+                    href="#shop"
+                    data-podcast-filter-button
+                    class="inline-flex items-center gap-2 rounded-full border border-fuchsia-500/60 bg-slate-900/70 px-4 py-2 text-xs font-medium text-fuchsia-300 hover:border-fuchsia-400 hover:bg-slate-900 transition-colors"
+                  >
+                    View All When Life Bites Products
+                    <span class="text-[10px]">↓</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Latest Episode Hero -->
+              <div class="flex-1">
+                <div class="card-glass rounded-2xl border border-slate-800/80 p-6">
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-fuchsia-300 bg-fuchsia-500/10">
+                      Latest Episode
+                    </span>
+                    <span class="text-xs text-slate-500">Episode 23</span>
+                  </div>
+                  <h3 class="text-lg font-semibold text-slate-50 mb-2">
+                    Finding Your Way Through the Fog
+                  </h3>
+                  <p class="text-sm text-slate-400 mb-4">
+                    A conversation with Michael Torres about navigating career transitions, personal loss, and rediscovering purpose when everything feels uncertain.
+                  </p>
+                  <div class="flex items-center gap-4 mb-4">
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      38 min
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      1 week ago
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <button class="flex items-center gap-2 rounded-full bg-fuchsia-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-fuchsia-400 transition-colors">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      Listen Now
+                    </button>
+                    <button class="rounded-full border border-slate-600 bg-slate-900 px-4 py-2 text-xs font-medium text-slate-100 hover:border-fuchsia-500/70 transition-colors">
+                      Show Notes
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Resource Module -->
+                <div class="mt-6 card-glass rounded-2xl border border-slate-800/80 p-6">
+                  <h4 class="text-sm font-semibold text-slate-50 mb-4">Episode Resources</h4>
+                  <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    <a href="#" class="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-900/50 p-3 hover:border-fuchsia-500/60 hover:bg-slate-900/70 transition-colors">
+                      <div class="h-8 w-8 rounded-lg bg-fuchsia-500/15 ring-1 ring-fuchsia-400/40 flex items-center justify-center">
+                        <svg class="h-4 w-4 text-fuchsia-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-medium text-slate-50">Transition Journal</div>
+                        <div class="text-[10px] text-slate-400">Processing prompts</div>
+                      </div>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-900/50 p-3 hover:border-fuchsia-500/60 hover:bg-slate-900/70 transition-colors">
+                      <div class="h-8 w-8 rounded-lg bg-fuchsia-500/15 ring-1 ring-fuchsia-400/40 flex items-center justify-center">
+                        <svg class="h-4 w-4 text-fuchsia-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-medium text-slate-50">Hope E-book</div>
+                        <div class="text-[10px] text-slate-400">Stories & insights</div>
+                      </div>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-900/50 p-3 hover:border-fuchsia-500/60 hover:bg-slate-900/70 transition-colors">
+                      <div class="h-8 w-8 rounded-lg bg-fuchsia-500/15 ring-1 ring-fuchsia-400/40 flex items-center justify-center">
+                        <svg class="h-4 w-4 text-fuchsia-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-medium text-slate-50">Resilience Course</div>
+                        <div class="text-[10px] text-slate-400">Video series</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Monetization cards -->
+            <div
+              class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              aria-label="When Life Bites resources & shop"
+            >
+                <article
+                  data-product="when-life-bites"
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Journals
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      When Life Bites Reflection Journal
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Guided prompts mapped to episodes to help you metabolize
+                      grief, disappointment, and disorientation at a sustainable
+                      pace.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Digital · PDF / GoodNotes</span>
+                    <button
+                      class="rounded-full bg-sky-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                    >
+                      Access Now
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  data-product="when-life-bites"
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      E‑books
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      Stories That Don&apos;t Fit on Decks
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Essays and letters on staying human while building — written
+                      to be shared with partners, teams, and trusted friends.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Digital · PDF / EPUB</span>
+                    <button
+                      class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                    >
+                      Purchase
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  data-product="when-life-bites"
+                  class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm sm:col-span-2"
+                >
+                  <div>
+                    <p
+                      class="text-[11px] uppercase tracking-[0.2em] text-slate-500"
+                    >
+                      Courses
+                    </p>
+                    <h3 class="mt-1 text-base font-medium text-slate-50">
+                      When Life Bites Circles
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Small, facilitated cohorts that move through key episodes,
+                      guided practices, and optional coaching for couples or
+                      co-founders.
+                    </p>
+                  </div>
+                  <div class="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <span class="text-slate-400">Facilitated · Live cohorts</span>
+                    <button
+                      class="rounded-full bg-gradient-to-r from-fuchsia-500 to-sky-400 px-3 py-1 text-[11px] font-medium text-slate-950 hover:from-fuchsia-400 hover:to-sky-300"
+                    >
+                      Join Waitlist
+                    </button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Unified Shop (Media filtered) -->
+        <section
+          id="shop"
+          class="bg-gradient-to-b from-slate-950/80 via-slate-950 to-slate-950"
+        >
+          <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p
+                  class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400"
+                >
+                  Unified Shop
+                </p>
+                <h2 class="mt-1 text-xl font-semibold tracking-tight text-slate-50">
+                  Media Resources &amp; Products
+                </h2>
+                <p class="mt-1 text-sm text-slate-400">
+                  A unified, filterable grid of digital products across Business on
+                  Purpose and When Life Bites.
+                </p>
+              </div>
+              <div
+                class="flex flex-wrap items-center gap-2 text-xs text-slate-300"
+              >
+                <button
+                  data-filter="all"
+                  class="tag-pill bg-sky-500/10 px-3 py-1 text-sky-300 ring-1 ring-sky-500/50"
+                >
+                  All
+                </button>
+                <button
+                  data-filter="business-on-purpose"
+                  class="tag-pill px-3 py-1"
+                >
+                  Business on Purpose
+                </button>
+                <button
+                  data-filter="when-life-bites"
+                  class="tag-pill px-3 py-1"
+                >
+                  When Life Bites
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              aria-label="Unified shop grid"
+            >
+              <article
+                data-product="business-on-purpose"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Back Office Management Systems
+                  </h3>
+                  <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                    >Business on Purpose</span
+                  >
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  Practical tools and frameworks for managing back office operations — built from real experience.
+                </p>
+                <div
+                  class="mt-4 flex items-center justify-between text-xs text-slate-400"
+                >
+                  <span>Digital · Templates & Guides</span>
+                  <div class="flex items-center gap-2">
+                    <button
+                      data-quick-view="back-office-management"
+                      class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                    >
+                      Quick View
+                    </button>
+                    <button
+                      class="rounded-full bg-sky-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                    >
+                      Purchase
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                data-product="business-on-purpose"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Policies & Procedures Library
+                  </h3>
+                  <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                    >Business on Purpose</span
+                  >
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  Ready-to-adapt policy templates and procedure frameworks that help you build systems that scale.
+                </p>
+                <div
+                  class="mt-4 flex items-center justify-between text-xs text-slate-400"
+                >
+                  <span>Digital · Templates</span>
+                  <div class="flex items-center gap-2">
+                    <button
+                      data-quick-view="policies-procedures"
+                      class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                    >
+                      Quick View
+                    </button>
+                    <button
+                      class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                    >
+                      Purchase
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                data-product="business-on-purpose"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Operating Manuals & Playbooks
+                  </h3>
+                  <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                    >Business on Purpose</span
+                  >
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  Comprehensive operating manuals that turn your podcast insights into actionable systems for your team.
+                </p>
+                <div
+                  class="mt-4 flex items-center justify-between text-xs text-slate-400"
+                >
+                  <span>Digital · PDF / EPUB</span>
+                  <button
+                    class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                  >
+                    Purchase
+                  </button>
+                </div>
+              </article>
+
+              <article
+                data-product="when-life-bites"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    When Life Bites Reflection Journal
+                  </h3>
+                  <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                    >When Life Bites</span
+                  >
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  Episode-linked prompts that help you name, feel, and release.
+                </p>
+                <div
+                  class="mt-4 flex items-center justify-between text-xs text-slate-400"
+                >
+                  <span>Digital · Journal</span>
+                  <button
+                    class="rounded-full bg-sky-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                  >
+                    Access Now
+                  </button>
+                </div>
+              </article>
+
+              <article
+                data-product="when-life-bites"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Stories That Don&apos;t Fit on Decks
+                  </h3>
+                  <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                    >When Life Bites</span
+                  >
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  A curated volume of essays and letters for founders in the fog.
+                </p>
+                <div
+                  class="mt-4 flex items-center justify-between text-xs text-slate-400"
+                >
+                  <span>Digital · E‑book</span>
+                  <button
+                    class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-sky-500/70"
+                  >
+                    Purchase
+                  </button>
+                </div>
+              </article>
+
+              <article
+                data-product="business-on-purpose when-life-bites"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm lg:col-span-2"
+              >
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Cross-Over Founder Intensive
+                  </h3>
+                  <span
+                    class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                  >
+                    Business on Purpose · When Life Bites
+                  </span>
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  A joint cohort that blends systems work with emotional and
+                  relational processing, drawing on both shows.
+                </p>
+                <div
+                  class="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400"
+                >
+                  <span>Hybrid · Course</span>
+                  <button
+                    class="rounded-full bg-gradient-to-r from-sky-500 to-fuchsia-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:from-sky-400 hover:to-fuchsia-400"
+                  >
+                    Join Waitlist
+                  </button>
+                </div>
+              </article>
+
+              <article
+                data-product="business-on-purpose"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Additional Tools &amp; Resources
+                  </h3>
+                  <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                    >Business on Purpose</span
+                  >
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  Journals, frameworks, and other practical resources aligned with Business on Purpose principles.
+                </p>
+                <div
+                  class="mt-4 flex items-center justify-between text-xs text-slate-400"
+                >
+                  <span>Digital · Various Formats</span>
+                  <button
+                    class="rounded-full bg-sky-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:bg-sky-400"
+                  >
+                    Browse
+                  </button>
+                </div>
+              </article>
+
+              <!-- Coming Soon Products -->
+              <article
+                data-product="business-on-purpose"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm opacity-60"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Leadership Playbook
+                  </h3>
+                  <div class="flex items-center gap-2">
+                    <span class="tag-pill px-2 py-0.5 text-[10px] text-amber-300 bg-amber-500/10"
+                      >Coming Soon</span
+                    >
+                    <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                      >Business on Purpose</span
+                    >
+                  </div>
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  A comprehensive guide to leading with purpose, blending operational excellence with human-centered management.
+                </p>
+                <div
+                  class="mt-4 flex items-center justify-between text-xs text-slate-400"
+                >
+                  <span>Digital · Playbook</span>
+                  <button
+                    class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-amber-500/70"
+                    disabled
+                  >
+                    Notify Me
+                  </button>
+                </div>
+              </article>
+
+              <article
+                data-product="when-life-bites"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm opacity-60"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Resilience Retreat Workbook
+                  </h3>
+                  <div class="flex items-center gap-2">
+                    <span class="tag-pill px-2 py-0.5 text-[10px] text-amber-300 bg-amber-500/10"
+                      >Coming Soon</span
+                    >
+                    <span class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                      >When Life Bites</span
+                    >
+                  </div>
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  Interactive workbook for our annual resilience retreat, designed to process grief and build emotional strength.
+                </p>
+                <div
+                  class="mt-4 flex items-center justify-between text-xs text-slate-400"
+                >
+                  <span>Digital · Workbook</span>
+                  <button
+                    class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[11px] font-medium text-slate-100 hover:border-amber-500/70"
+                    disabled
+                  >
+                    Notify Me
+                  </button>
+                </div>
+              </article>
+
+              <article
+                data-product="business-on-purpose when-life-bites"
+                class="card-glass flex flex-col justify-between rounded-2xl border border-slate-800/80 p-4 text-sm opacity-60 lg:col-span-2"
+              >
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h3 class="font-medium text-slate-50">
+                    Founder&apos;s Compass Course
+                  </h3>
+                  <div class="flex items-center gap-2">
+                    <span class="tag-pill px-2 py-0.5 text-[10px] text-amber-300 bg-amber-500/10"
+                      >Coming Soon</span
+                    >
+                    <span
+                      class="tag-pill px-2 py-0.5 text-[10px] text-slate-200"
+                    >
+                      Business on Purpose · When Life Bites
+                    </span>
+                  </div>
+                </div>
+                <p class="mt-2 text-xs text-slate-400">
+                  A 12-week online course integrating business systems with personal resilience for sustainable entrepreneurship.
+                </p>
+                <div
+                  class="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400"
+                >
+                  <span>Online · Course</span>
+                  <button
+                    class="rounded-full bg-gradient-to-r from-sky-500 to-fuchsia-500 px-3 py-1 text-[11px] font-medium text-slate-950 hover:from-sky-400 hover:to-fuchsia-400"
+                    disabled
+                  >
+                    Join Waitlist
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden mt-8 text-center">
+              <div class="mx-auto max-w-md">
+                <div class="mx-auto h-12 w-12 rounded-full bg-slate-800/50 flex items-center justify-center">
+                  <svg class="h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2M4 13h2m8-5v2m0 0v2m0-2h2m-2 0h-2"/>
+                  </svg>
+                </div>
+                <h3 class="mt-4 text-sm font-medium text-slate-50">No products found</h3>
+                <p class="mt-1 text-xs text-slate-400">
+                  We&apos;re working on expanding our catalog. Check back soon for more resources.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-800/80 py-6">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
+        >
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="#shop" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./studio.html#alpha-access" class="hover:text-slate-300"
+              >Contact & Alpha Access</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Quick View Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm">
+      <div class="mx-4 max-w-md rounded-2xl card-glass border border-slate-700/60 p-6 shadow-2xl">
+        <div class="flex items-start justify-between">
+          <h3 id="modal-title" class="text-lg font-semibold text-slate-50"></h3>
+          <button id="modal-close" class="text-slate-400 hover:text-slate-200" aria-label="Close modal">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="mt-4 text-sm text-slate-300">
+          <!-- Content will be populated by JS -->
+        </div>
+        <div class="mt-6 flex items-center justify-end gap-3">
+          <button id="modal-secondary" class="rounded-full border border-slate-600 bg-slate-900 px-4 py-2 text-xs font-medium text-slate-100 hover:border-sky-500/70">
+            Add to Cart
+          </button>
+          <button id="modal-primary" class="rounded-full bg-sky-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-sky-400">
+            Purchase
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
