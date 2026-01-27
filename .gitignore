@@ -14,11 +14,14 @@ dist/
 build/
 out/
 
-# Misc
-.DS_Store
+# Database & Sensitive Data
+data/
 .env
 .env.local
 .env.*.local
+
+# Misc
+.DS_Store
 *.swp
 *.swo
 *~
