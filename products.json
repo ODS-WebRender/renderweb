@@ -1,0 +1,226 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "company": "Old Dog Systems",
+    "regions": ["RSA", "US", "UK"],
+    "lastUpdated": "2026-01-27"
+  },
+  "products": [
+    {
+      "id": "rough-diamond-studio-alpha",
+      "name": "Rough Diamond Studio — Alpha Access",
+      "category": "software",
+      "subcategory": "studio",
+      "price": 9900,
+      "displayPrice": "$99.00",
+      "stripePriceId": "price_rds_alpha_usd",
+      "description": "Alpha access to the flagship audio podcasting and content creation system. Perfect for operators who ship weekly.",
+      "longDescription": "Rough Diamond Studio is a composable, enterprise-grade audio pipeline for podcasting and content creation. This alpha version includes: Audio pipeline for recording, editing, and publishing; Editorial ops dashboard for episode management; Asset generation for social and distribution; Team collaboration features; Integration ready for RSS, hosting, and monetization platforms.",
+      "features": [
+        "Professional Audio Pipeline",
+        "Editorial Operations Dashboard",
+        "Automated Asset Generation",
+        "Team Collaboration Tools",
+        "Weekly Shipping Support",
+        "Alpha Community Access"
+      ],
+      "status": "alpha",
+      "icon": "α",
+      "media": {
+        "podcast": "both"
+      },
+      "includesAccess": [
+        "alpha-community",
+        "weekly-updates",
+        "priority-support"
+      ]
+    },
+    {
+      "id": "bop-journal-founders",
+      "name": "Business on Purpose — Founder's Journal",
+      "category": "media",
+      "subcategory": "business-on-purpose",
+      "price": 2900,
+      "displayPrice": "$29.00",
+      "stripePriceId": "price_bop_journal_usd",
+      "description": "Structured journal for business operators building durable systems.",
+      "longDescription": "A guided journal designed for founders and operators implementing the systems discussed on Business on Purpose. Includes weekly reflection prompts, operational checklists, and a framework for sustainable business building.",
+      "features": [
+        "52-week guided prompts",
+        "Operational checklists",
+        "System-building framework",
+        "Digital PDF + printable"
+      ],
+      "status": "active",
+      "format": "digital-pdf",
+      "media": {
+        "podcast": "business-on-purpose"
+      }
+    },
+    {
+      "id": "bop-playbook-systems",
+      "name": "Business on Purpose — Systems Playbook",
+      "category": "media",
+      "subcategory": "business-on-purpose",
+      "price": 3900,
+      "displayPrice": "$39.00",
+      "stripePriceId": "price_bop_playbook_usd",
+      "description": "Templates and frameworks for building operational systems.",
+      "longDescription": "Ready-to-use templates and implementation guides for the core business systems discussed in the podcast. Includes org charts, financial tracking, hiring frameworks, and process documentation.",
+      "features": [
+        "15+ customizable templates",
+        "Implementation guides",
+        "Process frameworks",
+        "Google Sheets versions"
+      ],
+      "status": "active",
+      "format": "digital-templates",
+      "media": {
+        "podcast": "business-on-purpose"
+      }
+    },
+    {
+      "id": "bop-course-module",
+      "name": "Business on Purpose — Building Systems Course",
+      "category": "media",
+      "subcategory": "business-on-purpose",
+      "price": 14900,
+      "displayPrice": "$149.00",
+      "stripePriceId": "price_bop_course_usd",
+      "description": "Comprehensive 6-week course on building sustainable business systems.",
+      "longDescription": "A structured, 6-week course covering the frameworks shared on Business on Purpose. Includes video lessons, downloadable resources, community forum access, and 30-minute implementation consulting call.",
+      "features": [
+        "6 video modules",
+        "Weekly assignments",
+        "Community forum",
+        "Consulting call included",
+        "Lifetime access",
+        "Certificate of completion"
+      ],
+      "status": "coming-soon",
+      "format": "video-course",
+      "media": {
+        "podcast": "business-on-purpose"
+      },
+      "includesAccess": [
+        "video-library",
+        "community-forum",
+        "live-q-and-a"
+      ]
+    },
+    {
+      "id": "wlb-resilience-journal",
+      "name": "When Life Bites — Resilience Journal",
+      "category": "media",
+      "subcategory": "when-life-bites",
+      "price": 2900,
+      "displayPrice": "$29.00",
+      "stripePriceId": "price_wlb_journal_usd",
+      "description": "Guided journal for navigating grief, pressure, and high-stakes seasons.",
+      "longDescription": "A companion journal to the When Life Bites podcast. Designed for founders and humans going through difficult seasons. Includes reflection prompts, coping strategies, and a framework for resilience building.",
+      "features": [
+        "50+ reflection prompts",
+        "Coping strategy toolkit",
+        "Resilience frameworks",
+        "Digital + printable PDF"
+      ],
+      "status": "active",
+      "format": "digital-pdf",
+      "media": {
+        "podcast": "when-life-bites"
+      }
+    },
+    {
+      "id": "wlb-companion-guide",
+      "name": "When Life Bites — Companion Guide",
+      "category": "media",
+      "subcategory": "when-life-bites",
+      "price": 1900,
+      "displayPrice": "$19.00",
+      "stripePriceId": "price_wlb_guide_usd",
+      "description": "Episode reference guide with resources and deep dives.",
+      "longDescription": "A comprehensive guide to episodes of When Life Bites, with linked resources, book recommendations, further reading, and expert contact information mentioned in the podcast.",
+      "features": [
+        "All episodes indexed",
+        "Resource links",
+        "Book recommendations",
+        "Expert directory",
+        "Updated quarterly"
+      ],
+      "status": "active",
+      "format": "digital-pdf",
+      "media": {
+        "podcast": "when-life-bites"
+      }
+    },
+    {
+      "id": "wlb-retreat-companion",
+      "name": "When Life Bites — Retreat Program",
+      "category": "media",
+      "subcategory": "when-life-bites",
+      "price": 79900,
+      "displayPrice": "$799.00",
+      "stripePriceId": "price_wlb_retreat_usd",
+      "description": "Exclusive retreat experience for community members.",
+      "longDescription": "A 3-day in-person retreat (RSA-based, expandable to other regions) for listeners going through challenging seasons. Includes expert facilitation, peer cohorts, workshops, and community building. Limited to 20 participants.",
+      "features": [
+        "3-day retreat experience",
+        "Expert facilitation",
+        "Peer cohort groups",
+        "Meals and accommodation",
+        "Follow-up community access",
+        "Certification of completion"
+      ],
+      "status": "coming-soon",
+      "format": "in-person",
+      "availableRegions": ["RSA"],
+      "capacity": 20,
+      "media": {
+        "podcast": "when-life-bites"
+      },
+      "includesAccess": [
+        "retreat-community",
+        "post-retreat-support",
+        "lifetime-cohort-access"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "id": "bop-essentials-bundle",
+      "name": "Business on Purpose — Essentials Bundle",
+      "description": "Journal + Playbook combo at a discount",
+      "products": ["bop-journal-founders", "bop-playbook-systems"],
+      "bundlePrice": 5900,
+      "displayPrice": "$59.00",
+      "savings": "$7.00",
+      "status": "active"
+    },
+    {
+      "id": "wlb-starter-bundle",
+      "name": "When Life Bites — Starter Bundle",
+      "description": "Journal + Guide combo for navigating difficult seasons",
+      "products": ["wlb-resilience-journal", "wlb-companion-guide"],
+      "bundlePrice": 3900,
+      "displayPrice": "$39.00",
+      "savings": "$8.00",
+      "status": "active"
+    }
+  ],
+  "upcomingProducts": [
+    {
+      "id": "modular-system-bpo",
+      "name": "BPO Management System (Coming Q2 2026)",
+      "category": "software",
+      "description": "Backend process outsourcing management tool",
+      "status": "planning"
+    },
+    {
+      "id": "studio-team-edition",
+      "name": "Rough Diamond Studio — Team Edition (Coming Q3 2026)",
+      "category": "software",
+      "description": "Multi-user team collaboration and advanced workflows",
+      "status": "planning"
+    }
+  ]
+}

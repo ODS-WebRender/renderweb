@@ -18,5 +18,11 @@
   "license": "MIT",
   "engines": {
     "node": "18.x"
+  },
+  "dependencies": {
+    "stripe": "^13.11.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
   }
 }
