@@ -4,6 +4,9 @@
   "description": "Enterprise-grade modular media and software studio website",
   "type": "module",
   "main": "index.html",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "start": "node server.js",
     "build": "echo 'Static site ready for deployment'"
@@ -16,13 +19,10 @@
   ],
   "author": "Old Dog Systems",
   "license": "MIT",
-  "engines": {
-    "node": "18.x"
-  },
   "dependencies": {
     "stripe": "^13.11.0",
     "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.1.2",
+    "jsonwebtoken": "^9.0.2",
     "uuid": "^9.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1"
