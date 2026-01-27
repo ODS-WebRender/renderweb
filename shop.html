@@ -53,6 +53,7 @@
             <a href="./media.html" class="nav-underline">Media House</a>
             <a href="./studio.html" class="nav-underline">Studio</a>
             <a href="./shop.html" class="nav-underline" aria-current="page">Shop</a>
+            <a href="./dashboard.html" class="nav-underline">Dashboard</a>
             <a href="./studio.html#alpha-access" class="nav-underline">Alpha Access</a>
           </div>
 
@@ -76,6 +77,7 @@
             <a href="./media.html" class="block">Media House</a>
             <a href="./studio.html" class="block">Rough Diamond Studio</a>
             <a href="./shop.html" class="block" aria-current="page">Shop</a>
+            <a href="./dashboard.html" class="block">Dashboard</a>
             <a href="./studio.html#alpha-access" class="block">Alpha Access</a>
           </div>
         </div>
@@ -97,6 +99,17 @@
               <p class="mt-4 max-w-2xl text-sm text-slate-400 sm:text-base">
                 Everything from podcast companions to the <span data-brand></span> studio tools. Built for founders and operators who ship weekly.
               </p>
+            </div>
+
+            <!-- Cart indicator button -->
+            <div class="flex items-center gap-2">
+              <button
+                onclick="document.getElementById('cart-section').scrollIntoView({behavior: 'smooth'})"
+                id="cart-indicator"
+                class="rounded-full border border-slate-700 bg-slate-900/70 px-4 py-2 text-sm font-medium text-slate-100 hover:border-emerald-500 transition-colors"
+              >
+                <span id="cart-count" class="inline-block mr-2 font-bold text-emerald-400">0</span>items in cart
+              </button>
             </div>
 
             <!-- Filter Tabs -->
@@ -289,6 +302,9 @@
 
       // Render cart
       function renderCart() {
+        // Update cart count indicator
+        document.getElementById('cart-count').textContent = cart.length;
+        
         if (cart.length === 0) {
           document.getElementById('cart-empty').classList.remove('hidden');
           document.getElementById('cart-items').classList.add('hidden');
