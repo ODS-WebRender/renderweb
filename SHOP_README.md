@@ -1,53 +1,321 @@
-# Old Dog Systems — Enterprise Shop & Stripe Integration
+# 🚀 Product Activation Checklist & Quick Launch Guide
 
-## Overview
-
-This is a **production-ready, expandable e-commerce system** for Old Dog Systems built with Node.js, Stripe, and modern frontend architecture. Designed for growth from day one.
-
----
-
-## 🏗️ Architecture
-
-### Frontend
-- **shop.html** — Dynamic product grid with filtering, cart management, and checkout flow
-- **checkout-success.html** — Order confirmation page with session tracking
-- **constants.js** — Centralized product catalog and helper functions
-- **shop-filter.js** — Legacy filtering system (being superseded by modern shop.html)
-
-### Backend
-- **server.js** — Node.js HTTP server with Stripe API integration
-  - `GET /api/products` — Fetch product catalog
-  - `GET /api/products/:id` — Single product details
-  - `POST /api/checkout` — Create Stripe checkout session
-  - `POST /api/webhook` — Handle Stripe webhooks for order fulfillment
-  - Static file serving with security headers and aggressive caching
-
-### Data
-- **products.json** — Central product database (expandable for unlimited SKUs)
-- **.env.example** — Configuration template for Stripe keys
+**For:** Adding RDS, Podcasts, Courses, Journals, Audiobooks  
+**Status:** Ready to implement incrementally  
+**Timeline:** Launch products as they're ready (no waiting required)
 
 ---
 
-## 🛍️ Current Products
+## ✅ What's Ready NOW
 
-### Software
-1. **Rough Diamond Studio — Alpha Access** ($99)
-   - Professional audio pipeline
-   - Editorial operations dashboard
-   - Asset generation for distribution
-   - Team collaboration tools
-   - Alpha community access
+| Product | Status | What You Need |
+|---------|--------|-----------------|
+| **RDS (Software)** | ✅ Ready | Download link + instructions |
+| **Journals (PDFs)** | ✅ Ready | PDF files |
+| **Audiobooks (MP3s)** | ✅ Ready | Audio files |
+| **Podcasts** | ⏳ Simple | Hosting platform + RSS |
+| **Courses** | ⏳ Complex | Phase 3 portal build |
 
-### Business on Purpose (Podcast)
-1. **Founder's Journal** ($29)
-2. **Systems Playbook** ($39) 
-3. **Building Systems Course** ($149 — Coming Soon)
-4. **Essentials Bundle** ($59)
+---
 
-### When Life Bites (Podcast)
-1. **Resilience Journal** ($29)
-2. **Companion Guide** ($19)
-3. **3-Day Retreat Program** ($799 — RSA, expandable)
+## 🎯 How to Launch Products
+
+### Option A: TODAY (5 minutes)
+```
+1. Edit products.json
+2. Add product entry
+3. git push → 2-3 min deploy
+4. Product is LIVE
+```
+
+### Option B: WITH DELIVERY (1-3 days)
+```
+1. Prepare product files
+2. Add file delivery endpoint
+3. Update email template
+4. Test purchase
+5. Launch!
+```
+
+### Option C: FULL INTEGRATION (Phase 3)
+```
+1. Build custom portal
+2. Advanced access control
+3. Subscription support
+4. Analytics tracking
+```
+
+---
+
+## 🎯 RDS (Rough Diamond Studio)
+
+**Status:** ✅ Ready to launch  
+**Needs:** Download link + setup instructions
+
+**Current:** Already in products.json with alpha status  
+**To Launch:**
+1. Decide where to host RDS (GitHub, AWS S3, Dropbox)
+2. Update email.js with download URL
+3. Change status from "alpha" to "active"
+4. Test with purchase
+5. Go live!
+
+**What Happens:**
+- Customer buys RDS
+- License key auto-generated: `RDS-XXXXX-XXXXX-XXXXX`
+- Email sent with:
+  - License key
+  - Download link
+  - Installation guide
+  - Support info
+
+---
+
+## 📚 Journals & PDFs
+
+**Status:** ✅ Ready to launch  
+**Needs:** PDF files ready
+
+**Products Ready:**
+- Business on Purpose Journal ($29)
+- Systems Playbook ($39)
+- When Life Bites Journal ($29)
+- Wellness Guide ($19)
+
+**To Launch:**
+1. Finalize PDF files
+2. Add 15-line file delivery endpoint to server.js
+3. Update email template with download link
+4. Change status to "active"
+5. Go live!
+
+**What Happens:**
+- Customer buys journal
+- PDF generated in invoice
+- Email sent with download link
+- Customer downloads journal
+
+---
+
+## 🎙️ Podcasts
+
+**Status:** ⏳ Need hosting platform  
+**Needs:** Choose: Transistor, Podbean, or Captivate
+
+**Products to Create:**
+- Bronze Tier: All episodes + forum ($4.99/mo)
+- Silver Tier: Early access + Q&A ($9.99/mo)
+- Gold Tier: 1-on-1 calls ($49.99/mo)
+
+**To Launch (when platform chosen):**
+1. Set up podcast hosting account
+2. Create private tier/paywall
+3. Add products to products.json
+4. Configure email with RSS feed URL
+5. Test subscription
+
+**What Happens:**
+- Customer buys podcast tier
+- Email sent with private RSS URL
+- Customer subscribes in podcast app
+- New episodes auto-delivered
+
+---
+
+## 🎬 Courses
+
+**Status:** ⏳ Phase 3 (portal needed)  
+**Needs:** Curriculum finalized, videos prepared
+
+**To Plan (Phase 3):**
+1. Finalize 6-week course
+2. Prepare video content
+3. Plan schedule
+4. Decide: weekly release or on-demand
+5. Notify me for portal build
+
+**What Will Happen:**
+- Customer buys course
+- Portal access created
+- Week 1 materials sent
+- New lessons released weekly
+- Certificates issued on completion
+
+---
+
+## 🎵 Audiobooks
+
+**Status:** ✅ Ready (simple version)  
+**Needs:** MP3 audio files
+
+**To Launch:**
+1. Prepare audiobook MP3s
+2. Upload to `data/files/audiobooks/`
+3. Add products to products.json
+4. Use same file delivery as journals
+5. Go live!
+
+**What Happens:**
+- Customer buys audiobook
+- Email sent with download link
+- Customer downloads MP3
+- Can listen offline
+
+---
+
+## 📊 Current Product Catalog
+
+### In products.json (Ready to activate):
+```
+Software:
+  ✅ Rough Diamond Studio Alpha ($99)
+
+Business on Purpose:
+  ✅ Founder's Journal ($29)
+  ✅ Systems Playbook ($39)
+  ⏳ Building Systems Course ($149)
+  ✅ Essentials Bundle ($59)
+
+When Life Bites:
+  ✅ Resilience Journal ($29)
+  ✅ Companion Guide ($19)
+  ✅ 3-Day Retreat Program ($799)
+```
+
+---
+
+## 🚀 Quick Start: Add a Product TODAY
+
+### Step 1: Edit products.json
+```bash
+# Open file
+nano products.json
+```
+
+### Step 2: Add Entry
+```json
+{
+  "id": "podcast-bronze-tier",
+  "name": "Rough Diamond Studio Access - Bronze",
+  "category": "media",
+  "price": 4900,
+  "displayPrice": "$49.00",
+  "description": "Monthly podcast access + community",
+  "status": "active",
+  "format": "subscription"
+}
+```
+
+### Step 3: Deploy
+```bash
+git add products.json
+git commit -m "Add: Podcast bronze tier"
+git push origin main
+# 2-3 min → Live in shop!
+```
+
+### Step 4: Test
+1. Go to shop.html
+2. See new product
+3. Try purchase with test card: 4242 4242 4242 4242
+4. Check admin dashboard for order
+
+---
+
+## 📦 File Delivery Setup
+
+### For Journals & Audiobooks:
+```bash
+# Create directories
+mkdir -p data/files/journals
+mkdir -p data/files/audiobooks
+mkdir -p data/files/templates
+
+# Add your files here:
+# data/files/journals/bop-journal.pdf
+# data/files/audiobooks/audiobook-title.mp3
+```
+
+### Add Endpoint (copy to server.js):
+```javascript
+// GET /api/downloads/file/:type/:productId
+if (pathname.match(/^\/api\/downloads\/file\/[^/]+\/[^/]+$/) && req.method === 'GET') {
+  const [type, productId] = pathname.split('/').slice(-2);
+  const filePath = path.join(__dirname, 'data', 'files', type, `${productId}.pdf`);
+  
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      sendJSON(res, { error: 'File not found' }, 404);
+      return;
+    }
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${productId}.pdf"`);
+    res.writeHead(200);
+    res.end(data);
+  });
+  return;
+}
+```
+
+### Update Email (in email.js):
+```javascript
+// Add download link to sendOrderConfirmation
+const downloadLinks = {};
+order.items.forEach(item => {
+  if (item.category === 'media' && item.format === 'digital-pdf') {
+    downloadLinks[item.id] = `${process.env.DOMAIN}/api/downloads/file/${item.category}/${item.id}`;
+  }
+});
+```
+
+---
+
+## 🎯 Launch Priority
+
+### This Week:
+- [ ] RDS - add download URL
+- [ ] Journals - prepare PDFs
+
+### Next Week:
+- [ ] Choose podcast platform
+- [ ] Add podcast products
+- [ ] Audiobooks - prepare MP3s
+
+### Later (Phase 3):
+- [ ] Course portal
+- [ ] Advanced features
+
+---
+
+## 💡 Can You Push Directly?
+
+**YES - Products.json:**
+- Add/update products: Edit → Push → 2-3 min deploy
+
+**YES - With Code Changes:**
+- File delivery: Add endpoint → Push → 2-3 min deploy
+- Email templates: Update → Push → 2-3 min deploy
+
+**NOT YET - Complex:**
+- Course portal: Needs development (Phase 3)
+- Advanced integrations: Needs planning
+
+---
+
+## 🔗 Key Links
+
+- **Shop:** https://renderweb.onrender.com/shop.html
+- **Products:** products.json in repo
+- **Documentation:** [PRODUCT_ACTIVATION_GUIDE.md](PRODUCT_ACTIVATION_GUIDE.md)
+
+---
+
+## ✨ Summary
+
+✅ You can add products TODAY via products.json  
+✅ Delivery systems ready for PDFs, audio, and software  
+⏳ Complex features (courses, advanced) in Phase 3  
+🚀 Launch as products are ready - no waiting for all at once
 4. **Starter Bundle** ($39)
 
 ---
