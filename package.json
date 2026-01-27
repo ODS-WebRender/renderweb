@@ -6,8 +6,7 @@
   "main": "index.html",
   "scripts": {
     "start": "node server.js",
-    "build": "echo 'Static site - no build required'",
-    "test": "echo 'Testing disabled for production'"
+    "build": "echo 'Static site ready for deployment'"
   },
   "keywords": [
     "old-dog-systems",
