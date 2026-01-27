@@ -8,6 +8,8 @@ import { URL } from 'url';
 import Stripe from 'stripe';
 import * as db from './db.js';
 import * as auth from './auth.js';
+import * as email from './email.js';
+import * as invoice from './invoice.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -150,7 +152,7 @@ const server = http.createServer(async (req, res) => {
         orders,
         stats: {
           totalPurchases: orders.length,
-          totalSpent: orders.reduce((sum, o) => sum + o.totalAmount, 0)
+          totalSpent: orders.reduce((sum, o) => sum + o.totalAmount, 0),
         }
       }, 200);
       return;
@@ -158,9 +160,15 @@ const server = http.createServer(async (req, res) => {
 
     // ===== ADMIN API =====
 
-    // GET /api/admin/dashboard - Get admin analytics (requires admin password)
-    if (pathname === '/api/admin/dashboard' && req.method === 'GET') {
-      const adminPassword = req.headers['x-admin-password'];
+    // POST /api/admin/dashboard - Get admin analytics (requires admin password)
+    if (pathname === '/api/admin/dashboard' && (req.method === 'POST' || req.method === 'GET')) {
+      let adminPassword = req.headers['x-admin-password'];
+      
+      // Support POST with password in body (from HTML form)
+      if (req.method === 'POST') {
+        const body = await parseBody(req);
+        adminPassword = body.password;
+      }
       
       if (adminPassword !== process.env.ADMIN_PASSWORD) {
         sendJSON(res, { error: 'Unauthorized' }, 401);
@@ -168,7 +176,46 @@ const server = http.createServer(async (req, res) => {
       }
 
       const stats = db.getOrderStats();
-      sendJSON(res, stats, 200);
+      const allOrders = db.getAllOrders();
+      
+      // Build chart data
+      const dailyRevenue = {};
+      const topProducts = {};
+      const customerSegments = { firstTime: 0, repeat: 0, vip: 0 };
+      
+      allOrders.forEach(order => {
+        // Daily revenue
+        const date = new Date(order.createdAt).toISOString().split('T')[0];
+        dailyRevenue[date] = (dailyRevenue[date] || 0) + order.totalAmount;
+        
+        // Top products
+        order.items.forEach(item => {
+          topProducts[item.name] = (topProducts[item.name] || 0) + 1;
+        });
+        
+        // Customer segments (simplified)
+        if (order.customerEmail) {
+          const customerOrders = allOrders.filter(o => o.customerEmail === order.customerEmail);
+          if (customerOrders.length === 1) customerSegments.firstTime++;
+          else if (customerOrders.length <= 3) customerSegments.repeat++;
+          else customerSegments.vip++;
+        }
+      });
+      
+      const recentOrders = allOrders.slice(-10).reverse();
+      
+      sendJSON(res, {
+        stats,
+        recentOrders,
+        chartData: {
+          dailyRevenue: Object.entries(dailyRevenue).map(([date, amount]) => ({ date, amount })),
+          topProducts: Object.entries(topProducts)
+            .map(([name, count]) => ({ name, count }))
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 5),
+          customerSegments
+        }
+      }, 200);
       return;
     }
 
@@ -325,7 +372,42 @@ const server = http.createServer(async (req, res) => {
                 }
               });
 
-              console.log(`Order ${order.id} marked as completed`);
+              // Get updated order with license keys
+              const updatedOrder = db.getOrder(order.id);
+
+              // Generate invoice asynchronously
+              try {
+                await invoice.generateInvoicePDF(updatedOrder);
+              } catch (err) {
+                console.error('Invoice generation error:', err);
+              }
+
+              // Send order confirmation email
+              try {
+                await email.sendOrderConfirmation(updatedOrder);
+              } catch (err) {
+                console.error('Email sending error:', err);
+              }
+
+              // Send license key emails if applicable
+              if (updatedOrder.licenseKeys && Object.keys(updatedOrder.licenseKeys).length > 0) {
+                try {
+                  for (const [productId, licenseKey] of Object.entries(updatedOrder.licenseKeys)) {
+                    await email.sendLicenseKey(updatedOrder.customerEmail, productId, licenseKey);
+                  }
+                } catch (err) {
+                  console.error('License key email error:', err);
+                }
+              }
+
+              // Send admin notification
+              try {
+                await email.sendAdminNotification(updatedOrder);
+              } catch (err) {
+                console.error('Admin notification error:', err);
+              }
+
+              console.log(`Order ${order.id} completed with invoice and email sent`);
             }
             break;
           }
@@ -339,6 +421,20 @@ const server = http.createServer(async (req, res) => {
           case 'charge.refunded': {
             const charge = event.data.object;
             console.log(`Charge refunded: ${charge.id}`);
+            
+            // Find and update order
+            const orders = db.getAllOrders();
+            const order = orders.find(o => o.stripePaymentIntentId === charge.payment_intent);
+            
+            if (order) {
+              db.updateOrder(order.id, { status: 'refunded' });
+              
+              try {
+                await email.sendRefundNotification(order);
+              } catch (err) {
+                console.error('Refund email error:', err);
+              }
+            }
             break;
           }
         }
@@ -347,6 +443,36 @@ const server = http.createServer(async (req, res) => {
       } catch (error) {
         console.error('Webhook error:', error);
         sendJSON(res, { error: error.message }, 400);
+      }
+      return;
+    }
+
+    // ===== DOWNLOADS =====
+
+    // GET /api/downloads/invoice/:orderId - Download invoice PDF
+    if (pathname.match(/^\/api\/downloads\/invoice\/[^/]+$/) && req.method === 'GET') {
+      const orderId = pathname.split('/').pop();
+      const order = db.getOrder(orderId);
+      
+      if (!order) {
+        sendJSON(res, { error: 'Order not found' }, 404);
+        return;
+      }
+
+      try {
+        const result = await invoice.generateInvoicePDF(order);
+        if (result.success) {
+          const fileContent = fs.readFileSync(result.filePath);
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', `attachment; filename="${result.fileName}"`);
+          res.writeHead(200);
+          res.end(fileContent);
+        } else {
+          sendJSON(res, { error: 'Failed to generate invoice' }, 500);
+        }
+      } catch (error) {
+        console.error('Invoice download error:', error);
+        sendJSON(res, { error: error.message }, 500);
       }
       return;
     }

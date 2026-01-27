@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard — Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3">
+              <img
+                src="./images/Dog 5.png"
+                alt="Old Dog Systems Logo"
+                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-sm font-semibold tracking-tight text-slate-100"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
+                  >Admin Console</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./admin-dashboard.html" class="nav-underline" aria-current="page">Admin</a>
+            <button
+              onclick="logout()"
+              class="rounded-full border border-slate-700 px-4 py-2 text-sm hover:border-red-500 hover:text-red-400 transition-colors"
+            >
+              Logout
+            </button>
+          </div>
+
+          <!-- Mobile trigger -->
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="block h-0.5 w-4 rounded-full bg-slate-200 mb-0.5"></span>
+            <span class="block h-0.5 w-4 rounded-full bg-slate-400 mb-0.5"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile nav -->
+        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./admin-dashboard.html" class="block" aria-current="page">Admin</a>
+            <button onclick="logout()" class="w-full text-left text-red-400 hover:text-red-300">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main -->
+      <main class="flex-1">
+        <!-- Hero -->
+        <section class="relative overflow-hidden border-b border-slate-800/80">
+          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+            <h1 class="text-3xl sm:text-4xl font-bold text-slate-50 mb-2">Admin Dashboard</h1>
+            <p class="text-slate-400">Manage orders, analytics, and refunds</p>
+          </div>
+        </section>
+
+        <!-- Dashboard Content -->
+        <section class="bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+            <!-- Key Metrics -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-12">
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  Total Revenue
+                </p>
+                <p id="metric-revenue" class="text-3xl font-bold text-emerald-400">$0.00</p>
+              </div>
+
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  Total Orders
+                </p>
+                <p id="metric-orders" class="text-3xl font-bold text-sky-400">0</p>
+              </div>
+
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  Unique Customers
+                </p>
+                <p id="metric-customers" class="text-3xl font-bold text-purple-400">0</p>
+              </div>
+
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  Avg. Order Value
+                </p>
+                <p id="metric-aov" class="text-3xl font-bold text-rose-400">$0.00</p>
+              </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+              <!-- Revenue Chart -->
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <h2 class="text-lg font-semibold text-slate-50 mb-4">Revenue (Last 30 Days)</h2>
+                <canvas id="revenue-chart" class="max-h-64"></canvas>
+              </div>
+
+              <!-- Top Products -->
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <h2 class="text-lg font-semibold text-slate-50 mb-4">Top Products</h2>
+                <canvas id="products-chart" class="max-h-64"></canvas>
+              </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="mb-12">
+              <h2 class="text-2xl font-bold text-slate-50 mb-6">Recent Orders</h2>
+              <div class="card-glass rounded-2xl border border-slate-700/60 overflow-hidden">
+                <div class="overflow-x-auto">
+                  <table class="w-full text-sm">
+                    <thead class="border-b border-slate-700/50 bg-slate-800/30">
+                      <tr>
+                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Order ID</th>
+                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Customer</th>
+                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Product</th>
+                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Amount</th>
+                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Status</th>
+                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody id="orders-tbody" class="divide-y divide-slate-700/30">
+                      <!-- Rendered orders -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Refund Management -->
+            <div class="mb-12">
+              <h2 class="text-2xl font-bold text-slate-50 mb-6">Refund Management</h2>
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <div class="space-y-4">
+                  <div>
+                    <label class="block text-sm font-medium text-slate-200 mb-2">
+                      Search Order
+                    </label>
+                    <input
+                      type="text"
+                      id="refund-search"
+                      placeholder="Enter order ID or customer email"
+                      class="w-full rounded-lg bg-slate-800 border border-slate-600 px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                    />
+                  </div>
+                  <div id="refund-results" class="space-y-3 mt-6">
+                    <!-- Refund options rendered here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Customer Segments -->
+            <div>
+              <h2 class="text-2xl font-bold text-slate-50 mb-6">Customer Insights</h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-4">
+                    Customer Breakdown
+                  </p>
+                  <canvas id="customer-chart" class="max-h-48"></canvas>
+                </div>
+
+                <div class="card-glass rounded-2xl border border-slate-700/60 p-6 space-y-4">
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-3">
+                      Export Data
+                    </p>
+                    <button
+                      onclick="exportOrders('csv')"
+                      class="block w-full rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors px-4 py-2 text-sm font-medium text-slate-100 mb-2"
+                    >
+                      Export Orders (CSV)
+                    </button>
+                    <button
+                      onclick="exportOrders('json')"
+                      class="block w-full rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors px-4 py-2 text-sm font-medium text-slate-100"
+                    >
+                      Export Orders (JSON)
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-800/80 py-6">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
+        >
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="./shop.html" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./studio.html#alpha-access" class="hover:text-slate-300">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      let adminData = null;
+      let revenueChart = null;
+      let productsChart = null;
+      let customerChart = null;
+
+      document.addEventListener('DOMContentLoaded', async () => {
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Prompt for admin password
+        const password = prompt('Admin Password:');
+        if (!password) {
+          window.location.href = './index.html';
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/admin/dashboard', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+          });
+
+          if (!response.ok) {
+            alert('Invalid admin password');
+            window.location.href = './index.html';
+            return;
+          }
+
+          adminData = await response.json();
+          renderDashboard();
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Failed to load admin dashboard');
+          window.location.href = './index.html';
+        }
+      });
+
+      function renderDashboard() {
+        // Metrics
+        document.getElementById('metric-revenue').textContent = `$${(adminData.stats.totalRevenue / 100).toFixed(2)}`;
+        document.getElementById('metric-orders').textContent = adminData.stats.totalOrders;
+        document.getElementById('metric-customers').textContent = adminData.stats.uniqueCustomers;
+        document.getElementById('metric-aov').textContent = `$${(adminData.stats.averageOrderValue / 100).toFixed(2)}`;
+
+        // Recent Orders Table
+        const tbody = document.getElementById('orders-tbody');
+        tbody.innerHTML = adminData.recentOrders.map(order => `
+          <tr class="hover:bg-slate-700/20">
+            <td class="px-6 py-3">${order.id.slice(-8)}</td>
+            <td class="px-6 py-3">${order.customerEmail}</td>
+            <td class="px-6 py-3">${order.items.map(i => i.name).join(', ')}</td>
+            <td class="px-6 py-3">$${(order.totalAmount / 100).toFixed(2)}</td>
+            <td class="px-6 py-3">
+              <span class="rounded-full px-2 py-1 text-xs font-medium ${
+                order.status === 'completed'
+                  ? 'bg-emerald-500/10 text-emerald-300'
+                  : 'bg-amber-500/10 text-amber-300'
+              }">
+                ${order.status}
+              </span>
+            </td>
+            <td class="px-6 py-3 text-slate-400">${new Date(order.createdAt).toLocaleDateString()}</td>
+          </tr>
+        `).join('');
+
+        // Charts
+        renderCharts();
+      }
+
+      function renderCharts() {
+        // Revenue Chart
+        const ctxRevenue = document.getElementById('revenue-chart').getContext('2d');
+        if (revenueChart) revenueChart.destroy();
+        revenueChart = new Chart(ctxRevenue, {
+          type: 'line',
+          data: {
+            labels: adminData.chartData.dailyRevenue.map(d => d.date),
+            datasets: [{
+              label: 'Revenue',
+              data: adminData.chartData.dailyRevenue.map(d => d.amount / 100),
+              borderColor: '#10b981',
+              backgroundColor: 'rgba(16, 185, 129, 0.1)',
+              tension: 0.4,
+              fill: true
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { 
+                beginAtZero: true,
+                ticks: { color: '#cbd5e1' },
+                grid: { color: 'rgba(51, 65, 85, 0.3)' }
+              },
+              x: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
+            }
+          }
+        });
+
+        // Products Chart
+        const ctxProducts = document.getElementById('products-chart').getContext('2d');
+        if (productsChart) productsChart.destroy();
+        productsChart = new Chart(ctxProducts, {
+          type: 'doughnut',
+          data: {
+            labels: adminData.chartData.topProducts.map(p => p.name),
+            datasets: [{
+              data: adminData.chartData.topProducts.map(p => p.count),
+              backgroundColor: ['#0ea5e9', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { labels: { color: '#cbd5e1' } } }
+          }
+        });
+
+        // Customer Chart
+        const ctxCustomer = document.getElementById('customer-chart').getContext('2d');
+        if (customerChart) customerChart.destroy();
+        customerChart = new Chart(ctxCustomer, {
+          type: 'bar',
+          data: {
+            labels: ['First Purchase', 'Repeat Customer', 'VIP'],
+            datasets: [{
+              label: 'Customers',
+              data: [
+                adminData.chartData.customerSegments.firstTime,
+                adminData.chartData.customerSegments.repeat,
+                adminData.chartData.customerSegments.vip
+              ],
+              backgroundColor: ['#0ea5e9', '#10b981', '#f59e0b']
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(51, 65, 85, 0.3)' } },
+              y: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
+            }
+          }
+        });
+      }
+
+      function logout() {
+        window.location.href = './index.html';
+      }
+
+      function exportOrders(format) {
+        const data = format === 'csv' 
+          ? convertToCSV(adminData.recentOrders)
+          : JSON.stringify(adminData.recentOrders, null, 2);
+        
+        const blob = new Blob([data], { type: format === 'csv' ? 'text/csv' : 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `orders.${format}`;
+        a.click();
+      }
+
+      function convertToCSV(data) {
+        const headers = ['Order ID', 'Customer', 'Product', 'Amount', 'Status', 'Date'];
+        const rows = data.map(order => [
+          order.id,
+          order.customerEmail,
+          order.items.map(i => i.name).join('; '),
+          order.totalAmount / 100,
+          order.status,
+          new Date(order.createdAt).toISOString()
+        ]);
+        return [headers, ...rows].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+      }
+    </script>
+  </body>
+</html>

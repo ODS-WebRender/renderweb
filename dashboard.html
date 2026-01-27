@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard — Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/Dog 5.png"
+                alt="Old Dog Systems Logo"
+                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-sm font-semibold tracking-tight text-slate-100"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
+                  >Dashboard</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./dashboard.html" class="nav-underline" aria-current="page">Dashboard</a>
+            <button
+              onclick="logout()"
+              class="rounded-full border border-slate-700 px-4 py-2 text-sm hover:border-red-500 hover:text-red-400 transition-colors"
+            >
+              Logout
+            </button>
+          </div>
+
+          <!-- Mobile trigger -->
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="block h-0.5 w-4 rounded-full bg-slate-200 mb-0.5"></span>
+            <span class="block h-0.5 w-4 rounded-full bg-slate-400 mb-0.5"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile nav -->
+        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./shop.html" class="block">Shop</a>
+            <a href="./dashboard.html" class="block" aria-current="page">Dashboard</a>
+            <button onclick="logout()" class="w-full text-left text-red-400 hover:text-red-300">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main -->
+      <main class="flex-1">
+        <!-- Hero -->
+        <section class="relative overflow-hidden border-b border-slate-800/80">
+          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+            <h1 class="text-3xl sm:text-4xl font-bold text-slate-50 mb-2">Your Dashboard</h1>
+            <p id="user-email" class="text-slate-400">Loading...</p>
+          </div>
+        </section>
+
+        <!-- Dashboard Content -->
+        <section class="bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  Total Purchases
+                </p>
+                <p id="stat-purchases" class="text-3xl font-bold text-sky-400">0</p>
+              </div>
+
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  Total Spent
+                </p>
+                <p id="stat-spent" class="text-3xl font-bold text-emerald-400">$0.00</p>
+              </div>
+
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  License Keys
+                </p>
+                <p id="stat-licenses" class="text-3xl font-bold text-purple-400">0</p>
+              </div>
+            </div>
+
+            <!-- Orders Section -->
+            <div class="mb-12">
+              <h2 class="text-2xl font-bold text-slate-50 mb-6">Your Orders</h2>
+
+              <div id="orders-empty" class="card-glass rounded-2xl border border-slate-700/60 p-8 text-center">
+                <p class="text-slate-400">No orders yet. <a href="./shop.html" class="text-sky-400 hover:text-sky-300">Browse the shop</a></p>
+              </div>
+
+              <div id="orders-list" class="space-y-4 hidden">
+                <!-- Orders rendered here -->
+              </div>
+            </div>
+
+            <!-- License Keys Section -->
+            <div id="licenses-section" class="hidden">
+              <h2 class="text-2xl font-bold text-slate-50 mb-6">Your License Keys</h2>
+              <div id="licenses-list" class="space-y-4">
+                <!-- License keys rendered here -->
+              </div>
+            </div>
+
+            <!-- Account Settings -->
+            <div class="border-t border-slate-700/50 pt-12">
+              <h2 class="text-2xl font-bold text-slate-50 mb-6">Account Settings</h2>
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6 space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-slate-200 mb-2">Email Notifications</label>
+                  <label class="flex items-center gap-2">
+                    <input type="checkbox" id="email-notifications" checked class="rounded border-slate-600 bg-slate-800" />
+                    <span class="text-sm text-slate-400">Receive email updates about your orders</span>
+                  </label>
+                </div>
+                <button
+                  onclick="downloadAllInvoices()"
+                  class="rounded-lg bg-sky-500 px-6 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors"
+                >
+                  Download All Invoices
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-800/80 py-6">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
+        >
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="./shop.html" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./studio.html#alpha-access" class="hover:text-slate-300">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Authentication token from localStorage or sessionStorage
+      let authToken = localStorage.getItem('auth_token') || sessionStorage.getItem('auth_token');
+
+      // Initialize
+      document.addEventListener('DOMContentLoaded', async () => {
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Check if user is logged in
+        if (!authToken) {
+          // Redirect to login (will be built in next phase)
+          window.location.href = './index.html?redirect=dashboard';
+          return;
+        }
+
+        await loadDashboard();
+      });
+
+      // Load dashboard data
+      async function loadDashboard() {
+        try {
+          const response = await fetch('/api/dashboard', {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to load dashboard');
+          }
+
+          const data = await response.json();
+          renderDashboard(data);
+        } catch (error) {
+          console.error('Dashboard error:', error);
+          alert('Error loading dashboard. ' + error.message);
+          logout();
+        }
+      }
+
+      // Render dashboard
+      function renderDashboard(data) {
+        // User info
+        document.getElementById('user-email').textContent = `Welcome, ${data.user.name || data.user.email}`;
+
+        // Stats
+        document.getElementById('stat-purchases').textContent = data.stats.totalPurchases;
+        document.getElementById('stat-spent').textContent = `$${(data.stats.totalSpent / 100).toFixed(2)}`;
+
+        // Count license keys
+        let licenseCount = 0;
+        data.orders.forEach(order => {
+          licenseCount += Object.keys(order.licenseKeys || {}).length;
+        });
+        document.getElementById('stat-licenses').textContent = licenseCount;
+
+        // Orders
+        if (data.orders.length === 0) {
+          document.getElementById('orders-empty').classList.remove('hidden');
+          document.getElementById('orders-list').classList.add('hidden');
+        } else {
+          document.getElementById('orders-empty').classList.add('hidden');
+          document.getElementById('orders-list').classList.remove('hidden');
+          document.getElementById('orders-list').innerHTML = data.orders.map(order => `
+            <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                    Order ${order.id.slice(-8)}
+                  </p>
+                  <p class="text-sm text-slate-300 mt-1">${new Date(order.createdAt).toLocaleDateString()}</p>
+                </div>
+                <span class="rounded-full px-3 py-1 text-xs font-medium ${
+                  order.status === 'completed' 
+                    ? 'bg-emerald-500/10 text-emerald-300'
+                    : order.status === 'pending'
+                    ? 'bg-amber-500/10 text-amber-300'
+                    : 'bg-red-500/10 text-red-300'
+                }">
+                  ${order.status}
+                </span>
+              </div>
+
+              <div class="space-y-2 mb-4">
+                ${order.items.map(item => `
+                  <p class="text-sm text-slate-300">• ${item.name}</p>
+                `).join('')}
+              </div>
+
+              <div class="flex justify-between items-center pt-4 border-t border-slate-700/50">
+                <p class="font-semibold text-slate-50">$${(order.totalAmount / 100).toFixed(2)}</p>
+                <button
+                  onclick="downloadInvoice('${order.id}')"
+                  class="rounded px-3 py-1 text-xs bg-slate-700 hover:bg-slate-600 transition-colors"
+                >
+                  Download Invoice
+                </button>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // License keys
+        if (licenseCount > 0) {
+          document.getElementById('licenses-section').classList.remove('hidden');
+          const licensesHtml = [];
+          
+          data.orders.forEach(order => {
+            Object.entries(order.licenseKeys || {}).forEach(([productId, licenseKey]) => {
+              licensesHtml.push(`
+                <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                    ${productId.replace(/-/g, ' ')}
+                  </p>
+                  <p class="font-mono text-sm bg-slate-800/50 p-3 rounded border border-slate-600 break-all">
+                    ${licenseKey}
+                  </p>
+                  <p class="text-xs text-slate-400 mt-3">Valid for lifetime access</p>
+                </div>
+              `);
+            });
+          });
+
+          document.getElementById('licenses-list').innerHTML = licensesHtml.join('');
+        }
+      }
+
+      // Logout
+      function logout() {
+        localStorage.removeItem('auth_token');
+        sessionStorage.removeItem('auth_token');
+        window.location.href = './index.html';
+      }
+
+      // Download invoice
+      async function downloadInvoice(orderId) {
+        try {
+          window.open(`/api/downloads/invoice/${orderId}`, '_blank');
+        } catch (error) {
+          alert('Failed to download invoice');
+        }
+      }
+
+      // Download all invoices
+      function downloadAllInvoices() {
+        alert('Bulk download coming soon!');
+      }
+    </script>
+  </body>
+</html>
