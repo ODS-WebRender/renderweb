@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: old-dog-systems-web
+    env: static
+    buildCommand: echo "Building static site..."
+    staticPublishPath: .
+    routes:
+      - path: /
+        matchType: prefix
+        dest: /index.html
+      - path: /media
+        matchType: exact
+        dest: /media.html
+      - path: /studio
+        matchType: exact
+        dest: /studio.html
+      - path: /shop
+        matchType: exact
+        dest: /shop.html
+    headers:
+      - path: /
+        name: Cache-Control
+        value: "public, max-age=3600"
+      - path: /styles.css
+        name: Cache-Control
+        value: "public, max-age=31536000"
+      - path: /constants.js
+        name: Cache-Control
+        value: "public, max-age=31536000"
+      - path: /shop-filter.js
+        name: Cache-Control
+        value: "public, max-age=31536000"
+      - path: /images/*
+        name: Cache-Control
+        value: "public, max-age=31536000"

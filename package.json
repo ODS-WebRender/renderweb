@@ -1,0 +1,23 @@
+{
+  "name": "old-dog-systems-web",
+  "version": "1.0.0",
+  "description": "Enterprise-grade modular media and software studio website",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'Static site - no build required'",
+    "test": "echo 'Testing disabled for production'"
+  },
+  "keywords": [
+    "old-dog-systems",
+    "media",
+    "software",
+    "studio"
+  ],
+  "author": "Old Dog Systems",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
+}
