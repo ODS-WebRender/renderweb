@@ -246,10 +246,16 @@
       // Render products
       function renderProducts() {
         const grid = document.getElementById('products-grid');
+        const comingSoonGrid = document.getElementById('coming-soon-grid');
+        const comingSoonSection = document.getElementById('coming-soon-section');
         const filtered = filterProducts();
         
-        grid.innerHTML = filtered
-          .filter(p => p.status === 'active')
+        // Separate active and coming-soon products
+        const activeProducts = filtered.filter(p => p.status === 'active');
+        const comingSoonProducts = filtered.filter(p => p.status === 'coming-soon');
+        
+        // Render active products
+        grid.innerHTML = activeProducts
           .map(p => `
             <div class="group card-glass rounded-2xl border border-slate-700/60 p-6 hover:border-sky-500/60 transition-colors">
               <div class="mb-3 flex items-start justify-between">
@@ -280,6 +286,29 @@
               </div>
             </div>
           `).join('');
+        
+        // Render coming-soon products
+        if (comingSoonProducts.length > 0) {
+          comingSoonSection.classList.remove('hidden');
+          comingSoonGrid.innerHTML = comingSoonProducts
+            .map(p => `
+              <div class="group card-glass rounded-2xl border border-slate-700/60 p-6 opacity-60">
+                <div class="mb-3 flex items-start justify-between">
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-1">
+                      ${p.category}
+                    </p>
+                    <h3 class="text-lg font-semibold text-slate-50">${p.name}</h3>
+                  </div>
+                  <span class="rounded-full bg-slate-500/10 px-2 py-0.5 text-xs text-slate-400">Coming Soon</span>
+                </div>
+                <p class="text-sm text-slate-400 mb-4">${p.description}</p>
+                <div class="text-2xl font-bold text-slate-400">${p.displayPrice}</div>
+              </div>
+            `).join('');
+        } else {
+          comingSoonSection.classList.add('hidden');
+        }
       }
 
       // Filter products
@@ -416,12 +445,24 @@
       function setupEventListeners() {
         document.querySelectorAll('.filter-btn').forEach(btn => {
           btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentFilter = e.target.dataset.filter;
+            // Remove active class from all buttons
+            document.querySelectorAll('.filter-btn').forEach(b => {
+              b.classList.remove('active');
+            });
+            // Add active class to clicked button
+            e.currentTarget.classList.add('active');
+            // Update current filter
+            currentFilter = e.currentTarget.dataset.filter;
+            // Re-render products
             renderProducts();
           });
         });
+        
+        // Set initial active state
+        const allBtn = document.querySelector('[data-filter="all"]');
+        if (allBtn) {
+          allBtn.classList.add('active');
+        }
       }
     </script>
   </body>
