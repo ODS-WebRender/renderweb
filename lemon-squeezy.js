@@ -1,11 +1,20 @@
 // Lemon Squeezy payment integration module
 // Handles checkout session creation and order confirmation
+// Includes error detection and credential validation
 
 import https from 'https';
 
 // Initialize with credentials (set via environment variables)
 const STORE_ID = process.env.LEMON_SQUEEZY_STORE_ID || '';
 const API_KEY = process.env.LEMON_SQUEEZY_API_KEY || '';
+
+// Auth status (for health checks)
+let authStatus = {
+  initialized: false,
+  valid: false,
+  lastChecked: null,
+  error: null,
+};
 
 // Product mappings: your product IDs → Lemon Squeezy variant IDs
 // Update these with your actual Lemon Squeezy variant IDs
@@ -130,6 +139,68 @@ export function verifyWebhookSignature(event, signature) {
 }
 
 /**
+ * Validate credentials on startup
+ * @returns {Promise<Object>} - { valid: bool, error: string|null }
+ */
+export async function validateCredentials() {
+  try {
+    if (!STORE_ID || !API_KEY) {
+      authStatus = {
+        initialized: false,
+        valid: false,
+        lastChecked: new Date().toISOString(),
+        error: 'Missing LEMON_SQUEEZY_STORE_ID or LEMON_SQUEEZY_API_KEY environment variables'
+      };
+      return authStatus;
+    }
+
+    // Make a test request to validate credentials
+    const response = await makeRequest('GET', '/v1/stores/' + STORE_ID);
+    
+    authStatus = {
+      initialized: true,
+      valid: true,
+      lastChecked: new Date().toISOString(),
+      error: null,
+      storeName: response.data?.attributes?.name || 'Unknown Store'
+    };
+    
+    return authStatus;
+  } catch (error) {
+    authStatus = {
+      initialized: true,
+      valid: false,
+      lastChecked: new Date().toISOString(),
+      error: error.message
+    };
+    return authStatus;
+  }
+}
+
+/**
+ * Get current auth status
+ * @returns {Object} - Current authentication status
+ */
+export function getAuthStatus() {
+  return authStatus;
+}
+
+/**
+ * Get health check object for monitoring
+ * @returns {Object} - Health status for admin/monitoring
+ */
+export function getHealthStatus() {
+  return {
+    payment_system: 'lemon-squeezy',
+    auth_status: authStatus.valid ? 'valid' : 'invalid',
+    last_checked: authStatus.lastChecked,
+    store_configured: STORE_ID ? 'yes' : 'no',
+    api_key_present: API_KEY ? 'yes' : 'no',
+    error: authStatus.error || null,
+  };
+}
+
+/**
  * Make HTTP request to Lemon Squeezy API
  * @private
  */
@@ -159,19 +230,40 @@ function makeRequest(method, path, body = null) {
         try {
           const parsed = JSON.parse(data);
           
+          // Handle auth failures specifically
+          if (res.statusCode === 401 || res.statusCode === 403) {
+            const authError = new Error('API Key Invalid or Expired');
+            authError.statusCode = res.statusCode;
+            authError.type = 'AUTH_ERROR';
+            authError.details = parsed.errors?.[0]?.detail || 'Authentication failed';
+            reject(authError);
+            return;
+          }
+          
           if (res.statusCode >= 400) {
-            reject(new Error(`Lemon Squeezy API error: ${parsed.errors?.[0]?.detail || parsed.message || 'Unknown error'}`));
+            const apiError = new Error(
+              parsed.errors?.[0]?.detail || 
+              parsed.message || 
+              `Lemon Squeezy API error (${res.statusCode})`
+            );
+            apiError.statusCode = res.statusCode;
+            apiError.type = 'API_ERROR';
+            reject(apiError);
           } else {
             resolve(parsed);
           }
         } catch (e) {
-          reject(new Error(`Invalid JSON response: ${data}`));
+          const parseError = new Error(`Invalid JSON response from Lemon Squeezy: ${data.substring(0, 100)}`);
+          parseError.type = 'PARSE_ERROR';
+          reject(parseError);
         }
       });
     });
 
     req.on('error', (e) => {
-      reject(new Error(`Request failed: ${e.message}`));
+      const netError = new Error(`Network error connecting to Lemon Squeezy: ${e.message}`);
+      netError.type = 'NETWORK_ERROR';
+      reject(netError);
     });
 
     if (body) {

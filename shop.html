@@ -436,7 +436,20 @@
 
           if (!response.ok) {
             const error = await response.json();
-            throw new Error(error.error || 'Checkout failed');
+            
+            // Handle specific error types
+            if (error.errorType === 'auth_failed') {
+              throw new Error(
+                'Payment system temporarily unavailable. ' +
+                'Please contact support@olddogsystems.com with error code: AUTH_FAILED'
+              );
+            } else if (error.errorType === 'service_unavailable') {
+              throw new Error(
+                'Payment service is temporarily down. Please try again in a few moments.'
+              );
+            } else {
+              throw new Error(error.error || 'Checkout failed. Please try again.');
+            }
           }
 
           const { checkoutUrl, orderId } = await response.json();
@@ -445,11 +458,11 @@
             // Redirect to Lemon Squeezy checkout
             window.location.href = checkoutUrl;
           } else {
-            throw new Error('No checkout URL received');
+            throw new Error('No checkout URL received. Please try again.');
           }
         } catch (error) {
           console.error('Checkout error:', error);
-          alert('Checkout failed: ' + error.message);
+          alert('Checkout Error:\n\n' + error.message);
           
           // Reset button
           const btn = document.getElementById('checkout-btn');

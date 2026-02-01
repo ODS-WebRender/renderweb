@@ -266,6 +266,50 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    // ===== HEALTH & STATUS =====
+
+    // GET /api/health - Health check with payment system status
+    if (pathname === '/api/health' && req.method === 'GET') {
+      const health = {
+        status: 'ok',
+        timestamp: new Date().toISOString(),
+        version: '1.0.0',
+        uptime: process.uptime(),
+        payment: lemonSqueezy.getHealthStatus(),
+      };
+      sendJSON(res, health, 200);
+      return;
+    }
+
+    // GET /api/admin/payment-status - Admin-only payment system status
+    if (pathname === '/api/admin/payment-status' && req.method === 'GET') {
+      const adminPassword = req.headers['x-admin-password'];
+      if (adminPassword !== process.env.ADMIN_PASSWORD) {
+        sendJSON(res, { error: 'Unauthorized' }, 401);
+        return;
+      }
+
+      const authStatus = lemonSqueezy.getAuthStatus();
+      sendJSON(res, {
+        payment_provider: 'lemon-squeezy',
+        credentials_valid: authStatus.valid,
+        last_validated: authStatus.lastChecked,
+        store_name: authStatus.storeName || 'Not validated yet',
+        error: authStatus.error,
+        configuration: {
+          store_id_set: process.env.LEMON_SQUEEZY_STORE_ID ? 'yes' : 'no',
+          api_key_set: process.env.LEMON_SQUEEZY_API_KEY ? 'yes' : 'no',
+          variants_configured: {
+            rds_alpha: process.env.LSQUEEZY_VAR_RDS ? 'yes' : 'no',
+            bop_journal: process.env.LSQUEEZY_VAR_BOP_JOURNAL ? 'yes' : 'no',
+            templates: process.env.LSQUEEZY_VAR_TEMPLATES ? 'yes' : 'no',
+            masterclass: process.env.LSQUEEZY_VAR_MASTERCLASS ? 'yes' : 'no',
+          }
+        }
+      }, 200);
+      return;
+    }
+
     // ===== CHECKOUT & PAYMENT =====
 
     // POST /api/checkout - Create Lemon Squeezy checkout link
@@ -319,7 +363,28 @@ const server = http.createServer(async (req, res) => {
         }, 200);
       } catch (error) {
         console.error('Checkout error:', error);
-        sendJSON(res, { error: error.message }, 400);
+        
+        // Handle different error types
+        let statusCode = 400;
+        let errorMessage = error.message;
+        let errorType = 'checkout_error';
+
+        if (error.type === 'AUTH_ERROR') {
+          statusCode = 401;
+          errorMessage = 'Payment system authentication failed. Admin has been notified.';
+          errorType = 'auth_failed';
+          console.error('🚨 CRITICAL: Lemon Squeezy API key invalid or expired:', error.details);
+        } else if (error.type === 'NETWORK_ERROR') {
+          statusCode = 503;
+          errorMessage = 'Payment service temporarily unavailable. Please try again.';
+          errorType = 'service_unavailable';
+        }
+
+        sendJSON(res, { 
+          success: false,
+          error: errorMessage,
+          errorType: errorType
+        }, statusCode);
       }
       return;
     }
@@ -681,9 +746,24 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
   console.log(`🎬 Old Dog Systems running at http://localhost:${PORT}`);
-  console.log(`   Payment processing: ${process.env.STRIPE_SECRET_KEY ? '✓ Stripe enabled' : '⚠ Stripe not configured'}`);
   console.log(`   Database: ${path.join(__dirname, 'data')}`);
   console.log(`   Admin password: ${process.env.ADMIN_PASSWORD ? '✓ Set' : '⚠ Not set (set ADMIN_PASSWORD env var)'}`);
+  
+  // Validate payment system on startup
+  console.log('\n📊 Validating payment system...');
+  const paymentStatus = await lemonSqueezy.validateCredentials();
+  
+  if (paymentStatus.valid) {
+    console.log(`✅ Payment Ready: Lemon Squeezy (Store: ${paymentStatus.storeName || 'Connected'})`);
+  } else if (paymentStatus.initialized) {
+    console.warn(`⚠️  Payment Not Ready: ${paymentStatus.error}`);
+    console.warn('   → Set LEMON_SQUEEZY_STORE_ID and LEMON_SQUEEZY_API_KEY environment variables');
+    console.warn('   → Run: curl http://localhost:' + PORT + '/api/admin/payment-status -H "x-admin-password: YOUR_PASSWORD"');
+  } else {
+    console.warn('⚠️  Payment System: Not configured');
+  }
+  
+  console.log('\n✨ Server ready for requests');
 });
