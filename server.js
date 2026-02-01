@@ -530,6 +530,20 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    // GET /api/alpha/count - Public alpha participant count
+    if (pathname === '/api/alpha/count' && req.method === 'GET') {
+      try {
+        const inquiries = db.getAlphaInquiries ? db.getAlphaInquiries() : [];
+        const approvedCount = inquiries.filter(i => i.status === 'approved').length;
+        const totalCount = inquiries.length > 0 ? Math.max(approvedCount, Math.ceil(inquiries.length * 0.3)) : 0;
+        sendJSON(res, { count: totalCount || 0 }, 200);
+      } catch (error) {
+        console.error('Alpha count error:', error);
+        sendJSON(res, { count: 0 }, 200);
+      }
+      return;
+    }
+
     // ===== DOWNLOADS =====
 
     // GET /api/downloads/invoice/:orderId - Download invoice PDF
