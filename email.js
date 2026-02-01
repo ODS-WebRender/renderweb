@@ -330,3 +330,168 @@ export async function sendRefundNotification(order, reason = '') {
     return { success: false, error: error.message };
   }
 }
+
+// ===== ALPHA PROGRAM INQUIRIES =====
+
+export async function sendAlphaInquiryConfirmation(inquiry) {
+  if (!SENDGRID_API_KEY) {
+    console.log('SendGrid not configured - skipping alpha inquiry confirmation:', inquiry.email);
+    return { success: false, message: 'SendGrid not configured' };
+  }
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: #1e293b; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+          .content { background: #f8fafc; padding: 20px; border-radius: 0 0 8px 8px; }
+          .notice { background: #dbeafe; padding: 15px; border-left: 4px solid #38bdf8; margin: 15px 0; }
+          .footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #666; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h2 style="margin: 0; font-size: 24px;">Alpha Program Application Received</h2>
+          </div>
+          <div class="content">
+            <p>Hi ${inquiry.name},</p>
+            <p>Thank you for your interest in Rough Diamond Studio! We've received your alpha access inquiry.</p>
+            
+            <div class="notice">
+              <strong>What's Next:</strong><br>
+              Our team will review your application and get back to you within 2-3 business days. We're looking for operators who are serious about shipping weekly and building systems.
+            </div>
+
+            <p><strong>Your Application Details:</strong></p>
+            <ul>
+              <li><strong>Name:</strong> ${inquiry.name}</li>
+              <li><strong>Company:</strong> ${inquiry.company}</li>
+              <li><strong>Interest:</strong> ${inquiry.interest}</li>
+              <li><strong>Application ID:</strong> ${inquiry.id}</li>
+            </ul>
+
+            <p>In the meantime, check out our resources:</p>
+            <ul>
+              <li><a href="https://old-dog-systems1.onrender.com/index.html#about">Our Story</a></li>
+              <li><a href="https://old-dog-systems1.onrender.com/studio.html">Rough Diamond Studio Overview</a></li>
+            </ul>
+
+            <p>Questions? Reply to this email and we'll help.</p>
+            
+            <div class="footer">
+              <p>— Old Dog Systems Team<br>
+              Building tools for fighters</p>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  try {
+    await sgMail.send({
+      to: inquiry.email,
+      from: SENDER_EMAIL,
+      subject: 'Your Rough Diamond Studio Alpha Application',
+      html: htmlContent,
+      replyTo: ADMIN_EMAIL,
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error('SendGrid error:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function sendAlphaInquiryNotification(inquiry) {
+  if (!SENDGRID_API_KEY) {
+    console.log('SendGrid not configured - skipping alpha inquiry notification');
+    return { success: false, message: 'SendGrid not configured' };
+  }
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: #1e293b; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+          .content { background: #f8fafc; padding: 20px; border-radius: 0 0 8px 8px; }
+          .field { margin: 12px 0; padding: 10px; background: white; border-left: 3px solid #38bdf8; }
+          .field-label { font-weight: bold; color: #0f172a; }
+          .field-value { color: #475569; margin-top: 4px; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h2 style="margin: 0;">🎯 New Alpha Program Inquiry</h2>
+          </div>
+          <div class="content">
+            <p>New alpha access inquiry received:</p>
+            
+            <div class="field">
+              <div class="field-label">Name</div>
+              <div class="field-value">${inquiry.name}</div>
+            </div>
+
+            <div class="field">
+              <div class="field-label">Email</div>
+              <div class="field-value">${inquiry.email}</div>
+            </div>
+
+            <div class="field">
+              <div class="field-label">Company/Studio</div>
+              <div class="field-value">${inquiry.company}</div>
+            </div>
+
+            <div class="field">
+              <div class="field-label">Interest</div>
+              <div class="field-value">${inquiry.interest}</div>
+            </div>
+
+            <div class="field">
+              <div class="field-label">Message</div>
+              <div class="field-value">${inquiry.message || 'No additional message'}</div>
+            </div>
+
+            <div class="field">
+              <div class="field-label">Application ID</div>
+              <div class="field-value">${inquiry.id}</div>
+            </div>
+
+            <div class="field">
+              <div class="field-label">Submitted</div>
+              <div class="field-value">${new Date(inquiry.createdAt).toLocaleString()}</div>
+            </div>
+
+            <p style="margin-top: 20px; color: #666;">
+              Review and respond to this applicant at: ${inquiry.email}
+            </p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  try {
+    await sgMail.send({
+      to: ADMIN_EMAIL,
+      from: SENDER_EMAIL,
+      subject: `Alpha Inquiry: ${inquiry.name} - ${inquiry.interest}`,
+      html: htmlContent,
+      replyTo: inquiry.email,
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error('SendGrid error:', error);
+    return { success: false, error: error.message };
+  }
+}

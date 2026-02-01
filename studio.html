@@ -780,6 +780,60 @@
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // ===== ALPHA ACCESS FORM HANDLER =====
+      const alphaForm = document.querySelector('form');
+      if (alphaForm) {
+        alphaForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const formData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            company: document.getElementById('company').value.trim(),
+            interest: document.getElementById('interest').value,
+            message: document.getElementById('message').value.trim(),
+          };
+
+          // Validate
+          if (!formData.name || !formData.email || !formData.interest) {
+            alert('Please fill in all required fields (Name, Email, Interest)');
+            return;
+          }
+
+          // Show loading state
+          const submitBtn = alphaForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = 'Submitting...';
+          submitBtn.disabled = true;
+
+          try {
+            const response = await fetch('/api/alpha/inquiry', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+              // Success - show confirmation and reset form
+              alert(result.message || 'Thank you! Your inquiry has been submitted.');
+              alphaForm.reset();
+              document.getElementById('name').focus();
+            } else {
+              alert(result.error || 'Something went wrong. Please try again.');
+            }
+          } catch (error) {
+            console.error('Form submission error:', error);
+            alert('Unable to submit. Please try again later or email directly.');
+          } finally {
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }
+        });
+      }
     </script>
   </body>
 </html>

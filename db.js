@@ -307,5 +307,84 @@ export function backupData() {
   return backupDir;
 }
 
+// ===== ALPHA PROGRAM INQUIRIES =====
+
+const ALPHA_INQUIRIES_FILE = path.join(DATA_DIR, 'alpha_inquiries.json');
+
+export function getAlphaInquiries() {
+  ensureDirectories();
+  
+  try {
+    if (fs.existsSync(ALPHA_INQUIRIES_FILE)) {
+      const data = fs.readFileSync(ALPHA_INQUIRIES_FILE, 'utf8');
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.error('Error reading alpha inquiries:', error);
+  }
+  
+  return [];
+}
+
+export function saveAlphaInquiries(inquiries) {
+  ensureDirectories();
+  
+  try {
+    fs.writeFileSync(ALPHA_INQUIRIES_FILE, JSON.stringify(inquiries, null, 2));
+    return true;
+  } catch (error) {
+    console.error('Error saving alpha inquiries:', error);
+    return false;
+  }
+}
+
+export function addAlphaInquiry(inquiryData) {
+  const inquiry = {
+    id: `inquiry_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+    name: inquiryData.name,
+    email: inquiryData.email,
+    company: inquiryData.company || 'Not specified',
+    interest: inquiryData.interest,
+    message: inquiryData.message || '',
+    createdAt: new Date().toISOString(),
+    status: 'pending',
+    notes: []
+  };
+
+  const inquiries = getAlphaInquiries();
+  inquiries.push(inquiry);
+  saveAlphaInquiries(inquiries);
+  
+  return inquiry;
+}
+
+export function updateAlphaInquiry(inquiryId, updates) {
+  const inquiries = getAlphaInquiries();
+  const index = inquiries.findIndex(i => i.id === inquiryId);
+  
+  if (index === -1) {
+    throw new Error('Inquiry not found');
+  }
+  
+  inquiries[index] = { ...inquiries[index], ...updates };
+  saveAlphaInquiries(inquiries);
+  
+  return inquiries[index];
+}
+
+export function getAlphaInquiry(inquiryId) {
+  const inquiries = getAlphaInquiries();
+  return inquiries.find(i => i.id === inquiryId);
+}
+
+export function getAllAlphaInquiries() {
+  return getAlphaInquiries();
+}
+
+export function getAlphaInquiriesByStatus(status) {
+  const inquiries = getAlphaInquiries();
+  return inquiries.filter(i => i.status === status);
+}
+
 // Ensure directories on module load
 ensureDirectories();

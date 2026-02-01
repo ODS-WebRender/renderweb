@@ -447,6 +447,89 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    // ===== ALPHA PROGRAM =====
+
+    // POST /api/alpha/inquiry - Submit alpha access inquiry
+    if (pathname === '/api/alpha/inquiry' && req.method === 'POST') {
+      try {
+        const body = await parseBody(req);
+        const { name, email, company, interest, message } = body;
+
+        // Validate required fields
+        if (!name || !email || !interest) {
+          sendJSON(res, { 
+            success: false, 
+            error: 'Name, email, and interest selection are required' 
+          }, 400);
+          return;
+        }
+
+        // Store inquiry in database
+        const inquiry = {
+          id: `inquiry-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          name,
+          email,
+          company: company || 'Not specified',
+          interest,
+          message: message || '',
+          createdAt: new Date().toISOString(),
+          status: 'pending'
+        };
+
+        // Save inquiry
+        const inquiries = db.getAlphaInquiries ? db.getAlphaInquiries() : [];
+        inquiries.push(inquiry);
+        db.saveAlphaInquiries ? db.saveAlphaInquiries(inquiries) : null;
+
+        // Send confirmation email to user
+        try {
+          await email.sendAlphaInquiryConfirmation(inquiry);
+        } catch (err) {
+          console.error('Alpha inquiry confirmation email error:', err);
+        }
+
+        // Send notification to admin
+        try {
+          await email.sendAlphaInquiryNotification(inquiry);
+        } catch (err) {
+          console.error('Alpha inquiry notification email error:', err);
+        }
+
+        sendJSON(res, { 
+          success: true,
+          message: 'Thank you for your interest! We will review your inquiry and get back to you soon.',
+          inquiry
+        }, 201);
+      } catch (error) {
+        console.error('Alpha inquiry error:', error);
+        sendJSON(res, { 
+          success: false, 
+          error: error.message 
+        }, 500);
+      }
+      return;
+    }
+
+    // GET /api/alpha/status - Get alpha program status
+    if (pathname === '/api/alpha/status' && req.method === 'GET') {
+      sendJSON(res, {
+        status: 'active',
+        alpha_product_id: 'rough-diamond-studio-alpha',
+        phase: 'private-alpha',
+        seats_available: true,
+        features: [
+          'Professional Audio Pipeline',
+          'Editorial Operations Dashboard',
+          'Automated Asset Generation',
+          'Team Collaboration Tools',
+          'Weekly Shipping Support',
+          'Alpha Community Access'
+        ],
+        enrollment_link: 'https://old-dog-systems1.onrender.com/studio.html#alpha-access'
+      }, 200);
+      return;
+    }
+
     // ===== DOWNLOADS =====
 
     // GET /api/downloads/invoice/:orderId - Download invoice PDF
