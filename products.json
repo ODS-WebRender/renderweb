@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "company": "Old Dog Systems",
     "regions": ["RSA", "US", "UK"],
-    "lastUpdated": "2026-01-27"
+    "lastUpdated": "2026-02-02"
   },
   "products": [
     {
@@ -22,10 +22,21 @@
         "Automated Asset Generation",
         "Team Collaboration Tools",
         "Weekly Shipping Support",
-        "Alpha Community Access"
+        "Alpha Community Access",
+        "Priority Support",
+        "Weekly Updates"
       ],
+      "specs": {
+        "platform": "Cloud-based",
+        "users": "Unlimited",
+        "storage": "100 GB included",
+        "support": "24/7 Priority",
+        "updates": "Continuous"
+      },
       "status": "alpha",
       "icon": "α",
+      "image": "https://images.unsplash.com/photo-1611339555312-e607c25352ca?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1611339555312-e607c25352ca?w=200&h=150&fit=crop",
       "media": {
         "podcast": "both"
       },
@@ -44,15 +55,26 @@
       "displayPrice": "$29.00",
       "stripePriceId": "price_bop_journal_usd",
       "description": "Structured journal for business operators building durable systems.",
-      "longDescription": "A guided journal designed for founders and operators implementing the systems discussed on Business on Purpose. Includes weekly reflection prompts, operational checklists, and a framework for sustainable business building.",
+      "longDescription": "A guided journal designed for founders and operators implementing the systems discussed on Business on Purpose. Includes weekly reflection prompts, operational checklists, and a framework for sustainable business building. Instant digital download in multiple formats.",
       "features": [
         "52-week guided prompts",
         "Operational checklists",
         "System-building framework",
-        "Digital PDF + printable"
+        "Digital PDF + printable",
+        "Instant access",
+        "Mobile-friendly format"
       ],
+      "specs": {
+        "format": "PDF + Web",
+        "pages": "150+",
+        "access": "Lifetime",
+        "updates": "Free annual updates",
+        "devices": "All devices"
+      },
       "status": "active",
       "format": "digital-pdf",
+      "image": "https://images.unsplash.com/photo-1507842217343-583f20270319?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1507842217343-583f20270319?w=200&h=150&fit=crop",
       "media": {
         "podcast": "business-on-purpose"
       }
@@ -66,15 +88,26 @@
       "displayPrice": "$39.00",
       "stripePriceId": "price_bop_playbook_usd",
       "description": "Templates and frameworks for building operational systems.",
-      "longDescription": "Ready-to-use templates and implementation guides for the core business systems discussed in the podcast. Includes org charts, financial tracking, hiring frameworks, and process documentation.",
+      "longDescription": "Ready-to-use templates and implementation guides for the core business systems discussed in the podcast. Includes org charts, financial tracking, hiring frameworks, and process documentation. All templates are fully customizable.",
       "features": [
         "15+ customizable templates",
         "Implementation guides",
         "Process frameworks",
-        "Google Sheets versions"
+        "Google Sheets versions",
+        "Video tutorials",
+        "30-day support"
       ],
+      "specs": {
+        "format": "Google Sheets + PDF",
+        "templates": "15+",
+        "access": "Lifetime",
+        "support": "30 days",
+        "updates": "Quarterly"
+      },
       "status": "active",
       "format": "digital-templates",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=150&fit=crop",
       "media": {
         "podcast": "business-on-purpose"
       }
@@ -88,17 +121,28 @@
       "displayPrice": "$149.00",
       "stripePriceId": "price_bop_course_usd",
       "description": "Comprehensive 6-week course on building sustainable business systems.",
-      "longDescription": "A structured, 6-week course covering the frameworks shared on Business on Purpose. Includes video lessons, downloadable resources, community forum access, and 30-minute implementation consulting call.",
+      "longDescription": "A structured, 6-week course covering the frameworks shared on Business on Purpose. Includes video lessons, downloadable resources, community forum access, and 30-minute implementation consulting call. Enroll anytime, lifetime access.",
       "features": [
         "6 video modules",
         "Weekly assignments",
         "Community forum",
         "Consulting call included",
         "Lifetime access",
-        "Certificate of completion"
+        "Certificate of completion",
+        "Discussion groups",
+        "Resource library"
       ],
+      "specs": {
+        "duration": "6 weeks (self-paced)",
+        "modules": "6 video modules",
+        "access": "Lifetime",
+        "support": "Community + 1 consulting call",
+        "certificate": "Yes"
+      },
       "status": "coming-soon",
       "format": "video-course",
+      "image": "https://images.unsplash.com/photo-1516534775068-bb6a9b1d4bb4?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1516534775068-bb6a9b1d4bb4?w=200&h=150&fit=crop",
       "media": {
         "podcast": "business-on-purpose"
       },
@@ -117,15 +161,26 @@
       "displayPrice": "$29.00",
       "stripePriceId": "price_wlb_journal_usd",
       "description": "Guided journal for navigating grief, pressure, and high-stakes seasons.",
-      "longDescription": "A companion journal to the When Life Bites podcast. Designed for founders and humans going through difficult seasons. Includes reflection prompts, coping strategies, and a framework for resilience building.",
+      "longDescription": "A companion journal to the When Life Bites podcast. Designed for founders and humans going through difficult seasons. Includes reflection prompts, coping strategies, and a framework for resilience building. Instant digital download.",
       "features": [
         "50+ reflection prompts",
         "Coping strategy toolkit",
         "Resilience frameworks",
-        "Digital + printable PDF"
+        "Digital + printable PDF",
+        "Expert resources",
+        "Lifetime access"
       ],
+      "specs": {
+        "format": "PDF + Web",
+        "pages": "120+",
+        "access": "Lifetime",
+        "updates": "Free updates",
+        "devices": "All devices"
+      },
       "status": "active",
       "format": "digital-pdf",
+      "image": "https://images.unsplash.com/photo-1507842217343-583f20270319?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1507842217343-583f20270319?w=200&h=150&fit=crop",
       "media": {
         "podcast": "when-life-bites"
       }
@@ -149,6 +204,8 @@
       ],
       "status": "active",
       "format": "digital-pdf",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&h=150&fit=crop",
       "media": {
         "podcast": "when-life-bites"
       }
@@ -162,17 +219,28 @@
       "displayPrice": "$799.00",
       "stripePriceId": "price_wlb_retreat_usd",
       "description": "Exclusive retreat experience for community members.",
-      "longDescription": "A 3-day in-person retreat (RSA-based, expandable to other regions) for listeners going through challenging seasons. Includes expert facilitation, peer cohorts, workshops, and community building. Limited to 20 participants.",
+      "longDescription": "A 3-day in-person retreat (RSA-based, expandable to other regions) for listeners going through challenging seasons. Includes expert facilitation, peer cohorts, workshops, and community building. Limited to 20 participants. All meals, accommodation, and materials included.",
       "features": [
         "3-day retreat experience",
         "Expert facilitation",
         "Peer cohort groups",
-        "Meals and accommodation",
+        "Meals and accommodation included",
         "Follow-up community access",
-        "Certification of completion"
+        "Certification of completion",
+        "Private community access",
+        "Lifetime cohort network"
       ],
+      "specs": {
+        "duration": "3 days (residential)",
+        "participants": "Max 20",
+        "location": "RSA (expandable)",
+        "includes": "Meals, accommodation, materials",
+        "follow-up": "Lifetime community"
+      },
       "status": "coming-soon",
       "format": "in-person",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=150&fit=crop",
       "availableRegions": ["RSA"],
       "capacity": 20,
       "media": {
