@@ -1,11 +1,11 @@
-// Enterprise-grade server for Old Dog Systems with Stripe integration
+// Enterprise-grade server for Old Dog Systems with Lemon Squeezy payment integration
 import http from 'http';
 import https from 'https';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { URL } from 'url';
-import Stripe from 'stripe';
+import * as lemonSqueezy from './lemon-squeezy.js';
 import * as db from './db.js';
 import * as auth from './auth.js';
 import * as email from './email.js';
@@ -13,8 +13,8 @@ import * as invoice from './invoice.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Initialize Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_dummy_key');
+// Payment processing via Lemon Squeezy
+// Configure with: LEMON_SQUEEZY_STORE_ID, LEMON_SQUEEZY_API_KEY
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -268,7 +268,7 @@ const server = http.createServer(async (req, res) => {
 
     // ===== CHECKOUT & PAYMENT =====
 
-    // POST /api/checkout - Create Stripe checkout session
+    // POST /api/checkout - Create Lemon Squeezy checkout link
     if (pathname === '/api/checkout' && req.method === 'POST') {
       const body = await parseBody(req);
       
@@ -281,50 +281,93 @@ const server = http.createServer(async (req, res) => {
           return;
         }
 
-        // Transform items for Stripe
-        const lineItems = items.map(item => ({
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: item.name,
-              description: item.description,
-            },
-            unit_amount: item.price,
-          },
-          quantity: item.quantity || 1,
-        }));
+        // Validate customer email
+        if (!customerEmail || !customerEmail.includes('@')) {
+          sendJSON(res, { error: 'Valid email required' }, 400);
+          return;
+        }
 
-        const session = await stripe.checkout.sessions.create({
-          payment_method_types: ['card'],
-          line_items: lineItems,
-          mode: 'payment',
-          success_url: `${process.env.DOMAIN || 'http://localhost:3000'}/checkout-success.html?session_id={CHECKOUT_SESSION_ID}`,
-          cancel_url: `${process.env.DOMAIN || 'http://localhost:3000'}/shop.html`,
-          customer_email: customerEmail,
-          metadata: {
-            company: 'Old Dog Systems',
-            items: JSON.stringify(items)
-          }
-        });
+        const domainUrl = process.env.DOMAIN || 'http://localhost:3000';
+        const successUrl = `${domainUrl}/checkout-success.html`;
+        const cancelUrl = `${domainUrl}/shop.html`;
+
+        // Create Lemon Squeezy checkout
+        const checkout = await lemonSqueezy.createCheckout(
+          items,
+          customerEmail,
+          successUrl,
+          cancelUrl
+        );
 
         // Create order in database (pending status)
         const order = db.createOrder({
-          stripeSessionId: session.id,
+          lemonSqueezyCheckoutId: checkout.checkoutId,
           customerEmail: customerEmail,
           customerName: customerEmail.split('@')[0],
           items: items,
-          totalAmount: items.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0),
-          currency: 'USD'
+          totalAmount: checkout.totalAmount,
+          currency: 'USD',
+          paymentProvider: 'lemon-squeezy',
+          checkoutUrl: checkout.checkoutUrl
         });
 
         sendJSON(res, { 
           success: true,
-          sessionId: session.id, 
+          checkoutUrl: checkout.checkoutUrl,
+          checkoutId: checkout.checkoutId,
           orderId: order.id
         }, 200);
       } catch (error) {
         console.error('Checkout error:', error);
         sendJSON(res, { error: error.message }, 400);
+      }
+      return;
+    }
+
+    // POST /api/webhooks/lemon-squeezy - Webhook for order confirmation
+    if (pathname === '/api/webhooks/lemon-squeezy' && req.method === 'POST') {
+      try {
+        const body = await parseBody(req);
+        const signature = req.headers['x-signature'];
+
+        // Verify webhook signature
+        if (!lemonSqueezy.verifyWebhookSignature(body, signature)) {
+          sendJSON(res, { error: 'Invalid signature' }, 401);
+          return;
+        }
+
+        // Handle different webhook events
+        const eventType = body.meta?.event_name;
+        
+        if (eventType === 'order:created' || eventType === 'order:completed') {
+          const checkoutId = body.data?.id;
+          const orderData = body.data?.attributes;
+          
+          if (checkoutId && orderData) {
+            // Update order status in database
+            const orders = db.getAllOrders();
+            const order = orders.find(o => o.lemonSqueezyCheckoutId === checkoutId);
+            
+            if (order) {
+              order.status = 'completed';
+              order.paidAt = new Date().toISOString();
+              order.transactionId = orderData.order_number || checkoutId;
+              db.updateOrder(order.id, order);
+              
+              // Send order confirmation email
+              try {
+                await email.sendOrderConfirmation(order);
+              } catch (emailErr) {
+                console.error('Order confirmation email error:', emailErr);
+              }
+            }
+          }
+        }
+
+        sendJSON(res, { success: true }, 200);
+      } catch (error) {
+        console.error('Webhook error:', error);
+        sendJSON(res, { error: error.message }, 500);
       }
       return;
     }

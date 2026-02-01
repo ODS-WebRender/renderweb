@@ -12,7 +12,7 @@
       content="Unified shop for Old Dog Systems products, courses, journals, and the Rough Diamond Studio."
     />
     <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
-    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Lemon Squeezy integration - no external script needed, uses REST API -->
     <link rel="stylesheet" href="./styles.css" />
     <script type="module">
       import { applyBranding } from './constants.js';
@@ -416,21 +416,45 @@
       // Checkout
       document.getElementById('checkout-btn')?.addEventListener('click', async () => {
         const email = prompt('Enter your email:');
-        if (!email) return;
+        if (!email || !email.includes('@')) {
+          alert('Please enter a valid email address');
+          return;
+        }
 
         try {
+          // Show loading state
+          const btn = document.getElementById('checkout-btn');
+          const originalText = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = 'Processing...';
+
           const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ items: cart, customerEmail: email })
           });
-          const { sessionId } = await response.json();
+
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Checkout failed');
+          }
+
+          const { checkoutUrl, orderId } = await response.json();
           
-          // Redirect to Stripe checkout
-          const stripe = Stripe('pk_test_your_key_here'); // Set real key from env
-          await stripe.redirectToCheckout({ sessionId });
+          if (checkoutUrl) {
+            // Redirect to Lemon Squeezy checkout
+            window.location.href = checkoutUrl;
+          } else {
+            throw new Error('No checkout URL received');
+          }
         } catch (error) {
+          console.error('Checkout error:', error);
           alert('Checkout failed: ' + error.message);
+          
+          // Reset button
+          const btn = document.getElementById('checkout-btn');
+          btn.disabled = false;
+          btn.textContent = 'Proceed to Checkout';
         }
       });
 
