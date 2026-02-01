@@ -26,7 +26,7 @@
 ## What You Need to Do
 
 ### Step 1: Create Lemon Squeezy Account
-- Go to [lemon.io](https://lemon.io)
+- Go to [lemonsqueezy.com](https://lemonsqueezy.com)
 - Sign up and verify email
 - Create a store
 
@@ -131,6 +131,8 @@ node server.js
 ### Use Lemon Squeezy Test Mode:
 - Use test card: `4111 1111 1111 1111`
 - Any future date, any CVC
+
+(Note: Lemon Squeezy is at [lemonsqueezy.com](https://lemonsqueezy.com))
 
 ---
 
