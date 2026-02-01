@@ -120,6 +120,13 @@
                 </p>
                 <p id="metric-aov" class="text-3xl font-bold text-rose-400">$0.00</p>
               </div>
+
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  Alpha Applications
+                </p>
+                <p id="metric-alpha" class="text-3xl font-bold text-violet-400">0</p>
+              </div>
             </div>
 
             <!-- Charts Grid -->
@@ -134,6 +141,21 @@
               <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
                 <h2 class="text-lg font-semibold text-slate-50 mb-4">Top Products</h2>
                 <canvas id="products-chart" class="max-h-64"></canvas>
+              </div>
+            </div>
+
+            <!-- Alpha & Customer Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+              <!-- Alpha Growth Chart -->
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <h2 class="text-lg font-semibold text-slate-50 mb-4">Alpha Program Growth</h2>
+                <canvas id="alpha-chart" class="max-h-64"></canvas>
+              </div>
+
+              <!-- Customer Segments -->
+              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
+                <h2 class="text-lg font-semibold text-slate-50 mb-4">Customer Segments</h2>
+                <canvas id="customer-chart" class="max-h-64"></canvas>
               </div>
             </div>
 
@@ -242,6 +264,7 @@
       let revenueChart = null;
       let productsChart = null;
       let customerChart = null;
+      let alphaChart = null;
 
       document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -281,6 +304,7 @@
         document.getElementById('metric-orders').textContent = adminData.stats.totalOrders;
         document.getElementById('metric-customers').textContent = adminData.stats.uniqueCustomers;
         document.getElementById('metric-aov').textContent = `$${(adminData.stats.averageOrderValue / 100).toFixed(2)}`;
+        document.getElementById('metric-alpha').textContent = adminData.alphaStats?.totalApplications || 0;
 
         // Recent Orders Table
         const tbody = document.getElementById('orders-tbody');
@@ -381,6 +405,42 @@
             scales: {
               x: { ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(51, 65, 85, 0.3)' } },
               y: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
+            }
+          }
+        });
+
+        // Alpha Growth Chart
+        const ctxAlpha = document.getElementById('alpha-chart').getContext('2d');
+        if (alphaChart) alphaChart.destroy();
+        alphaChart = new Chart(ctxAlpha, {
+          type: 'line',
+          data: {
+            labels: (adminData.chartData.alphaGrowth || []).map(d => d.date),
+            datasets: [{
+              label: 'Alpha Applicants (Cumulative)',
+              data: (adminData.chartData.alphaGrowth || []).map(d => d.count),
+              borderColor: '#a78bfa',
+              backgroundColor: 'rgba(167, 139, 250, 0.1)',
+              borderWidth: 3,
+              tension: 0.4,
+              fill: true,
+              pointBackgroundColor: '#a78bfa',
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: { 
+              legend: { labels: { color: '#cbd5e1' } }
+            },
+            scales: {
+              y: { 
+                beginAtZero: true,
+                ticks: { color: '#cbd5e1' },
+                grid: { color: 'rgba(51, 65, 85, 0.3)' }
+              },
+              x: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
             }
           }
         });

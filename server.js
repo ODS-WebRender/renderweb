@@ -182,6 +182,7 @@ const server = http.createServer(async (req, res) => {
       const dailyRevenue = {};
       const topProducts = {};
       const customerSegments = { firstTime: 0, repeat: 0, vip: 0 };
+      const alphaByDate = {};
       
       allOrders.forEach(order => {
         // Daily revenue
@@ -201,6 +202,21 @@ const server = http.createServer(async (req, res) => {
           else customerSegments.vip++;
         }
       });
+
+      // Alpha applicant growth over time
+      const alphaInquiries = db.getAlphaInquiries ? db.getAlphaInquiries() : [];
+      alphaInquiries.forEach(inquiry => {
+        const date = new Date(inquiry.createdAt).toISOString().split('T')[0];
+        alphaByDate[date] = (alphaByDate[date] || 0) + 1;
+      });
+
+      // Convert to cumulative data for growth chart
+      const sortedDates = Object.keys(alphaByDate).sort();
+      let cumulativeCount = 0;
+      const alphaGrowth = sortedDates.map(date => {
+        cumulativeCount += alphaByDate[date];
+        return { date, count: cumulativeCount };
+      });
       
       const recentOrders = allOrders.slice(-10).reverse();
       
@@ -213,7 +229,14 @@ const server = http.createServer(async (req, res) => {
             .map(([name, count]) => ({ name, count }))
             .sort((a, b) => b.count - a.count)
             .slice(0, 5),
-          customerSegments
+          customerSegments,
+          alphaGrowth: alphaGrowth.length > 0 ? alphaGrowth : [{ date: new Date().toISOString().split('T')[0], count: 0 }]
+        },
+        alphaStats: {
+          totalApplications: alphaInquiries.length,
+          approved: alphaInquiries.filter(i => i.status === 'approved').length,
+          pending: alphaInquiries.filter(i => i.status === 'pending').length,
+          rejected: alphaInquiries.filter(i => i.status === 'rejected').length
         }
       }, 200);
       return;
