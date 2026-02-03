@@ -624,6 +624,140 @@
           </div>
         </section>
 
+        <!-- Full Features Section (Rough Diamond Studio) -->
+        <section
+          id="features"
+          class="border-t border-slate-800/70 bg-slate-950/90 pb-12 pt-12 sm:pb-14 sm:pt-14"
+        >
+          <div class="mx-auto max-w-6xl px-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Full Technical Features</p>
+            <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50">Rough Diamond Studio — Complete Feature Set</h2>
+            <p class="mt-2 text-sm text-slate-400 sm:text-base">A professional, production-ready feature breakdown. Expand each section for full technical detail.</p>
+
+            <div class="mt-6 grid gap-6 lg:grid-cols-3">
+              <div class="col-span-2 space-y-4">
+                <article class="card-glass rounded-2xl border border-slate-800/80 p-6 text-sm">
+                  <h3 class="text-lg font-semibold text-slate-50">TTS Engine & Voice Synthesis</h3>
+                  <p class="mt-2 text-slate-400">Production-quality synthesizer with multi-voice and emotion support.</p>
+                  <details class="mt-4 [&_summary]:cursor-pointer">
+                    <summary class="text-sm font-medium text-sky-300">View TTS Engine Details</summary>
+                    <div class="mt-3 text-xs text-slate-300 space-y-2">
+                      <p><strong>VoiceSynthesizer:</strong> Direct and asynchronous synthesis returning 48kHz, 16-bit stereo PCM. Supports multiple voices and emotions with embedding extraction for voice cloning.</p>
+                      <ul class="list-disc ml-5">
+                        <li>Blocking and async synth APIs (progress callbacks)</li>
+                        <li>Pre-defined voices: Morgan, Emma, James (production-calibrated)</li>
+                        <li>Emotion system: Neutral, Happy, Sad, Angry, Surprised</li>
+                        <li>Speaker embedding extraction for personal voice profiles</li>
+                      </ul>
+                      <pre class="mt-2 p-3 bg-slate-900 rounded text-xs overflow-auto">Example: voiceSynthesizer->synthesize(voice, text, emotion)</pre>
+                    </div>
+                  </details>
+
+                  <details class="mt-4 [&_summary]:cursor-pointer">
+                    <summary class="text-sm font-medium text-sky-300">UI Framework & Controls</summary>
+                    <div class="mt-3 text-xs text-slate-300 space-y-2">
+                      <p>Full UI panel with composition, narration, and post-production tabs, plus prosody sliders and control buttons.</p>
+                      <ul class="list-disc ml-5">
+                        <li>Text editor, voice & emotion combo boxes, pitch/speed/emphasis/intensity sliders</li>
+                        <li>Synthesize / Preview / Insert controls with real-time status and progress</li>
+                        <li>Signal/slot wiring for responsive interactions and real-time feedback</li>
+                      </ul>
+                    </div>
+                  </details>
+
+                  <details class="mt-4 [&_summary]:cursor-pointer">
+                    <summary class="text-sm font-medium text-sky-300">Signal/Slot & Integration Hooks</summary>
+                    <div class="mt-3 text-xs text-slate-300 space-y-2">
+                      <p>All major controls emit signals for immediate UI updates and background tasks.</p>
+                      <ul class="list-disc ml-5">
+                        <li>Slider valueChanged → label updates (pitch, speed, emphasis, intensity)</li>
+                        <li>Button handlers validate state and manage progress display</li>
+                        <li>Ready for Phase 2C real integration with synthesis and audio engine</li>
+                      </ul>
+                    </div>
+                  </details>
+                </article>
+
+                <article class="card-glass rounded-2xl border border-slate-800/80 p-6 text-sm">
+                  <h3 class="text-lg font-semibold text-slate-50">Effects Suite (22 Professional Effects)</h3>
+                  <p class="mt-2 text-slate-400">Complete audio processing suite built for professional podcast and voice production.</p>
+                  <details class="mt-4 [&_summary]:cursor-pointer">
+                    <summary class="text-sm font-medium text-sky-300">View All Effects</summary>
+                    <div class="mt-3 text-xs text-slate-300 space-y-2">
+                      <ol class="list-decimal ml-5">
+                        <li>Compressor</li>
+                        <li>Parametric EQ (31-band)</li>
+                        <li>Graphic EQ (10-band)</li>
+                        <li>Linear Phase EQ</li>
+                        <li>Dynamic EQ</li>
+                        <li>True Peak Limiter (-1dBTP)</li>
+                        <li>Reverb (convolver + algorithmic)</li>
+                        <li>Delay (multi-tap)</li>
+                        <li>De-Esser</li>
+                        <li>Sidechain Compressor</li>
+                        <li>Noise Gate</li>
+                        <li>Spectral Noise Reduction</li>
+                        <li>Multiband Compressor</li>
+                        <li>Time Stretcher (WSOLA)</li>
+                        <li>Pitch Shifter (phase vocoder)</li>
+                        <li>Saturation</li>
+                        <li>Advanced Time Stretcher (PSOLA)</li>
+                        <li>Advanced Pitch Shifter (FFT)</li>
+                        <li>Formant Correction (LPC)</li>
+                        <li>Enhanced True Peak Limiter</li>
+                        <li>Goniometer Analyzer</li>
+                        <li>Voice Enhancer</li>
+                      </ol>
+                      <p class="mt-2">Each effect supports preset management, automation, and real-time parameter smoothing for professional-grade output.</p>
+                    </div>
+                  </details>
+                </article>
+
+                <article class="card-glass rounded-2xl border border-slate-800/80 p-6 text-sm">
+                  <h3 class="text-lg font-semibold text-slate-50">Composition & Presets</h3>
+                  <p class="mt-2 text-slate-400">Timeline editing, multi-track composition, and preset management for consistent production results.</p>
+                  <details class="mt-4 [&_summary]:cursor-pointer">
+                    <summary class="text-sm font-medium text-sky-300">View Composition Details</summary>
+                    <div class="mt-3 text-xs text-slate-300 space-y-2">
+                      <ul class="list-disc ml-5">
+                        <li>8 audio tracks with timeline editing and segment naming</li>
+                        <li>Waveform visualization and real-time playback</li>
+                        <li>Preset management: podcast, voiceover, music, enhancement, mastering</li>
+                      </ul>
+                    </div>
+                  </details>
+                </article>
+              </div>
+
+              <aside class="space-y-4">
+                <div class="card-glass rounded-2xl border border-slate-800/80 p-5 text-sm">
+                  <h4 class="text-sm font-semibold text-slate-50">Performance & Specs</h4>
+                  <ul class="mt-3 text-xs text-slate-300 space-y-2">
+                    <li>Sample rate: 48kHz, 16-bit PCM, stereo</li>
+                    <li>Latency: 0.5–2s for typical sentences</li>
+                    <li>CPU usage: ~5–10% during synthesis</li>
+                    <li>Memory: 2–10MB depending on workload</li>
+                    <li>Platforms: Linux, macOS, Windows</li>
+                  </ul>
+                </div>
+
+                <div class="card-glass rounded-2xl border border-slate-800/80 p-5 text-sm">
+                  <h4 class="text-sm font-semibold text-slate-50">System Requirements</h4>
+                  <p class="mt-2 text-xs text-slate-300">Minimum: Intel i3 / Ryzen 3, 2GB RAM. Recommended: Intel i5+, 4–8GB RAM.</p>
+                </div>
+
+                <div class="card-glass rounded-2xl border border-slate-800/80 p-5 text-sm">
+                  <h4 class="text-sm font-semibold text-slate-50">Download / Full Spec</h4>
+                  <p class="mt-2 text-xs text-slate-300">For the full printable technical spec and code snippets, download the complete feature document or contact the team.</p>
+                  <div class="mt-3">
+                    <a href="/COMPLETE_FEATURE_LIST.md" class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs font-medium text-sky-300 hover:border-sky-400">View Full Spec</a>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
         <!-- Contact / Alpha Access -->
         <section
           id="alpha-access"
