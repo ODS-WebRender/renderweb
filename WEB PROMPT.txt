@@ -1,0 +1,27 @@
+﻿Role: You are a Senior Product Engineer and UI/UX Designer specializing in SaaS Ecosystems.
+Project Goal: Build a high-end, professional corporate umbrella website for "Old Dog Systems" (Name must be a configurable variable so I can change it to 9Count Systems later). This is not a hobby site; it is a professional software and media house.
+Design Vibe: > - Style: Enterprise-grade SaaS (Think Stripe, Vercel, or Linear).
+    • Theme: Deep Slate/Dark Mode with high-contrast typography (Inter or Geist font).
+    • Feel: Modular, precise, and fast. Avoid generic "cartoon" illustrations. Use subtle grid patterns or glassmorphism.
+Core Architecture (Multi-Page):
+    1. Home: An umbrella landing page. It must introduce the "System" as a whole. Use a Hero section that highlights "Bridging Media & Modular Business Systems."
+    2. Media House Page: Dedicated to the podcast arm.
+        ◦ Section for Business on Purpose.
+        ◦ Section for When Life Bites.
+        ◦ Monetization Integration: Each podcast must have its own dedicated "Resources & Shop" sub-section for Journals, E-books, and Courses.
+    3. The Studio (Rough Diamond Studio): This is the flagship software page.
+        ◦ Highlight the Audio Podcasting Module (Flagship - Alpha Testing).
+        ◦ Highlight the Content Creation Module (Audio Books, Manuals).
+        ◦ Include a "Roadmap" section showing future modular expansion into other sectors.
+    4. Shop (Unified): A professional checkout-style grid for all digital products, filterable by project.
+    5. Contact/Alpha Access: A professional form for business inquiries and Alpha testing signups.
+Technical Requirements:
+    • Stack: HTML5, Tailwind CSS (modern 3.4+ or 4.0 features).
+    • Navigation: A sophisticated Mega-Menu. Hovering over "Media" should show both podcasts; hovering over "Software" should show "Rough Diamond Studio."
+    • Responsiveness: Mobile-first. The shop cards must reflow perfectly.
+    • Monetization: Create clean, modular Product Cards with "Access Now" or "Purchase" buttons (placeholders for Stripe/LemonSqueezy).
+Immediate Task: > 1. Create a constants.js or a CSS variable set for the Brand Name and Primary Colors. 2. Build the index.html (Umbrella Home) and the Navigation System first. 3. Then, generate the studio.html and media.html pages with the specific monetization sections described.
+
+
+
+

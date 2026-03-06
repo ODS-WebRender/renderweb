@@ -1,0 +1,425 @@
+{
+  "metadata": {
+    "version": "1.1.0",
+    "company": "Old Dog Systems",
+    "regions": ["RSA", "US", "UK"],
+    "lastUpdated": "2026-02-02"
+  },
+  "products": [
+    {
+      "id": "rough-diamond-studio-alpha",
+      "name": "Rough Diamond Studio — Alpha Access",
+      "category": "software",
+      "subcategory": "studio",
+      "price": 9900,
+      "displayPrice": "$99.00",
+      "stripePriceId": "price_rds_alpha_usd",
+      "description": "Alpha access to the flagship audio podcasting and content creation system. Perfect for operators who ship weekly.",
+      "longDescription": "Rough Diamond Studio is a composable, enterprise-grade audio pipeline for podcasting and content creation. This alpha version includes: Audio pipeline for recording, editing, and publishing; Editorial ops dashboard for episode management; Asset generation for social and distribution; Team collaboration features; Integration ready for RSS, hosting, and monetization platforms.",
+      "features": [
+        "Professional Audio Pipeline",
+        "Editorial Operations Dashboard",
+        "Automated Asset Generation",
+        "Team Collaboration Tools",
+        "Weekly Shipping Support",
+        "Alpha Community Access",
+        "Priority Support",
+        "Weekly Updates"
+      ],
+      "specs": {
+        "platform": "Cloud-based",
+        "users": "Unlimited",
+        "storage": "100 GB included",
+        "support": "24/7 Priority",
+        "updates": "Continuous"
+      },
+      "status": "alpha",
+      "icon": "α",
+      "image": "https://images.unsplash.com/photo-1611339555312-e607c25352ca?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1611339555312-e607c25352ca?w=200&h=150&fit=crop",
+      "media": {
+        "podcast": "both"
+      },
+      "includesAccess": [
+        "alpha-community",
+        "weekly-updates",
+        "priority-support"
+      ]
+    },
+    {
+      "id": "bop-journal-founders",
+      "name": "Business on Purpose — Founder's Journal",
+      "category": "media",
+      "subcategory": "business-on-purpose",
+      "price": 2900,
+      "displayPrice": "$29.00",
+      "stripePriceId": "price_bop_journal_usd",
+      "description": "Structured journal for business operators building durable systems.",
+      "longDescription": "A guided journal designed for founders and operators implementing the systems discussed on Business on Purpose. Includes weekly reflection prompts, operational checklists, and a framework for sustainable business building. Instant digital download in multiple formats.",
+      "features": [
+        "52-week guided prompts",
+        "Operational checklists",
+        "System-building framework",
+        "Digital PDF + printable",
+        "Instant access",
+        "Mobile-friendly format"
+      ],
+      "specs": {
+        "format": "PDF + Web",
+        "pages": "150+",
+        "access": "Lifetime",
+        "updates": "Free annual updates",
+        "devices": "All devices"
+      },
+      "status": "active",
+      "format": "digital-pdf",
+      "image": "https://images.unsplash.com/photo-1507842217343-583f20270319?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1507842217343-583f20270319?w=200&h=150&fit=crop",
+      "media": {
+        "podcast": "business-on-purpose"
+      }
+    },
+    {
+      "id": "bop-playbook-systems",
+      "name": "Business on Purpose — Systems Playbook",
+      "category": "media",
+      "subcategory": "business-on-purpose",
+      "price": 3900,
+      "displayPrice": "$39.00",
+      "stripePriceId": "price_bop_playbook_usd",
+      "description": "Templates and frameworks for building operational systems.",
+      "longDescription": "Ready-to-use templates and implementation guides for the core business systems discussed in the podcast. Includes org charts, financial tracking, hiring frameworks, and process documentation. All templates are fully customizable.",
+      "features": [
+        "15+ customizable templates",
+        "Implementation guides",
+        "Process frameworks",
+        "Google Sheets versions",
+        "Video tutorials",
+        "30-day support"
+      ],
+      "specs": {
+        "format": "Google Sheets + PDF",
+        "templates": "15+",
+        "access": "Lifetime",
+        "support": "30 days",
+        "updates": "Quarterly"
+      },
+      "status": "active",
+      "format": "digital-templates",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=150&fit=crop",
+      "media": {
+        "podcast": "business-on-purpose"
+      }
+    },
+    {
+      "id": "bop-course-module",
+      "name": "Business on Purpose — Building Systems Course",
+      "category": "media",
+      "subcategory": "business-on-purpose",
+      "price": 14900,
+      "displayPrice": "$149.00",
+      "stripePriceId": "price_bop_course_usd",
+      "description": "Comprehensive 6-week course on building sustainable business systems.",
+      "longDescription": "A structured, 6-week course covering the frameworks shared on Business on Purpose. Includes video lessons, downloadable resources, community forum access, and 30-minute implementation consulting call. Enroll anytime, lifetime access.",
+      "features": [
+        "6 video modules",
+        "Weekly assignments",
+        "Community forum",
+        "Consulting call included",
+        "Lifetime access",
+        "Certificate of completion",
+        "Discussion groups",
+        "Resource library"
+      ],
+      "specs": {
+        "duration": "6 weeks (self-paced)",
+        "modules": "6 video modules",
+        "access": "Lifetime",
+        "support": "Community + 1 consulting call",
+        "certificate": "Yes"
+      },
+      "status": "coming-soon",
+      "format": "video-course",
+      "image": "https://images.unsplash.com/photo-1516534775068-bb6a9b1d4bb4?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1516534775068-bb6a9b1d4bb4?w=200&h=150&fit=crop",
+      "media": {
+        "podcast": "business-on-purpose"
+      },
+      "includesAccess": [
+        "video-library",
+        "community-forum",
+        "live-q-and-a"
+      ]
+    },
+    {
+      "id": "wlb-resilience-journal",
+      "name": "When Life Bites — Resilience Journal",
+      "category": "media",
+      "subcategory": "when-life-bites",
+      "price": 2900,
+      "displayPrice": "$29.00",
+      "stripePriceId": "price_wlb_journal_usd",
+      "description": "Guided journal for navigating grief, pressure, and high-stakes seasons.",
+      "longDescription": "A companion journal to the When Life Bites podcast. Designed for founders and humans going through difficult seasons. Includes reflection prompts, coping strategies, and a framework for resilience building. Instant digital download.",
+      "features": [
+        "50+ reflection prompts",
+        "Coping strategy toolkit",
+        "Resilience frameworks",
+        "Digital + printable PDF",
+        "Expert resources",
+        "Lifetime access"
+      ],
+      "specs": {
+        "format": "PDF + Web",
+        "pages": "120+",
+        "access": "Lifetime",
+        "updates": "Free updates",
+        "devices": "All devices"
+      },
+      "status": "active",
+      "format": "digital-pdf",
+      "image": "https://images.unsplash.com/photo-1507842217343-583f20270319?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1507842217343-583f20270319?w=200&h=150&fit=crop",
+      "media": {
+        "podcast": "when-life-bites"
+      }
+    },
+    {
+      "id": "wlb-companion-guide",
+      "name": "When Life Bites — Companion Guide",
+      "category": "media",
+      "subcategory": "when-life-bites",
+      "price": 1900,
+      "displayPrice": "$19.00",
+      "stripePriceId": "price_wlb_guide_usd",
+      "description": "Episode reference guide with resources and deep dives.",
+      "longDescription": "A comprehensive guide to episodes of When Life Bites, with linked resources, book recommendations, further reading, and expert contact information mentioned in the podcast.",
+      "features": [
+        "All episodes indexed",
+        "Resource links",
+        "Book recommendations",
+        "Expert directory",
+        "Updated quarterly"
+      ],
+      "status": "active",
+      "format": "digital-pdf",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&h=150&fit=crop",
+      "media": {
+        "podcast": "when-life-bites"
+      }
+    },
+    {
+      "id": "wlb-retreat-companion",
+      "name": "When Life Bites — Retreat Program",
+      "category": "media",
+      "subcategory": "when-life-bites",
+      "price": 79900,
+      "displayPrice": "$799.00",
+      "stripePriceId": "price_wlb_retreat_usd",
+      "description": "Exclusive retreat experience for community members.",
+      "longDescription": "A 3-day in-person retreat (RSA-based, expandable to other regions) for listeners going through challenging seasons. Includes expert facilitation, peer cohorts, workshops, and community building. Limited to 20 participants. All meals, accommodation, and materials included.",
+      "features": [
+        "3-day retreat experience",
+        "Expert facilitation",
+        "Peer cohort groups",
+        "Meals and accommodation included",
+        "Follow-up community access",
+        "Certification of completion",
+        "Private community access",
+        "Lifetime cohort network"
+      ],
+      "specs": {
+        "duration": "3 days (residential)",
+        "participants": "Max 20",
+        "location": "RSA (expandable)",
+        "includes": "Meals, accommodation, materials",
+        "follow-up": "Lifetime community"
+      },
+      "status": "coming-soon",
+      "format": "in-person",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=150&fit=crop",
+      "availableRegions": ["RSA"],
+      "capacity": 20,
+      "media": {
+        "podcast": "when-life-bites"
+      },
+      "includesAccess": [
+        "retreat-community",
+        "post-retreat-support",
+        "lifetime-cohort-access"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "id": "bop-essentials-bundle",
+      "name": "Business on Purpose — Essentials Bundle",
+      "description": "Journal + Playbook combo at a discount",
+      "products": ["bop-journal-founders", "bop-playbook-systems"],
+      "bundlePrice": 5900,
+      "displayPrice": "$59.00",
+      "savings": "$7.00",
+      "status": "active"
+    },
+    {
+      "id": "wlb-starter-bundle",
+      "name": "When Life Bites — Starter Bundle",
+      "description": "Journal + Guide combo for navigating difficult seasons",
+      "products": ["wlb-resilience-journal", "wlb-companion-guide"],
+      "bundlePrice": 3900,
+      "displayPrice": "$39.00",
+      "savings": "$8.00",
+      "status": "active"
+    }
+  ],
+  "upcomingProducts": [
+    {
+      "id": "modular-system-bpo",
+      "name": "BPO Management System (Coming Q2 2026)",
+      "category": "software",
+      "description": "Backend process outsourcing management tool",
+      "status": "planning"
+    },
+    {
+      "id": "studio-team-edition",
+      "name": "Rough Diamond Studio — Team Edition (Coming Q3 2026)",
+      "category": "software",
+      "description": "Multi-user team collaboration and advanced workflows",
+      "status": "planning"
+    },
+    {
+      "id": "cpm-ai-suite",
+      "name": "CPM‑AI™ Construction Project Management Suite",
+      "category": "software",
+      "subcategory": "cpm",
+      "price": 0,
+      "displayPrice": "Contact for pricing",
+      "stripePriceId": null,
+      "description": "AI tools for on-site automation, safety and waste reduction.",
+      "longDescription": "A modular suite of AI-driven features designed to digitise small-to-mid construction contractors: Site-safety monitoring, welding & bricklaying QC, predictive maintenance, waste intelligence, and drone supervision.",
+      "features": [
+        "Site‑Safety Monitor",
+        "Welding & Bricklaying QC",
+        "Predictive Maintenance",
+        "Waste‑Intelligence",
+        "Drone‑Supervisor"
+      ],
+      "status": "coming-soon",
+      "icon": "🏗️",
+      "image": "https://images.unsplash.com/photo-1581091870623-5c59ecf5a097?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1581091870623-5c59ecf5a097?w=200&h=150&fit=crop"
+    },
+    {
+      "id": "propaI-pro-suite",
+      "name": "PropAI‑Pro™ Smart Property Advisor",
+      "category": "software",
+      "subcategory": "protech",
+      "price": 0,
+      "displayPrice": "Contact for pricing",
+      "stripePriceId": null,
+      "description": "End‑to‑end AI for high‑end residential property developments.",
+      "longDescription": "Modular AI features for estate managers and developers: Virtual tours with LLM narration, leasing automation, dynamic pricing forecasting and resident experience insights.",
+      "features": [
+        "Virtual Tour & Chatbot",
+        "Leasing & Services Automation",
+        "Dynamic Pricing Forecast",
+        "Resident Experience Insights"
+      ],
+      "status": "coming-soon",
+      "icon": "🏘️",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=150&fit=crop"
+    },
+    {
+      "id": "small-ai-toolkit-sme",
+      "name": "Small‑AI Toolkit™ SME Productivity Pack",
+      "category": "software",
+      "subcategory": "smallai",
+      "price": 0,
+      "displayPrice": "Contact for pricing",
+      "stripePriceId": null,
+      "description": "Lightweight, mobile‑first AI for local businesses.",
+      "longDescription": "Setup and training for cost‑effective AI adoption: Tool matching & onboarding, admin automation bots, hybrid transformation guides and change management kits.",
+      "features": [
+        "Tool Match & Onboarding",
+        "Admin Automation",
+        "Hybrid Transformation Guide",
+        "Change‑Management Kit"
+      ],
+      "status": "coming-soon",
+      "icon": "💼",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=150&fit=crop"
+    },
+    {
+      "id": "buildenv-ai-academy",
+      "name": "BuildEnv‑AI Academy™ Training Workshops",
+      "category": "training",
+      "subcategory": "workshops",
+      "price": 0,
+      "displayPrice": "Contact for pricing",
+      "stripePriceId": null,
+      "description": "Practical AI courses for construction professionals.",
+      "longDescription": "Half‑day and full‑day workshops on LLM technical writing, AI project planning, visualisation, H&S management and hands‑on labs.",
+      "features": [
+        "LLM Technical Writing",
+        "AI Project Planning",
+        "Visualisation & Comms",
+        "H&S with AI",
+        "Hands‑on Labs"
+      ],
+      "status": "coming-soon",
+      "icon": "📘",
+      "image": "https://images.unsplash.com/photo-1516534775068-bb6a9b1d4bb4?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1516534775068-bb6a9b1d4bb4?w=200&h=150&fit=crop"
+    },
+    {
+      "id": "nextgen-contractor-coach",
+      "name": "Next‑Gen Contractor Coach™ Remote Coaching Portal",
+      "category": "coaching",
+      "subcategory": "advisory",
+      "price": 0,
+      "displayPrice": "Contact for pricing",
+      "stripePriceId": null,
+      "description": "One‑on‑one digital coaching for business recovery and growth.",
+      "longDescription": "Global resilience advisory: Digital‑pivot assessment, business pivot roadmapping and founder case‑study mentorship via video sessions and worksheets.",
+      "features": [
+        "Digital‑Pivot Assessment",
+        "Pivot Road‑map",
+        "Case‑Study Mentorship",
+        "Video Sessions",
+        "Worksheets & Resources"
+      ],
+      "status": "coming-soon",
+      "icon": "🌐",
+      "image": "https://images.unsplash.com/photo-1557804506-669714d2e9d8?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1557804506-669714d2e9d8?w=200&h=150&fit=crop"
+    },
+    {
+      "id": "revenue-engine-backoffice",
+      "name": "Revenue Engine — Back‑Office Monetisation",
+      "category": "software",
+      "subcategory": "backoffice",
+      "price": 0,
+      "displayPrice": "Contact for pricing",
+      "stripePriceId": null,
+      "description": "The back‑office suite that powers all Old Dog offerings.",
+      "longDescription": "Monetisation systems: Sprint builder, fractional retainer dashboard, workshop scheduler, performance bonus tracker, digital store and affiliate hub.",
+      "features": [
+        "Sprint‑Builder",
+        "Fractional‑AI Retainer",
+        "Workshop Scheduler",
+        "Performance‑Bonus Tracker",
+        "Digital‑Store",
+        "Affiliate Hub"
+      ],
+      "status": "coming-soon",
+      "icon": "💰",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
+      "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=150&fit=crop"
+    }
+  ]
+}

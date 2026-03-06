@@ -1,0 +1,32 @@
+{
+  "name": "old-dog-systems-web",
+  "version": "1.0.0",
+  "description": "Enterprise-grade modular media and software studio website",
+  "type": "module",
+  "main": "index.html",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'Static site ready for deployment'"
+  },
+  "keywords": [
+    "old-dog-systems",
+    "media",
+    "software",
+    "studio"
+  ],
+  "author": "Old Dog Systems",
+  "license": "MIT",
+  "dependencies": {
+    "stripe": "^13.11.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^9.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "@sendgrid/mail": "^7.7.0",
+    "pdfkit": "^0.13.0"
+  }
+}

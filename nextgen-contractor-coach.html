@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Next‑Gen Contractor Coach™ – Remote Coaching Portal</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Next‑Gen Contractor Coach™ offers one‑on‑one digital coaching for business recovery and growth. Digital pivot assessment, roadmapping and case‑study mentorship."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/dog-logo.png"
+                alt="Old Dog Systems Logo"
+                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-sm font-semibold tracking-tight text-slate-100"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./media.html" class="nav-underline">Media House</a>
+            <a href="./studio.html" class="nav-underline">Studio</a>
+            <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./nextgen-contractor-coach.html" class="nav-underline" aria-current="page">Contractor Coach</a>
+            <a href="./dashboard.html" class="nav-underline">Dashboard</a>
+          </div>
+
+          <!-- Mobile menu toggle -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-slate-300 hover:text-slate-100"
+          >
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-4xl">
+          <div class="text-center">
+            <h1 class="text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl lg:text-6xl">
+              <span class="text-rose-400">🌍 Next‑Gen Contractor Coach™</span> Resilience Advisor
+            </h1>
+            <p class="mt-4 text-xl text-slate-300">
+              One‑on‑one digital coaching for business recovery and growth.
+            </p>
+            <p class="mt-2 text-slate-400">
+              Clients worldwide. Position as global "Resilience Advisor."
+            </p>
+          </div>
+
+          <!-- Key Features -->
+          <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="rounded-lg border border-slate-700 bg-slate-900/50 p-6 backdrop-blur">
+              <div class="text-2xl mb-3">🔍</div>
+              <h3 class="font-semibold text-slate-100">Digital‑Pivot Assessment</h3>
+              <p class="mt-2 text-sm text-slate-400">
+                Loss audit and comprehensive opportunity mapping.
+              </p>
+            </div>
+
+            <div class="rounded-lg border border-slate-700 bg-slate-900/50 p-6 backdrop-blur">
+              <div class="text-2xl mb-3">🗺️</div>
+              <h3 class="font-semibold text-slate-100">Pivot Road‑map</h3>
+              <p class="mt-2 text-sm text-slate-400">
+                Step‑by‑step move to a tech‑enabled business model.
+              </p>
+            </div>
+
+            <div class="rounded-lg border border-slate-700 bg-slate-900/50 p-6 backdrop-blur col-span-2">
+              <div class="text-2xl mb-3">📖</div>
+              <h3 class="font-semibold text-slate-100">Case‑Study Mentorship</h3>
+              <p class="mt-2 text-sm text-slate-400">
+                Learn from the founder's turnaround story. Includes video sessions and downloadable worksheets.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="py-16 px-4 bg-gradient-to-b from-slate-900/50 to-slate-950">
+        <div class="mx-auto max-w-4xl text-center">
+          <h2 class="text-3xl font-bold text-slate-100">Start Your Pivot</h2>
+          <p class="mt-4 text-slate-400">
+            Whether you're recovering from loss or scaling globally — coaching that fits where you are.
+          </p>
+          <a
+            href="./studio.html#alpha-access"
+            class="mt-6 inline-block rounded-lg bg-sky-500 px-8 py-3 font-semibold text-slate-950 hover:bg-sky-400 transition"
+          >Book Discovery Call</a>
+        </div>
+      </section>
+
+      <footer class="border-t border-slate-800/80 py-6">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
+        >
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="./shop.html" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./studio.html#alpha-access" class="hover:text-slate-300">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>

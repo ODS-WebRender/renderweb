@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rough Diamond Studio V1 – Explainer</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin:2rem; }
+    .video-container { position:relative; padding-bottom:56.25%; height:0; }
+    .video-container iframe,
+    .video-container video { position:absolute; top:0; left:0; width:100%; height:100%; }
+  </style>
+</head>
+<body>
+  <h1>Rough Diamond Studio V1</h1>
+  <p>Watch the quick tour below.</p>
+
+  <div class="video-container">
+    <!-- using the locally provided demo video (no narration yet) -->
+    <video controls poster="videos/overview-thumb.png" preload="metadata">
+      <source src="videos/overview.webm" type="video/webm">
+      <!-- MP4 fallback for broader browser compatibility -->
+      <source src="videos/overview.mp4" type="video/mp4">
+      <!-- Captions placeholder: create videos/overview.vtt and uncomment the line below -->
+      <track kind="captions" srclang="en" label="English" src="videos/overview.vtt">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- once you have narration, either replace this source with an MP4 or upload to
+         YouTube/Vimeo and switch back to the iframe embed below -->
+    <!--
+    <iframe src="https://www.youtube.com/embed/XXXXXXXXXXX"
+            title="Rough Diamond Studio overview"
+            frameborder="0" allowfullscreen></iframe>
+    -->
+  </div>
+
+  <p><a href="README.md">Back to project README</a></p>
+</body>
+</html>

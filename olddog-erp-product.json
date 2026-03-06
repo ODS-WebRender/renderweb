@@ -1,0 +1,53 @@
+{
+  "id": "olddog-erp-professional",
+  "name": "Old Dog ERP — Professional Edition",
+  "category": "software",
+  "subcategory": "erp",
+  "price": 29900,
+  "displayPrice": "$299.00",
+  "stripePriceId": "price_olddog_erp_usd",
+  "description": "Professional cross-platform enterprise resource planning system with plugins, marketplace, and SDK.",
+  "longDescription": "Old Dog ERP is a comprehensive, modular business management platform built for small to medium enterprises. Featuring 7 core modules covering Finance, Inventory, Sales, Purchasing, CRM, HR, and Reporting, plus a vibrant plugin marketplace with dozens of extensions. The included Plugin SDK enables custom development in C++ and Python.\n\nCross-platform support (Linux, macOS, Windows), SQLite database, and a responsive Qt6 interface make Old Dog ERP accessible and powerful. Includes 10+ pre-built plugins to extend core functionality immediately after installation.",
+  "features": [
+    "7 Core Business Modules",
+    "Plugin Marketplace",
+    "Plugin SDK (C++ & Python)",
+    "Cross-Platform (Linux, macOS, Windows)",
+    "SQLite Database",
+    "Professional Qt6 UI",
+    "10+ Pre-built Plugins",
+    "Real-time Synchronization",
+    "Lifetime Updates",
+    "Community Support"
+  ],
+  "specs": {
+    "platform": "Linux, macOS, Windows",
+    "architecture": "x86_64",
+    "database": "SQLite3",
+    "ui": "Qt6 Widgets",
+    "modules": "7 Core",
+    "plugins": "Marketplace + 10 Included",
+    "support": "Community + Email",
+    "updates": "Lifetime"
+  },
+  "status": "active",
+  "icon": "📊",
+  "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+  "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+  "downloadLinks": {
+    "linux": "https://downloads.olddogsystems.com/OldDogERP-0.3.0-x86_64.AppImage",
+    "macos": "https://downloads.olddogsystems.com/OldDogERP-0.3.0.dmg",
+    "windows": "https://downloads.olddogsystems.com/OldDogERP-0.3.0-Setup.msi"
+  },
+  "systemRequirements": {
+    "linux": "Ubuntu 18.04+, 2GB RAM, 500MB disk",
+    "macos": "macOS 10.13+, 2GB RAM, 600MB disk",
+    "windows": "Windows 10+, 2GB RAM, 700MB disk"
+  },
+  "documentationUrl": "https://olddogsystems.com/docs/erp",
+  "sdkUrl": "https://github.com/olddogsystems/erp-plugin-sdk",
+  "marketplaceUrl": "https://olddogsystems.com/erp/plugins",
+  "releaseDate": "2026-02-10",
+  "version": "0.3.0",
+  "license": "Old Dog Systems License"
+}
