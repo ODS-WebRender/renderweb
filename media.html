@@ -27,32 +27,32 @@
       <header
         class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
       >
-        <nav
-          class="nav-glass mx-auto mt-2 flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3"
-        >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
           <div class="flex items-center gap-3">
             <a href="./index.html" class="flex items-center gap-3">
               <img
                 src="./images/dog-logo.png"
                 alt="Old Dog Systems Logo"
-                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
               />
               <div class="flex flex-col">
                 <span
                   data-brand
-                  class="text-sm font-semibold tracking-tight text-slate-100"
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
                 ></span>
-                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
                   >Old Dog · New Tricks</span
                 >
               </div>
             </a>
           </div>
 
-          <div
-            class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex"
-          >
-            <a href="./index.html" class="nav-underline">Home</a>
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline"
+              >Home</a
+            >
 
             <div class="relative group">
               <button
@@ -206,19 +206,23 @@
               </div>
             </div>
 
-            <a href="#shop" class="nav-underline">Shop</a>
+            <a href="./media.html#shop" class="nav-underline">Shop</a>
+
+            <a href="./rough-diamond-studio/overview.html" class="nav-underline">Rough Diamond Demo</a>
 
             <!-- Offerings dropdown -->
-            <div class="relative group">
+            <div class="relative" id="offerings-dropdown">
               <button
                 type="button"
                 class="inline-flex items-center gap-1 nav-underline"
+                onclick="toggleDropdown('offerings-dropdown')"
               >
                 <span>Offerings</span>
-                <span class="text-xs text-slate-400">▾</span>
+                <span class="text-xs text-slate-400 transition-transform duration-200" id="offerings-arrow">▾</span>
               </button>
               <div
-                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[800px] -translate-x-1/2"
+                class="invisible opacity-0 transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[800px] -translate-x-1/2"
+                id="offerings-menu"
               >
                 <div
                   class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
@@ -249,15 +253,13 @@
                       <div class="text-lg">💰</div>
                       <div class="text-sm"><div class="font-semibold text-green-300">Revenue Engine</div><p class="text-xs text-slate-400 mt-1">Back‑office monetization</p></div>
                     </a>
-                      <a href="./erp-download.html" class="flex items-start gap-2 rounded-lg border border-orange-500/40 bg-slate-900/50 p-3 hover:border-orange-400 hover:bg-slate-900 transition-colors">
-                        <div class="text-lg">📊</div>
-                        <div class="text-sm"><div class="font-semibold text-orange-300">Old Dog ERP</div><p class="text-xs text-slate-400 mt-1">Enterprise planning</p></div>
-                      </a>
-                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
+            <a href="./dashboard.html" class="nav-underline">Dashboard</a>
+            <a href="./admin-dashboard.html" class="nav-underline text-xs text-slate-500">Admin</a>
             <a href="./index.html#about" class="nav-underline">About</a>
             <a href="./studio.html#alpha-access" class="nav-underline"
               >Alpha Access</a
@@ -277,15 +279,16 @@
           </button>
         </nav>
 
+        <!-- Mobile nav -->
         <div
           id="mobile-nav"
           class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden"
         >
-          <div class="nav-glass space-y-3 rounded-2xl p-4 text-sm text-slate-100">
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
             <a href="./index.html" class="block">Home</a>
             <a href="./media.html" class="block">Media House</a>
             <a href="./studio.html" class="block">Rough Diamond Studio</a>
-            <a href="#shop" class="block">Unified Shop</a>
+            <a href="./media.html#shop" class="block">Unified Shop</a>
             <div class="border-t border-slate-700/50 pt-2 mt-2"><p class="text-xs font-semibold text-slate-400 uppercase tracking-[0.15em] mb-2">Offerings</p>
             <a href="./cpm-ai.html" class="block text-sm">CPM‑AI Suite</a>
             <a href="./propaI-pro.html" class="block text-sm">PropAI‑Pro</a>
@@ -294,6 +297,8 @@
             <a href="./nextgen-contractor-coach.html" class="block text-sm">Contractor Coach</a>
             <a href="./revenue-engine.html" class="block text-sm">Revenue Engine</a>
             <a href="./erp-download.html" class="block text-sm">Old Dog ERP</a></div>
+            <a href="./dashboard.html" class="block">Dashboard</a>
+            <a href="./admin-dashboard.html" class="block text-slate-500">Admin</a>
             <a href="./index.html#about" class="block">About</a>
             <a href="./studio.html#alpha-access" class="block">Alpha Access</a>
           </div>
@@ -1263,6 +1268,26 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Dropdown toggle function
+      function toggleDropdown(dropdownId) {
+        const menu = document.getElementById(dropdownId.replace('-dropdown', '-menu'));
+        const arrow = document.getElementById(dropdownId.replace('-dropdown', '-arrow'));
+        
+        if (menu.classList.contains('invisible')) {
+          // Show dropdown
+          menu.classList.remove('invisible', 'opacity-0');
+          menu.classList.add('visible', 'opacity-100');
+          arrow.style.transform = 'rotate(180deg)';
+        } else {
+          // Hide dropdown
+          menu.classList.remove('visible', 'opacity-100');
+          menu.classList.add('invisible', 'opacity-0');
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      }
+    </script>
   </body>
 </html>
 
