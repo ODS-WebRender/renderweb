@@ -411,5 +411,290 @@ export function getAlphaInquiriesByStatus(status) {
   return inquiries.filter(i => i.status === status);
 }
 
+// ===== SUBSCRIPTIONS (Phase 4b) =====
+
+const SUBSCRIPTIONS_FILE = path.join(DATA_DIR, 'subscriptions.json');
+
+function getSubscriptions() {
+  ensureDirectories();
+  try {
+    if (fs.existsSync(SUBSCRIPTIONS_FILE)) {
+      return JSON.parse(fs.readFileSync(SUBSCRIPTIONS_FILE, 'utf8'));
+    }
+  } catch (error) {
+    console.error('Error reading subscriptions:', error);
+  }
+  return [];
+}
+
+function saveSubscriptions(subscriptions) {
+  ensureDirectories();
+  fs.writeFileSync(SUBSCRIPTIONS_FILE, JSON.stringify(subscriptions, null, 2));
+}
+
+export function createSubscription(subscriptionData) {
+  const subscriptionId = `sub_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  const subscription = {
+    id: subscriptionId,
+    customerEmail: subscriptionData.customerEmail,
+    productId: subscriptionData.productId,
+    productName: subscriptionData.productName,
+    billingCycle: subscriptionData.billingCycle || 'monthly', // monthly, quarterly, annual
+    amount: subscriptionData.amount,
+    currency: subscriptionData.currency || 'ZAR',
+    status: 'active', // active, paused, cancelled
+    payfastToken: subscriptionData.payfastToken || null, // For recurring PayFast
+    createdAt: new Date().toISOString(),
+    nextBillingDate: subscriptionData.nextBillingDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+    cancelledAt: null,
+    renewalCount: 0,
+    failedAttempts: 0,
+    notes: []
+  };
+
+  const subscriptions = getSubscriptions();
+  subscriptions.push(subscription);
+  saveSubscriptions(subscriptions);
+  
+  return subscription;
+}
+
+export function getSubscription(subscriptionId) {
+  const subscriptions = getSubscriptions();
+  return subscriptions.find(s => s.id === subscriptionId);
+}
+
+export function getSubscriptionsByCustomer(customerEmail) {
+  const subscriptions = getSubscriptions();
+  return subscriptions.filter(s => s.customerEmail === customerEmail);
+}
+
+export function updateSubscription(subscriptionId, updates) {
+  const subscriptions = getSubscriptions();
+  const index = subscriptions.findIndex(s => s.id === subscriptionId);
+  
+  if (index === -1) {
+    throw new Error('Subscription not found');
+  }
+  
+  subscriptions[index] = { ...subscriptions[index], ...updates, updatedAt: new Date().toISOString() };
+  saveSubscriptions(subscriptions);
+  
+  return subscriptions[index];
+}
+
+export function cancelSubscription(subscriptionId) {
+  return updateSubscription(subscriptionId, {
+    status: 'cancelled',
+    cancelledAt: new Date().toISOString()
+  });
+}
+
+export function getAllSubscriptions() {
+  return getSubscriptions();
+}
+
+export function getActiveSubscriptions() {
+  const subscriptions = getSubscriptions();
+  return subscriptions.filter(s => s.status === 'active');
+}
+
+export function getSubscriptionStats() {
+  const subscriptions = getSubscriptions();
+  return {
+    totalSubscriptions: subscriptions.length,
+    activeSubscriptions: subscriptions.filter(s => s.status === 'active').length,
+    pausedSubscriptions: subscriptions.filter(s => s.status === 'paused').length,
+    cancelledSubscriptions: subscriptions.filter(s => s.status === 'cancelled').length,
+    monthlyRecurringRevenue: subscriptions
+      .filter(s => s.status === 'active' && s.billingCycle === 'monthly')
+      .reduce((sum, s) => sum + s.amount, 0),
+    totalRecurringRevenue: subscriptions
+      .filter(s => s.status === 'active')
+      .reduce((sum, s) => sum + s.amount, 0)
+  };
+}
+
+// ===== AFFILIATES (Phase 4c) =====
+
+const AFFILIATES_FILE = path.join(DATA_DIR, 'affiliates.json');
+
+function getAffiliates() {
+  ensureDirectories();
+  try {
+    if (fs.existsSync(AFFILIATES_FILE)) {
+      return JSON.parse(fs.readFileSync(AFFILIATES_FILE, 'utf8'));
+    }
+  } catch (error) {
+    console.error('Error reading affiliates:', error);
+  }
+  return [];
+}
+
+function saveAffiliates(affiliates) {
+  ensureDirectories();
+  fs.writeFileSync(AFFILIATES_FILE, JSON.stringify(affiliates, null, 2));
+}
+
+export function createAffiliate(affiliateData) {
+  const affiliateCode = `AFF${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
+  const affiliate = {
+    id: `aff_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+    affiliateCode: affiliateCode,
+    email: affiliateData.email,
+    name: affiliateData.name || affiliateData.email.split('@')[0],
+    website: affiliateData.website || null,
+    status: 'pending', // pending, approved, suspended
+    commissionRate: affiliateData.commissionRate || 15, // Percentage
+    bankDetails: affiliateData.bankDetails || {},
+    referralLink: `https://old-dog-web.onrender.com/shop?ref=${affiliateCode}`,
+    totalReferrals: 0,
+    totalCommission: 0,
+    totalPaidOut: 0,
+    pendingCommission: 0,
+    createdAt: new Date().toISOString(),
+    approvedAt: null,
+    notes: []
+  };
+
+  const affiliates = getAffiliates();
+  affiliates.push(affiliate);
+  saveAffiliates(affiliates);
+  
+  return affiliate;
+}
+
+export function getAffiliate(affiliateId) {
+  const affiliates = getAffiliates();
+  return affiliates.find(a => a.id === affiliateId);
+}
+
+export function getAffiliateByCode(code) {
+  const affiliates = getAffiliates();
+  return affiliates.find(a => a.affiliateCode === code);
+}
+
+export function getAffiliateByEmail(email) {
+  const affiliates = getAffiliates();
+  return affiliates.find(a => a.email === email);
+}
+
+export function updateAffiliate(affiliateId, updates) {
+  const affiliates = getAffiliates();
+  const index = affiliates.findIndex(a => a.id === affiliateId);
+  
+  if (index === -1) {
+    throw new Error('Affiliate not found');
+  }
+  
+  affiliates[index] = { ...affiliates[index], ...updates, updatedAt: new Date().toISOString() };
+  saveAffiliates(affiliates);
+  
+  return affiliates[index];
+}
+
+export function getAllAffiliates() {
+  return getAffiliates();
+}
+
+export function getApprovedAffiliates() {
+  const affiliates = getAffiliates();
+  return affiliates.filter(a => a.status === 'approved');
+}
+
+// ===== REFERRALS (Phase 4c) =====
+
+const REFERRALS_FILE = path.join(DATA_DIR, 'referrals.json');
+
+function getReferrals() {
+  ensureDirectories();
+  try {
+    if (fs.existsSync(REFERRALS_FILE)) {
+      return JSON.parse(fs.readFileSync(REFERRALS_FILE, 'utf8'));
+    }
+  } catch (error) {
+    console.error('Error reading referrals:', error);
+  }
+  return [];
+}
+
+function saveReferrals(referrals) {
+  ensureDirectories();
+  fs.writeFileSync(REFERRALS_FILE, JSON.stringify(referrals, null, 2));
+}
+
+export function createReferral(referralData) {
+  const referral = {
+    id: `ref_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+    affiliateCode: referralData.affiliateCode,
+    affiliateId: referralData.affiliateId,
+    customerEmail: referralData.customerEmail,
+    orderId: referralData.orderId || null,
+    productId: referralData.productId,
+    amount: referralData.amount,
+    commission: referralData.commission || 0,
+    status: 'pending', // pending, completed, paid
+    createdAt: new Date().toISOString(),
+    completedAt: null,
+    paidAt: null
+  };
+
+  const referrals = getReferrals();
+  referrals.push(referral);
+  saveReferrals(referrals);
+  
+  return referral;
+}
+
+export function getReferralsByAffiliate(affiliateCode) {
+  const referrals = getReferrals();
+  return referrals.filter(r => r.affiliateCode === affiliateCode);
+}
+
+export function updateReferral(referralId, updates) {
+  const referrals = getReferrals();
+  const index = referrals.findIndex(r => r.id === referralId);
+  
+  if (index === -1) {
+    throw new Error('Referral not found');
+  }
+  
+  referrals[index] = { ...referrals[index], ...updates };
+  saveReferrals(referrals);
+  
+  // Update affiliate stats if needed
+  if (updates.status === 'completed' && referrals[index].affiliateCode) {
+    const affiliate = getAffiliateByCode(referrals[index].affiliateCode);
+    if (affiliate) {
+      updateAffiliate(affiliate.id, {
+        totalReferrals: affiliate.totalReferrals + 1,
+        totalCommission: affiliate.totalCommission + (referrals[index].commission || 0),
+        pendingCommission: affiliate.pendingCommission + (referrals[index].commission || 0)
+      });
+    }
+  }
+  
+  return referrals[index];
+}
+
+export function getAffiliateStats(affiliateCode) {
+  const referrals = getReferrals().filter(r => r.affiliateCode === affiliateCode);
+  const affiliate = getAffiliateByCode(affiliateCode);
+  
+  if (!affiliate) {
+    return null;
+  }
+  
+  return {
+    affiliate,
+    referrals: referrals.length,
+    completedReferrals: referrals.filter(r => r.status === 'completed').length,
+    pendingReferrals: referrals.filter(r => r.status === 'pending').length,
+    totalCommission: referrals.filter(r => r.status === 'completed').reduce((sum, r) => sum + r.commission, 0),
+    pendingCommission: affiliate.pendingCommission,
+    totalEarnings: affiliate.totalCommission
+  };
+}
+
 // Ensure directories on module load
 ensureDirectories();

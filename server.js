@@ -886,6 +886,387 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    // ===== SUBSCRIPTIONS (Phase 4b) =====
+
+    // POST /api/subscriptions/create - Create new subscription
+    if (pathname === '/api/subscriptions/create' && req.method === 'POST') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized - JWT required' }, 401);
+        return;
+      }
+
+      const body = await parseBody(req);
+      const user = auth.validateAuthHeader(authHeader);
+
+      if (!user) {
+        sendJSON(res, { error: 'Invalid token' }, 401);
+        return;
+      }
+
+      try {
+        const { productId, productName, billingCycle, amount } = body;
+
+        if (!productId || !amount || !billingCycle) {
+          sendJSON(res, { error: 'Missing required fields' }, 400);
+          return;
+        }
+
+        const subscription = db.createSubscription({
+          customerEmail: user.email,
+          productId,
+          productName: productName || productId,
+          billingCycle,
+          amount,
+          currency: 'ZAR'
+        });
+
+        sendJSON(res, {
+          success: true,
+          subscription,
+          message: 'Subscription created successfully'
+        }, 201);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // GET /api/subscriptions - Get user's subscriptions
+    if (pathname === '/api/subscriptions' && req.method === 'GET') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized - JWT required' }, 401);
+        return;
+      }
+
+      const user = auth.validateAuthHeader(authHeader);
+      if (!user) {
+        sendJSON(res, { error: 'Invalid token' }, 401);
+        return;
+      }
+
+      try {
+        const subscriptions = db.getSubscriptionsByCustomer(user.email);
+        const stats = subscriptions.reduce((acc, sub) => {
+          acc.active += sub.status === 'active' ? 1 : 0;
+          acc.totalValue += sub.status === 'active' ? sub.amount : 0;
+          return acc;
+        }, { active: 0, totalValue: 0 });
+
+        sendJSON(res, {
+          subscriptions,
+          count: subscriptions.length,
+          stats
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // POST /api/subscriptions/:subscriptionId/cancel - Cancel subscription
+    if (pathname.match(/^\/api\/subscriptions\/[^/]+\/cancel$/) && req.method === 'POST') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized - JWT required' }, 401);
+        return;
+      }
+
+      const subscriptionId = pathname.split('/')[3];
+      const user = auth.validateAuthHeader(authHeader);
+
+      if (!user) {
+        sendJSON(res, { error: 'Invalid token' }, 401);
+        return;
+      }
+
+      try {
+        const subscription = db.getSubscription(subscriptionId);
+        if (!subscription) {
+          sendJSON(res, { error: 'Subscription not found' }, 404);
+          return;
+        }
+
+        if (subscription.customerEmail !== user.email) {
+          sendJSON(res, { error: 'Unauthorized' }, 403);
+          return;
+        }
+
+        const cancelled = db.cancelSubscription(subscriptionId);
+
+        sendJSON(res, {
+          success: true,
+          subscription: cancelled,
+          message: 'Subscription cancelled successfully'
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // POST /api/subscriptions/:subscriptionId/pause - Pause subscription
+    if (pathname.match(/^\/api\/subscriptions\/[^/]+\/pause$/) && req.method === 'POST') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized - JWT required' }, 401);
+        return;
+      }
+
+      const subscriptionId = pathname.split('/')[3];
+      const user = auth.validateAuthHeader(authHeader);
+
+      if (!user) {
+        sendJSON(res, { error: 'Invalid token' }, 401);
+        return;
+      }
+
+      try {
+        const subscription = db.getSubscription(subscriptionId);
+        if (!subscription) {
+          sendJSON(res, { error: 'Subscription not found' }, 404);
+          return;
+        }
+
+        if (subscription.customerEmail !== user.email) {
+          sendJSON(res, { error: 'Unauthorized' }, 403);
+          return;
+        }
+
+        const paused = db.updateSubscription(subscriptionId, { status: 'paused' });
+
+        sendJSON(res, {
+          success: true,
+          subscription: paused,
+          message: 'Subscription paused successfully'
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // POST /api/subscriptions/:subscriptionId/resume - Resume subscription
+    if (pathname.match(/^\/api\/subscriptions\/[^/]+\/resume$/) && req.method === 'POST') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized - JWT required' }, 401);
+        return;
+      }
+
+      const subscriptionId = pathname.split('/')[3];
+      const user = auth.validateAuthHeader(authHeader);
+
+      if (!user) {
+        sendJSON(res, { error: 'Invalid token' }, 401);
+        return;
+      }
+
+      try {
+        const subscription = db.getSubscription(subscriptionId);
+        if (!subscription) {
+          sendJSON(res, { error: 'Subscription not found' }, 404);
+          return;
+        }
+
+        if (subscription.customerEmail !== user.email) {
+          sendJSON(res, { error: 'Unauthorized' }, 403);
+          return;
+        }
+
+        const resumed = db.updateSubscription(subscriptionId, { status: 'active' });
+
+        sendJSON(res, {
+          success: true,
+          subscription: resumed,
+          message: 'Subscription resumed successfully'
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // ===== AFFILIATES (Phase 4c) =====
+
+    // POST /api/affiliates/join - Apply to become affiliate
+    if (pathname === '/api/affiliates/join' && req.method === 'POST') {
+      const body = await parseBody(req);
+
+      try {
+        const { email, name, website } = body;
+
+        if (!email || !email.includes('@')) {
+          sendJSON(res, { error: 'Valid email required' }, 400);
+          return;
+        }
+
+        // Check if already an affiliate
+        const existing = db.getAffiliateByEmail(email);
+        if (existing) {
+          sendJSON(res, { error: 'Email already registered as affiliate' }, 400);
+          return;
+        }
+
+        const affiliate = db.createAffiliate({
+          email,
+          name: name || email.split('@')[0],
+          website,
+          commissionRate: 15
+        });
+
+        // Send welcome email
+        try {
+          await email.sendAffiliateWelcome(affiliate);
+          console.log(`Affiliate application sent to ${email}`);
+        } catch (err) {
+          console.error('Affiliate email error:', err);
+        }
+
+        sendJSON(res, {
+          success: true,
+          message: 'Application submitted successfully. We will review and get back to you soon.',
+          affiliateCode: affiliate.affiliateCode,
+          referralLink: affiliate.referralLink
+        }, 201);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // GET /api/affiliates/dashboard - Get affiliate dashboard data
+    if (pathname === '/api/affiliates/dashboard' && req.method === 'GET') {
+      const affiliateCode = parsedUrl.searchParams.get('code');
+
+      if (!affiliateCode) {
+        sendJSON(res, { error: 'Affiliate code required' }, 400);
+        return;
+      }
+
+      try {
+        const affiliate = db.getAffiliateByCode(affiliateCode);
+        if (!affiliate) {
+          sendJSON(res, { error: 'Affiliate not found' }, 404);
+          return;
+        }
+
+        const stats = db.getAffiliateStats(affiliateCode);
+        const referrals = db.getReferralsByAffiliate(affiliateCode);
+
+        sendJSON(res, {
+          affiliate: {
+            email: affiliate.email,
+            name: affiliate.name,
+            affiliateCode: affiliate.affiliateCode,
+            referralLink: affiliate.referralLink,
+            status: affiliate.status,
+            commissionRate: affiliate.commissionRate
+          },
+          stats,
+          recentReferrals: referrals.slice(-10).reverse(),
+          payoutHistory: [] // TODO: Add payout history
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // GET /api/affiliates/:code/referrals - Get affiliate's referrals
+    if (pathname.match(/^\/api\/affiliates\/[^/]+\/referrals$/) && req.method === 'GET') {
+      const code = pathname.split('/')[3];
+
+      try {
+        const affiliate = db.getAffiliateByCode(code);
+        if (!affiliate) {
+          sendJSON(res, { error: 'Affiliate not found' }, 404);
+          return;
+        }
+
+        const referrals = db.getReferralsByAffiliate(code);
+        const stats = {
+          total: referrals.length,
+          pending: referrals.filter(r => r.status === 'pending').length,
+          completed: referrals.filter(r => r.status === 'completed').length,
+          totalValue: referrals.reduce((sum, r) => sum + r.amount, 0),
+          totalCommission: referrals.filter(r => r.status === 'completed').reduce((sum, r) => sum + r.commission, 0)
+        };
+
+        sendJSON(res, {
+          referrals,
+          stats
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // POST /api/admin/affiliates/approve - Admin approve affiliate
+    if (pathname === '/api/admin/affiliates/approve' && req.method === 'POST') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized' }, 401);
+        return;
+      }
+
+      const body = await parseBody(req);
+
+      try {
+        const { affiliateId } = body;
+        const affiliate = db.getAffiliate(affiliateId);
+
+        if (!affiliate) {
+          sendJSON(res, { error: 'Affiliate not found' }, 404);
+          return;
+        }
+
+        const approved = db.updateAffiliate(affiliateId, {
+          status: 'approved',
+          approvedAt: new Date().toISOString()
+        });
+
+        sendJSON(res, {
+          success: true,
+          affiliate: approved,
+          message: 'Affiliate approved'
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // GET /api/admin/affiliates - Admin view all affiliates
+    if (pathname === '/api/admin/affiliates' && req.method === 'GET') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized' }, 401);
+        return;
+      }
+
+      try {
+        const affiliates = db.getAllAffiliates();
+        const stats = affiliates.reduce((acc, aff) => {
+          acc.total += 1;
+          acc.approved += aff.status === 'approved' ? 1 : 0;
+          acc.pending += aff.status === 'pending' ? 1 : 0;
+          acc.totalCommissions += aff.totalCommission;
+          return acc;
+        }, { total: 0, approved: 0, pending: 0, totalCommissions: 0 });
+
+        sendJSON(res, {
+          affiliates,
+          stats
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
     // ===== DOWNLOADS =====
 
     // GET /api/downloads/invoice/:orderId - Download invoice PDF
