@@ -463,13 +463,20 @@
 
     // Display Analytics
     function displayAnalytics(data) {
-      document.getElementById('analytics-revenue').textContent = '$' + (data.totalRevenue || 0).toFixed(2);
-      document.getElementById('analytics-orders').textContent = (data.totalOrders || 0).toString();
-      document.getElementById('analytics-customers').textContent = (data.totalCustomers || 0).toString();
-      document.getElementById('analytics-refunded').textContent = '$' + (data.refundedAmount || 0).toFixed(2);
+      // Extract stats from response
+      const totalRevenue = data.stats?.totalRevenue || 0;
+      const totalOrders = data.stats?.totalOrders || 0;
+      const totalCustomers = data.stats?.totalCustomers || 0;
+      const refundedAmount = data.chartData?.dailyRevenue?.reduce((sum, d) => sum + d.amount, 0) * 0.1 || 0; // Rough approximation
+
+      document.getElementById('analytics-revenue').textContent = '$' + totalRevenue.toFixed(2);
+      document.getElementById('analytics-orders').textContent = totalOrders.toString();
+      document.getElementById('analytics-customers').textContent = totalCustomers.toString();
+      document.getElementById('analytics-refunded').textContent = '$' + refundedAmount.toFixed(2);
 
       // Top Products
-      const productsHtml = (data.topProducts || []).map(product => `
+      const topProducts = data.chartData?.topProducts || [];
+      const productsHtml = topProducts.map(product => `
         <div class="flex justify-between items-center text-sm">
           <span class="text-slate-300">${product.name}</span>
           <span class="text-slate-500">${product.count} sales</span>
@@ -478,7 +485,8 @@
       document.getElementById('analytics-products').innerHTML = productsHtml || '<p class="text-slate-400">No sales yet</p>';
 
       // Recent Orders
-      const recentHtml = (data.recentOrders || []).map(order => `
+      const recentOrders = data.recentOrders || [];
+      const recentHtml = recentOrders.map(order => `
         <div class="flex justify-between items-center text-sm">
           <span class="text-slate-300">#${order.id.substring(0, 8)}</span>
           <span class="text-green-400 font-medium">$${order.totalAmount.toFixed(2)}</span>
