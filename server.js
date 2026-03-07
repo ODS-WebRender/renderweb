@@ -1,4 +1,4 @@
-// Enterprise-grade server for Old Dog Systems with Stripe payment integration
+// Enterprise-grade server for Old Dog Systems with multi-processor payment integration
 import 'dotenv/config';
 import http from 'http';
 import https from 'https';
@@ -6,16 +6,17 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { URL } from 'url';
-import Stripe from 'stripe';
 import * as db from './db.js';
 import * as auth from './auth.js';
 import * as email from './email.js';
 import * as invoice from './invoice.js';
+import { getPaymentProcessor } from './paymentProcessor.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Payment processing via Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
+// Payment processor (PayFast, Stripe, etc.) - configurable via PAYMENT_PROCESSOR env var
+const paymentProcessor = getPaymentProcessor();
+console.log(`Payment processor: ${process.env.PAYMENT_PROCESSOR || 'payfast'}`);
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -409,7 +410,7 @@ const server = http.createServer(async (req, res) => {
 
     // ===== CHECKOUT & PAYMENT =====
 
-    // POST /api/checkout - Create Stripe checkout session
+    // POST /api/checkout - Create checkout session (PayFast, Stripe, etc.)
     if (pathname === '/api/checkout' && req.method === 'POST') {
       const body = await parseBody(req);
       
@@ -429,52 +430,37 @@ const server = http.createServer(async (req, res) => {
         }
 
         const domainUrl = process.env.DOMAIN || 'http://localhost:3000';
-        const successUrl = `${domainUrl}/checkout-success.html`;
-        const cancelUrl = `${domainUrl}/shop.html`;
 
-        // Convert items to Stripe format
-        const lineItems = items.map(item => ({
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: item.name,
-              description: item.description,
-            },
-            unit_amount: Math.round(item.price * 100), // Convert to cents
-          },
-          quantity: item.quantity || 1,
-        }));
+        // Get checkout session from payment processor
+        const checkoutSession = await paymentProcessor.createCheckoutSession(
+          items,
+          customerEmail,
+          domainUrl
+        );
 
-        // Create Stripe checkout session
-        const session = await stripe.checkout.sessions.create({
-          payment_method_types: ['card'],
-          line_items: lineItems,
-          mode: 'payment',
-          customer_email: customerEmail,
-          success_url: successUrl,
-          cancel_url: cancelUrl,
-          metadata: {
-            customerEmail: customerEmail,
-          },
-        });
+        // Calculate total amount for order
+        const totalAmount = items.reduce((sum, item) => {
+          return sum + (item.price * (item.quantity || 1));
+        }, 0);
 
         // Create order in database (pending status)
         const order = db.createOrder({
-          stripeSessionId: session.id,
+          paymentSessionId: checkoutSession.checkoutId,
           customerEmail: customerEmail,
           customerName: customerEmail.split('@')[0],
           items: items,
-          totalAmount: session.amount_total / 100, // Convert back to dollars
-          currency: 'USD',
-          paymentProvider: 'stripe',
-          checkoutUrl: session.url
+          totalAmount: totalAmount,
+          currency: 'ZAR', // PayFast uses ZAR for South Africa
+          paymentProvider: process.env.PAYMENT_PROCESSOR || 'payfast',
+          checkoutUrl: checkoutSession.checkoutUrl
         });
 
         sendJSON(res, { 
           success: true,
-          checkoutUrl: session.url,
-          checkoutId: session.id,
-          orderId: order.id
+          checkoutUrl: checkoutSession.checkoutUrl,
+          checkoutId: checkoutSession.checkoutId,
+          orderId: order.id,
+          provider: checkoutSession.provider
         }, 200);
       } catch (error) {
         console.error('Checkout error:', error);
@@ -487,140 +473,122 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    // POST /api/webhook - Stripe webhooks
+    // POST /api/webhook - Payment processor webhooks (PayFast IPN, Stripe, etc.)
     if (pathname === '/api/webhook' && req.method === 'POST') {
       const body = await parseBody(req);
       
       try {
-        const sig = req.headers['stripe-signature'];
-        const event = stripe.webhooks.constructEvent(
-          JSON.stringify(body),
-          sig,
-          process.env.STRIPE_WEBHOOK_SECRET || 'whsec_test'
-        );
+        const webhookResult = await paymentProcessor.handleWebhook(body, req.headers);
 
-        console.log(`Webhook event: ${event.type}`);
+        if (!webhookResult.success) {
+          console.log(`Webhook validation failed: ${webhookResult.error}`);
+          sendJSON(res, { received: true }, 200); // Always return 200 to payment processor
+          return;
+        }
 
-        // Handle different event types
-        switch (event.type) {
-          case 'checkout.session.completed': {
-            const session = event.data.object;
-            
-            // Find order by session ID
-            const orders = db.getAllOrders();
-            const order = orders.find(o => o.stripeSessionId === session.id);
-            
-            if (order) {
-              // Update order status to completed
-              db.updateOrder(order.id, {
-                status: 'completed',
-                stripePaymentIntentId: session.payment_intent
-              });
+        console.log(`Webhook event: ${webhookResult.type}`);
+        
+        // Handle payment completion
+        if (webhookResult.type === 'payment_complete') {
 
-              // Define which products receive license keys
-              const licensedProducts = [
-                'rough-diamond-studio-alpha',
-                'bop-journal-founders',
-                'bop-playbook-systems',
-                'rds-standard-templates',
-                'podcast-editing-masterclass',
-                'cpm-ai-suite-beta',
-                'propaI-pro-beta',
-                'small-ai-toolkit',
-                'buildenv-academy',
-                'revenue-engine'
-              ];
+          const orders = db.getAllOrders();
+          
+          // Find order by session/payment ID
+          let order = orders.find(o => 
+            o.paymentSessionId === webhookResult.checkoutId || 
+            o.paymentSessionId === webhookResult.transactionId
+          );
+          
+          // Fallback: search by customer email if order not found
+          if (!order) {
+            order = orders.find(o => o.customerEmail === webhookResult.customerEmail);
+          }
+          
+          if (order) {
+            // Update order status to completed
+            db.updateOrder(order.id, {
+              status: 'completed',
+              paymentId: webhookResult.transactionId || webhookResult.checkoutId
+            });
 
-              // Generate license keys for applicable products
-              const licenseKeys = {};
-              order.items.forEach(item => {
-                if (licensedProducts.includes(item.id) || item.category === 'software') {
-                  try {
-                    const license = db.createLicense(item.id, order.id, session.customer_email);
-                    licenseKeys[item.id] = license.key;
-                    console.log(`License generated: ${item.id} -> ${license.key.substring(0, 20)}...`);
-                  } catch (err) {
-                    console.error(`Failed to generate license for ${item.id}:`, err.message);
-                  }
-                }
-              });
+            // Define which products receive license keys
+            const licensedProducts = [
+              'rough-diamond-studio-alpha',
+              'bop-journal-founders',
+              'bop-playbook-systems',
+              'rds-standard-templates',
+              'podcast-editing-masterclass',
+              'cpm-ai-suite-beta',
+              'propaI-pro-beta',
+              'small-ai-toolkit',
+              'buildenv-academy',
+              'revenue-engine'
+            ];
 
-              // Update order with license keys
-              if (Object.keys(licenseKeys).length > 0) {
-                db.updateOrder(order.id, { licenseKeys });
-              }
-
-              // Get updated order with license keys
-              const updatedOrder = db.getOrder(order.id);
-
-              // Generate invoice asynchronously
-              try {
-                await invoice.generateInvoicePDF(updatedOrder);
-                console.log(`Invoice generated: ${updatedOrder.id}`);
-              } catch (err) {
-                console.error('Invoice generation error:', err);
-              }
-
-              // Send order confirmation email
-              try {
-                await email.sendOrderConfirmation(updatedOrder);
-                console.log(`Order confirmation sent to ${updatedOrder.customerEmail}`);
-              } catch (err) {
-                console.error('Email sending error:', err);
-              }
-
-              // Send license key emails if applicable
-              if (updatedOrder.licenseKeys && Object.keys(updatedOrder.licenseKeys).length > 0) {
+            // Generate license keys for applicable products
+            const licenseKeys = {};
+            order.items.forEach(item => {
+              if (licensedProducts.includes(item.id) || item.category === 'software') {
                 try {
-                  for (const [productId, licenseKey] of Object.entries(updatedOrder.licenseKeys)) {
-                    const item = updatedOrder.items.find(i => i.id === productId);
-                    const productName = item ? item.name : productId;
-                    await email.sendLicenseKey(updatedOrder.customerEmail, productName, licenseKey);
-                    console.log(`License key email sent to ${updatedOrder.customerEmail}: ${productId}`);
-                  }
+                  const license = db.createLicense(item.id, order.id, webhookResult.customerEmail);
+                  licenseKeys[item.id] = license.key;
+                  console.log(`License generated: ${item.id} -> ${license.key.substring(0, 20)}...`);
                 } catch (err) {
-                  console.error('License key email error:', err);
+                  console.error(`Failed to generate license for ${item.id}:`, err.message);
                 }
               }
+            });
 
-              // Send admin notification
-              try {
-                await email.sendAdminNotification(updatedOrder);
-                console.log(`Admin notification sent for order ${updatedOrder.id}`);
-              } catch (err) {
-                console.error('Admin notification error:', err);
-              }
-
-              console.log(`✓ Order ${order.id} completed - ${Object.keys(licenseKeys).length} licenses generated`);
+            // Update order with license keys
+            if (Object.keys(licenseKeys).length > 0) {
+              db.updateOrder(order.id, { licenseKeys });
             }
-            break;
-          }
 
-          case 'checkout.session.async_payment_failed': {
-            const session = event.data.object;
-            console.log(`Payment failed for session ${session.id}`);
-            break;
-          }
+            // Get updated order with license keys
+            const updatedOrder = db.getOrder(order.id);
 
-          case 'charge.refunded': {
-            const charge = event.data.object;
-            console.log(`Charge refunded: ${charge.id}`);
-            
-            // Find and update order
-            const orders = db.getAllOrders();
-            const order = orders.find(o => o.stripePaymentIntentId === charge.payment_intent);
-            
-            if (order) {
-              db.updateOrder(order.id, { status: 'refunded' });
-              
+            // Generate invoice asynchronously
+            try {
+              await invoice.generateInvoicePDF(updatedOrder);
+              console.log(`Invoice generated: ${updatedOrder.id}`);
+            } catch (err) {
+              console.error('Invoice generation error:', err);
+            }
+
+            // Send order confirmation email
+            try {
+              await email.sendOrderConfirmation(updatedOrder);
+              console.log(`Order confirmation sent to ${updatedOrder.customerEmail}`);
+            } catch (err) {
+              console.error('Email sending error:', err);
+            }
+
+            // Send license key emails if applicable
+            if (updatedOrder.licenseKeys && Object.keys(updatedOrder.licenseKeys).length > 0) {
               try {
-                await email.sendRefundNotification(order);
+                for (const [productId, licenseKey] of Object.entries(updatedOrder.licenseKeys)) {
+                  const item = updatedOrder.items.find(i => i.id === productId);
+                  const productName = item ? item.name : productId;
+                  await email.sendLicenseKey(updatedOrder.customerEmail, productName, licenseKey);
+                  console.log(`License key email sent to ${updatedOrder.customerEmail}: ${productId}`);
+                }
               } catch (err) {
-                console.error('Refund email error:', err);
+                console.error('License key email error:', err);
               }
             }
-            break;
+
+            // Send admin notification
+            try {
+              await email.sendAdminNotification(updatedOrder);
+              console.log(`Admin notification sent for order ${updatedOrder.id}`);
+            } catch (err) {
+              console.error('Admin notification error:', err);
+            }
+
+            console.log(`✓ Order ${order.id} completed - ${Object.keys(licenseKeys).length} licenses generated`);
           }
+        } else if (webhookResult.type === 'payment_failed') {
+          console.log(`Payment failed: ${webhookResult.reason}`);
         }
 
         sendJSON(res, { received: true }, 200);
