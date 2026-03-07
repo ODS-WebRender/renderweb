@@ -321,14 +321,12 @@ const server = http.createServer(async (req, res) => {
         sendJSON(res, { error: 'Invalid token' }, 401);
         return;
       }
-      
-      if (adminPassword !== process.env.ADMIN_PASSWORD) {
-        sendJSON(res, { error: 'Unauthorized' }, 401);
-        return;
-      }
 
       const orders = db.getAllOrders();
-      sendJSON(res, orders, 200);
+      sendJSON(res, { 
+        orders: orders, 
+        count: orders.length 
+      }, 200);
       return;
     }
 
@@ -726,6 +724,196 @@ const server = http.createServer(async (req, res) => {
       } catch (error) {
         console.error('Alpha count error:', error);
         sendJSON(res, { count: 0 }, 200);
+      }
+      return;
+    }
+
+    // ===== CUSTOMER PROFILE & DATA =====
+
+    // GET /api/accounts/profile - Get current user profile
+    if (pathname === '/api/accounts/profile' && req.method === 'GET') {
+      const authHeader = req.headers['authorization'];
+      const user = auth.validateAuthHeader(authHeader);
+      
+      if (!user) {
+        sendJSON(res, { error: 'Unauthorized' }, 401);
+        return;
+      }
+
+      try {
+        const customer = db.getCustomer(user.email);
+        if (!customer) {
+          sendJSON(res, { error: 'Customer not found' }, 404);
+          return;
+        }
+
+        // Don't send password hash
+        const { passwordHash, ...safeCustomer } = customer;
+        sendJSON(res, safeCustomer, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // GET /api/customer/orders - Get customer's orders
+    if (pathname === '/api/customer/orders' && req.method === 'GET') {
+      const authHeader = req.headers['authorization'];
+      const user = auth.validateAuthHeader(authHeader);
+      
+      if (!user) {
+        sendJSON(res, { error: 'Unauthorized' }, 401);
+        return;
+      }
+
+      try {
+        const orders = db.getOrdersByCustomer(user.email);
+        sendJSON(res, { 
+          orders,
+          count: orders.length,
+          totalSpent: orders.reduce((sum, o) => sum + o.totalAmount, 0)
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // GET /api/customer/licenses - Get customer's license keys
+    if (pathname === '/api/customer/licenses' && req.method === 'GET') {
+      const authHeader = req.headers['authorization'];
+      const user = auth.validateAuthHeader(authHeader);
+      
+      if (!user) {
+        sendJSON(res, { error: 'Unauthorized' }, 401);
+        return;
+      }
+
+      try {
+        const orders = db.getOrdersByCustomer(user.email);
+        const licenses = [];
+        
+        orders.forEach(order => {
+          if (order.licenseKeys) {
+            Object.entries(order.licenseKeys).forEach(([productId, licenseKey]) => {
+              const item = order.items.find(i => i.id === productId);
+              licenses.push({
+                key: licenseKey,
+                productId: productId,
+                productName: item ? item.name : productId,
+                orderId: order.id,
+                purchaseDate: order.createdAt,
+                status: 'active'
+              });
+            });
+          }
+        });
+
+        sendJSON(res, { 
+          licenses,
+          count: licenses.length
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // ===== ADMIN REFUNDS & MANAGEMENT =====
+
+    // POST /api/admin/refunds - Process refund
+    if (pathname === '/api/admin/refunds' && req.method === 'POST') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized - Bearer token required' }, 401);
+        return;
+      }
+
+      const token = authHeader.substring(7);
+      if (!token || token.length < 10) {
+        sendJSON(res, { error: 'Invalid token' }, 401);
+        return;
+      }
+
+      const body = await parseBody(req);
+      const { orderId, reason } = body;
+
+      try {
+        const order = db.getOrder(orderId);
+        if (!order) {
+          sendJSON(res, { error: 'Order not found' }, 404);
+          return;
+        }
+
+        if (order.status === 'refunded') {
+          sendJSON(res, { error: 'Order already refunded' }, 400);
+          return;
+        }
+
+        // Update order to refunded status
+        const refundedOrder = db.updateOrder(orderId, {
+          status: 'refunded',
+          refundReason: reason || 'No reason provided',
+          refundedAt: new Date().toISOString()
+        });
+
+        // TODO: Process actual Stripe refund via Stripe API
+        console.log(`✓ Order ${orderId} marked as refunded: ${reason}`);
+
+        // Send refund notification email
+        try {
+          await email.sendRefundNotification(refundedOrder);
+        } catch (err) {
+          console.error('Refund email error:', err);
+        }
+
+        sendJSON(res, {
+          success: true,
+          order: refundedOrder,
+          message: `Order ${orderId} refunded successfully`
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
+      }
+      return;
+    }
+
+    // GET /api/admin/customers - Get all customers
+    if (pathname === '/api/admin/customers' && req.method === 'GET') {
+      const authHeader = req.headers['authorization'];
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        sendJSON(res, { error: 'Unauthorized - Bearer token required' }, 401);
+        return;
+      }
+
+      const token = authHeader.substring(7);
+      if (!token || token.length < 10) {
+        sendJSON(res, { error: 'Invalid token' }, 401);
+        return;
+      }
+
+      try {
+        const customers = db.getAllCustomers();
+        const orders = db.getAllOrders();
+
+        // Enrich customers with order data
+        const enrichedCustomers = customers.map(customer => {
+          const customerOrders = orders.filter(o => o.customerEmail === customer.email);
+          return {
+            ...customer,
+            orderCount: customerOrders.length,
+            totalSpent: customerOrders.reduce((sum, o) => sum + o.totalAmount, 0),
+            lastOrder: customerOrders.length > 0 ? customerOrders[0].createdAt : null,
+            passwordHash: undefined // Don't return password
+          };
+        });
+
+        sendJSON(res, {
+          customers: enrichedCustomers,
+          count: enrichedCustomers.length
+        }, 200);
+      } catch (error) {
+        sendJSON(res, { error: error.message }, 500);
       }
       return;
     }

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Old Dog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950">
+  <!-- Login Screen -->
+  <div id="login-screen" class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+      <div class="rounded-2xl border border-slate-700/50 bg-slate-900/50 backdrop-blur-xl px-8 py-12">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-white mb-2">Admin Access</h1>
+          <p class="text-slate-400 text-sm">Enter your admin credentials to continue</p>
+        </div>
+
+        <div class="space-y-4">
+          <input
+            id="admin-password"
+            type="password"
+            placeholder="Admin Password"
+            class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700/50 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500/50"
+          />
+          <button
+            onclick="adminLogin()"
+            class="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold hover:from-sky-700 hover:to-blue-700 transition-all"
+          >
+            Login
+          </button>
+        </div>
+
+        <div id="login-error" class="hidden mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/50 text-red-300 text-sm">
+          Invalid credentials
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Screen -->
+  <div id="dashboard-screen" class="hidden min-h-screen bg-slate-950">
+    <!-- Header -->
+    <div class="border-b border-slate-700/50 bg-slate-900/50 backdrop-blur-xl sticky top-0 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-white">Admin Dashboard</h1>
+          <p class="text-slate-400 text-sm mt-1">Manage orders, customers, and analytics</p>
+        </div>
+        <button
+          onclick="adminLogout()"
+          class="px-4 py-2 rounded-lg bg-slate-700/50 text-slate-200 hover:bg-slate-600 transition-colors text-sm font-medium"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="border-b border-slate-700/50 bg-slate-900/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-2">
+        <button onclick="switchTab('orders')" class="tab-button active px-4 py-4 text-sm font-medium text-slate-300 hover:text-white border-b-2 border-transparent hover:border-sky-500/50 transition-colors">
+          Orders
+        </button>
+        <button onclick="switchTab('customers')" class="tab-button px-4 py-4 text-sm font-medium text-slate-300 hover:text-white border-b-2 border-transparent hover:border-sky-500/50 transition-colors">
+          Customers
+        </button>
+        <button onclick="switchTab('analytics')" class="tab-button px-4 py-4 text-sm font-medium text-slate-300 hover:text-white border-b-2 border-transparent hover:border-sky-500/50 transition-colors">
+          Analytics
+        </button>
+        <button onclick="switchTab('refunds')" class="tab-button px-4 py-4 text-sm font-medium text-slate-300 hover:text-white border-b-2 border-transparent hover:border-sky-500/50 transition-colors">
+          Refunds
+        </button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Orders Tab -->
+      <div id="orders-tab" class="tab-content">
+        <div class="mb-6 flex items-center gap-4">
+          <input
+            id="orders-search"
+            type="text"
+            placeholder="Search order ID or email..."
+            class="flex-1 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500/50"
+            onkeyup="filterOrders()"
+          />
+          <button onclick="loadOrders()" class="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700 transition-colors text-sm font-medium">
+            Refresh
+          </button>
+        </div>
+
+        <div class="grid gap-4" id="orders-grid"></div>
+        <div id="orders-empty" class="text-center py-12">
+          <p class="text-slate-400">No orders found</p>
+        </div>
+      </div>
+
+      <!-- Customers Tab -->
+      <div id="customers-tab" class="tab-content hidden">
+        <div class="mb-6 flex items-center gap-4">
+          <input
+            id="customers-search"
+            type="text"
+            placeholder="Search by email..."
+            class="flex-1 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500/50"
+            onkeyup="filterCustomers()"
+          />
+          <button onclick="loadCustomers()" class="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700 transition-colors text-sm font-medium">
+            Refresh
+          </button>
+        </div>
+
+        <div class="overflow-x-auto rounded-lg border border-slate-700/50">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-800/50">
+              <tr class="border-b border-slate-700/50">
+                <th class="px-6 py-3 text-left font-semibold text-slate-300">Email</th>
+                <th class="px-6 py-3 text-right font-semibold text-slate-300">Orders</th>
+                <th class="px-6 py-3 text-right font-semibold text-slate-300">Total Spent</th>
+                <th class="px-6 py-3 text-right font-semibold text-slate-300">Last Order</th>
+              </tr>
+            </thead>
+            <tbody id="customers-table">
+              <tr class="text-center py-8">
+                <td colspan="4" class="px-6 py-8 text-slate-400">Loading customers...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Analytics Tab -->
+      <div id="analytics-tab" class="tab-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+            <p class="text-slate-400 text-sm mb-2">Total Revenue</p>
+            <p id="analytics-revenue" class="text-3xl font-bold text-green-400">$0.00</p>
+          </div>
+          <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+            <p class="text-slate-400 text-sm mb-2">Total Orders</p>
+            <p id="analytics-orders" class="text-3xl font-bold text-sky-400">0</p>
+          </div>
+          <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+            <p class="text-slate-400 text-sm mb-2">Total Customers</p>
+            <p id="analytics-customers" class="text-3xl font-bold text-purple-400">0</p>
+          </div>
+          <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+            <p class="text-slate-400 text-sm mb-2">Refunded</p>
+            <p id="analytics-refunded" class="text-3xl font-bold text-red-400">$0.00</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">Top Products</h3>
+            <div id="analytics-products" class="space-y-3">
+              <p class="text-slate-400">Loading products...</p>
+            </div>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">Recent Orders</h3>
+            <div id="analytics-recent" class="space-y-3">
+              <p class="text-slate-400">Loading orders...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refunds Tab -->
+      <div id="refunds-tab" class="tab-content hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Refund Form -->
+          <div class="lg:col-span-1">
+            <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+              <h3 class="text-lg font-semibold text-white mb-4">Process Refund</h3>
+              <div class="space-y-4">
+                <input
+                  id="refund-order-id"
+                  type="text"
+                  placeholder="Order ID"
+                  class="w-full px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500/50"
+                />
+                <textarea
+                  id="refund-reason"
+                  placeholder="Refund reason..."
+                  class="w-full px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500/50 h-24 resize-none"
+                ></textarea>
+                <button
+                  onclick="processRefund()"
+                  class="w-full px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors font-medium"
+                >
+                  Process Refund
+                </button>
+              </div>
+              <div id="refund-message" class="mt-4 text-sm text-slate-400"></div>
+            </div>
+          </div>
+
+          <!-- Refund History -->
+          <div class="lg:col-span-2">
+            <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+              <h3 class="text-lg font-semibold text-white mb-4">Refund History</h3>
+              <div id="refunds-list" class="space-y-3">
+                <p class="text-slate-400">No refunds processed yet</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = window.location.origin;
+    let adminToken = null;
+    let allOrders = [];
+    let allCustomers = [];
+
+    // Initialize
+    window.addEventListener('load', () => {
+      adminToken = localStorage.getItem('admin_token');
+      if (adminToken) {
+        showDashboard();
+      }
+    });
+
+    // Admin Login
+    async function adminLogin() {
+      const password = document.getElementById('admin-password').value;
+      if (!password) return;
+
+      try {
+        const response = await fetch(`${API_BASE}/api/admin/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          document.getElementById('login-error').classList.remove('hidden');
+          return;
+        }
+
+        adminToken = data.token;
+        localStorage.setItem('admin_token', adminToken);
+        showDashboard();
+      } catch (error) {
+        console.error('Login error:', error);
+        document.getElementById('login-error').classList.remove('hidden');
+      }
+    }
+
+    // Admin Logout
+    function adminLogout() {
+      adminToken = null;
+      localStorage.removeItem('admin_token');
+      document.getElementById('login-screen').classList.remove('hidden');
+      document.getElementById('dashboard-screen').classList.add('hidden');
+      document.getElementById('admin-password').value = '';
+      document.getElementById('login-error').classList.add('hidden');
+    }
+
+    // Show Dashboard
+    function showDashboard() {
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('dashboard-screen').classList.remove('hidden');
+      loadOrders();
+      loadCustomers();
+      loadAnalytics();
+    }
+
+    // Switch Tab
+    function switchTab(tabName) {
+      event.preventDefault();
+      
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+      });
+
+      // Remove active from all buttons
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active', 'border-sky-500', 'text-white');
+        btn.classList.add('border-transparent', 'text-slate-300');
+      });
+
+      // Show selected tab
+      document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+
+      // Mark button as active
+      event.target.classList.add('active', 'border-sky-500', 'text-white');
+      event.target.classList.remove('border-transparent', 'text-slate-300');
+
+      // Reload data
+      if (tabName === 'analytics') loadAnalytics();
+    }
+
+    // Load Orders
+    async function loadOrders() {
+      try {
+        const response = await fetch(`${API_BASE}/api/admin/orders`, {
+          headers: { 'Authorization': `Bearer ${adminToken}` }
+        });
+
+        if (!response.ok) {
+          console.error('Error loading orders');
+          return;
+        }
+
+        const data = await response.json();
+        allOrders = data.orders || [];
+        displayOrders(allOrders);
+      } catch (error) {
+        console.error('Orders error:', error);
+      }
+    }
+
+    // Display Orders
+    function displayOrders(orders) {
+      const ordersGrid = document.getElementById('orders-grid');
+      const ordersEmpty = document.getElementById('orders-empty');
+
+      if (!orders || orders.length === 0) {
+        ordersGrid.innerHTML = '';
+        ordersEmpty.classList.remove('hidden');
+        return;
+      }
+
+      ordersEmpty.classList.add('hidden');
+      ordersGrid.innerHTML = orders.map(order => `
+        <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <p class="font-semibold text-white">Order #${order.id.substring(0, 12)}</p>
+              <p class="text-sm text-slate-400">${order.customerEmail || 'Unknown'}</p>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-medium ${
+              order.status === 'completed' ? 'bg-emerald-500/10 text-emerald-300' :
+              order.status === 'refunded' ? 'bg-blue-500/10 text-blue-300' :
+              order.status === 'pending' ? 'bg-amber-500/10 text-amber-300' :
+              'bg-red-500/10 text-red-300'
+            }">
+              ${order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4 pb-4 border-t border-slate-700/30 pt-4">
+            <div>
+              <p class="text-xs text-slate-500">Order Date</p>
+              <p class="text-sm text-slate-300">${new Date(order.createdAt).toLocaleDateString()}</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500">Total Amount</p>
+              <p class="text-sm font-semibold text-green-400">$${order.totalAmount.toFixed(2)}</p>
+            </div>
+          </div>
+
+          <div class="mb-4 pb-4 border-t border-slate-700/30 pt-4">
+            <p class="text-xs text-slate-500 mb-2">Items</p>
+            <div class="space-y-1">
+              ${order.items.map(item => `
+                <div class="text-sm text-slate-300">• ${item.name} (${item.displayPrice || '$' + item.price})</div>
+              `).join('')}
+            </div>
+          </div>
+
+          <button
+            onclick="openOrderDetails('${order.id}')"
+            class="w-full px-3 py-2 rounded-lg bg-slate-700/50 text-slate-200 hover:bg-slate-600 transition-colors text-sm font-medium"
+          >
+            View Details
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Filter Orders
+    function filterOrders() {
+      const search = document.getElementById('orders-search').value.toLowerCase();
+      const filtered = allOrders.filter(order =>
+        order.id.includes(search) ||
+        (order.customerEmail && order.customerEmail.includes(search))
+      );
+      displayOrders(filtered);
+    }
+
+    // Load Customers
+    async function loadCustomers() {
+      try {
+        const response = await fetch(`${API_BASE}/api/admin/customers`, {
+          headers: { 'Authorization': `Bearer ${adminToken}` }
+        });
+
+        if (!response.ok) {
+          console.error('Error loading customers');
+          return;
+        }
+
+        const data = await response.json();
+        allCustomers = data.customers || [];
+        displayCustomers(allCustomers);
+      } catch (error) {
+        console.error('Customers error:', error);
+      }
+    }
+
+    // Display Customers
+    function displayCustomers(customers) {
+      const table = document.getElementById('customers-table');
+
+      if (!customers || customers.length === 0) {
+        table.innerHTML = '<tr><td colspan="4" class="px-6 py-8 text-center text-slate-400">No customers found</td></tr>';
+        return;
+      }
+
+      table.innerHTML = customers.map(customer => `
+        <tr class="border-b border-slate-700/50 hover:bg-slate-800/30 transition-colors">
+          <td class="px-6 py-4">
+            <p class="text-slate-300 font-medium">${customer.email}</p>
+            <p class="text-xs text-slate-500 mt-1">${customer.name || 'N/A'}</p>
+          </td>
+          <td class="px-6 py-4 text-right text-slate-300">${customer.orderCount || 0}</td>
+          <td class="px-6 py-4 text-right font-semibold text-green-400">$${(customer.totalSpent || 0).toFixed(2)}</td>
+          <td class="px-6 py-4 text-right text-slate-400">
+            ${customer.lastOrder ? new Date(customer.lastOrder).toLocaleDateString() : 'N/A'}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Filter Customers
+    function filterCustomers() {
+      const search = document.getElementById('customers-search').value.toLowerCase();
+      const filtered = allCustomers.filter(customer =>
+        customer.email.includes(search)
+      );
+      displayCustomers(filtered);
+    }
+
+    // Load Analytics
+    async function loadAnalytics() {
+      try {
+        const response = await fetch(`${API_BASE}/api/admin/dashboard`, {
+          headers: { 'Authorization': `Bearer ${adminToken}` }
+        });
+
+        if (!response.ok) {
+          console.error('Error loading analytics');
+          return;
+        }
+
+        const data = await response.json();
+        displayAnalytics(data);
+      } catch (error) {
+        console.error('Analytics error:', error);
+      }
+    }
+
+    // Display Analytics
+    function displayAnalytics(data) {
+      document.getElementById('analytics-revenue').textContent = '$' + (data.totalRevenue || 0).toFixed(2);
+      document.getElementById('analytics-orders').textContent = (data.totalOrders || 0).toString();
+      document.getElementById('analytics-customers').textContent = (data.totalCustomers || 0).toString();
+      document.getElementById('analytics-refunded').textContent = '$' + (data.refundedAmount || 0).toFixed(2);
+
+      // Top Products
+      const productsHtml = (data.topProducts || []).map(product => `
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-300">${product.name}</span>
+          <span class="text-slate-500">${product.count} sales</span>
+        </div>
+      `).join('');
+      document.getElementById('analytics-products').innerHTML = productsHtml || '<p class="text-slate-400">No sales yet</p>';
+
+      // Recent Orders
+      const recentHtml = (data.recentOrders || []).map(order => `
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-300">#${order.id.substring(0, 8)}</span>
+          <span class="text-green-400 font-medium">$${order.totalAmount.toFixed(2)}</span>
+        </div>
+      `).join('');
+      document.getElementById('analytics-recent').innerHTML = recentHtml || '<p class="text-slate-400">No orders yet</p>';
+    }
+
+    // Process Refund
+    async function processRefund() {
+      const orderId = document.getElementById('refund-order-id').value;
+      const reason = document.getElementById('refund-reason').value;
+      const messageDiv = document.getElementById('refund-message');
+
+      if (!orderId || !reason) {
+        messageDiv.textContent = 'Please fill in all fields';
+        messageDiv.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_BASE}/api/admin/refunds`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${adminToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ orderId, reason })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          messageDiv.textContent = data.error || 'Refund failed';
+          messageDiv.classList.remove('text-slate-400');
+          messageDiv.classList.add('text-red-400');
+          return;
+        }
+
+        messageDiv.textContent = 'Refund processed successfully! Email sent to customer.';
+        messageDiv.classList.remove('text-red-400');
+        messageDiv.classList.add('text-emerald-400');
+
+        // Clear form
+        document.getElementById('refund-order-id').value = '';
+        document.getElementById('refund-reason').value = '';
+
+        // Reload orders
+        loadOrders();
+      } catch (error) {
+        console.error('Refund error:', error);
+        messageDiv.textContent = 'Refund error: ' + error.message;
+        messageDiv.classList.add('text-red-400');
+      }
+    }
+
+    // Open Order Details
+    function openOrderDetails(orderId) {
+      const order = allOrders.find(o => o.id === orderId);
+      if (!order) return;
+
+      alert(`Order #${order.id}\n\nCustomer: ${order.customerEmail}\nStatus: ${order.status}\nTotal: $${order.totalAmount}\n\nEmail: ${order.customerEmail}`);
+    }
+  </script>
+</body>
+</html>

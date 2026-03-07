@@ -18,7 +18,7 @@
   </head>
   <body class="h-full text-slate-100 antialiased">
     <div class="min-h-screen flex flex-col">
-      <!-- Navigation -->
+      <!-- Navigation (Fixed Header) -->
       <header
         class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
       >
@@ -28,15 +28,16 @@
               <img
                 src="./images/dog-logo.png"
                 alt="Old Dog Systems Logo"
-                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
               />
               <div class="flex flex-col">
                 <span
                   data-brand
-                  class="text-sm font-semibold tracking-tight text-slate-100"
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
                 ></span>
-                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
-                  >Dashboard</span
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Customer Dashboard</span
                 >
               </div>
             </a>
@@ -44,12 +45,12 @@
 
           <!-- Desktop nav -->
           <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
-            <a href="./index.html" class="nav-underline">Home</a>
-            <a href="./shop.html" class="nav-underline">Shop</a>
-            <a href="./dashboard.html" class="nav-underline" aria-current="page">Dashboard</a>
+            <a href="./index.html" class="nav-underline hover:text-sky-300">Home</a>
+            <a href="./shop.html" class="nav-underline hover:text-sky-300">Shop</a>
+            <a href="./dashboard.html" class="nav-underline text-sky-300" aria-current="page">Dashboard</a>
             <button
               onclick="logout()"
-              class="rounded-full border border-slate-700 px-4 py-2 text-sm hover:border-red-500 hover:text-red-400 transition-colors"
+              class="rounded-lg bg-slate-700/50 px-4 py-2 text-xs font-medium text-slate-200 hover:bg-slate-600 transition-colors"
             >
               Logout
             </button>
@@ -69,97 +70,227 @@
         </nav>
 
         <!-- Mobile nav -->
-        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
+        <div id="mobile-nav" class="hidden mx-auto mt-2 max-w-6xl px-4 pb-3 md:hidden">
           <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
-            <a href="./index.html" class="block">Home</a>
-            <a href="./shop.html" class="block">Shop</a>
-            <a href="./dashboard.html" class="block" aria-current="page">Dashboard</a>
-            <button onclick="logout()" class="w-full text-left text-red-400 hover:text-red-300">Logout</button>
+            <a href="./index.html" class="block hover:text-sky-300">Home</a>
+            <a href="./shop.html" class="block hover:text-sky-300">Shop</a>
+            <a href="./dashboard.html" class="block text-sky-300" aria-current="page">Dashboard</a>
+            <button onclick="logout()" class="block w-full text-left text-slate-400 hover:text-slate-200">Logout</button>
           </div>
         </div>
       </header>
 
-      <!-- Main -->
+      <!-- Main Content -->
       <main class="flex-1">
-        <!-- Hero -->
-        <section class="relative overflow-hidden border-b border-slate-800/80">
-          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-            <h1 class="text-3xl sm:text-4xl font-bold text-slate-50 mb-2">Your Dashboard</h1>
-            <p id="user-email" class="text-slate-400">Loading...</p>
+        <!-- Auth Check / Loading State -->
+        <div id="auth-check" class="mx-auto max-w-6xl px-4 py-8">
+          <div class="card-glass rounded-2xl border border-slate-700/60 p-8 text-center">
+            <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-slate-600 border-t-sky-400"></div>
+            <p class="mt-4 text-slate-400">Verifying authentication...</p>
           </div>
-        </section>
+        </div>
 
-        <!-- Dashboard Content -->
-        <section class="bg-slate-950/50">
-          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-            <!-- Stats Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                  Total Purchases
-                </p>
-                <p id="stat-purchases" class="text-3xl font-bold text-sky-400">0</p>
-              </div>
-
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                  Total Spent
-                </p>
-                <p id="stat-spent" class="text-3xl font-bold text-emerald-400">$0.00</p>
-              </div>
-
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                  License Keys
-                </p>
-                <p id="stat-licenses" class="text-3xl font-bold text-purple-400">0</p>
-              </div>
-            </div>
-
-            <!-- Orders Section -->
-            <div class="mb-12">
-              <h2 class="text-2xl font-bold text-slate-50 mb-6">Your Orders</h2>
-
-              <div id="orders-empty" class="card-glass rounded-2xl border border-slate-700/60 p-8 text-center">
-                <p class="text-slate-400">No orders yet. <a href="./shop.html" class="text-sky-400 hover:text-sky-300">Browse the shop</a></p>
-              </div>
-
-              <div id="orders-list" class="space-y-4 hidden">
-                <!-- Orders rendered here -->
-              </div>
-            </div>
-
-            <!-- License Keys Section -->
-            <div id="licenses-section" class="hidden">
-              <h2 class="text-2xl font-bold text-slate-50 mb-6">Your License Keys</h2>
-              <div id="licenses-list" class="space-y-4">
-                <!-- License keys rendered here -->
-              </div>
-            </div>
-
-            <!-- Account Settings -->
-            <div class="border-t border-slate-700/50 pt-12">
-              <h2 class="text-2xl font-bold text-slate-50 mb-6">Account Settings</h2>
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6 space-y-4">
-                <div>
-                  <label class="block text-sm font-medium text-slate-200 mb-2">Email Notifications</label>
-                  <label class="flex items-center gap-2">
-                    <input type="checkbox" id="email-notifications" checked class="rounded border-slate-600 bg-slate-800" />
-                    <span class="text-sm text-slate-400">Receive email updates about your orders</span>
-                  </label>
+        <!-- Dashboard Content (Hidden until auth verified) -->
+        <div id="dashboard-content" class="hidden">
+          <!-- Hero Section -->
+          <section class="border-b border-slate-800/80 bg-slate-900/50">
+            <div class="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Account Status</p>
+                  <p class="mt-3 text-2xl font-bold text-emerald-400">Active</p>
+                  <p class="mt-2 text-xs text-slate-500" id="account-email">Loading...</p>
                 </div>
+                <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Total Purchases</p>
+                  <p class="mt-3 text-2xl font-bold text-sky-400" id="total-purchases">0</p>
+                  <p class="mt-2 text-xs text-slate-500">Lifetime value</p>
+                </div>
+                <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Active Licenses</p>
+                  <p class="mt-3 text-2xl font-bold text-emerald-400" id="active-licenses">0</p>
+                  <p class="mt-2 text-xs text-slate-500">Ready to use</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tab Navigation -->
+          <section class="border-b border-slate-800/80 bg-slate-950">
+            <div class="mx-auto max-w-6xl px-4">
+              <div class="flex items-center gap-1 overflow-x-auto">
                 <button
-                  onclick="downloadAllInvoices()"
-                  class="rounded-lg bg-sky-500 px-6 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors"
+                  onclick="selectTab('orders')"
+                  class="tab-btn active px-6 py-4 text-sm font-medium text-sky-300 border-b-2 border-sky-300 whitespace-nowrap"
                 >
-                  Download All Invoices
+                  📦 My Orders
+                </button>
+                <button
+                  onclick="selectTab('licenses')"
+                  class="tab-btn px-6 py-4 text-sm font-medium text-slate-400 border-b-2 border-transparent hover:text-slate-200 whitespace-nowrap"
+                >
+                  🔑 License Keys
+                </button>
+                <button
+                  onclick="selectTab('downloads')"
+                  class="tab-btn px-6 py-4 text-sm font-medium text-slate-400 border-b-2 border-transparent hover:text-slate-200 whitespace-nowrap"
+                >
+                  ⬇️ Downloads
+                </button>
+                <button
+                  onclick="selectTab('settings')"
+                  class="tab-btn px-6 py-4 text-sm font-medium text-slate-400 border-b-2 border-transparent hover:text-slate-200 whitespace-nowrap"
+                >
+                  ⚙️ Settings
                 </button>
               </div>
             </div>
+          </section>
+
+          <!-- Tab Content -->
+          <section>
+            <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+              <!-- My Orders Tab -->
+              <div id="orders-tab" class="tab-content space-y-4">
+                <div class="mb-6">
+                  <h2 class="text-2xl font-bold text-slate-50 mb-2">My Orders</h2>
+                  <p class="text-sm text-slate-400">View all your purchases and their status</p>
+                </div>
+
+                <div id="orders-list" class="space-y-3">
+                  <!-- Order cards loaded here -->
+                </div>
+
+                <div id="orders-empty" class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-8 text-center hidden">
+                  <p class="text-slate-400">No orders yet.</p>
+                  <a href="./shop.html" class="inline-block mt-4 rounded-lg bg-sky-500 px-6 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors">
+                    Browse Shop
+                  </a>
+                </div>
+              </div>
+
+              <!-- License Keys Tab -->
+              <div id="licenses-tab" class="tab-content hidden space-y-4">
+                <div class="mb-6">
+                  <h2 class="text-2xl font-bold text-slate-50 mb-2">License Keys</h2>
+                  <p class="text-sm text-slate-400">Your product licenses for activation and support</p>
+                </div>
+
+                <div id="licenses-list" class="space-y-3">
+                  <!-- License cards loaded here -->
+                </div>
+
+                <div id="licenses-empty" class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-8 text-center hidden">
+                  <p class="text-slate-400">No licenses yet. Purchase a product to receive a license key.</p>
+                </div>
+              </div>
+
+              <!-- Downloads Tab -->
+              <div id="downloads-tab" class="tab-content hidden space-y-4">
+                <div class="mb-6">
+                  <h2 class="text-2xl font-bold text-slate-50 mb-2">Downloads</h2>
+                  <p class="text-sm text-slate-400">Download your purchased products and resources</p>
+                </div>
+
+                <div id="downloads-list" class="space-y-3">
+                  <!-- Download cards loaded here -->
+                </div>
+
+                <div id="downloads-empty" class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-8 text-center hidden">
+                  <p class="text-slate-400">No downloads available yet.</p>
+                </div>
+              </div>
+
+              <!-- Settings Tab -->
+              <div id="settings-tab" class="tab-content hidden space-y-6">
+                <div class="mb-6">
+                  <h2 class="text-2xl font-bold text-slate-50 mb-2">Account Settings</h2>
+                  <p class="text-sm text-slate-400">Manage your account preferences</p>
+                </div>
+
+                <!-- Email Settings -->
+                <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+                  <h3 class="text-lg font-semibold text-slate-50 mb-4">Email Address</h3>
+                  <div class="space-y-3">
+                    <div>
+                      <label class="block text-sm font-medium text-slate-200 mb-2">Current Email</label>
+                      <p id="settings-email" class="px-4 py-2 rounded-lg bg-slate-800/50 text-slate-300">Loading...</p>
+                    </div>
+                    <div class="rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-3 flex items-start gap-3">
+                      <span class="text-sm text-emerald-300">✓</span>
+                      <span class="text-xs text-emerald-300">Email verified</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Email Preferences -->
+                <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+                  <h3 class="text-lg font-semibold text-slate-50 mb-4">Email Preferences</h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" id="email-transactional" checked disabled class="rounded border-slate-600 bg-slate-800" />
+                      <span class="text-sm text-slate-200">Order & license confirmations <span class="text-xs text-slate-500">(Required)</span></span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" id="email-updates" class="rounded border-slate-600 bg-slate-800" />
+                      <span class="text-sm text-slate-200">Product updates & announcements</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" id="email-newsletter" class="rounded border-slate-600 bg-slate-800" />
+                      <span class="text-sm text-slate-200">Newsletter & tips</span>
+                    </label>
+
+                    <div class="pt-4 flex gap-3">
+                      <button onclick="saveEmailPreferences()" class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors">
+                        Save Preferences
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Password Settings -->
+                <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+                  <h3 class="text-lg font-semibold text-slate-50 mb-4">Password</h3>
+                  <p class="text-sm text-slate-400 mb-4">For security, we don't display your password. You can reset it if needed.</p>
+                  <button onclick="resetPassword()" class="rounded-lg border border-slate-600 px-4 py-2 text-sm font-medium text-slate-200 hover:border-slate-500 transition-colors">
+                    Reset Password
+                  </button>
+                </div>
+
+                <!-- Account Danger Zone -->
+                <div class="rounded-lg border border-red-500/20 bg-red-500/5 p-6">
+                  <h3 class="text-lg font-semibold text-red-300 mb-4">Danger Zone</h3>
+                  <p class="text-sm text-slate-400 mb-4">These actions cannot be undone.</p>
+                  <button onclick="deleteAccount()" class="rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-2 text-sm font-medium text-red-300 hover:bg-red-500/20 transition-colors">
+                    Delete Account
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Auth Error State -->
+        <div id="auth-error" class="hidden mx-auto max-w-6xl px-4 py-8">
+          <div class="card-glass rounded-2xl border border-red-500/20 bg-red-500/5 p-8 text-center space-y-6">
+            <div>
+              <h2 class="text-2xl font-bold text-red-300 mb-2">Authentication Required</h2>
+              <p class="text-sm text-slate-400">Please sign up or log in to access your dashboard.</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="./index.html#about" class="rounded-lg bg-sky-500 px-6 py-3 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors">
+                Sign Up
+              </a>
+              <button onclick="showLoginModal()" class="rounded-lg border border-slate-600 px-6 py-3 text-sm font-medium text-slate-200 hover:border-slate-500 transition-colors">
+                Sign In
+              </button>
+            </div>
           </div>
-        </section>
+        </div>
       </main>
 
+      <!-- Footer -->
       <footer class="border-t border-slate-800/80 py-6">
         <div
           class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
@@ -171,158 +302,343 @@
           <div class="flex items-center gap-4">
             <a href="./shop.html" class="hover:text-slate-300">Shop</a>
             <a href="./index.html#about" class="hover:text-slate-300">About</a>
-            <a href="./studio.html#alpha-access" class="hover:text-slate-300">Contact</a>
+            <a href="./index.html#about" class="hover:text-slate-300">Contact</a>
           </div>
         </div>
       </footer>
     </div>
 
-    <script>
-      // Authentication token from localStorage or sessionStorage
-      let authToken = localStorage.getItem('auth_token') || sessionStorage.getItem('auth_token');
+    <!-- Login Modal -->
+    <div id="login-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur p-4">
+      <div class="relative max-w-md w-full rounded-2xl border border-slate-700/60 bg-slate-900 p-6 sm:p-8 card-glass">
+        <button
+          onclick="document.getElementById('login-modal').classList.add('hidden')"
+          class="absolute top-4 right-4 text-slate-400 hover:text-slate-200"
+        >
+          ✕
+        </button>
 
-      // Initialize
+        <div class="mb-6">
+          <h2 class="text-2xl font-bold text-slate-50">Sign In</h2>
+          <p class="text-sm text-slate-400 mt-1">Access your dashboard and manage your account</p>
+        </div>
+
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-200 mb-2">Email</label>
+            <input
+              type="email"
+              id="login-email"
+              required
+              class="w-full px-4 py-2 rounded-lg border border-slate-600 bg-slate-800 text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:outline-none"
+              placeholder="you@example.com"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-200 mb-2">Password</label>
+            <input
+              type="password"
+              id="login-password"
+              required
+              class="w-full px-4 py-2 rounded-lg border border-slate-600 bg-slate-800 text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:outline-none"
+              placeholder="••••••••"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-lg bg-sky-500 px-4 py-3 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors disabled:opacity-50"
+          >
+            Sign In
+          </button>
+        </form>
+
+        <p class="text-xs text-slate-500 text-center mt-4">
+          Don't have an account? <a href="./index.html#about" class="text-sky-400 hover:text-sky-300">Sign up here</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Dashboard state
+      let currentUser = null;
+      let currentTab = 'orders';
+      const API_BASE = window.location.origin;
+
+      // Initialize on page load
       document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('year').textContent = new Date().getFullYear();
+        await checkAuthentication();
+        setupEventListeners();
+      });
 
-        // Check if user is logged in
-        if (!authToken) {
-          // Redirect to login (will be built in next phase)
-          window.location.href = './index.html?redirect=dashboard';
+      // Check authentication
+      async function checkAuthentication() {
+        const authHeader = localStorage.getItem('auth_token');
+        
+        if (!authHeader) {
+          showAuthError();
           return;
         }
 
-        await loadDashboard();
-      });
-
-      // Load dashboard data
-      async function loadDashboard() {
         try {
-          const response = await fetch('/api/dashboard', {
+          const response = await fetch(`${API_BASE}/api/accounts/profile`, {
             headers: {
-              'Authorization': `Bearer ${authToken}`
+              'Authorization': `Bearer ${authHeader}`,
+              'Content-Type': 'application/json'
             }
           });
 
           if (!response.ok) {
-            throw new Error('Failed to load dashboard');
+            throw new Error('Authentication failed');
           }
 
-          const data = await response.json();
-          renderDashboard(data);
-        } catch (error) {
-          console.error('Dashboard error:', error);
-          alert('Error loading dashboard. ' + error.message);
-          logout();
-        }
-      }
+          const user = await response.json();
+          currentUser = user;
 
-      // Render dashboard
-      function renderDashboard(data) {
-        // User info
-        document.getElementById('user-email').textContent = `Welcome, ${data.user.name || data.user.email}`;
+          // Fetch orders and licenses
+          const [ordersRes, licensesRes] = await Promise.all([
+            fetch(`${API_BASE}/api/customer/orders`, {
+              headers: { 'Authorization': `Bearer ${authHeader}` }
+            }),
+            fetch(`${API_BASE}/api/customer/licenses`, {
+              headers: { 'Authorization': `Bearer ${authHeader}` }
+            })
+          ]);
 
-        // Stats
-        document.getElementById('stat-purchases').textContent = data.stats.totalPurchases;
-        document.getElementById('stat-spent').textContent = `$${(data.stats.totalSpent / 100).toFixed(2)}`;
+          const ordersData = await ordersRes.json();
+          const licensesData = await licensesRes.json();
 
-        // Count license keys
-        let licenseCount = 0;
-        data.orders.forEach(order => {
-          licenseCount += Object.keys(order.licenseKeys || {}).length;
-        });
-        document.getElementById('stat-licenses').textContent = licenseCount;
-
-        // Orders
-        if (data.orders.length === 0) {
-          document.getElementById('orders-empty').classList.remove('hidden');
-          document.getElementById('orders-list').classList.add('hidden');
-        } else {
-          document.getElementById('orders-empty').classList.add('hidden');
-          document.getElementById('orders-list').classList.remove('hidden');
-          document.getElementById('orders-list').innerHTML = data.orders.map(order => `
-            <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Order ${order.id.slice(-8)}
-                  </p>
-                  <p class="text-sm text-slate-300 mt-1">${new Date(order.createdAt).toLocaleDateString()}</p>
-                </div>
-                <span class="rounded-full px-3 py-1 text-xs font-medium ${
-                  order.status === 'completed' 
-                    ? 'bg-emerald-500/10 text-emerald-300'
-                    : order.status === 'pending'
-                    ? 'bg-amber-500/10 text-amber-300'
-                    : 'bg-red-500/10 text-red-300'
-                }">
-                  ${order.status}
-                </span>
-              </div>
-
-              <div class="space-y-2 mb-4">
-                ${order.items.map(item => `
-                  <p class="text-sm text-slate-300">• ${item.name}</p>
-                `).join('')}
-              </div>
-
-              <div class="flex justify-between items-center pt-4 border-t border-slate-700/50">
-                <p class="font-semibold text-slate-50">$${(order.totalAmount / 100).toFixed(2)}</p>
-                <button
-                  onclick="downloadInvoice('${order.id}')"
-                  class="rounded px-3 py-1 text-xs bg-slate-700 hover:bg-slate-600 transition-colors"
-                >
-                  Download Invoice
-                </button>
-              </div>
-            </div>
-          `).join('');
-        }
-
-        // License keys
-        if (licenseCount > 0) {
-          document.getElementById('licenses-section').classList.remove('hidden');
-          const licensesHtml = [];
-          
-          data.orders.forEach(order => {
-            Object.entries(order.licenseKeys || {}).forEach(([productId, licenseKey]) => {
-              licensesHtml.push(`
-                <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                    ${productId.replace(/-/g, ' ')}
-                  </p>
-                  <p class="font-mono text-sm bg-slate-800/50 p-3 rounded border border-slate-600 break-all">
-                    ${licenseKey}
-                  </p>
-                  <p class="text-xs text-slate-400 mt-3">Valid for lifetime access</p>
-                </div>
-              `);
-            });
+          // Display dashboard
+          showDashboard({
+            user,
+            orders: ordersData.orders || [],
+            licenses: licensesData.licenses || [],
+            stats: {
+              totalPurchases: ordersData.count || 0,
+              totalSpent: ordersData.totalSpent || 0
+            }
           });
 
-          document.getElementById('licenses-list').innerHTML = licensesHtml.join('');
+          loadOrders(ordersData.orders || []);
+        } catch (error) {
+          console.error('Auth error:', error);
+          localStorage.removeItem('auth_token');
+          showAuthError();
         }
       }
 
-      // Logout
+      // Show dashboard
+      function showDashboard(data) {
+        document.getElementById('auth-check').classList.add('hidden');
+        document.getElementById('auth-error').classList.add('hidden');
+        document.getElementById('dashboard-content').classList.remove('hidden');
+
+        document.getElementById('account-email').textContent = currentUser.email;
+        document.getElementById('total-purchases').textContent = (data.stats?.totalPurchases || 0).toString();
+        document.getElementById('settings-email').textContent = currentUser.email;
+        document.getElementById('active-licenses').textContent = (data.licenses?.length || 0).toString();
+      }
+
+      // Show auth error
+      function showAuthError() {
+        document.getElementById('auth-check').classList.add('hidden');
+        document.getElementById('dashboard-content').classList.add('hidden');
+        document.getElementById('auth-error').classList.remove('hidden');
+      }
+
+      // Load orders
+      function loadOrders(orders) {
+        const ordersList = document.getElementById('orders-list');
+        const ordersEmpty = document.getElementById('orders-empty');
+
+        if (!orders || orders.length === 0) {
+          ordersList.innerHTML = '';
+          ordersEmpty.classList.remove('hidden');
+          return;
+        }
+
+        ordersEmpty.classList.add('hidden');
+        ordersList.innerHTML = orders.map(order => `
+          <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4 hover:border-slate-600 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <p class="text-sm font-semibold text-slate-50">Order #${order.id.substring(0, 12)}</p>
+                <p class="text-xs text-slate-500 mt-1">${new Date(order.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+              </div>
+              <span class="px-2 py-1 rounded-full text-xs font-medium ${
+                order.status === 'completed' ? 'bg-emerald-500/10 text-emerald-300' :
+                order.status === 'pending' ? 'bg-amber-500/10 text-amber-300' :
+                order.status === 'refunded' ? 'bg-blue-500/10 text-blue-300' :
+                'bg-red-500/10 text-red-300'
+              }">
+                ${order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+              </span>
+            </div>
+
+            <div class="space-y-2 mb-4 pb-4 border-t border-slate-700/30 pt-4">
+              ${order.items.map(item => `
+                <div class="flex justify-between items-center text-sm">
+                  <span class="text-slate-300">${item.name}</span>
+                  <span class="text-slate-400">${item.displayPrice || '$' + (item.price || 0).toFixed(2)}</span>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="flex items-center justify-between pt-4 border-t border-slate-700/30">
+              <div>
+                <p class="text-xs text-slate-500">Total</p>
+                <p class="text-lg font-bold text-sky-400">$${order.totalAmount.toFixed(2)}</p>
+              </div>
+              <button onclick="viewOrderDetails('${order.id}')" class="rounded-lg bg-slate-700/50 px-4 py-2 text-xs font-medium text-slate-200 hover:bg-slate-600 transition-colors">
+                Details
+              </button>
+            </div>
+          </div>
+        `).join('');
+
+        // Load licenses from orders
+        loadLicensesFromOrders(orders);
+      }
+
+      // Load licenses
+      function loadLicensesFromOrders(orders) {
+        const licensesList = document.getElementById('licenses-list');
+        const licensesEmpty = document.getElementById('licenses-empty');
+
+        const allLicenses = [];
+        orders.forEach(order => {
+          if (order.licenseKeys) {
+            Object.entries(order.licenseKeys).forEach(([productId, key]) => {
+              const item = order.items.find(i => i.id === productId);
+              allLicenses.push({
+                key,
+                productId,
+                productName: item ? item.name : productId,
+                orderDate: order.createdAt
+              });
+            });
+          }
+        });
+
+        if (allLicenses.length === 0) {
+          licensesList.innerHTML = '';
+          licensesEmpty.classList.remove('hidden');
+          return;
+        }
+
+        licensesEmpty.classList.add('hidden');
+        licensesList.innerHTML = allLicenses.map(license => `
+          <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-6">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <p class="text-sm font-semibold text-slate-50">${license.productName}</p>
+                <p class="text-xs text-slate-500 mt-1">Purchased ${new Date(license.orderDate).toLocaleDateString()}</p>
+              </div>
+              <span class="px-2 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-300">Active</span>
+            </div>
+
+            <div class="mb-4">
+              <p class="text-xs font-medium text-slate-400 mb-2">License Key (Click to copy)</p>
+              <div
+                onclick="copyToClipboard('${license.key}')"
+                class="px-3 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 font-mono text-xs text-slate-300 cursor-pointer hover:border-slate-600 transition-colors break-all"
+              >
+                ${license.key}
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 text-xs text-slate-500">
+              <span>✓ Lifetime Access</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Tab management
+      function selectTab(tab) {
+        currentTab = tab;
+
+        // Update buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.classList.remove('text-sky-300', 'border-sky-300');
+          btn.classList.add('text-slate-400', 'border-transparent');
+        });
+        event.target.classList.add('text-sky-300', 'border-sky-300');
+        event.target.classList.remove('text-slate-400', 'border-transparent');
+
+        // Update content
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.add('hidden');
+        });
+        document.getElementById(`${tab}-tab`).classList.remove('hidden');
+      }
+
+      // Utility functions
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('License key copied to clipboard!');
+        });
+      }
+
+      function viewOrderDetails(orderId) {
+        alert(`Order details for ${orderId}\n\nFull implementation in Phase 4b`);
+      }
+
       function logout() {
         localStorage.removeItem('auth_token');
-        sessionStorage.removeItem('auth_token');
-        window.location.href = './index.html';
+        location.href = './index.html';
       }
 
-      // Download invoice
-      async function downloadInvoice(orderId) {
-        try {
-          window.open(`/api/downloads/invoice/${orderId}`, '_blank');
-        } catch (error) {
-          alert('Failed to download invoice');
+      function showLoginModal() {
+        document.getElementById('login-modal').classList.remove('hidden');
+      }
+
+      function saveEmailPreferences() {
+        alert('Email preferences saved! (Implementation in Phase 4b)');
+      }
+
+      function resetPassword() {
+        alert('Password reset email sent! (Implementation in Phase 4b)');
+      }
+
+      function deleteAccount() {
+        if (confirm('Are you sure? This cannot be undone.')) {
+          alert('Account deletion initiated! (Implementation in Phase 4b)');
         }
       }
 
-      // Download all invoices
-      function downloadAllInvoices() {
-        alert('Bulk download coming soon!');
+      // Setup event listeners
+      function setupEventListeners() {
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) {
+          loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+              const response = await fetch(`${API_BASE}/api/accounts/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+              });
+
+              const data = await response.json();
+
+              if (response.ok && data.token) {
+                localStorage.setItem('auth_token', data.token);
+                document.getElementById('login-modal').classList.add('hidden');
+                location.reload();
+              } else {
+                alert('Login failed: ' + (data.error || 'Unknown error'));
+              }
+            } catch (error) {
+              alert('Login error: ' + error.message);
+            }
+          });
+        }
       }
     </script>
   </body>
