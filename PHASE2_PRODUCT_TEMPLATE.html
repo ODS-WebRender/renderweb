@@ -1,0 +1,581 @@
+<!-- PHASE 2: PRODUCT DETAIL PAGE TEMPLATE
+This template adds professional depth to product pages:
+✅ Hero with product artwork/screenshot
+✅ Detailed features grid
+✅ Use cases section  
+✅ Pricing/availability section
+✅ FAQ section
+✅ Demo request CTA
+
+APPLY TO: cpm-ai.html, propaI-pro.html, small-ai-toolkit.html, revenue-engine.html, buildenv-ai-academy.html, nextgen-contractor-coach.html
+ALREADY DONE: studio.html, media.html (ready for content enhancement)
+-->
+
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Product Name — Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Product description for SEO"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- PHASE 1 STANDARDIZED HEADER (already updated in next phase) -->
+      <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/dog-logo.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+            </a>
+          </div>
+          <!-- Full nav menu here - copy from Phase 1 standardized version -->
+        </nav>
+      </header>
+
+      <!-- PHASE 2: ENHANCED HERO WITH ARTWORK/SCREENSHOT -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
+        <div class="absolute inset-0 hero-grid pointer-events-none opacity-30"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-transparent to-emerald-500/5"></div>
+        
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <!-- Left: Product Info -->
+            <div class="space-y-8">
+              <!-- Status Badge -->
+              <div class="inline-flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700/40 px-4 py-2 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                Alpha Access Available
+              </div>
+
+              <!-- Title & Tagline -->
+              <div class="space-y-4">
+                <h1 class="text-5xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+                  Product Name
+                  <span class="block bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
+                    Tagline Here
+                  </span>
+                </h1>
+                <p class="text-lg text-slate-300 leading-relaxed max-w-lg">
+                  Professional 2-3 sentence description of the product value proposition.
+                  Target audience and primary use case.
+                </p>
+              </div>
+
+              <!-- Key Metrics -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4">
+                  <div class="text-3xl font-bold text-emerald-400">X%</div>
+                  <p class="text-xs text-slate-400 mt-1">Efficiency Gain</p>
+                </div>
+                <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4">
+                  <div class="text-3xl font-bold text-sky-400">Y hrs</div>
+                  <p class="text-xs text-slate-400 mt-1">Time Saved/Week</p>
+                </div>
+              </div>
+
+              <!-- Primary CTAs -->
+              <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a
+                  href="#demo-request"
+                  class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105"
+                >
+                  Request Demo
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+                <a
+                  href="./shop.html"
+                  class="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-slate-600 bg-slate-900/60 px-8 py-3 text-base font-semibold text-slate-100 hover:border-sky-400 hover:text-sky-200 transition-all duration-300 backdrop-blur-sm hover:bg-slate-900/80"
+                >
+                  View Pricing
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Product Screenshot/Artwork -->
+            <div class="relative">
+              <div class="absolute inset-0 bg-gradient-to-br from-sky-500/20 to-emerald-500/20 blur-3xl rounded-2xl"></div>
+              <div class="relative rounded-2xl border border-slate-700/60 overflow-hidden bg-slate-900/50 p-2">
+                <!-- Replace with actual product screenshot -->
+                <div class="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center text-slate-500">
+                  <div class="text-center">
+                    <div class="text-4xl mb-2">📱</div>
+                    <p>Product Screenshot Here</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 2: DETAILED FEATURES GRID -->
+      <section class="border-b border-slate-800/50 bg-slate-950/50">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div class="mb-16">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-4">Core Capabilities</p>
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Powerful Features Built For You</h2>
+            <p class="text-lg text-slate-400 max-w-3xl">
+              Comprehensive feature set designed with operators and teams in mind.
+            </p>
+          </div>
+
+          <!-- Features Grid: 3 columns on desktop, 1 on mobile -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-sky-500/40 transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center text-sky-300 text-xl mb-6">
+                🎯
+              </div>
+              <h3 class="text-xl font-bold text-white mb-4">Feature Name</h3>
+              <p class="text-slate-300 leading-relaxed mb-6">
+                Detailed description of what this feature does, how it solves a problem, and what value it brings to your workflow.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 mt-1">✓</span>
+                  <span>Specific capability or benefit</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 mt-1">✓</span>
+                  <span>Another key feature</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 mt-1">✓</span>
+                  <span>Integration or workflow benefit</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-emerald-500/40 transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/15 ring-1 ring-emerald-400/40 flex items-center justify-center text-emerald-300 text-xl mb-6">
+                ⚡
+              </div>
+              <h3 class="text-xl font-bold text-white mb-4">Feature Name</h3>
+              <p class="text-slate-300 leading-relaxed mb-6">
+                Detailed description of what this feature does and its impact on efficiency or operations.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 mt-1">✓</span>
+                  <span>Specific capability</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 mt-1">✓</span>
+                  <span>Another capability</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-purple-500/40 transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/15 ring-1 ring-purple-400/40 flex items-center justify-center text-purple-300 text-xl mb-6">
+                🔐
+              </div>
+              <h3 class="text-xl font-bold text-white mb-4">Feature Name</h3>
+              <p class="text-slate-300 leading-relaxed mb-6">
+                Feature description highlighting technical capability or competitive advantage.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 mt-1">✓</span>
+                  <span>Industry standard</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 mt-1">✓</span>
+                  <span>Advanced capability</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Add up to 6 features total, 3 shown above -->
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 2: USE CASES SECTION -->
+      <section class="border-b border-slate-800/50">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div class="mb-16">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-4">Real-World Applications</p>
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">How Teams Use This</h2>
+            <p class="text-lg text-slate-400 max-w-3xl">
+              Proven use cases from operators, contractors, and teams already shipping with this product.
+            </p>
+          </div>
+
+          <!-- Use Cases: Alternating layout -->
+          <div class="space-y-16">
+            <!-- Use Case 1 -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+              <div class="order-2 lg:order-1">
+                <div class="rounded-2xl border border-slate-700/60 bg-slate-900/50 p-1 overflow-hidden">
+                  <div class="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center text-slate-500">
+                    <p class="text-center">Use Case Image/Screenshot</p>
+                  </div>
+                </div>
+              </div>
+              <div class="order-1 lg:order-2 space-y-4">
+                <h3 class="text-2xl font-bold text-white">Use Case Title</h3>
+                <p class="text-slate-300 leading-relaxed">
+                  Scenario description: Who is doing this, what problem they had, and how the product solves it.
+                </p>
+                <ul class="space-y-2 text-slate-400">
+                  <li class="flex items-start gap-3">
+                    <span class="text-emerald-400 text-lg flex-shrink-0">→</span>
+                    <span>Specific outcome or benefit they achieved</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-emerald-400 text-lg flex-shrink-0">→</span>
+                    <span>Measurable improvement or metric</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Use Case 2 -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+              <div class="rounded-2xl border border-slate-700/60 bg-slate-900/50 p-1 overflow-hidden">
+                <div class="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center text-slate-500">
+                  <p class="text-center">Use Case Image/Screenshot</p>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-white">Use Case Title</h3>
+                <p class="text-slate-300 leading-relaxed">
+                  Another scenario showing different application or industry use.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 2: PRICING & AVAILABILITY -->
+      <section class="border-b border-slate-800/50 bg-slate-950/50">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div class="mb-16">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-4">Availability & Pricing</p>
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Plans For Every Stage</h2>
+          </div>
+
+          <!-- Pricing Cards -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
+            <!-- Plan 1: Alpha/Early Access -->
+            <div class="rounded-2xl border-2 border-emerald-500/40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-white">Early Access</h3>
+                <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300 ring-1 ring-emerald-500/30">Alpha</span>
+              </div>
+              <p class="text-slate-400 mb-6">Perfect for early adopters and pilot projects.</p>
+              <div class="mb-8">
+                <span class="text-4xl font-bold text-white">Contact</span>
+                <p class="text-xs text-slate-500 mt-1">Custom pricing available</p>
+              </div>
+              <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                  <span>Feature set included</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                  <span>Direct product team support</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                  <span>Influence product roadmap</span>
+                </li>
+              </ul>
+              <a href="#demo-request" class="w-full rounded-lg bg-emerald-500 text-slate-950 py-2 text-sm font-semibold hover:bg-emerald-400 transition text-center block">
+                Request Access
+              </a>
+            </div>
+
+            <!-- Plan 2: Standard -->
+            <div class="rounded-2xl border border-sky-500/40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+              <h3 class="text-2xl font-bold text-white mb-6">Growth</h3>
+              <p class="text-slate-400 mb-6">Designed for scaling teams and operations.</p>
+              <div class="mb-8">
+                <span class="text-4xl font-bold text-white">TBD</span>
+                <p class="text-xs text-slate-500 mt-1">Per month, annual billing</p>
+              </div>
+              <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                  <span>All features included</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                  <span>Email + chat support</span>
+                </li>
+              </ul>
+              <a href="./shop.html" class="w-full rounded-lg border border-sky-500/60 bg-sky-500/10 text-sky-200 py-2 text-sm font-semibold hover:bg-sky-500/20 transition text-center block">
+                View on Shop
+              </a>
+            </div>
+
+            <!-- Plan 3: Enterprise -->
+            <div class="rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+              <h3 class="text-2xl font-bold text-white mb-6">Enterprise</h3>
+              <p class="text-slate-400 mb-6">Custom deployment and dedicated support.</p>
+              <div class="mb-8">
+                <span class="text-4xl font-bold text-white">Custom</span>
+                <p class="text-xs text-slate-500 mt-1">Volume licensing</p>
+              </div>
+              <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                  <span>White-label options</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                  <span>Dedicated account team</span>
+                </li>
+              </ul>
+              <a href="#demo-request" class="w-full rounded-lg border border-slate-600 bg-slate-900 text-slate-200 py-2 text-sm font-semibold hover:border-sky-500/50 transition text-center block">
+                Contact Sales
+              </a>
+            </div>
+          </div>
+
+          <!-- Status Note -->
+          <div class="mt-16 rounded-2xl border border-slate-700/60 bg-slate-900/50 p-8 text-center">
+            <p class="text-slate-400 max-w-2xl mx-auto">
+              <strong>Current Status:</strong> Early access program active. General availability coming Q2 2026.
+              <a href="#demo-request" class="text-sky-400 hover:text-sky-300 font-semibold"> Request early access →</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 2: FAQ SECTION -->
+      <section class="border-b border-slate-800/50">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div class="mb-16">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-4">Questions?</p>
+            <h2 class="text-4xl sm:text-5xl font-bold text-white">Frequently Asked Questions</h2>
+          </div>
+
+          <!-- FAQ Items -->
+          <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+              <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                What is the typical implementation timeline?
+                <span class="ml-4 transition-transform group-open:rotate-180">
+                  <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </span>
+              </summary>
+              <p class="mt-4 text-slate-300 leading-relaxed">
+                Most implementations take 2-4 weeks depending on your current systems and data complexity. Our team handles the heavy lifting—you focus on running your business.
+              </p>
+            </details>
+
+            <!-- FAQ Item 2 -->
+            <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+              <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                Is there a free trial?
+                <span class="ml-4 transition-transform group-open:rotate-180">
+                  <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </span>
+              </summary>
+              <p class="mt-4 text-slate-300 leading-relaxed">
+                We offer a 30-day money-back guarantee on all plans. No credit card required for the demo environment.
+              </p>
+            </details>
+
+            <!-- FAQ Item 3 -->
+            <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+              <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                How does this integrate with our existing tools?
+                <span class="ml-4 transition-transform group-open:rotate-180">
+                  <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </span>
+              </summary>
+              <p class="mt-4 text-slate-300 leading-relaxed">
+                We have pre-built integrations with popular platforms. Custom API access is available on paid plans.
+              </p>
+            </details>
+
+            <!-- FAQ Item 4 -->
+            <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+              <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                What kind of support do you offer?
+                <span class="ml-4 transition-transform group-open:rotate-180">
+                  <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </span>
+              </summary>
+              <p class="mt-4 text-slate-300 leading-relaxed">
+                Email support is included on all plans. Chat support and phone support are available on Growth and Enterprise plans.
+              </p>
+            </details>
+          </div>
+
+          <!-- More Questions CTA -->
+          <div class="mt-12 text-center">
+            <p class="text-slate-400 mb-4">Don't see your question?</p>
+            <a href="#demo-request" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold">
+              Get in touch with our team
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 2: DEMO REQUEST CTA (Bottom of page) -->
+      <section id="demo-request" class="border-b border-slate-800/50 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div class="rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/60 to-slate-900/60 overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-emerald-500/5"></div>
+            
+            <div class="relative p-12 sm:p-16">
+              <div class="text-center space-y-8 max-w-2xl mx-auto">
+                <div>
+                  <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+                    Ready to Transform Your Operations?
+                  </h2>
+                  <p class="text-lg text-slate-300">
+                    Join the operators and teams already shipping with our tools. Get a personalized demo from our team.
+                  </p>
+                </div>
+
+                <!-- Demo Request Form Simplified -->
+                <form class="space-y-4 max-w-md mx-auto">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500/60"
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500/60"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone (optional)"
+                    class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500/60"
+                  />
+                  <button
+                    type="submit"
+                    class="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105"
+                  >
+                    Request Demo
+                  </button>
+                </form>
+
+                <p class="text-xs text-slate-500">
+                  We typically respond within 24 hours. No spam, just product updates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer (reuse from index.html) -->
+      <footer class="border-t border-slate-800/80 py-6">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
+        >
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="./shop.html" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./studio.html#alpha-access" class="hover:text-slate-300">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Demo form handler
+      document.querySelector('form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        // TODO: Connect to email service or backend
+        alert('Thank you! We will be in touch shortly.');
+        e.target.reset();
+      });
+    </script>
+  </body>
+</html>
+
+<!-- USAGE INSTRUCTIONS FOR TEAMS:
+
+1. HEADER UPDATE (Phase 1 standardization first):
+   - Replace the header comment with actual Phase 1 standardized header
+   - Copy from studio.html or media.html (lines 25-335)
+   
+2. PRODUCT CUSTOMIZATION (per product):
+   - Replace "Product Name" with actual product name
+   - Replace hero section with product-specific color scheme
+     * CPM-AI: Amber/Orange (🏗️)
+     * PropAI-Pro: Emerald (🏘️)
+     * Small-AI Toolkit: Purple (💼)
+     * BuildEnv Academy: Blue (📘)
+     * Revenue Engine: Green (💰)
+     * Nextgen Coach: Rose (🌍)
+   - Replace feature descriptions with product-specific features
+   - Add actual product screenshots/artwork 
+   - Customize use cases for target audience
+   - Update pricing information
+   - Customize FAQ for product-specific questions
+
+3. IMAGES TO ADD:
+   - /images/product-screenshot-cpm-ai.png
+   - /images/product-screenshot-propaI-pro.png
+   - /images/product-screenshot-small-toolkit.png
+   - etc.
+
+4. APPLY TO:
+   - cpm-ai.html (Amber color)
+   - propaI-pro.html (Emerald color)
+   - small-ai-toolkit.html (Purple color)
+   - buildenv-ai-academy.html (Blue color)
+   - revenue-engine.html (Green color)
+   - nextgen-contractor-coach.html (Rose color)
+   - studio.html (Sky blue - already has Phase 1 header, just needs content enhancement)
+   - media.html (Sky blue - already has Phase 1 header, just needs content enhancement)
+-->

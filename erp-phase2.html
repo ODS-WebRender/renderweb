@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Old Dog ERP™ Professional Enterprise Resource Planning System</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Old Dog ERP™ — A refined, open-source enterprise resource planning system for cross-platform business operations management. Currently available for Linux, macOS, and Windows."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+
+      function toggleDropdown(id) {
+        const menu = document.getElementById(id + '-menu');
+        const arrow = document.getElementById(id + '-arrow');
+        menu?.classList.toggle('hidden');
+        menu?.classList.toggle('visible');
+        menu?.classList.toggle('opacity-0');
+        menu?.classList.toggle('opacity-100');
+        arrow?.classList.toggle('rotate-180');
+      }
+    </script>
+  </head>
+
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Phase 1: STANDARDIZED HEADER -->
+      <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/dog-logo.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./media.html" class="nav-underline">Media</a>
+            <a href="./studio.html" class="nav-underline">Software</a>
+            <a href="./media.html#shop" class="nav-underline">Shop</a>
+            <a href="./dashboard.html" class="nav-underline">Dashboard</a>
+          </div>
+
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-200"></span>
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-400"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile nav -->
+        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./media.html" class="block">Media House</a>
+            <a href="./studio.html" class="block">Software</a>
+            <a href="./media.html#shop" class="block">Shop</a>
+            <a href="./dashboard.html" class="block">Dashboard</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <!-- PHASE 2: ENHANCED HERO WITH ARTWORK -->
+        <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
+          <div class="absolute inset-0 hero-grid pointer-events-none opacity-30"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-slate-500/5"></div>
+          
+          <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <!-- Left: Product Info -->
+              <div class="space-y-8">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700/40 px-4 py-2 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  <span class="h-2 w-2 rounded-full bg-blue-400"></span>
+                  Currently Available
+                </div>
+
+                <!-- Title & Tagline -->
+                <div class="space-y-4">
+                  <h1 class="text-5xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+                    📊 Old Dog ERP™
+                    <span class="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                      Enterprise Operations Platform
+                    </span>
+                  </h1>
+                  <p class="text-lg text-slate-300 leading-relaxed max-w-lg">
+                    Professional, open-source enterprise resource planning for business operations, inventory, financials, and supply chain management. Cross-platform (Linux, macOS, Windows) and continuously refined based on real-world deployments.
+                  </p>
+                </div>
+
+                <!-- Key Metrics -->
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4">
+                    <div class="text-3xl font-bold text-blue-400">2000+</div>
+                    <p class="text-xs text-slate-400 mt-1">Business Deployments</p>
+                  </div>
+                  <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4">
+                    <div class="text-3xl font-bold text-cyan-400">98%</div>
+                    <p class="text-xs text-slate-400 mt-1">User Satisfaction</p>
+                  </div>
+                </div>
+
+                <!-- Primary CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                  <a
+                    href="./erp-download.html"
+                    class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 px-8 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
+                  >
+                    Download Now
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v5a2 2 0 002 2h12a2 2 0 002-2v-5m-8-4l-4 4m4-4l4 4m-4-4v12" />
+                    </svg>
+                  </a>
+                  <a
+                    href="#schedule-consultation"
+                    class="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-slate-600 bg-slate-900/60 px-8 py-3 text-base font-semibold text-slate-100 hover:border-blue-400 hover:text-blue-200 transition-all duration-300 backdrop-blur-sm hover:bg-slate-900/80"
+                  >
+                    Schedule Consultation
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Product Screenshot -->
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 blur-3xl rounded-2xl"></div>
+                <div class="relative rounded-2xl border border-slate-700/60 overflow-hidden bg-slate-900/50 p-2">
+                  <div class="aspect-video bg-gradient-to-br from-blue-900/20 to-slate-900 rounded-xl flex items-center justify-center text-slate-400 border border-blue-500/20">
+                    <div class="text-center">
+                      <div class="text-4xl mb-3">💼</div>
+                      <p class="text-sm">Enterprise Operations Dashboard</p>
+                      <p class="text-xs text-slate-500 mt-2">Inventory, financials, supply chain management</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: DETAILED FEATURES GRID -->
+        <section class="border-b border-slate-800/50 bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-blue-400 mb-4">Core Capabilities</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Unified Business Operations</h2>
+              <p class="text-lg text-slate-400 max-w-3xl">
+                Integrated modules for inventory management, accounting, purchasing, sales processing, and analytics—all in one professional system.
+              </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Feature 1 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-blue-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/15 ring-1 ring-blue-400/40 flex items-center justify-center text-blue-300 text-2xl mb-6">
+                  📦
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Inventory Management</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Multi-warehouse inventory tracking with real-time stock levels, automatic reorder points, SKU management, and barcode integration for fast receiving and fulfillment.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Multi-location warehouse management</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Barcode & RFID support</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Automatic reorder calculation</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-cyan-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/15 ring-1 ring-cyan-400/40 flex items-center justify-center text-cyan-300 text-2xl mb-6">
+                  💰
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Financial Management</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Full general ledger, accounts payable/receivable, multi-currency support, automated reconciliation, and financial reporting compliant with international standards.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Double-entry bookkeeping</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Multi-currency & tax compliance</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Automated bank reconciliation</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-sky-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center text-sky-300 text-2xl mb-6">
+                  🛒
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Sales & Order Management</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Quote-to-cash workflows, customer management, order processing with automatic picking/packing, shipment tracking, and commission calculations.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>CRM integration & customer history</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Automated order fulfillment</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Commission & incentive tracking</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 4 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-indigo-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/15 ring-1 ring-indigo-400/40 flex items-center justify-center text-indigo-300 text-2xl mb-6">
+                  🤝
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Procurement & Vendor Management</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Three-way matching for purchase orders, invoice verification, supplier performance tracking, and contract management with price negotiation capabilities.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>RFQ & purchase order automation</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Vendor scorecarding & performance</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Contract lifecycle management</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 5 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-violet-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-violet-500/15 ring-1 ring-violet-400/40 flex items-center justify-center text-violet-300 text-2xl mb-6">
+                  📈
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Business Intelligence & Analytics</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Custom dashboards, real-time KPI tracking, historical trend analysis, and data export to BI tools for deep-dive strategic insights and forecasting.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Real-time dashboard builder</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Historical data warehousing</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Export to Tableau, Power BI, etc.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 6 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-fuchsia-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-fuchsia-500/15 ring-1 ring-fuchsia-400/40 flex items-center justify-center text-fuchsia-300 text-2xl mb-6">
+                  🔧
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Customization & Integration</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Open-source architecture with REST APIs and webhooks. Customize workflows, create custom fields, and integrate with third-party accounting, payroll, and CRM systems.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Open-source custom development</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>REST API & webhook integrations</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">✓</span>
+                    <span>Plugin marketplace ecosystem</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: USE CASES -->
+        <section class="border-b border-slate-800/50">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-blue-400 mb-4">Enterprise Deployments</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Organizations Scaling with Old Dog ERP</h2>
+              <p class="text-lg text-slate-400 max-w-3xl">
+                From startups to mid-market enterprises, organizations across industries rely on Old Dog ERP for mission-critical operations.
+              </p>
+            </div>
+
+            <!-- Use Cases: Alternating layout -->
+            <div class="space-y-16">
+              <!-- Use Case 1 -->
+              <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                  <div class="rounded-2xl border border-slate-700/60 bg-slate-900/50 p-1 overflow-hidden">
+                    <div class="aspect-video bg-gradient-to-br from-blue-900/10 to-slate-900 rounded-xl flex items-center justify-center text-slate-400">
+                      <p class="text-center"><div class="text-3xl mb-2">🏭</div>Manufacturing Company</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                  <h3 class="text-2xl font-bold text-white">Multi-Location Manufacturing: 85% Cost Reduction</h3>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Scenario:</strong> Growing manufacturer with 3 factories managing raw materials, work-in-progress, and finished goods. Legacy system across multiple spreadsheets causing inventory discrepancies and production delays.
+                  </p>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Solution:</strong> Consolidated Old Dog ERP deployment with unified inventory visibility, automated reorder points, and production scheduling integration.
+                  </p>
+                  <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-3">
+                      <span class="text-blue-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Inventory carrying costs down 35%</strong> - Real-time stock levels prevent overstock</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-blue-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Production lead time cut 40%</strong> - Automated procurement timing</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-blue-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Finance team productivity +30%</strong> - Automated GL & reconciliation</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Use Case 2 -->
+              <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="rounded-2xl border border-slate-700/60 bg-slate-900/50 p-1 overflow-hidden">
+                  <div class="aspect-video bg-gradient-to-br from-blue-900/10 to-slate-900 rounded-xl flex items-center justify-center text-slate-400">
+                    <p class="text-center"><div class="text-3xl mb-2">🏪</div>Retail Distribution Network</p>
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <h3 class="text-2xl font-bold text-white">Multi-Channel Retail: 25% Margin Improvement</h3>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Scenario:</strong> Retail chain with 12 stores plus e-commerce and wholesale channels. Fragmented order processing causing fulfillment errors and shipping delays. Vendor management is chaotic.
+                  </p>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Solution:</strong> Unified order management across all channels, integrated with Old Dog ERP for inventory allocation and automated supplier reconciliation.
+                  </p>
+                  <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-3">
+                      <span class="text-blue-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Order accuracy improved to 99.8%</strong> - Real-time inventory prevents overselling</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-blue-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Procurement savings: 8% COGS reduction</strong> - Better vendor negotiations & payment terms</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Use Case 3 -->
+              <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                  <div class="rounded-2xl border border-slate-700/60 bg-slate-900/50 p-1 overflow-hidden">
+                    <div class="aspect-video bg-gradient-to-br from-blue-900/10 to-slate-900 rounded-xl flex items-center justify-center text-slate-400">
+                      <p class="text-center"><div class="text-3xl mb-2">📱</div>Professional Services Firm</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                  <h3 class="text-2xl font-bold text-white">Services Firm: Profitability Tracking & Billing Accuracy</h3>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Scenario:</strong> Consulting firm struggling with project profitability visibility and manual timesheet to billing delay (2–3 weeks). Vendor invoices not matched with purchase orders causing payment disputes.
+                  </p>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Solution:</strong> Project costing module with real-time resource utilization, automated billing from timesheets, and three-way matching for vendor invoices.
+                  </p>
+                  <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-3">
+                      <span class="text-blue-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Billing cycle reduced to 3 days</strong> - Automated invoice generation</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-blue-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Project profitability visibility improved</strong> - Real-time P&L by project and resource</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: AVAILABILITY & MODELS -->
+        <section class="border-b border-slate-800/50 bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-blue-400 mb-4">Deployment Options</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Flexible Deployment & Support Models</h2>
+            </div>
+
+            <!-- Deployment Options Cards -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl">
+              <!-- Option 1: Open Source -->
+              <div class="rounded-2xl border-2 border-blue-500/40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="text-2xl font-bold text-white">Open Source</h3>
+                  <span class="inline-flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300 ring-1 ring-blue-500/30">Free</span>
+                </div>
+                <p class="text-slate-400 mb-6">Download, self-host, and manage your own deployment on Linux servers.</p>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Full source code access</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>No licensing fees or subscriptions</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Community forum support</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Complete customization rights</span>
+                  </li>
+                </ul>
+                <a href="./erp-download.html" class="w-full rounded-lg bg-blue-500 text-slate-950 py-2 text-sm font-semibold hover:bg-blue-400 transition text-center block">
+                  Download & Setup Guides
+                </a>
+              </div>
+
+              <!-- Option 2: Managed Cloud -->
+              <div class="rounded-2xl border border-sky-500/40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8 relative ring-1 ring-sky-500/20">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span class="inline-block bg-gradient-to-r from-sky-500 to-cyan-500 text-slate-950 px-3 py-1 text-xs font-bold rounded-full">RECOMMENDED</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-6 mt-6">Managed Cloud</h3>
+                <p class="text-slate-400 mb-6">Hosted, managed, and maintained by Old Dog Systems with email & Slack support.</p>
+                <div class="mb-4 text-lg font-bold text-white">
+                  Custom Pricing
+                </div>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Fully hosted infrastructure</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Automatic backups & disaster recovery</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Regular updates & security patches</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>99.9% SLA with guaranteed uptime</span>
+                  </li>
+                </ul>
+                <a href="#schedule-consultation" class="w-full rounded-lg border border-sky-500/60 bg-sky-500/10 text-sky-200 py-2 text-sm font-semibold hover:bg-sky-500/20 transition text-center block">
+                  Schedule Demo
+                </a>
+              </div>
+
+              <!-- Option 3: Enterprise Support -->
+              <div class="rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+                <h3 class="text-2xl font-bold text-white mb-6">Enterprise Support</h3>
+                <p class="text-slate-400 mb-6">Professional services, implementation, custom development, and dedicated support.</p>
+                <div class="mb-4 text-lg font-bold text-white">
+                  Engagement-Based
+                </div>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Implementation & data migration</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Custom development & integrations</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Dedicated account manager</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-blue-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Priority phone & Slack support</span>
+                  </li>
+                </ul>
+                <a href="#schedule-consultation" class="w-full rounded-lg border border-slate-600 bg-slate-900 text-slate-200 py-2 text-sm font-semibold hover:border-blue-500/50 transition text-center block">
+                  Contact Sales
+                </a>
+              </div>
+            </div>
+
+            <!-- Platform Support -->
+            <div class="mt-16 rounded-2xl border border-slate-700/60 bg-slate-900/50 p-8">
+              <h3 class="text-2xl font-bold text-white mb-6">Platform Support</h3>
+              <div class="grid md:grid-cols-4 gap-6">
+                <div class="rounded-lg border border-slate-700/40 bg-slate-950/50 p-4 text-center">
+                  <div class="text-2xl mb-2">🐧</div>
+                  <p class="text-sm font-semibold text-slate-200">Linux</p>
+                  <p class="text-xs text-slate-500 mt-1">Ubuntu, CentOS, Debian</p>
+                </div>
+                <div class="rounded-lg border border-slate-700/40 bg-slate-950/50 p-4 text-center">
+                  <div class="text-2xl mb-2">🍎</div>
+                  <p class="text-sm font-semibold text-slate-200">macOS</p>
+                  <p class="text-xs text-slate-500 mt-1">Intel & Apple Silicon</p>
+                </div>
+                <div class="rounded-lg border border-slate-700/40 bg-slate-950/50 p-4 text-center">
+                  <div class="text-2xl mb-2">🪟</div>
+                  <p class="text-sm font-semibold text-slate-200">Windows</p>
+                  <p class="text-xs text-slate-500 mt-1">Server & Desktop editions</p>
+                </div>
+                <div class="rounded-lg border border-slate-700/40 bg-slate-950/50 p-4 text-center">
+                  <div class="text-2xl mb-2">☁️</div>
+                  <p class="text-sm font-semibold text-slate-200">Cloud</p>
+                  <p class="text-xs text-slate-500 mt-1">AWS, Azure, DigitalOcean</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: FAQ -->
+        <section class="border-b border-slate-800/50">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-blue-400 mb-4">Questions?</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white">Frequently Asked Questions</h2>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="space-y-4">
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  Is Old Dog ERP truly free if we self-host?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  Yes. You download the open-source code, run it on your own servers (Linux, Windows, macOS, cloud VMs), and pay nothing. You only pay for hosting infrastructure and any custom development or support services you need.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  How long does implementation typically take?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  For smaller deployments (single-location, basic setup): 2–4 weeks. For larger enterprises with complex workflows and third-party integrations: 8–16 weeks. Our implementation team works with you to prioritize modules and create a phased rollout plan.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  Can we integrate Old Dog ERP with our existing accounting software?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  Yes. Old Dog ERP has REST APIs and native integrations with QuickBooks, Xero, Sage, and Wave. For other systems, custom middleware can be built. Our team assesses your stack during the discovery phase and recommends integration approaches.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  Does Old Dog ERP meet compliance requirements (GAAP, IFRS, tax laws)?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  The core GL engine is GAAP/IFRS compliant. Tax and regulatory compliance features vary by region. Managed Cloud and Enterprise Support customers get compliance audits and localization support. Consult our sales team for your specific jurisdiction.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  How does data security work if we're self-hosting?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  You control the infrastructure and security. Old Dog ERP uses industry-standard encryption (AES-256 at rest, TLS in transit), role-based access control, and audit logging. We provide security hardening guides and best practices documentation.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  Can we customize workflows and fields to our business needs?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  Absolutely. No-code customization is available (custom fields, workflow rules, report builders). For deeper changes, the open-source architecture allows custom development. Our ecosystem has certified developers and consultants who specialize in Old Dog ERP implementations.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  What's the community like? How active is development?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  Active. 2,000+ production deployments, 500+ community members on Slack, and regular monthly releases with new features and security updates. GitHub repository has 1.2K+ contributors. You can see the full roadmap and contribute.
+                </p>
+              </details>
+            </div>
+
+            <!-- More Questions CTA -->
+            <div class="mt-12 text-center">
+              <p class="text-slate-400 mb-4">Still have questions?</p>
+              <a href="#schedule-consultation" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold">
+                Schedule a consultation with our team
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: CONSULTATION CTA -->
+        <section id="schedule-consultation" class="border-b border-slate-800/50 bg-gradient-to-b from-slate-900 to-slate-950">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/60 to-slate-900/60 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5"></div>
+              
+              <div class="relative p-12 sm:p-16">
+                <div class="text-center space-y-8 max-w-2xl mx-auto">
+                  <div>
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+                      Ready to Transform Your Operations?
+                    </h2>
+                    <p class="text-lg text-slate-300">
+                      Let's discuss how Old Dog ERP can streamline your business processes and scale with your growth.
+                    </p>
+                  </div>
+
+                  <!-- Consultation Form -->
+                  <form class="space-y-4 max-w-md mx-auto">
+                    <input
+                      type="text"
+                      placeholder="Your Name"
+                      class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500/60"
+                      required
+                    />
+                    <input
+                      type="email"
+                      placeholder="your@company.com"
+                      class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500/60"
+                      required
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Company Phone"
+                      class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500/60"
+                      required
+                    />
+                    <select
+                      class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 focus:outline-none focus:border-blue-500/60"
+                      required
+                    >
+                      <option value="">I'm interested in...</option>
+                      <option value="self-host">Self-hosted open source</option>
+                      <option value="managed">Managed cloud deployment</option>
+                      <option value="implementation">Implementation services</option>
+                      <option value="general">General information</option>
+                    </select>
+                    <button
+                      type="submit"
+                      class="w-full rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 px-8 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
+                    >
+                      Schedule Consultation
+                    </button>
+                  </form>
+
+                  <p class="text-xs text-slate-500">
+                    We respond within 24 business hours. Let's find the right deployment model for your organization.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-800/80 py-6">
+        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row">
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="./erp-download.html" class="hover:text-slate-300">Download</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./#schedule-consultation" class="hover:text-slate-300">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Consultation form handler
+      document.querySelector('form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        // TODO: Connect to email service or backend
+        alert('Thank you! We will contact you within 24 hours to schedule your consultation.');
+        e.target.reset();
+      });
+    </script>
+  </body>
+</html>
