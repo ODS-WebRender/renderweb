@@ -1,4 +1,4 @@
-// Enterprise-grade server for Old Dog Systems with Lemon Squeezy payment integration
+// Enterprise-grade server for Old Dog Systems with Stripe payment integration
 import 'dotenv/config';
 import http from 'http';
 import https from 'https';
@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { URL } from 'url';
-import * as lemonSqueezy from './lemon-squeezy.js';
+import Stripe from 'stripe';
 import * as db from './db.js';
 import * as auth from './auth.js';
 import * as email from './email.js';
@@ -14,8 +14,8 @@ import * as invoice from './invoice.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Payment processing via Lemon Squeezy
-// Configure with: LEMON_SQUEEZY_STORE_ID, LEMON_SQUEEZY_API_KEY
+// Payment processing via Stripe
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -417,7 +417,7 @@ const server = http.createServer(async (req, res) => {
 
     // ===== CHECKOUT & PAYMENT =====
 
-    // POST /api/checkout - Create Lemon Squeezy checkout link
+    // POST /api/checkout - Create Stripe checkout session
     if (pathname === '/api/checkout' && req.method === 'POST') {
       const body = await parseBody(req);
       
@@ -440,56 +440,57 @@ const server = http.createServer(async (req, res) => {
         const successUrl = `${domainUrl}/checkout-success.html`;
         const cancelUrl = `${domainUrl}/shop.html`;
 
-        // Create Lemon Squeezy checkout
-        const checkout = await lemonSqueezy.createCheckout(
-          items,
-          customerEmail,
-          successUrl,
-          cancelUrl
-        );
+        // Convert items to Stripe format
+        const lineItems = items.map(item => ({
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: item.name,
+              description: item.description,
+            },
+            unit_amount: Math.round(item.price * 100), // Convert to cents
+          },
+          quantity: item.quantity || 1,
+        }));
+
+        // Create Stripe checkout session
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ['card'],
+          line_items: lineItems,
+          mode: 'payment',
+          customer_email: customerEmail,
+          success_url: successUrl,
+          cancel_url: cancelUrl,
+          metadata: {
+            customerEmail: customerEmail,
+          },
+        });
 
         // Create order in database (pending status)
         const order = db.createOrder({
-          lemonSqueezyCheckoutId: checkout.checkoutId,
+          stripeSessionId: session.id,
           customerEmail: customerEmail,
           customerName: customerEmail.split('@')[0],
           items: items,
-          totalAmount: checkout.totalAmount,
+          totalAmount: session.amount_total / 100, // Convert back to dollars
           currency: 'USD',
-          paymentProvider: 'lemon-squeezy',
-          checkoutUrl: checkout.checkoutUrl
+          paymentProvider: 'stripe',
+          checkoutUrl: session.url
         });
 
         sendJSON(res, { 
           success: true,
-          checkoutUrl: checkout.checkoutUrl,
-          checkoutId: checkout.checkoutId,
+          checkoutUrl: session.url,
+          checkoutId: session.id,
           orderId: order.id
         }, 200);
       } catch (error) {
         console.error('Checkout error:', error);
         
-        // Handle different error types
-        let statusCode = 400;
-        let errorMessage = error.message;
-        let errorType = 'checkout_error';
-
-        if (error.type === 'AUTH_ERROR') {
-          statusCode = 401;
-          errorMessage = 'Payment system authentication failed. Admin has been notified.';
-          errorType = 'auth_failed';
-          console.error('🚨 CRITICAL: Lemon Squeezy API key invalid or expired:', error.details);
-        } else if (error.type === 'NETWORK_ERROR') {
-          statusCode = 503;
-          errorMessage = 'Payment service temporarily unavailable. Please try again.';
-          errorType = 'service_unavailable';
-        }
-
         sendJSON(res, { 
           success: false,
-          error: errorMessage,
-          errorType: errorType
-        }, statusCode);
+          error: error.message || 'Checkout failed'
+        }, 400);
       }
       return;
     }
