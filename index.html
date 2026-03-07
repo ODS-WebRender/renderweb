@@ -315,219 +315,228 @@
 
       <!-- Main -->
       <main class="flex-1">
-        <!-- Hero - Redesigned Landing Section -->
+        <!-- Premium Hero with Logo -->
         <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-          <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+          <div class="absolute inset-0 hero-grid pointer-events-none opacity-40"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-transparent to-emerald-500/5"></div>
 
-          <div class="relative mx-auto max-w-7xl px-4 py-20 sm:py-24 lg:py-32">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <!-- Left Column - Content -->
-              <div class="space-y-8">
-                <div class="space-y-4">
-                  <div class="inline-flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700/50 px-4 py-2 text-xs font-medium text-slate-300">
-                    <span class="h-2 w-2 rounded-full bg-sky-400"></span>
-                    Modular Media & Systems Studio
+          <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              <!-- Featured Logo Section -->
+              <div class="flex flex-col items-start justify-center order-2 lg:order-1">
+                <div class="relative mb-12">
+                  <div class="absolute inset-0 bg-gradient-to-br from-sky-500/20 to-emerald-500/20 blur-3xl rounded-full"></div>
+                  <img
+                    src="./images/dog-logo.png"
+                    alt="Old Dog Systems Logo"
+                    class="relative h-48 w-48 rounded-3xl object-cover border-2 border-slate-600/50 shadow-2xl ring-1 ring-slate-400/20"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <h2 class="text-2xl font-bold text-white">Old Dog Systems</h2>
+                  <p class="text-base text-slate-400">Modular Media & Enterprise Systems Studio</p>
+                </div>
+              </div>
+
+              <!-- Right Column - Premium Hero Content -->
+              <div class="space-y-8 order-1 lg:order-2">
+                <div class="space-y-6">
+                  <div class="inline-flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700/40 px-4 py-2 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                    <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                    Premium Studio Platform
                   </div>
 
-                  <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+                  <h1 class="text-6xl sm:text-7xl font-bold tracking-tight text-white leading-tight">
                     Bridging
-                    <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">media</span>
+                    <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">Media</span>
                     <br>
-                    <span class="text-slate-300">& modular business</span>
+                    &amp; Enterprise
                     <br>
-                    <span class="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">systems</span>
+                    <span class="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">Systems</span>
                   </h1>
 
-                  <p class="text-lg text-slate-400 leading-relaxed max-w-lg">
-                    <span data-brand></span> builds podcasts, products, and pipelines for operators who've been knocked down and gotten back up. From flagship shows to the tools that run them, everything lives under one studio-grade system.
+                  <p class="text-lg text-slate-300 leading-relaxed font-light">
+                    Built by operators, for operators. Podcasts, products, and pipelines for those who've been knocked down and gotten back up. Everything lives under one studio-grade system.
                   </p>
                 </div>
 
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4">
+                <!-- Premium CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
                   <a
                     href="./studio.html#alpha-access"
-                    class="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-200 hover:scale-105"
+                    class="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-10 py-4 text-base font-semibold text-white shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105"
                   >
-                    Request Alpha Access
+                    <span class="text-lg">🎬</span>
+                    Alpha Access
                     <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </a>
                   <a
                     href="./media.html"
-                    class="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-slate-600 bg-slate-900/50 px-8 py-4 text-base font-semibold text-slate-300 hover:border-sky-400 hover:text-sky-300 transition-all duration-200 backdrop-blur-sm"
+                    class="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-slate-600 bg-slate-900/60 px-10 py-4 text-base font-semibold text-slate-100 hover:border-sky-400 hover:text-sky-200 transition-all duration-300 backdrop-blur-sm hover:bg-slate-900/80"
                   >
-                    Explore Media House
                     <span class="text-lg">🎧</span>
+                    Media House
                   </a>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                <!-- Stats -->
-                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/50">
-                  <div class="text-center">
-                    <div class="text-2xl font-bold text-sky-400">2</div>
-                    <div class="text-xs text-slate-500 uppercase tracking-wider">Flagship Podcasts</div>
+        <!-- Flagship Podcasts Section -->
+        <section class="relative bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800/50">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="text-center mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-4">Featured Podcast Series</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Flagship Productions</h2>
+              <p class="text-lg text-slate-400 max-w-2xl mx-auto">Deep conversations for founders and operators navigating real challenges</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <!-- Business on Purpose -->
+              <div class="group relative rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-sky-500/40 transition-all duration-300 backdrop-blur-sm">
+                <div class="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative">
+                  <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-4">
+                      <div class="text-4xl">🎙️</div>
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Business on Purpose</h3>
+                        <p class="text-sm text-slate-400">Operational clarity for builders</p>
+                      </div>
+                    </div>
+                    <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300 ring-1 ring-emerald-500/30">Live</span>
                   </div>
-                  <div class="text-center">
-                    <div class="text-2xl font-bold text-emerald-400">1</div>
-                    <div class="text-xs text-slate-500 uppercase tracking-wider">Studio System</div>
-                  </div>
-                  <div class="text-center">
-                    <div class="text-2xl font-bold text-purple-400">∞</div>
-                    <div class="text-xs text-slate-500 uppercase tracking-wider">Potential</div>
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    Deep conversations about building systems that scale. Real talk for founders, contractors, and operators who've been in the trenches and come out stronger.
+                  </p>
+                  <div class="flex items-center justify-between text-sm text-slate-400">
+                    <span>📅 Weekly • ⏱️ ~45 min</span>
+                    <a href="./media.html#business-on-purpose" class="text-sky-400 hover:text-sky-300 font-semibold transition-colors">Listen →</a>
                   </div>
                 </div>
               </div>
 
-              <!-- Right Column - Visual -->
-              <div class="relative">
-                <div class="relative mx-auto max-w-md">
-                  <!-- Main Card -->
-                  <div class="card-glass rounded-3xl p-6 border border-slate-700/50 shadow-2xl backdrop-blur-xl">
-                    <div class="flex items-center justify-between mb-6">
-                      <div class="flex items-center gap-3">
-                        <div class="text-sm font-semibold text-white">System Overview</div>
-                        <div class="flex items-center gap-1">
-                          <div class="h-2 w-2 rounded-full bg-emerald-400"></div>
-                          <span class="text-xs text-emerald-400 font-medium">Live</span>
-                        </div>
+              <!-- When Life Bites -->
+              <div class="group relative rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-purple-500/40 transition-all duration-300 backdrop-blur-sm">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative">
+                  <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-4">
+                      <div class="text-4xl">💖</div>
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">When Life Bites</h3>
+                        <p class="text-sm text-slate-400">Resilience for humans navigating real seasons</p>
                       </div>
                     </div>
-
-                    <!-- System Flow -->
-                    <div class="space-y-4">
-                      <div class="flex items-center gap-4 p-3 rounded-xl bg-slate-800/50 border border-slate-700/30">
-                        <div class="h-8 w-8 rounded-lg bg-sky-500/20 flex items-center justify-center">
-                          <span class="text-sky-400 text-sm">🎙️</span>
-                        </div>
-                        <div class="flex-1">
-                          <div class="text-sm font-medium text-white">Media House</div>
-                          <div class="text-xs text-slate-400">Podcast production & content</div>
-                        </div>
-                        <svg class="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                      </div>
-
-                      <div class="flex items-center gap-4 p-3 rounded-xl bg-slate-800/50 border border-slate-700/30">
-                        <div class="h-8 w-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                          <span class="text-emerald-400 text-sm">🎛️</span>
-                        </div>
-                        <div class="flex-1">
-                          <div class="text-sm font-medium text-white">Rough Diamond Studio</div>
-                          <div class="text-xs text-slate-400">Audio tools & automation</div>
-                        </div>
-                        <svg class="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                      </div>
-
-                      <div class="flex items-center gap-4 p-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20">
-                        <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                          <span class="text-white text-sm">🛒</span>
-                        </div>
-                        <div class="flex-1">
-                          <div class="text-sm font-medium text-white">Unified Shop</div>
-                          <div class="text-xs text-slate-400">Digital products & monetization</div>
-                        </div>
-                        <div class="text-xs font-medium text-purple-400">Ready</div>
-                      </div>
-                    </div>
+                    <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-300 ring-1 ring-purple-500/30">Live</span>
                   </div>
-
-                  <!-- Floating Elements -->
-                  <div class="absolute -top-4 -right-4 h-20 w-20 rounded-full bg-gradient-to-br from-sky-400/20 to-emerald-400/20 blur-xl"></div>
-                  <div class="absolute -bottom-6 -left-6 h-16 w-16 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-400/20 blur-xl"></div>
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    Honest conversations about grief, pressure, and high-stakes seasons. With reflection guides, companion journals, and retreats for those navigating life's toughest chapters.
+                  </p>
+                  <div class="flex items-center justify-between text-sm text-slate-400">
+                    <span>📅 Weekly • ⏱️ ~45 min</span>
+                    <a href="./media.html#when-life-bites" class="text-purple-400 hover:text-purple-300 font-semibold transition-colors">Listen →</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Value Proposition -->
-        <section class="bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800/50">
-          <div class="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-            <div class="text-center mb-12">
-              <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-                Built for the
-                <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">Resilient</span>
-              </h2>
-              <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-                Tools and content for operators who've been knocked down and gotten back up.
-                No fluff, just systems that work.
-              </p>
+        <!-- Enterprise Offerings Grid -->
+        <section class="relative bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-800/50">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="text-center mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-sky-400 mb-4">Product Ecosystem</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Enterprise Solutions</h2>
+              <p class="text-lg text-slate-400 max-w-2xl mx-auto">Tools and systems built for operators shipping weekly</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-              <div class="text-center group">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-500/20 to-sky-600/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span class="text-2xl">🎙️</span>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Rough Diamond Studio - ALPHA -->
+              <div class="group relative rounded-2xl border border-emerald-700/40 bg-gradient-to-br from-emerald-900/20 to-slate-900/40 p-6 hover:border-emerald-500/60 transition-all duration-300 backdrop-blur">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="text-3xl">🎛️</div>
+                    <span class="inline-flex items-center rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-bold text-emerald-300 ring-1 ring-emerald-500/50 uppercase">Alpha Ready</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2">Rough Diamond Studio</h3>
+                  <p class="text-slate-400 text-sm mb-4">Audio podcasting & content systems for weekly shipping</p>
+                  <a href="./studio.html" class="text-emerald-400 text-sm font-semibold hover:text-emerald-300 transition-colors">Explore →</a>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Media House</h3>
-                <p class="text-slate-400 leading-relaxed">
-                  Two flagship podcasts exploring operational clarity and human resilience.
-                  Raw conversations for founders navigating real challenges.
-                </p>
               </div>
 
-              <div class="text-center group">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span class="text-2xl">🎛️</span>
+              <!-- Old Dog ERP - IN DEVELOPMENT -->
+              <div class="group relative rounded-2xl border border-yellow-700/40 bg-gradient-to-br from-yellow-900/20 to-slate-900/40 p-6 hover:border-yellow-500/60 transition-all duration-300 backdrop-blur">
+                <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="text-3xl">📊</div>
+                    <span class="inline-flex items-center rounded-full bg-yellow-500/20 px-3 py-1 text-xs font-bold text-yellow-300 ring-1 ring-yellow-500/50 uppercase">In Development</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2">Old Dog ERP</h3>
+                  <p class="text-slate-400 text-sm mb-4">Enterprise resource planning for contractors & small business</p>
+                  <a href="./erp-download.html" class="text-yellow-400 text-sm font-semibold hover:text-yellow-300 transition-colors">Learn More →</a>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Rough Diamond Studio</h3>
-                <p class="text-slate-400 leading-relaxed">
-                  Composable audio tools for weekly content creation. From recording to
-                  publishing, everything under one studio-grade system.
-                </p>
               </div>
 
-              <div class="text-center group">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span class="text-2xl">🛒</span>
+              <!-- CPM-AI Suite - IN DEVELOPMENT -->
+              <div class="group relative rounded-2xl border border-amber-700/40 bg-gradient-to-br from-amber-900/20 to-slate-900/40 p-6 hover:border-amber-500/60 transition-all duration-300 backdrop-blur">
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="text-3xl">🏗️</div>
+                    <span class="inline-flex items-center rounded-full bg-amber-500/20 px-3 py-1 text-xs font-bold text-amber-300 ring-1 ring-amber-500/50 uppercase">In Development</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2">CPM-AI Suite</h3>
+                  <p class="text-slate-400 text-sm mb-4">AI automation for on-site safety, compliance & waste reduction</p>
+                  <a href="./cpm-ai.html" class="text-amber-400 text-sm font-semibold hover:text-amber-300 transition-colors">Explore →</a>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Unified Shop</h3>
-                <p class="text-slate-400 leading-relaxed">
-                  Digital products wired for revenue. Journals, courses, and templates
-                  designed for operators who ship weekly.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Alpha Access CTA -->
-        <section class="bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border-b border-slate-800/50">
-          <div class="mx-auto max-w-4xl px-4 py-16 sm:py-20">
-            <div class="text-center">
-              <div class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 mb-6">
-                <div class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                <span class="text-sm font-medium text-emerald-400">Alpha Access Available</span>
               </div>
 
-              <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-                Join the
-                <span class="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">Alpha Program</span>
-              </h2>
+              <!-- PropAI-Pro - PLANNED -->
+              <div class="group relative rounded-2xl border border-slate-700/40 bg-gradient-to-br from-slate-800/20 to-slate-900/40 p-6 hover:border-slate-600/60 transition-all duration-300 backdrop-blur opacity-75">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-400/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="text-3xl">🏘️</div>
+                    <span class="inline-flex items-center rounded-full bg-slate-500/20 px-3 py-1 text-xs font-bold text-slate-400 ring-1 ring-slate-500/50 uppercase">Planned</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2">PropAI-Pro</h3>
+                  <p class="text-slate-400 text-sm mb-4">End-to-end AI for high-end residential property management</p>
+                  <a href="./propaI-pro.html" class="text-slate-400 text-sm font-semibold hover:text-slate-300 transition-colors">Coming Soon →</a>
+                </div>
+              </div>
 
-              <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
-                Be among the first creators to experience Rough Diamond Studio.
-                Early access to audio tools that actually work for weekly content production.
-              </p>
+              <!-- Revenue Engine - PLANNED -->
+              <div class="group relative rounded-2xl border border-slate-700/40 bg-gradient-to-br from-slate-800/20 to-slate-900/40 p-6 hover:border-slate-600/60 transition-all duration-300 backdrop-blur opacity-75">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-400/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="text-3xl">💰</div>
+                    <span class="inline-flex items-center rounded-full bg-slate-500/20 px-3 py-1 text-xs font-bold text-slate-400 ring-1 ring-slate-500/50 uppercase">Planned</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2">Revenue Engine</h3>
+                  <p class="text-slate-400 text-sm mb-4">Back-office monetization & recurring revenue automation</p>
+                  <a href="./revenue-engine.html" class="text-slate-400 text-sm font-semibold hover:text-slate-300 transition-colors">Coming Soon →</a>
+                </div>
+              </div>
 
-              <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href="./studio.html#alpha-access"
-                  class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-200 hover:scale-105"
-                >
-                  Request Alpha Access
-                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
-                <div class="text-sm text-slate-500">
-                  <span id="alpha-count">10+</span> creators already in alpha
+              <!-- Small-AI Toolkit - PLANNED -->
+              <div class="group relative rounded-2xl border border-slate-700/40 bg-gradient-to-br from-slate-800/20 to-slate-900/40 p-6 hover:border-slate-600/60 transition-all duration-300 backdrop-blur opacity-75">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-400/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="text-3xl">💼</div>
+                    <span class="inline-flex items-center rounded-full bg-slate-500/20 px-3 py-1 text-xs font-bold text-slate-400 ring-1 ring-slate-500/50 uppercase">Planned</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2">Small-AI Toolkit</h3>
+                  <p class="text-slate-400 text-sm mb-4">Lightweight AI productivity tools for SMEs without the bill</p>
+                  <a href="./small-ai-toolkit.html" class="text-slate-400 text-sm font-semibold hover:text-slate-300 transition-colors">Coming Soon →</a>
                 </div>
               </div>
             </div>
