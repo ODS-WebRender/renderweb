@@ -519,18 +519,38 @@ const server = http.createServer(async (req, res) => {
                 stripePaymentIntentId: session.payment_intent
               });
 
-              // Generate license keys if applicable
+              // Define which products receive license keys
+              const licensedProducts = [
+                'rough-diamond-studio-alpha',
+                'bop-journal-founders',
+                'bop-playbook-systems',
+                'rds-standard-templates',
+                'podcast-editing-masterclass',
+                'cpm-ai-suite-beta',
+                'propaI-pro-beta',
+                'small-ai-toolkit',
+                'buildenv-academy',
+                'revenue-engine'
+              ];
+
+              // Generate license keys for applicable products
+              const licenseKeys = {};
               order.items.forEach(item => {
-                if (item.id === 'rough-diamond-studio-alpha') {
-                  const license = db.createLicense(item.id, order.id, session.customer_email);
-                  db.updateOrder(order.id, {
-                    licenseKeys: {
-                      ...order.licenseKeys,
-                      [item.id]: license.key
-                    }
-                  });
+                if (licensedProducts.includes(item.id) || item.category === 'software') {
+                  try {
+                    const license = db.createLicense(item.id, order.id, session.customer_email);
+                    licenseKeys[item.id] = license.key;
+                    console.log(`License generated: ${item.id} -> ${license.key.substring(0, 20)}...`);
+                  } catch (err) {
+                    console.error(`Failed to generate license for ${item.id}:`, err.message);
+                  }
                 }
               });
+
+              // Update order with license keys
+              if (Object.keys(licenseKeys).length > 0) {
+                db.updateOrder(order.id, { licenseKeys });
+              }
 
               // Get updated order with license keys
               const updatedOrder = db.getOrder(order.id);
@@ -538,6 +558,7 @@ const server = http.createServer(async (req, res) => {
               // Generate invoice asynchronously
               try {
                 await invoice.generateInvoicePDF(updatedOrder);
+                console.log(`Invoice generated: ${updatedOrder.id}`);
               } catch (err) {
                 console.error('Invoice generation error:', err);
               }
@@ -545,6 +566,7 @@ const server = http.createServer(async (req, res) => {
               // Send order confirmation email
               try {
                 await email.sendOrderConfirmation(updatedOrder);
+                console.log(`Order confirmation sent to ${updatedOrder.customerEmail}`);
               } catch (err) {
                 console.error('Email sending error:', err);
               }
@@ -553,7 +575,10 @@ const server = http.createServer(async (req, res) => {
               if (updatedOrder.licenseKeys && Object.keys(updatedOrder.licenseKeys).length > 0) {
                 try {
                   for (const [productId, licenseKey] of Object.entries(updatedOrder.licenseKeys)) {
-                    await email.sendLicenseKey(updatedOrder.customerEmail, productId, licenseKey);
+                    const item = updatedOrder.items.find(i => i.id === productId);
+                    const productName = item ? item.name : productId;
+                    await email.sendLicenseKey(updatedOrder.customerEmail, productName, licenseKey);
+                    console.log(`License key email sent to ${updatedOrder.customerEmail}: ${productId}`);
                   }
                 } catch (err) {
                   console.error('License key email error:', err);
@@ -563,11 +588,12 @@ const server = http.createServer(async (req, res) => {
               // Send admin notification
               try {
                 await email.sendAdminNotification(updatedOrder);
+                console.log(`Admin notification sent for order ${updatedOrder.id}`);
               } catch (err) {
                 console.error('Admin notification error:', err);
               }
 
-              console.log(`Order ${order.id} completed with invoice and email sent`);
+              console.log(`✓ Order ${order.id} completed - ${Object.keys(licenseKeys).length} licenses generated`);
             }
             break;
           }

@@ -182,19 +182,41 @@ export function getAllCustomers() {
 
 // ===== LICENSE KEYS =====
 
-export function generateLicenseKey() {
-  const segments = [
-    Math.random().toString(36).substr(2, 5).toUpperCase(),
-    Math.random().toString(36).substr(2, 5).toUpperCase(),
-    Math.random().toString(36).substr(2, 5).toUpperCase()
-  ];
-  return `RDS-${segments.join('-')}`;
+// Product code mapping for license keys
+const PRODUCT_CODES = {
+  'rough-diamond-studio-alpha': 'RDS',
+  'rough-diamond-studio': 'RDS',
+  'bop-journal-founders': 'BOP',
+  'bop-playbook-systems': 'BOP',
+  'rds-standard-templates': 'RDST',
+  'podcast-editing-masterclass': 'PCAST',
+  'cpm-ai-suite-beta': 'CPM',
+  'propaI-pro-beta': 'PROP',
+  'small-ai-toolkit': 'SAI',
+  'buildenv-academy': 'BUILDENV',
+  'revenue-engine': 'REVENG'
+};
+
+export function generateLicenseKey(productId = 'RDS') {
+  // Get product code or use default
+  const code = PRODUCT_CODES[productId] || 'ODS';
+  
+  // Generate components
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  
+  // Random alphanumeric suffix
+  const randomSuffix = Math.random().toString(36).substr(2, 8).toUpperCase();
+  
+  return `${code}-${year}-${month}-${day}-${randomSuffix}`;
 }
 
 export function createLicense(productId, orderId, customerEmail) {
   ensureDirectories();
   
-  const licenseKey = generateLicenseKey();
+  const licenseKey = generateLicenseKey(productId);
   const license = {
     key: licenseKey,
     productId: productId,
