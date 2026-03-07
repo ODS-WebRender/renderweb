@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- PRODUCT PAGE TEMPLATE - Copy this and customize for each product -->
+<!-- Replace [PRODUCT_NAME], [EMOJI], [COLOR], [DESCRIPTION], etc. with actual content -->
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>[PRODUCT_NAME] — Old Dog Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="[PRODUCT_DESCRIPTION]" />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- HEADER - Copy from index.html, update aria-current for this page -->
+      <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img src="./images/dog-logo.png" alt="Old Dog Systems Logo" class="h-12 w-12 rounded-xl object-cover border border-slate-700/60" />
+              <div class="flex flex-col">
+                <span data-brand class="text-sm font-semibold tracking-tight text-slate-100"></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500">Old Dog · New Tricks</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./media.html" class="nav-underline">Media House</a>
+            <a href="./studio.html" class="nav-underline">Studio</a>
+            <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./index.html#about" class="nav-underline">About</a>
+            <a href="./studio.html#alpha-access" class="nav-underline">Alpha Access</a>
+          </div>
+
+          <button type="button" class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden" aria-label="Open navigation" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+            <span class="block h-0.5 w-4 rounded-full bg-slate-200 mb-0.5"></span>
+            <span class="block h-0.5 w-4 rounded-full bg-slate-400 mb-0.5"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./media.html" class="block">Media House</a>
+            <a href="./studio.html" class="block">Rough Diamond Studio</a>
+            <a href="./shop.html" class="block">Shop</a>
+            <a href="./index.html#about" class="block">About</a>
+            <a href="./studio.html#alpha-access" class="block">Alpha Access</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <main class="flex-1">
+        <!-- HERO SECTION -->
+        <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
+          <div class="absolute inset-0 hero-grid pointer-events-none opacity-40"></div>
+          <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="max-w-3xl">
+              <div class="inline-flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700/40 px-4 py-2 mb-6">
+                <span class="h-2 w-2 rounded-full bg-[COLOR]-400 animate-pulse"></span>
+                <span class="text-sm font-semibold text-[COLOR]-300 uppercase tracking-wider">Status: [ALPHA/IN-DEV/PLANNED]</span>
+              </div>
+
+              <h1 class="text-6xl sm:text-7xl font-bold tracking-tight text-white leading-tight mb-6">
+                <span class="text-4xl">[EMOJI]</span> [PRODUCT_NAME]
+              </h1>
+              <p class="text-xl text-slate-300 mb-4">[TAGLINE]</p>
+              <p class="text-lg text-slate-400 mb-8">[LONGER_DESCRIPTION]</p>
+
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#features" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[COLOR]-500 to-[COLOR]-600 px-8 py-4 text-base font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                  View Features
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </a>
+                <a href="./studio.html#alpha-access" class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-600 bg-slate-900/60 px-8 py-4 text-base font-semibold text-slate-100 hover:border-sky-400 hover:text-sky-200 transition-all duration-300 backdrop-blur-sm">
+                  Request Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section id="features" class="relative bg-gradient-to-b from-slate-900 to-slate-950 border-b border-slate-800/50">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Core Features</h2>
+              <p class="text-lg text-slate-400">Everything you need to [BENEFIT]</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Feature 1 -->
+              <div class="rounded-2xl border border-slate-700/60 bg-slate-900/40 p-8 hover:border-[COLOR]-500/40 transition-all duration-300">
+                <div class="text-4xl mb-4">[EMOJI1]</div>
+                <h3 class="text-xl font-bold text-white mb-3">[FEATURE_1_NAME]</h3>
+                <p class="text-slate-400 leading-relaxed">[FEATURE_1_DESCRIPTION]</p>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="rounded-2xl border border-slate-700/60 bg-slate-900/40 p-8 hover:border-[COLOR]-500/40 transition-all duration-300">
+                <div class="text-4xl mb-4">[EMOJI2]</div>
+                <h3 class="text-xl font-bold text-white mb-3">[FEATURE_2_NAME]</h3>
+                <p class="text-slate-400 leading-relaxed">[FEATURE_2_DESCRIPTION]</p>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="rounded-2xl border border-slate-700/60 bg-slate-900/40 p-8 hover:border-[COLOR]-500/40 transition-all duration-300">
+                <div class="text-4xl mb-4">[EMOJI3]</div>
+                <h3 class="text-xl font-bold text-white mb-3">[FEATURE_3_NAME]</h3>
+                <p class="text-slate-400 leading-relaxed">[FEATURE_3_DESCRIPTION]</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- USE CASES SECTION -->
+        <section class="relative bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800/50">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Who It's Built For</h2>
+              <p class="text-lg text-slate-400">Perfect for teams and individuals focused on [TARGET_MARKET]</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="rounded-2xl border border-slate-700/60 bg-slate-900/40 p-8">
+                <h3 class="text-lg font-bold text-white mb-3">Use Case 1</h3>
+                <p class="text-slate-400 mb-4">[USE_CASE_1_DESCRIPTION]</p>
+                <p class="text-sm text-slate-500">Example: [SPECIFIC_EXAMPLE]</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-700/60 bg-slate-900/40 p-8">
+                <h3 class="text-lg font-bold text-white mb-3">Use Case 2</h3>
+                <p class="text-slate-400 mb-4">[USE_CASE_2_DESCRIPTION]</p>
+                <p class="text-sm text-slate-500">Example: [SPECIFIC_EXAMPLE]</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section id="alpha-access" class="relative bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border-b border-slate-800/50">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="text-center">
+              <div class="inline-flex items-center gap-2 rounded-full bg-[COLOR]/10 border border-[COLOR]/20 px-4 py-2 mb-6">
+                <span class="h-2 w-2 rounded-full bg-[COLOR]-400 animate-pulse"></span>
+                <span class="text-sm font-medium text-[COLOR]-300">Access Available</span>
+              </div>
+
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+                Join the
+                <span class="bg-gradient-to-r from-[COLOR]-400 to-sky-400 bg-clip-text text-transparent">[PRODUCT_NAME]</span>
+                <br>Community
+              </h2>
+
+              <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+                [CTA_DESCRIPTION]
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="./studio.html#alpha-access" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[COLOR]-500 to-[COLOR]-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-[COLOR]-500/25 hover:shadow-[COLOR]-500/40 transition-all duration-300">
+                  Request Access
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="bg-gradient-to-b from-slate-900/50 to-slate-950 border-b border-slate-800/50">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/40 p-6 cursor-pointer hover:border-[COLOR]-500/30 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white">
+                  <span>What is [PRODUCT_NAME]?</span>
+                  <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+                </summary>
+                <p class="mt-4 text-slate-400">[FAQ_ANSWER_1]</p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/40 p-6 cursor-pointer hover:border-[COLOR]-500/30 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white">
+                  <span>How much does it cost?</span>
+                  <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+                </summary>
+                <p class="mt-4 text-slate-400">[PRICING_DESCRIPTION]</p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/40 p-6 cursor-pointer hover:border-[COLOR]-500/30 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white">
+                  <span>When will it be available?</span>
+                  <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+                </summary>
+                <p class="mt-4 text-slate-400">[AVAILABILITY_DESCRIPTION]</p>
+              </details>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="border-t border-slate-800/80 py-6">
+        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row">
+          <p>© <span id="year"></span> <span data-brand></span>. All rights reserved.</p>
+          <div class="flex items-center gap-4">
+            <a href="./shop.html" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./studio.html#alpha-access" class="hover:text-slate-300">Contact & Alpha Access</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
