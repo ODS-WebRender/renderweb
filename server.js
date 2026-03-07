@@ -374,7 +374,10 @@ const server = http.createServer(async (req, res) => {
         timestamp: new Date().toISOString(),
         version: '1.0.0',
         uptime: process.uptime(),
-        payment: lemonSqueezy.getHealthStatus(),
+        payment: {
+          provider: 'stripe',
+          configured: !!process.env.STRIPE_SECRET_KEY
+        },
       };
       sendJSON(res, health, 200);
       return;
@@ -394,23 +397,14 @@ const server = http.createServer(async (req, res) => {
         return;
       }
 
-      const authStatus = lemonSqueezy.getAuthStatus();
       sendJSON(res, {
-        payment_provider: 'lemon-squeezy',
-        credentials_valid: authStatus.valid,
-        last_validated: authStatus.lastChecked,
-        store_name: authStatus.storeName || 'Not validated yet',
-        error: authStatus.error,
+        payment_provider: 'stripe',
+        credentials_valid: !!process.env.STRIPE_SECRET_KEY,
+        last_validated: new Date().toISOString(),
         configuration: {
-          store_id_set: process.env.LEMON_SQUEEZY_STORE_ID ? 'yes' : 'no',
-          api_key_set: process.env.LEMON_SQUEEZY_API_KEY ? 'yes' : 'no',
-          variants_configured: {
-            rds_alpha: process.env.LSQUEEZY_VAR_RDS ? 'yes' : 'no',
-            bop_journal: process.env.LSQUEEZY_VAR_BOP_JOURNAL ? 'yes' : 'no',
-            templates: process.env.LSQUEEZY_VAR_TEMPLATES ? 'yes' : 'no',
-            masterclass: process.env.LSQUEEZY_VAR_MASTERCLASS ? 'yes' : 'no',
-          }
-        }
+          secret_key_set: process.env.STRIPE_SECRET_KEY ? 'yes' : 'no',
+          webhook_secret_set: process.env.STRIPE_WEBHOOK_SECRET ? 'yes' : 'no',
+        },
       }, 200);
       return;
     }
@@ -491,54 +485,6 @@ const server = http.createServer(async (req, res) => {
           success: false,
           error: error.message || 'Checkout failed'
         }, 400);
-      }
-      return;
-    }
-
-    // POST /api/webhooks/lemon-squeezy - Webhook for order confirmation
-    if (pathname === '/api/webhooks/lemon-squeezy' && req.method === 'POST') {
-      try {
-        const body = await parseBody(req);
-        const signature = req.headers['x-signature'];
-
-        // Verify webhook signature
-        if (!lemonSqueezy.verifyWebhookSignature(body, signature)) {
-          sendJSON(res, { error: 'Invalid signature' }, 401);
-          return;
-        }
-
-        // Handle different webhook events
-        const eventType = body.meta?.event_name;
-        
-        if (eventType === 'order:created' || eventType === 'order:completed') {
-          const checkoutId = body.data?.id;
-          const orderData = body.data?.attributes;
-          
-          if (checkoutId && orderData) {
-            // Update order status in database
-            const orders = db.getAllOrders();
-            const order = orders.find(o => o.lemonSqueezyCheckoutId === checkoutId);
-            
-            if (order) {
-              order.status = 'completed';
-              order.paidAt = new Date().toISOString();
-              order.transactionId = orderData.order_number || checkoutId;
-              db.updateOrder(order.id, order);
-              
-              // Send order confirmation email
-              try {
-                await email.sendOrderConfirmation(order);
-              } catch (emailErr) {
-                console.error('Order confirmation email error:', emailErr);
-              }
-            }
-          }
-        }
-
-        sendJSON(res, { success: true }, 200);
-      } catch (error) {
-        console.error('Webhook error:', error);
-        sendJSON(res, { error: error.message }, 500);
       }
       return;
     }
@@ -859,16 +805,11 @@ server.listen(PORT, async () => {
   
   // Validate payment system on startup
   console.log('\n📊 Validating payment system...');
-  const paymentStatus = await lemonSqueezy.validateCredentials();
-  
-  if (paymentStatus.valid) {
-    console.log(`✅ Payment Ready: Lemon Squeezy (Store: ${paymentStatus.storeName || 'Connected'})`);
-  } else if (paymentStatus.initialized) {
-    console.warn(`⚠️  Payment Not Ready: ${paymentStatus.error}`);
-    console.warn('   → Set LEMON_SQUEEZY_STORE_ID and LEMON_SQUEEZY_API_KEY environment variables');
-    console.warn('   → Run: curl http://localhost:' + PORT + '/api/admin/payment-status -H "x-admin-password: YOUR_PASSWORD"');
+  if (process.env.STRIPE_SECRET_KEY) {
+    console.log('✅ Payment Ready: Stripe');
   } else {
-    console.warn('⚠️  Payment System: Not configured');
+    console.warn('⚠️  Payment Not Ready: STRIPE_SECRET_KEY not set');
+    console.warn('   → Set STRIPE_SECRET_KEY environment variable');
   }
   
   console.log('\n✨ Server ready for requests');
