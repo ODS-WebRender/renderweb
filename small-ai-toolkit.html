@@ -2,15 +2,9 @@
 <html lang="en" class="h-full bg-slate-950">
   <head>
     <meta charset="UTF-8" />
-    <title>Small‑AI Toolkit™ – SME Productivity Pack</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <meta
-      name="description"
-      content="Small‑AI Toolkit™ is lightweight, mobile‑first AI for local businesses. Tool matching, automation, hybrid transformation and change management."
-    />
+    <title>Small‑AI Toolkit™ – Lightweight AI for Local SMEs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Small‑AI Toolkit™ brings enterprise-grade AI to local SMEs without enterprise bills. Affordable automation for businesses that can't justify dedicated resources." />
     <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
     <link rel="stylesheet" href="./styles.css" />
     <script type="module">
@@ -23,145 +17,317 @@
 
   <body class="h-full text-slate-100 antialiased">
     <div class="min-h-screen flex flex-col">
-      <!-- Navigation -->
-      <header
-        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
-      >
+      <!-- HEADER -->
+      <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
         <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
           <div class="flex items-center gap-3">
             <a href="./index.html" class="flex items-center gap-3">
-              <img
-                src="./images/dog-logo.png"
-                alt="Old Dog Systems Logo"
-                title="Old Dog Systems"
-                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
-              />
+              <img src="./images/dog-logo.png" alt="Old Dog Systems Logo" class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40" />
               <div class="flex flex-col">
-                <span
-                  data-brand
-                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
-                ></span>
-                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
-                  >Old Dog · New Tricks</span
-                >
+                <span data-brand class="text-lg font-bold tracking-tight text-slate-100 leading-snug"></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Old Dog · New Tricks</span>
               </div>
             </a>
           </div>
 
-          <!-- Desktop nav -->
           <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
             <a href="./index.html" class="nav-underline">Home</a>
-            <a href="./media.html" class="nav-underline">Media House</a>
-            <a href="./studio.html" class="nav-underline">Studio</a>
-            <a href="./shop.html" class="nav-underline">Shop</a>
-            <a href="./small-ai-toolkit.html" class="nav-underline" aria-current="page">Small‑AI Toolkit</a>
+            <a href="./media.html" class="nav-underline">Media</a>
+            <a href="./shop.html" class="nav-underline">Products</a>
+            <a href="./media.html#shop" class="nav-underline">Shop</a>
             <a href="./dashboard.html" class="nav-underline">Dashboard</a>
           </div>
 
-          <!-- Mobile menu toggle -->
-          <button
-            id="mobile-menu-btn"
-            class="md:hidden text-slate-300 hover:text-slate-100"
-          >
-            <svg
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+          <button type="button" class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden" aria-label="Open navigation" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-200"></span>
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-400"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
           </button>
         </nav>
+
+        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./media.html" class="block">Media</a>
+            <a href="./shop.html" class="block">Products</a>
+            <a href="./media.html#shop" class="block">Shop</a>
+            <a href="./dashboard.html" class="block">Dashboard</a>
+          </div>
+        </div>
       </header>
 
-      <!-- Hero Section -->
-      <section class="py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-4xl">
-          <div class="text-center">
-            <h1 class="text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl lg:text-6xl">
-              <span class="text-purple-400">💼 Small‑AI Toolkit™</span> SME Productivity Pack
-            </h1>
-            <p class="mt-4 text-xl text-slate-300">
-              Lightweight, mobile‑first AI for local businesses.
-            </p>
-            <p class="mt-2 text-slate-400">
-              Perfect for Sedgefield/George SMEs wanting "AI without the bill".
-            </p>
+      <main class="flex-1">
+        <!-- HERO -->
+        <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
+          <div class="absolute inset-0 hero-grid pointer-events-none opacity-30"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-slate-500/5"></div>
+          
+          <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700/40 px-4 py-2 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  <span class="h-2 w-2 rounded-full bg-purple-400"></span>
+                  Coming Soon (Q2 2026)
+                </div>
+
+                <div class="space-y-4">
+                  <h1 class="text-5xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+                    💼 Small‑AI Toolkit™
+                    <span class="block bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+                      Automation For Local Experts
+                    </span>
+                  </h1>
+                  <p class="text-lg text-slate-300 leading-relaxed max-w-lg">
+                    Enterprise-grade AI tools built for local SMEs, contractors, and service businesses. No subscriptions to 10+ tools. One unified toolkit. Affordable implementation.
+                  </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4">
+                    <div class="text-3xl font-bold text-purple-400">60%</div>
+                    <p class="text-xs text-slate-400 mt-1">Time on Admin Tasks Saved</p>
+                  </div>
+                  <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4">
+                    <div class="text-3xl font-bold text-indigo-400">1/3</div>
+                    <p class="text-xs text-slate-400 mt-1">Cost vs. Enterprise Tools</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                  <a href="#demo-request" class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 px-8 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105">
+                    Request Demo
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                  </a>
+                  <a href="./media.html#shop" class="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-slate-600 bg-slate-900/60 px-8 py-3 text-base font-semibold text-slate-100 hover:border-purple-400 hover:text-purple-200 transition-all duration-300 backdrop-blur-sm hover:bg-slate-900/80">
+                    Join Waitlist
+                  </a>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 blur-3xl rounded-2xl"></div>
+                <div class="relative rounded-2xl border border-slate-700/60 overflow-hidden bg-slate-900/50 p-2">
+                  <div class="aspect-video bg-gradient-to-br from-purple-900/20 to-slate-900 rounded-xl flex items-center justify-center text-slate-400 border border-purple-500/20">
+                    <div class="text-center"><div class="text-4xl mb-3">💼</div><p class="text-sm">AI Workflow Automation</p><p class="text-xs text-slate-500 mt-2">Local SME toolkit interface</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <!-- Key Features -->
-          <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <div class="rounded-lg border border-slate-700 bg-slate-900/50 p-6 backdrop-blur">
-              <div class="text-2xl mb-3">🔧</div>
-              <h3 class="font-semibold text-slate-100">Tool Match & Onboarding</h3>
-              <p class="mt-2 text-sm text-slate-400">
-                Workflow audit + setup of free/low‑cost AI (ChatGPT, DeepSeek) with custom prompts.
-              </p>
+        <!-- FEATURES -->
+        <section class="border-b border-slate-800/50 bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-purple-400 mb-4">Core Capabilities</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">What's Included</h2>
+              <p class="text-lg text-slate-400 max-w-3xl">Five modular tools that work together or standalone. Use what you need, skip the rest.</p>
             </div>
 
-            <div class="rounded-lg border border-slate-700 bg-slate-900/50 p-6 backdrop-blur">
-              <div class="text-2xl mb-3">⚡</div>
-              <h3 class="font-semibold text-slate-100">Admin Automation</h3>
-              <p class="mt-2 text-sm text-slate-400">
-                Email, invoice, schedule bots and AI‑enhanced spreadsheet helpers.
-              </p>
-            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-purple-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/15 ring-1 ring-purple-400/40 flex items-center justify-center text-purple-300 text-2xl mb-6">📝</div>
+                <h3 class="text-xl font-bold text-white mb-4">Document Automation</h3>
+                <p class="text-slate-300 leading-relaxed">Auto-generate quotes, contracts, proposals from templates. Works with your CRM data. No manual copy-paste.</p>
+              </div>
 
-            <div class="rounded-lg border border-slate-700 bg-slate-900/50 p-6 backdrop-blur">
-              <div class="text-2xl mb-3">🤝</div>
-              <h3 class="font-semibold text-slate-100">Hybrid Transformation Guide</h3>
-              <p class="mt-2 text-sm text-slate-400">
-                Co‑design templates balancing human oversight with AI handles.
-              </p>
-            </div>
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-purple-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/15 ring-1 ring-indigo-400/40 flex items-center justify-center text-indigo-300 text-2xl mb-6">📞</div>
+                <h3 class="text-xl font-bold text-white mb-4">Lead Qualification</h3>
+                <p class="text-slate-300 leading-relaxed">AI chatbot quality-scores incoming leads. Routes best prospects to you first. 24/7 availability.</p>
+              </div>
 
-            <div class="rounded-lg border border-slate-700 bg-slate-900/50 p-6 backdrop-blur">
-              <div class="text-2xl mb-3">📋</div>
-              <h3 class="font-semibold text-slate-100">Change‑Management Kit</h3>
-              <p class="mt-2 text-sm text-slate-400">
-                Staff training templates and governance checklists.
-              </p>
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-purple-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/15 ring-1 ring-cyan-400/40 flex items-center justify-center text-cyan-300 text-2xl mb-6">📊</div>
+                <h3 class="text-xl font-bold text-white mb-4">Business Intelligence</h3>
+                <p class="text-slate-300 leading-relaxed">Transform spreadsheets into actionable insights. Revenue patterns, customer trends, forecasting.</p>
+              </div>
+
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-purple-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-rose-500/15 ring-1 ring-rose-400/40 flex items-center justify-center text-rose-300 text-2xl mb-6">⏰</div>
+                <h3 class="text-xl font-bold text-white mb-4">Scheduling & Reminders</h3>
+                <p class="text-slate-300 leading-relaxed">Never miss follow-ups again. Smart scheduling that learns your availability and preferences.</p>
+              </div>
+
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-purple-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/15 ring-1 ring-emerald-400/40 flex items-center justify-center text-emerald-300 text-2xl mb-6">🔗</div>
+                <h3 class="text-xl font-bold text-white mb-4">Integrations Hub</h3>
+                <p class="text-slate-300 leading-relaxed">Connect with tools you already use: WhatsApp, Slack, Gmail, Excel, QuickBooks, and more.</p>
+              </div>
+
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-purple-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/15 ring-1 ring-orange-400/40 flex items-center justify-center text-orange-300 text-2xl mb-6">🎓</div>
+                <h3 class="text-xl font-bold text-white mb-4">Training & Support</h3>
+                <p class="text-slate-300 leading-relaxed">Step-by-step setup wizard, video tutorials, and live chat support. Designed for non-tech teams.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Call to Action -->
-      <section class="py-16 px-4 bg-gradient-to-b from-slate-900/50 to-slate-950">
-        <div class="mx-auto max-w-4xl text-center">
-          <h2 class="text-3xl font-bold text-slate-100">Get Started</h2>
-          <p class="mt-4 text-slate-400">
-            Ready to boost productivity without breaking the bank? Let's find the right AI tools for your team.
-          </p>
-          <a
-            href="./studio.html#alpha-access"
-            class="mt-6 inline-block rounded-lg bg-sky-500 px-8 py-3 font-semibold text-slate-950 hover:bg-sky-400 transition"
-          >Book Consultation</a>
-        </div>
-      </section>
+        <!-- PRICING -->
+        <section class="border-b border-slate-800/50 bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-purple-400 mb-4">Pricing & Access</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Plans for Every Size</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl">
+              <div class="rounded-2xl border-2 border-purple-500/40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="text-2xl font-bold text-white">Starter</h3>
+                  <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-300 ring-1 ring-purple-500/30">Solo</span>
+                </div>
+                <p class="text-slate-400 mb-6">Perfect for freelancers or 1-person operations.</p>
+                <div class="mb-8">
+                  <span class="text-4xl font-bold text-white">$99</span>
+                  <p class="text-xs text-slate-500 mt-1">Per month, annual billing</p>
+                </div>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>3 core modules</span></li>
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>1 user</span></li>
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>Email support</span></li>
+                </ul>
+                <a href="#demo-request" class="w-full rounded-lg bg-purple-500 text-slate-950 py-2 text-sm font-semibold hover:bg-purple-400 transition text-center block">Get Started</a>
+              </div>
+
+              <div class="rounded-2xl border border-slate-600/60 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8 relative ring-1 ring-slate-500/20">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span class="inline-block bg-gradient-to-r from-purple-500 to-indigo-500 text-slate-950 px-3 py-1 text-xs font-bold rounded-full">MOST POPULAR</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-6 mt-6">Business</h3>
+                <p class="text-slate-400 mb-6">For small teams. All modules included.</p>
+                <div class="mb-8">
+                  <span class="text-4xl font-bold text-white">$299</span>
+                  <p class="text-xs text-slate-500 mt-1">Per month, annual billing</p>
+                </div>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>All 5 modules</span></li>
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>Up to 5 users</span></li>
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>Priority support</span></li>
+                </ul>
+                <a href="#demo-request" class="w-full rounded-lg border border-purple-500/60 bg-purple-500/10 text-purple-200 py-2 text-sm font-semibold hover:bg-purple-500/20 transition text-center block">Start Trial</a>
+              </div>
+
+              <div class="rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+                <h3 class="text-2xl font-bold text-white mb-6">Enterprise</h3>
+                <p class="text-slate-400 mb-6">Custom configuration for large teams.</p>
+                <div class="mb-8">
+                  <span class="text-4xl font-bold text-white">Custom</span>
+                  <p class="text-xs text-slate-500 mt-1">Volume pricing available</p>
+                </div>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>Unlimited users</span></li>
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>Custom integrations</span></li>
+                  <li class="flex items-start gap-3"><span class="text-purple-400 flex-shrink-0 mt-1">✓</span><span>Dedicated account team</span></li>
+                </ul>
+                <a href="#demo-request" class="w-full rounded-lg border border-slate-600 bg-slate-900 text-slate-200 py-2 text-sm font-semibold hover:border-purple-500/50 transition text-center block">Contact Sales</a>
+              </div>
+            </div>
+
+            <div class="mt-16 rounded-2xl border border-slate-700/60 bg-slate-900/50 p-8 text-center">
+              <p class="text-slate-300 max-w-2xl mx-auto"><strong>Status:</strong> Beta testing underway. Public launch Q2 2026. Early adopters get 50% discount for life. <a href="#demo-request" class="text-purple-400 hover:text-purple-300 font-semibold">Reserve early access →</a></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="border-b border-slate-800/50">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-purple-400 mb-4">Questions?</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">Do I need technical skills?<span class="ml-4 transition-transform group-open:rotate-180"><svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg></span></summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">No. Everything is designed for non-technical users. Guided setup, YouTube tutorials, and live chat included.</p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">Can I try it first?<span class="ml-4 transition-transform group-open:rotate-180"><svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg></span></summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">Yes. 14-day free trial with full access. No credit card required. Cancel anytime.</p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">Is my data safe?<span class="ml-4 transition-transform group-open:rotate-180"><svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg></span></summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">100% encrypted. Daily backups. GDPR & POPIA compliant. You own your data—we never sell it.</p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">How do I integrate existing tools?<span class="ml-4 transition-transform group-open:rotate-180"><svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg></span></summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">One-click integrations for 50+ tools. Custom API  access for developers. Setup takes minutes.</p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">How much can I save?<span class="ml-4 transition-transform group-open:rotate-180"><svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg></span></summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">Average 8–10 hours/month saved on admin work. At $25/hr = $200–250/month ROI. Most breakeven within 30 days.</p>
+              </details>
+            </div>
+
+            <div class="mt-12 text-center">
+              <p class="text-slate-400 mb-4">Missing something?</p>
+              <a href="#demo-request" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-semibold">Schedule a call <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+            </div>
+          </div>
+        </section>
+
+        <!-- DEMO REQUEST -->
+        <section id="demo-request" class="border-b border-slate-800/50 bg-gradient-to-b from-slate-900 to-slate-950">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/60 to-slate-900/60 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-indigo-500/5"></div>
+              
+              <div class="relative p-12 sm:p-16">
+                <div class="text-center space-y-8 max-w-2xl mx-auto">
+                  <div>
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Ready to Cut Hours from Your Week?</h2>
+                    <p class="text-lg text-slate-300">Join local businesses automating busywork with Small-AI Toolkit.</p>
+                  </div>
+
+                  <form class="space-y-4 max-w-md mx-auto">
+                    <input type="text" placeholder="Your Name" class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-purple-500/60" required />
+                    <input type="email" placeholder="your@business.com" class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-purple-500/60" required />
+                    <input type="tel" placeholder="Phone" class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-purple-500/60" required />
+                    <select class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 focus:outline-none focus:border-purple-500/60" required>
+                      <option value="">What's your business?</option>
+                      <option value="retail">Retail</option>
+                      <option value="service">Service (plumber, HVAC, etc.)</option>
+                      <option value="consulting">Consulting</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <button type="submit" class="w-full rounded-lg bg-gradient-to-r from-purple-500 to-indigo-600 px-8 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105">Get Free Trial</button>
+                  </form>
+
+                  <p class="text-xs text-slate-500">We respond within 12 hours. Direct conversations with the team.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <footer class="border-t border-slate-800/80 py-6">
-        <div
-          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
-        >
-          <p>
-            © <span id="year"></span>
-            <span data-brand></span>. All rights reserved.
-          </p>
+        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row">
+          <p>© <span id="year"></span> <span data-brand></span>. All rights reserved.</p>
           <div class="flex items-center gap-4">
-            <a href="./shop.html" class="hover:text-slate-300">Shop</a>
+            <a href="./media.html#shop" class="hover:text-slate-300">Shop</a>
             <a href="./index.html#about" class="hover:text-slate-300">About</a>
-            <a href="./studio.html#alpha-access" class="hover:text-slate-300">Contact</a>
+            <a href="#demo-request" class="hover:text-slate-300">Contact</a>
           </div>
         </div>
       </footer>
     </div>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      document.querySelector('form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alert('Thank you! We\'ll contact you within 12 hours.');
+        e.target.reset();
+      });
+    </script>
   </body>
 </html>
