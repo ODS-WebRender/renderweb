@@ -58,13 +58,12 @@
               <button
                 type="button"
                 class="inline-flex items-center gap-1 nav-underline"
-                aria-current="page"
               >
                 <span>Media</span>
                 <span class="text-xs text-slate-400">▾</span>
               </button>
               <div
-                class="opacity-0 pointer-events-none transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
+                class="opacity-0 pointer-events-auto transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
                 data-dropdown-panel="media"
               >
                 <div
@@ -1233,30 +1232,30 @@
           // Show panel immediately on mouseenter
           dropdown.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
-            panel.classList.remove('opacity-0', 'pointer-events-none');
-            panel.classList.add('opacity-100', 'pointer-events-auto');
+            panel.classList.remove('opacity-0');
+            panel.classList.add('opacity-100');
           });
           
           // Hide with delay on mouseleave (allows user to move into dropdown)
           dropdown.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
-              panel.classList.add('opacity-0', 'pointer-events-none');
-              panel.classList.remove('opacity-100', 'pointer-events-auto');
+              panel.classList.add('opacity-0');
+              panel.classList.remove('opacity-100');
             }, 150);
           });
           
           // Keep panel visible while hovering over it
           panel.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
-            panel.classList.remove('opacity-0', 'pointer-events-none');
-            panel.classList.add('opacity-100', 'pointer-events-auto');
+            panel.classList.remove('opacity-0');
+            panel.classList.add('opacity-100');
           });
           
           // Hide panel when leaving the panel back out
           panel.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
-              panel.classList.add('opacity-0', 'pointer-events-none');
-              panel.classList.remove('opacity-100', 'pointer-events-auto');
+              panel.classList.add('opacity-0');
+              panel.classList.remove('opacity-100');
             }, 150);
           });
         });

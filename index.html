@@ -51,7 +51,7 @@
 
           <!-- Desktop nav -->
           <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
-            <a href="./index.html" class="nav-underline" aria-current="page"
+            <a href="./index.html" class="nav-underline"
               >Home</a
             >
 
@@ -65,7 +65,7 @@
                 <span class="text-xs text-slate-400">▾</span>
               </button>
               <div
-                class="opacity-0 pointer-events-none transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
+                class="opacity-0 pointer-events-auto transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
                 data-dropdown-panel="media"
               >
                 <div
@@ -139,7 +139,7 @@
                 <span>Products</span>
                 <span class="text-xs text-slate-400">▾</span>
               </button>
-              <div class="opacity-0 pointer-events-none transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50" data-dropdown-panel="products">
+              <div class="opacity-0 pointer-events-auto transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50" data-dropdown-panel="products">
                 <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
                   <div class="mb-3 flex items-center justify-between text-xs">
                     <div class="flex items-center gap-2 text-slate-400">
@@ -791,30 +791,30 @@
           // Show panel immediately on mouseenter
           dropdown.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
-            panel.classList.remove('opacity-0', 'pointer-events-none');
-            panel.classList.add('opacity-100', 'pointer-events-auto');
+            panel.classList.remove('opacity-0');
+            panel.classList.add('opacity-100');
           });
           
           // Hide with delay on mouseleave (allows user to move into dropdown)
           dropdown.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
-              panel.classList.add('opacity-0', 'pointer-events-none');
-              panel.classList.remove('opacity-100', 'pointer-events-auto');
+              panel.classList.add('opacity-0');
+              panel.classList.remove('opacity-100');
             }, 150);
           });
           
           // Keep panel visible while hovering over it
           panel.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
-            panel.classList.remove('opacity-0', 'pointer-events-none');
-            panel.classList.add('opacity-100', 'pointer-events-auto');
+            panel.classList.remove('opacity-0');
+            panel.classList.add('opacity-100');
           });
           
           // Hide panel when leaving the panel back out
           panel.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
-              panel.classList.add('opacity-0', 'pointer-events-none');
-              panel.classList.remove('opacity-100', 'pointer-events-auto');
+              panel.classList.add('opacity-0');
+              panel.classList.remove('opacity-100');
             }, 150);
           });
         });
