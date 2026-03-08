@@ -808,19 +808,34 @@
           const panel = dropdown.querySelector('[data-dropdown-panel]');
           if (!panel) return;
           
-          // Show panel immediately on button mouseenter
+          // Show on button mouseenter
           button.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
             panel.classList.remove('opacity-0');
             panel.classList.add('opacity-100');
           });
           
-          // Hide with delay on button mouseleave
+          // Start hide timer on button mouseleave
           button.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
               panel.classList.add('opacity-0');
               panel.classList.remove('opacity-100');
-            }, 200);
+            }, 300);
+          });
+          
+          // Keep dropdown visible while hovering over it
+          dropdown.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            panel.classList.remove('opacity-0');
+            panel.classList.add('opacity-100');
+          });
+          
+          // Hide dropdown when leaving entire container
+          dropdown.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+              panel.classList.add('opacity-0');
+              panel.classList.remove('opacity-100');
+            }, 100);
           });
         });
       }
