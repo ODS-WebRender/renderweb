@@ -32,7 +32,7 @@
           <div class="flex items-center gap-3">
             <a href="./index.html" class="flex items-center gap-3">
               <img
-                src="./images/OLD DOG Circ Blue.png"
+                src="./images/OLD%20DOG%20Circ%20Blue.png"
                 alt="Old Dog Systems Logo"
                 title="Old Dog Systems"
                 class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
@@ -65,7 +65,7 @@
                 <span class="text-xs text-slate-400">▾</span>
               </button>
               <div
-                class="opacity-0 pointer-events-auto transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
+                class="opacity-0 pointer-events-auto transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px] group-hover:opacity-100"
                 data-dropdown-panel="media"
               >
                 <div
@@ -139,7 +139,7 @@
                 <span>Products</span>
                 <span class="text-xs text-slate-400">▾</span>
               </button>
-              <div class="opacity-0 pointer-events-auto transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50" data-dropdown-panel="products">
+              <div class="opacity-0 pointer-events-auto transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50 group-hover:opacity-100" data-dropdown-panel="products">
                 <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
                   <div class="mb-3 flex items-center justify-between text-xs">
                     <div class="flex items-center gap-2 text-slate-400">
@@ -247,7 +247,7 @@
                 <div class="relative mb-12">
                   <div class="absolute inset-0 bg-gradient-to-br from-sky-500/20 to-emerald-500/20 blur-3xl rounded-full"></div>
                   <img
-                    src="./images/OLD DOG Circ Blue.png"
+                    src="./images/OLD%20DOG%20Circ%20Blue.png"
                     alt="Old Dog Systems Logo"
                     class="relative h-80 w-80 rounded-3xl object-cover border-2 border-slate-600/50 shadow-2xl ring-1 ring-slate-400/20"
                   />
@@ -779,50 +779,7 @@
         }
       }
 
-      // Setup dropdown hover behavior for Media and Products
-      function setupDropdownInteractivity() {
-        const buttons = document.querySelectorAll('[data-dropdown] button');
-        let hideTimeout = null;
-        
-        buttons.forEach(button => {
-          const dropdown = button.parentElement;
-          const panel = dropdown.querySelector('[data-dropdown-panel]');
-          if (!panel) return;
-          
-          // Show on button mouseenter
-          button.addEventListener('mouseenter', () => {
-            clearTimeout(hideTimeout);
-            panel.classList.remove('opacity-0');
-            panel.classList.add('opacity-100');
-          });
-          
-          // Start hide timer on button mouseleave
-          button.addEventListener('mouseleave', () => {
-            hideTimeout = setTimeout(() => {
-              panel.classList.add('opacity-0');
-              panel.classList.remove('opacity-100');
-            }, 300);
-          });
-          
-          // Keep dropdown visible while hovering over it
-          dropdown.addEventListener('mouseenter', () => {
-            clearTimeout(hideTimeout);
-            panel.classList.remove('opacity-0');
-            panel.classList.add('opacity-100');
-          });
-          
-          // Hide dropdown when leaving entire container
-          dropdown.addEventListener('mouseleave', () => {
-            hideTimeout = setTimeout(() => {
-              panel.classList.add('opacity-0');
-              panel.classList.remove('opacity-100');
-            }, 100);
-          });
-        });
-      }
-
       document.addEventListener('DOMContentLoaded', () => {
-        setupDropdownInteractivity();
         loadFeaturedProducts();
         loadAlphaCount();
       });
