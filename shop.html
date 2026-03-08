@@ -55,7 +55,7 @@
             >
 
             <!-- Media mega -->
-            <div class="relative group">
+            <div class="relative group z-50" data-dropdown="media">
               <button
                 type="button"
                 class="inline-flex items-center gap-1 nav-underline"
@@ -64,7 +64,8 @@
                 <span class="text-xs text-slate-400">▾</span>
               </button>
               <div
-                class="opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
+                class="opacity-0 pointer-events-none transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px]"
+                data-dropdown-panel="media"
               >
                 <div
                   class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
@@ -132,12 +133,12 @@
             </div>
 
             <!-- Products mega (consolidated Software + Offerings) -->
-            <div class="relative group z-50">
+            <div class="relative group z-50" data-dropdown="products">
               <button type="button" class="inline-flex items-center gap-1 nav-underline">
                 <span>Products</span>
                 <span class="text-xs text-slate-400">▾</span>
               </button>
-              <div class="opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50">
+              <div class="opacity-0 pointer-events-none transition duration-150 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50" data-dropdown-panel="products">
                 <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
                   <div class="mb-3 flex items-center justify-between text-xs">
                     <div class="flex items-center gap-2 text-slate-400">
@@ -796,6 +797,30 @@
           allBtn.classList.add('active');
         }
       }
+
+      // Setup dropdown hover behavior for Media and Products
+      function setupDropdownInteractivity() {
+        const dropdowns = document.querySelectorAll('[data-dropdown]');
+        
+        dropdowns.forEach(dropdown => {
+          const panel = dropdown.querySelector('[data-dropdown-panel]');
+          if (!panel) return;
+          
+          // Show panel on mouseenter (hover over button or container)
+          dropdown.addEventListener('mouseenter', () => {
+            panel.classList.remove('opacity-0', 'pointer-events-none');
+            panel.classList.add('opacity-100', 'pointer-events-auto');
+          });
+          
+          // Hide panel on mouseleave (mouse leaves container)
+          dropdown.addEventListener('mouseleave', () => {
+            panel.classList.add('opacity-0', 'pointer-events-none');
+            panel.classList.remove('opacity-100', 'pointer-events-auto');
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', setupDropdownInteractivity);
 
       // Dropdown toggle function
       function toggleDropdown(dropdownId) {

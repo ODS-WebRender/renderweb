@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CPM‑AI™ Construction Project Management Suite</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="CPM‑AI™ is an AI-driven suite for on-site automation, safety monitoring and waste reduction aimed at small-to-mid construction contractors."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+
+      function toggleDropdown(id) {
+        const menu = document.getElementById(id + '-menu');
+        const arrow = document.getElementById(id + '-arrow');
+        menu?.classList.toggle('hidden');
+        menu?.classList.toggle('visible');
+        menu?.classList.toggle('opacity-0');
+        menu?.classList.toggle('opacity-100');
+        arrow?.classList.toggle('rotate-180');
+      }
+    </script>
+  </head>
+
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Phase 1: STANDARDIZED HEADER -->
+      <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/dog-logo.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav - simplified for demo -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./media.html" class="nav-underline">Media</a>
+            <a href="./shop.html" class="nav-underline">Products</a>
+            <a href="./media.html#shop" class="nav-underline">Shop</a>
+            <a href="./dashboard.html" class="nav-underline">Dashboard</a>
+          </div>
+
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-200"></span>
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-400"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile nav -->
+        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./media.html" class="block">Media</a>
+            <a href="./studio.html" class="block">Software</a>
+            <a href="./media.html#shop" class="block">Shop</a>
+            <a href="./dashboard.html" class="block">Dashboard</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <!-- PHASE 2: ENHANCED HERO WITH ARTWORK -->
+        <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
+          <div class="absolute inset-0 hero-grid pointer-events-none opacity-30"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-transparent to-slate-500/5"></div>
+          
+          <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <!-- Left: Product Info -->
+              <div class="space-y-8">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700/40 px-4 py-2 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+                  Coming Soon (Q2 2026)
+                </div>
+
+                <!-- Title & Tagline -->
+                <div class="space-y-4">
+                  <h1 class="text-5xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+                    📦 CPM‑AI™
+                    <span class="block bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+                      Construction Project Mastery
+                    </span>
+                  </h1>
+                  <p class="text-lg text-slate-300 leading-relaxed max-w-lg">
+                    AI-driven automation for on-site safety monitoring, quality control, and waste reduction. Purpose-built for small-to-mid contractors managing complexity without the overhead.
+                  </p>
+                </div>
+
+                <!-- Key Metrics -->
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4">
+                    <div class="text-3xl font-bold text-amber-400">40%</div>
+                    <p class="text-xs text-slate-400 mt-1">Safety Incident Reduction</p>
+                  </div>
+                  <div class="rounded-lg border border-slate-700/50 bg-slate-900/50 p-4">
+                    <div class="text-3xl font-bold text-orange-400">3 hrs</div>
+                    <p class="text-xs text-slate-400 mt-1">Compliance Time/Week Saved</p>
+                  </div>
+                </div>
+
+                <!-- Primary CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                  <a
+                    href="#demo-request"
+                    class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105"
+                  >
+                    Request Demo
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                  <a
+                    href="./media.html#shop"
+                    class="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-slate-600 bg-slate-900/60 px-8 py-3 text-base font-semibold text-slate-100 hover:border-amber-400 hover:text-amber-200 transition-all duration-300 backdrop-blur-sm hover:bg-slate-900/80"
+                  >
+                    Join Waitlist
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Product Screenshot -->
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 blur-3xl rounded-2xl"></div>
+                <div class="relative rounded-2xl border border-slate-700/60 overflow-hidden bg-slate-900/50 p-2">
+                  <div class="aspect-video bg-gradient-to-br from-amber-900/20 to-slate-900 rounded-xl flex items-center justify-center text-slate-400 border border-amber-500/20">
+                    <div class="text-center">
+                      <div class="text-4xl mb-3">🏗️</div>
+                      <p class="text-sm">Construction Site Dashboard</p>
+                      <p class="text-xs text-slate-500 mt-2">Live safety monitoring & QC</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: DETAILED FEATURES GRID -->
+        <section class="border-b border-slate-800/50 bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-amber-400 mb-4">Core Capabilities</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Built For Construction Reality</h2>
+              <p class="text-lg text-slate-400 max-w-3xl">
+                Five powerful modules that work together to automate your toughest site challenges.
+              </p>
+            </div>
+
+            <!-- Features Grid: 3 columns on desktop -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Feature 1 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-amber-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/15 ring-1 ring-amber-400/40 flex items-center justify-center text-amber-300 text-2xl mb-6">
+                  👷‍♂️
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Site‑Safety Monitor</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Live CCTV and IoT integration with real-time compliance alerts for PPE violations, fall hazards, and unauthorized access points.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>ML-powered PPE detection</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Fall risk geo-alerting</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Automated incident reports</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-orange-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/15 ring-1 ring-orange-400/40 flex items-center justify-center text-orange-300 text-2xl mb-6">
+                  ⚙️
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Welding & Bricklaying QC</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Vision models detect structural defects and alignment issues with tablet-based workflows for instant feedback to teams.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Defect detection & classification</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Tablet offsite sync workflow</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Rework reduction tracking</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-yellow-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-yellow-500/15 ring-1 ring-yellow-400/40 flex items-center justify-center text-yellow-300 text-2xl mb-6">
+                  🔧
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Predictive Maintenance</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Equipment sensor ingestion and ML forecasts schedule preventive servicing before breakdowns disrupt your timeline.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>IoT sensor integration</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Downtime cost modeling</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Supplier workflow automation</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 4 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-green-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-green-500/15 ring-1 ring-green-400/40 flex items-center justify-center text-green-300 text-2xl mb-6">
+                  ♻️
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Waste‑Intelligence</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Material-usage heatmaps vs. design drawings identify waste hotspots and auto-generate reorder suggestions.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Real-time usage overlays</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Variance analysis & alerts</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Material cost forecasting</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Feature 5 -->
+              <div class="group rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/40 to-slate-900/60 p-8 hover:border-sky-500/40 transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center text-sky-300 text-2xl mb-6">
+                  📷
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Drone‑Supervisor</h3>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                  Aerial progress tracking with GPT-generated daily reports, stakeholder updates, and timeline risk alerts.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Automated site photography</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Progress %-complete estimation</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 mt-1">✓</span>
+                    <span>Stakeholder email digests</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: USE CASES -->
+        <section class="border-b border-slate-800/50">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-amber-400 mb-4">Real-World Applications</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Construction Teams Getting Results</h2>
+              <p class="text-lg text-slate-400 max-w-3xl">
+                Proven impact across contractors managing residential complexes, commercial builds, and infrastructure.
+              </p>
+            </div>
+
+            <!-- Use Cases: Alternating layout -->
+            <div class="space-y-16">
+              <!-- Use Case 1 -->
+              <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                  <div class="rounded-2xl border border-slate-700/60 bg-slate-900/50 p-1 overflow-hidden">
+                    <div class="aspect-video bg-gradient-to-br from-amber-900/10 to-slate-900 rounded-xl flex items-center justify-center text-slate-400">
+                      <p class="text-center"><div class="text-3xl mb-2">🏘️</div>Garden Route Property Complex</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                  <h3 class="text-2xl font-bold text-white">Multi-Unit Residential: Safety Compliance at Scale</h3>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Scenario:</strong> Local contractor managing 4-site portfolio with 50+ workers. Manual safety inspections taking 2 ops managers 3 days/week, creating delays and inconsistency.
+                  </p>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Solution:</strong> CPM-AI safety module deployed across all 4 sites. Real-time alerts reduce compliance auditing to 4 hours/week.
+                  </p>
+                  <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-3">
+                      <span class="text-amber-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>40% fewer safety incidents</strong> - PPE compliance improves from 78% to 91%</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amber-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Insurance premium reduction</strong> - Safe audit record saves R15K/year per site</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amber-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Timeline acceleration</strong> - No safety admin delays, crews ship faster</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Use Case 2 -->
+              <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="rounded-2xl border border-slate-700/60 bg-slate-900/50 p-1 overflow-hidden">
+                  <div class="aspect-video bg-gradient-to-br from-amber-900/10 to-slate-900 rounded-xl flex items-center justify-center text-slate-400">
+                    <p class="text-center"><div class="text-3xl mb-2">🏗️</div>Commercial Build Project</p>
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <h3 class="text-2xl font-bold text-white">Quality Control: Reduce Rework by 60%</h3>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Scenario:</strong> R8M commercial build with tight deadline. Bricklaying and welding rework averaging 8% of budget due to offsite defects caught late.
+                  </p>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Solution:</strong> Drone-Supervisor + Welding QC module provides daily aerial inspections and real-time QC feedback integrated with site crews.
+                  </p>
+                  <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-3">
+                      <span class="text-amber-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Rework reduced to 2%</strong> - Early defect detection saves R120K+ in redoing work</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amber-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Timeline predictability</strong> - Stakeholder confidence increases with daily progress reports</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Use Case 3 -->
+              <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                  <div class="rounded-2xl border border-slate-700/60 bg-slate-900/50 p-1 overflow-hidden">
+                    <div class="aspect-video bg-gradient-to-br from-amber-900/10 to-slate-900 rounded-xl flex items-center justify-center text-slate-400">
+                      <p class="text-center"><div class="text-3xl mb-2">📦</div>Material & Equipment Logistics</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                  <h3 class="text-2xl font-bold text-white">Waste Reduction: Save 15% on Material Costs</h3>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Scenario:</strong> 12-month infrastructure project managing timber, concrete, rebar. Material overages averaging 12% due to procurement guesswork.
+                  </p>
+                  <p class="text-slate-300 leading-relaxed">
+                    <strong>Solution:</strong> Waste-Intelligence module analyzes on-site usage against design, recommends reorder quantities, prevents over-purchasing.
+                  </p>
+                  <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-3">
+                      <span class="text-amber-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Material waste drops to 3%</strong> - Precision ordering & just-in-time delivery</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amber-400 text-lg flex-shrink-0">→</span>
+                      <span><strong>Sustainability score improves</strong> - 60% less construction waste to landfill</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: PRICING & AVAILABILITY -->
+        <section class="border-b border-slate-800/50 bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-amber-400 mb-4">Availability & Pricing</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Flexible Access for Every Stage</h2>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl">
+              <!-- Plan 1: Pilot -->
+              <div class="rounded-2xl border-2 border-amber-500/40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="text-2xl font-bold text-white">Pilot Program</h3>
+                  <span class="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-300 ring-1 ring-amber-500/30">Early Access</span>
+                </div>
+                <p class="text-slate-400 mb-6">1–2 site deployment to prove ROI before full fleet rollout.</p>
+                <div class="mb-8">
+                  <span class="text-4xl font-bold text-white">R25K</span>
+                  <p class="text-xs text-slate-500 mt-1">Setup + 3-month pilot</p>
+                </div>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>2 sites, up to 100 workers total</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>All 5 core modules</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Direct product team support</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Monthly ROI reviews</span>
+                  </li>
+                </ul>
+                <a href="#demo-request" class="w-full rounded-lg bg-amber-500 text-slate-950 py-2 text-sm font-semibold hover:bg-amber-400 transition text-center block">
+                  Request Pilot
+                </a>
+              </div>
+
+              <!-- Plan 2: Growth -->
+              <div class="rounded-2xl border border-sky-500/40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8 relative ring-1 ring-sky-500/20">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span class="inline-block bg-gradient-to-r from-sky-500 to-cyan-500 text-slate-950 px-3 py-1 text-xs font-bold rounded-full">MOST POPULAR</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-6 mt-6">Growth Plan</h3>
+                <p class="text-slate-400 mb-6">Full deployment after pilot success. Scale across your fleet.</p>
+                <div class="mb-8">
+                  <span class="text-4xl font-bold text-white">R8/worker</span>
+                  <p class="text-xs text-slate-500 mt-1">Per month, annual billing</p>
+                </div>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Unlimited sites</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>All 5 modules + new releases</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Email + Slack support</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Quarterly strategy reviews</span>
+                  </li>
+                </ul>
+                <a href="#demo-request" class="w-full rounded-lg border border-sky-500/60 bg-sky-500/10 text-sky-200 py-2 text-sm font-semibold hover:bg-sky-500/20 transition text-center block">
+                  Start Growth Plan
+                </a>
+              </div>
+
+              <!-- Plan 3: Enterprise -->
+              <div class="rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-8">
+                <h3 class="text-2xl font-bold text-white mb-6">Enterprise</h3>
+                <p class="text-slate-400 mb-6">Custom deployment, white-label, dedicated success team.</p>
+                <div class="mb-8">
+                  <span class="text-4xl font-bold text-white">Custom</span>
+                  <p class="text-xs text-slate-500 mt-1">Volume & contract pricing</p>
+                </div>
+                <ul class="space-y-3 mb-8 text-sm text-slate-300">
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Unlimited everything</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Custom integrations</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>Dedicated account team</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-amber-400 flex-shrink-0 mt-1">✓</span>
+                    <span>White-label options</span>
+                  </li>
+                </ul>
+                <a href="#demo-request" class="w-full rounded-lg border border-slate-600 bg-slate-900 text-slate-200 py-2 text-sm font-semibold hover:border-amber-500/50 transition text-center block">
+                  Contact Sales
+                </a>
+              </div>
+            </div>
+
+            <!-- Availability Note -->
+            <div class="mt-16 rounded-2xl border border-slate-700/60 bg-slate-900/50 p-8 text-center">
+              <p class="text-slate-300 max-w-2xl mx-auto">
+                <strong>Launch Status:</strong> Pilot program accepting 5 contractors in Q1 2026. Public availability Q2 2026.
+                <a href="#demo-request" class="text-amber-400 hover:text-amber-300 font-semibold"> Reserve pilot spot →</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: FAQ -->
+        <section class="border-b border-slate-800/50">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="mb-16">
+              <p class="text-sm font-semibold uppercase tracking-wider text-amber-400 mb-4">Questions?</p>
+              <h2 class="text-4xl sm:text-5xl font-bold text-white">Frequently Asked Questions</h2>
+            </div>
+
+             <!-- FAQ Items -->
+            <div class="space-y-4">
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  How long does implementation take?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  Pilot deployments typically go live within 2 weeks of contract signing. Our team handles all hardware setup and worker training. For Growth Plan, scaling to additional sites takes 1–2 weeks per site depending on network infrastructure.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  What if we don't have modern equipment?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  We supply IoT sensors, cameras, and tablets as part of the Pilot. Monthly hardware costs (depreciation model) are included in pricing. No upfront equipment purchase needed—deduct from ROI achieved.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  How accurate is the safety AI? Can it miss things?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  Our models are trained on 50K+ site hours and achieve 94% accuracy on PPE detection. We're transparent: no AI replaces your safety officers. CPM-AI is an always-on extra set of eyes that alerts humans to investigate. Your team makes final safety decisions.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  Do you offer data guarantees or SLAs?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  Yes. Growth and Enterprise plans include 99.5% uptime SLA backed by redundant South Africa hosting. All site data owned by you—we provide export APIs. Compliance with POPIA and construction safety standards verified quarterly.
+                </p>
+              </details>
+
+              <details class="group rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 cursor-pointer hover:border-slate-600/80 transition-colors">
+                <summary class="flex items-center justify-between font-semibold text-white text-lg">
+                  What's the onboarding process for my crew?
+                  <span class="ml-4 transition-transform group-open:rotate-180">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="mt-4 text-slate-300 leading-relaxed">
+                  We run a 2-hour onsite training session with your safety manager and 2–3 site supervisors. Materials translated into local languages. Ongoing video tutorials available in-app. We're available via Slack for questions the first 2 weeks.
+                </p>
+              </details>
+            </div>
+
+            <!-- More Questions CTA -->
+            <div class="mt-12 text-center">
+              <p class="text-slate-400 mb-4">Don't see your question?</p>
+              <a href="#demo-request" class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold">
+                Schedule a 30-min discovery call
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHASE 2: DEMO REQUEST CTA -->
+        <section id="demo-request" class="border-b border-slate-800/50 bg-gradient-to-b from-slate-900 to-slate-950">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div class="rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-800/60 to-slate-900/60 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5"></div>
+              
+              <div class="relative p-12 sm:p-16">
+                <div class="text-center space-y-8 max-w-2xl mx-auto">
+                  <div>
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+                      Ready to Cut Site Costs & Boost Safety?
+                    </h2>
+                    <p class="text-lg text-slate-300">
+                      Join contractors and teams already reducing rework, compliance overhead, and material waste with CPM‑AI.
+                    </p>
+                  </div>
+
+                  <!-- Demo Request Form -->
+                  <form class="space-y-4 max-w-md mx-auto">
+                    <input
+                      type="text"
+                      placeholder="Your Name"
+                      class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/60"
+                      required
+                    />
+                    <input
+                      type="email"
+                      placeholder="your@company.com"
+                      class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/60"
+                      required
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Phone (WhatsApp preferred)"
+                      class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/60"
+                      required
+                    />
+                    <select
+                      class="w-full rounded-lg bg-slate-900/50 border border-slate-700/60 px-4 py-3 text-slate-100 focus:outline-none focus:border-amber-500/60"
+                      required
+                    >
+                      <option value="">Select your interest...</option>
+                      <option value="pilot">Pilot Program (1–2 sites)</option>
+                      <option value="growth">Growth Plan (full fleet)</option>
+                      <option value="enterprise">Enterprise (custom)</option>
+                      <option value="demo">Just a demo</option>
+                    </select>
+                    <button
+                      type="submit"
+                      class="w-full rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105"
+                    >
+                      Request Pilot Program
+                    </button>
+                  </form>
+
+                  <p class="text-xs text-slate-500">
+                    We respond within 12 hours. Confidential contractor-to-founder conversations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-800/80 py-6">
+        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row">
+          <p>
+            © <span id="year"></span>
+            <span data-brand></span>. All rights reserved.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="./media.html#shop" class="hover:text-slate-300">Shop</a>
+            <a href="./index.html#about" class="hover:text-slate-300">About</a>
+            <a href="./#demo-request" class="hover:text-slate-300">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Demo form handler
+      document.querySelector('form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        // TODO: Connect to email service or backend
+        alert('Thank you! We will contact you within 12 hours to schedule your pilot demo.');
+        e.target.reset();
+      });
+    </script>
+  </body>
+</html>
