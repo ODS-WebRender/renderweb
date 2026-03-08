@@ -800,22 +800,23 @@
 
       // Setup dropdown hover behavior for Media and Products
       function setupDropdownInteractivity() {
-        const dropdowns = document.querySelectorAll('[data-dropdown]');
+        const buttons = document.querySelectorAll('[data-dropdown] button');
         let hideTimeout = null;
         
-        dropdowns.forEach(dropdown => {
+        buttons.forEach(button => {
+          const dropdown = button.parentElement;
           const panel = dropdown.querySelector('[data-dropdown-panel]');
           if (!panel) return;
           
-          // Show panel immediately on mouseenter
-          dropdown.addEventListener('mouseenter', () => {
+          // Show panel immediately on button mouseenter
+          button.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
             panel.classList.remove('opacity-0');
             panel.classList.add('opacity-100');
           });
           
-          // Hide with delay on mouseleave (allows user to move into dropdown)
-          dropdown.addEventListener('mouseleave', () => {
+          // Hide with delay on button mouseleave
+          button.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
               panel.classList.add('opacity-0');
               panel.classList.remove('opacity-100');
