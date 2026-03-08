@@ -1383,48 +1383,10 @@
       }
 
       // Setup dropdown hover behavior for Media and Products
-      function setupDropdownInteractivity() {
-        const buttons = document.querySelectorAll('[data-dropdown] button');
-        let hideTimeout = null;
-        
-        buttons.forEach(button => {
-          const dropdown = button.parentElement;
-          const panel = dropdown.querySelector('[data-dropdown-panel]');
-          if (!panel) return;
-          
-          // Show on button mouseenter
-          button.addEventListener('mouseenter', () => {
-            clearTimeout(hideTimeout);
-            panel.classList.remove('opacity-0');
-            panel.classList.add('opacity-100');
-          });
-          
-          // Start hide timer on button mouseleave
-          button.addEventListener('mouseleave', () => {
-            hideTimeout = setTimeout(() => {
-              panel.classList.add('opacity-0');
-              panel.classList.remove('opacity-100');
-            }, 300);
-          });
-          
-          // Keep dropdown visible while hovering over it
-          dropdown.addEventListener('mouseenter', () => {
-            clearTimeout(hideTimeout);
-            panel.classList.remove('opacity-0');
-            panel.classList.add('opacity-100');
-          });
-          
-          // Hide dropdown when leaving entire container
-          dropdown.addEventListener('mouseleave', () => {
-            hideTimeout = setTimeout(() => {
-              panel.classList.add('opacity-0');
-              panel.classList.remove('opacity-100');
-            }, 100);
-          });
-        });
-      }
-
-      document.addEventListener('DOMContentLoaded', setupDropdownInteractivity);
+      document.addEventListener('DOMContentLoaded', () => {
+        loadFeaturedProducts();
+        loadAlphaCount();
+      });
 
       // Dropdown toggle function
       function toggleDropdown(dropdownId) {
