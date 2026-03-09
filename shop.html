@@ -377,11 +377,14 @@
       async function loadProducts() {
         try {
           const response = await fetch('/api/products');
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
           const data = await response.json();
           allProducts = data.products || [];
+          console.log(`✓ Loaded ${allProducts.length} products`);
         } catch (error) {
           console.error('Failed to load products:', error);
-          // Fallback to dummy data
           allProducts = [];
         }
       }
@@ -791,12 +794,6 @@
         }
       }
 
-      // Setup dropdown hover behavior for Media and Products
-      document.addEventListener('DOMContentLoaded', () => {
-        loadFeaturedProducts();
-        loadAlphaCount();
-      });
-
       // Dropdown toggle function
       function toggleDropdown(dropdownId) {
         const menu = document.getElementById(dropdownId.replace('-dropdown', '-menu'));
@@ -814,15 +811,6 @@
           arrow.style.transform = 'rotate(0deg)';
         }
       }
-
-      // Initialize accessible dropdowns
-      document.addEventListener('DOMContentLoaded', () => {
-        loadProducts();
-        renderProducts();
-        renderCart();
-        setupEventListeners();
-        initializeAccessibleDropdowns();
-      });
 
       /**
        * ACCESSIBILITY ENHANCEMENT: Initialize dropdowns with full keyboard and touch support
