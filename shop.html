@@ -189,10 +189,6 @@
 
             <a href="./media.html#shop" class="nav-underline">Shop</a>
             <a href="./dashboard.html" class="nav-underline">Dashboard</a>
-            <a href="./index.html#about" class="nav-underline">About</a>
-            <a href="./studio.html#alpha-access" class="nav-underline"
-              >Alpha Access</a
-            >
           </div>
 
           <!-- Mobile trigger -->
@@ -628,7 +624,7 @@
           <div class="space-y-6">
             <div>
               <h2 class="text-2xl font-bold mb-2">Checkout</h2>
-              <p class="text-sm text-slate-400">Complete your purchase securely with Stripe</p>
+              <p class="text-sm text-slate-400">Complete your purchase securely with PayFast</p>
             </div>
 
             <!-- Order Summary -->
@@ -661,7 +657,7 @@
               <div class="bg-slate-900/50 rounded-lg p-3 flex items-start gap-3 text-sm text-slate-300">
                 <span class="text-xs">🔒</span>
                 <span>
-                  Your payment is processed securely by <strong>Stripe</strong>. 
+                  Your payment is processed securely by <strong>PayFast</strong>. 
                   Card data is never stored on our servers.
                 </span>
               </div>
@@ -712,7 +708,7 @@
         try {
           // Show loading state
           submitBtn.disabled = true;
-          submitBtn.textContent = 'Redirecting to Stripe...';
+          submitBtn.textContent = 'Redirecting to PayFast...'
 
           const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
 
@@ -741,8 +737,8 @@
             throw new Error('No checkout URL received from server. Please contact support.');
           }
 
-          // Redirect to Stripe
-          console.log('Redirecting to Stripe checkout:', checkoutUrl);
+          // Redirect to PayFast
+          console.log('Redirecting to PayFast checkout:', checkoutUrl);
           window.location.href = checkoutUrl;
         } catch (error) {
           console.error('Checkout error:', error);
@@ -751,7 +747,7 @@
           let errorMessage = error.message;
           if (error.message.includes('Failed to fetch')) {
             errorMessage = 'Network error. Please check your connection and try again.';
-          } else if (error.message.includes('STRIPE')) {
+          } else if (error.message.includes('PAYFAST')) {
             errorMessage = 'Payment system error. Please contact support@olddogsystems.com';
           }
           
