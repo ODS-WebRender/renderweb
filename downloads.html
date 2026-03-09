@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Downloads — Old Dog Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Download Old Dog Systems applications including Rough Diamond Studio, Old Dog ERP, and CPM-AI Suite." />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- HEADER -->
+      <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/OLD-DOG-CircBlue.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <div class="hidden md:flex items-center gap-8">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./media.html" class="nav-underline">Media</a>
+            <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./downloads.html" class="nav-underline text-emerald-400">Downloads</a>
+            <a href="./dashboard.html" class="nav-underline">Dashboard</a>
+            <a href="./index.html#about" class="nav-underline">About</a>
+          </div>
+
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="block h-0.5 w-4 rounded-full bg-slate-200 mb-0.5"></span>
+            <span class="block h-0.5 w-4 rounded-full bg-slate-400 mb-0.5"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./media.html" class="block">Media</a>
+            <a href="./shop.html" class="block">Shop</a>
+            <a href="./downloads.html" class="block text-emerald-400">Downloads</a>
+            <a href="./dashboard.html" class="block">Dashboard</a>
+            <a href="./index.html#about" class="block">About</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <!-- HERO SECTION -->
+        <section class="border-b border-slate-800/80 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 lg:py-20">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4">
+              <h1 class="text-4xl sm:text-5xl font-bold text-white">Download Our Apps</h1>
+              <p class="text-lg text-slate-400 max-w-2xl mx-auto">Get access to Old Dog Systems applications. Download Rough Diamond Studio or join the beta program for upcoming releases.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DOWNLOADS GRID -->
+        <section class="py-12 sm:py-16 lg:py-20">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-6">
+              <!-- Rough Diamond Studio - READY -->
+              <div class="card-glass border border-sky-500/60 p-6 rounded-2xl hover:border-sky-400 transition-colors">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="h-12 w-12 rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center text-sky-300 text-lg">α</div>
+                  <span class="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300 ring-1 ring-emerald-500/40">Ready</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Rough Diamond Studio</h3>
+                <p class="text-sm text-slate-400 mb-4">Professional audio podcasting and content systems built for teams that ship weekly.</p>
+                
+                <div class="space-y-3 mb-6">
+                  <div class="flex items-center gap-2 text-xs text-slate-400">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    Status: Alpha Testing
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-slate-400">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    Ready to Download
+                  </div>
+                </div>
+
+                <a href="./studio.html#alpha-access" class="block w-full text-center bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-semibold py-3 px-4 rounded-xl transition-all">
+                  Get Alpha Access
+                </a>
+                <a href="#" class="block w-full text-center mt-2 border border-sky-500/60 hover:border-sky-400 text-sky-400 font-semibold py-3 px-4 rounded-xl transition-colors">
+                  View Documentation
+                </a>
+              </div>
+
+              <!-- Old Dog ERP - IN DEVELOPMENT -->
+              <div class="card-glass border border-orange-500/60 p-6 rounded-2xl hover:border-orange-400 transition-colors">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="h-12 w-12 rounded-lg bg-orange-500/15 ring-1 ring-orange-400/40 flex items-center justify-center text-orange-300 text-lg">📊</div>
+                  <span class="rounded-full bg-orange-500/20 px-3 py-1 text-xs font-semibold text-orange-300 ring-1 ring-orange-500/40">50% Ready</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Old Dog ERP</h3>
+                <p class="text-sm text-slate-400 mb-4">Enterprise resource planning system designed specifically for construction and contracting businesses.</p>
+                
+                <div class="space-y-3 mb-6">
+                  <div class="flex items-center gap-2 text-xs text-slate-400">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                    Development: 50% Complete
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-slate-400">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                    Expected: Q3 2026
+                  </div>
+                </div>
+
+                <button disabled class="block w-full text-center bg-slate-700 text-slate-400 font-semibold py-3 px-4 rounded-xl cursor-not-allowed opacity-50">
+                  Coming Soon
+                </button>
+                <a href="./old-dog-erp.html" class="block w-full text-center mt-2 border border-orange-500/60 hover:border-orange-400 text-orange-400 font-semibold py-3 px-4 rounded-xl transition-colors">
+                  Learn More
+                </a>
+              </div>
+
+              <!-- CPM-AI Suite - IN DEVELOPMENT -->
+              <div class="card-glass border border-amber-500/60 p-6 rounded-2xl hover:border-amber-400 transition-colors">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="h-12 w-12 rounded-lg bg-amber-500/15 ring-1 ring-amber-400/40 flex items-center justify-center text-amber-300 text-lg">🏗️</div>
+                  <span class="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-300 ring-1 ring-amber-500/40">50% Ready</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">CPM‑AI™ Suite</h3>
+                <p class="text-sm text-slate-400 mb-4">AI-powered solutions for construction project management, safety, and waste reduction.</p>
+                
+                <div class="space-y-3 mb-6">
+                  <div class="flex items-center gap-2 text-xs text-slate-400">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Development: 50% Complete
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-slate-400">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Expected: Q4 2026
+                  </div>
+                </div>
+
+                <button disabled class="block w-full text-center bg-slate-700 text-slate-400 font-semibold py-3 px-4 rounded-xl cursor-not-allowed opacity-50">
+                  Coming Soon
+                </button>
+                <a href="./cpm-ai.html" class="block w-full text-center mt-2 border border-amber-500/60 hover:border-amber-400 text-amber-400 font-semibold py-3 px-4 rounded-xl transition-colors">
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BETA PROGRAM SECTION -->
+        <section class="border-t border-slate-800/80 bg-slate-900/50 py-12 sm:py-16 lg:py-20">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div class="card-glass border border-slate-700/60 p-8 rounded-2xl">
+              <h2 class="text-2xl font-bold text-white mb-4">Join Our Beta Program</h2>
+              <p class="text-slate-400 mb-6">Become an early tester for upcoming applications. Get exclusive access to new features and help shape the future of Old Dog Systems.</p>
+              
+              <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                <div class="flex items-start gap-3">
+                  <span class="text-emerald-400 text-lg">✓</span>
+                  <div>
+                    <h4 class="font-semibold text-white">Early Access</h4>
+                    <p class="text-sm text-slate-400">Use apps before general release</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-emerald-400 text-lg">✓</span>
+                  <div>
+                    <h4 class="font-semibold text-white">Direct Feedback</h4>
+                    <p class="text-sm text-slate-400">Influence development priorities</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-emerald-400 text-lg">✓</span>
+                  <div>
+                    <h4 class="font-semibold text-white">Special Pricing</h4>
+                    <p class="text-sm text-slate-400">Beta pricing locked for life</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-emerald-400 text-lg">✓</span>
+                  <div>
+                    <h4 class="font-semibold text-white">Community</h4>
+                    <p class="text-sm text-slate-400">Connect with other operators</p>
+                  </div>
+                </div>
+              </div>
+
+              <a href="./index.html#alpha-access" class="inline-block bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-3 px-8 rounded-xl transition-all">
+                Apply for Beta Access
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-800/80 py-6">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-400">
+          <p>&copy; <span id="year"></span> Old Dog Systems. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
