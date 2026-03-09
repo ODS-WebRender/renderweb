@@ -1299,7 +1299,9 @@ const server = http.createServer(async (req, res) => {
 
     // ===== STATIC FILE SERVING =====
     
-    let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
+    // Decode URL-encoded characters (e.g., %20 for spaces)
+    const decodedPathname = decodeURIComponent(pathname);
+    let filePath = path.join(__dirname, decodedPathname === '/' ? 'index.html' : decodedPathname);
 
     // Security: prevent directory traversal
     if (!filePath.startsWith(__dirname)) {
