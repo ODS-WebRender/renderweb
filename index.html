@@ -919,10 +919,17 @@
           });
 
           /**
-           * Click outside to close
+           * Click outside to close (but allow links to work)
            */
           document.addEventListener('click', (e) => {
-            if (!wrapper.contains(e.target) && isOpen) {
+            // Don't close if clicking a link inside the dropdown - let the link navigate
+            if (!wrapper.contains(e.target) && isOpen && !e.target.closest('a, button')) {
+              closeAllDropdowns();
+              isOpen = false;
+            }
+            // If clicking a link inside dropdown, allow normal navigation
+            if (wrapper.contains(e.target) && (e.target.tagName === 'A' || e.target.closest('a'))) {
+              // Let the link navigate normally
               closeAllDropdowns();
               isOpen = false;
             }
