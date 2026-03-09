@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>About Old Dog Systems — The Story Behind the 9Count</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Discover the story of Old Dog Systems, where decades of business experience meet modern innovation. Learn about the 9Count Philosophy and our mission to empower creators and operators."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./images/dog-logo.png" />
+    <meta property="og:image" content="./images/dog-logo.png" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/OLD-DOG-CircBlue.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./about.html" class="nav-underline text-sky-300">About</a>
+
+            <!-- Media mega -->
+            <div class="relative group z-50" data-dropdown="media">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 nav-underline"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Media menu"
+              >
+                <span>Media</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px] group-hover:opacity-100 group-hover:pointer-events-auto"
+                data-dropdown-panel="media"
+                role="region"
+                aria-label="Media menu"
+              >
+                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
+                  <div class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400">
+                    <div class="flex items-center gap-2">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300">Podcast Arm</span>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <a href="./media.html" class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors">
+                      <span class="text-slate-50 font-medium">Media House</span>
+                      <p class="text-xs text-slate-400 mt-1">Explore our podcasts and content</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products mega -->
+            <div class="relative group z-50" data-dropdown="products">
+              <button 
+                type="button" 
+                class="inline-flex items-center gap-1 nav-underline"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Products menu"
+              >
+                <span>Products</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px] group-hover:opacity-100 group-hover:pointer-events-auto"
+                data-dropdown-panel="products"
+                role="region"
+                aria-label="Products menu"
+              >
+                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
+                  <div class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400">
+                    <span>Enterprise & Creator Solutions</span>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3 text-sm">
+                    <a href="./studio.html" class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors">
+                      <span class="text-slate-50 font-medium">Rough Diamond Studio</span>
+                      <p class="text-xs text-slate-400 mt-1">Audio creation dashboard</p>
+                    </a>
+                    <a href="./old-dog-erp.html" class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors">
+                      <span class="text-slate-50 font-medium">Old Dog ERP</span>
+                      <p class="text-xs text-slate-400 mt-1">Enterprise resource planning</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="./downloads.html" class="nav-underline">Downloads</a>
+            <a href="./shop.html" class="nav-underline">Shop</a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button
+            type="button"
+            class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700/60 hover:border-slate-600 transition-colors"
+            id="mobile-menu-btn"
+            aria-label="Toggle mobile menu"
+          >
+            <span class="text-lg">☰</span>
+          </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden bg-slate-900/95 border-t border-slate-800/80 px-4 py-3"
+        >
+          <div class="space-y-2">
+            <a href="./index.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Home</a>
+            <a href="./about.html" class="block px-3 py-2 rounded-lg bg-slate-800/60">About</a>
+            <button type="button" class="w-full text-left px-3 py-2 flex items-center justify-between hover:bg-slate-800/80 transition-colors" data-mobile-dropdown="media">
+              <span>Media</span>
+              <span class="text-xs">▾</span>
+            </button>
+            <div id="media-mobile" class="hidden pl-4 space-y-1">
+              <a href="./media.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors text-sm">Media House</a>
+            </div>
+            <button type="button" class="w-full text-left px-3 py-2 flex items-center justify-between hover:bg-slate-800/80 transition-colors" data-mobile-dropdown="products">
+              <span>Products</span>
+              <span class="text-xs">▾</span>
+            </button>
+            <div id="products-mobile" class="hidden pl-4 space-y-1">
+              <a href="./studio.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors text-sm">Rough Diamond Studio</a>
+              <a href="./old-dog-erp.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors text-sm">Old Dog ERP</a>
+            </div>
+            <a href="./downloads.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Downloads</a>
+            <a href="./shop.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Shop</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden py-16 md:py-24 lg:py-32">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="text-center mb-12 md:mb-16">
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50 mb-4 leading-tight">
+                The Story Behind the 9Count
+              </h1>
+              <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+                A journey from rock bottom to building tools for the fighters
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- The Story -->
+        <section class="py-12 md:py-16">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="space-y-8">
+              <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-6">The Story</h2>
+                <div class="space-y-4 text-slate-300 text-lg leading-relaxed">
+                  <p>
+                    For years, I stood at the helm of a successful construction company. We were growing, building, and thriving—until, without warning, the foundations gave way. In a sudden turn of events, a single contract in a coastal town became the catalyst for a total collapse. I found myself at rock bottom, facing a level of loss that felt final.
+                  </p>
+                  <p>
+                    During the quiet of that recovery, I began researching business systems for Back Office Management and BPO outsourcing. That search led me to a podcasting bootcamp. As a novice in the space, I quickly saw the gap: most creators have the voice, but they lack the technical "wherewithal" to manage the workflow.
+                  </p>
+                  <p>
+                    What started as a personal dashboard to solve my own problems evolved into a mission to empower others. I realized that my decades of business experience combined with new technology could help others build their own platforms without the technical overwhelm.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- The 9Count Philosophy -->
+        <section class="py-12 md:py-16 bg-slate-900/30 border-y border-slate-800/60">
+          <div class="mx-auto max-w-4xl px-4">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-6">The 9Count Philosophy</h2>
+              <div class="space-y-4 text-slate-300 text-lg leading-relaxed mb-8">
+                <p>
+                  In boxing, the 9-count is the last moment of hope. It is the moment when the crowd has gone quiet, the lights feel dim, and everyone assumes the fight is over. But at the count of nine, I chose to get up. I went back to my corner, wiped away the blood, and came back swinging.
+                </p>
+                <p>
+                  In my world, a loss is only official at the count of ten. We haven't reached ten yet. This resilience is the heartbeat of my two brands:
+                </p>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="card-glass border border-slate-700/60 p-6">
+                  <h3 class="text-xl font-bold text-sky-300 mb-3">Old Dog Systems</h3>
+                  <p class="text-slate-300">
+                    A defiant nod to the phrase "you can't teach an old dog new tricks". I am proving that experience is the best foundation for innovation as I master coding and application development.
+                  </p>
+                </div>
+                <div class="card-glass border border-slate-700/60 p-6">
+                  <h3 class="text-xl font-bold text-fuchsia-300 mb-3">9Count Systems</h3>
+                  <p class="text-slate-300">
+                    A tribute to the grit it takes to stand up when the world expects you to stay down.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- What We Build -->
+        <section class="py-12 md:py-16">
+          <div class="mx-auto max-w-4xl px-4">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-6">What We Build</h2>
+              <div class="space-y-4 text-slate-300 text-lg leading-relaxed">
+                <p>
+                  Our flagship project, Rough Diamond Studio, is a specialized dashboard designed to take the friction out of audio creation. It is currently in development and moving toward its initial testing phases. Behind it, a suite of modular systems for small businesses is being crafted—each designed to streamline operations for the "operators" of the world.
+                </p>
+                <p>
+                  We don't just build software; we build tools for the fighters. We create systems and content for those who have been on the canvas, dusted themselves off, and are ready to come back swinging.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mission Statement -->
+        <section class="py-12 md:py-16 bg-gradient-to-br from-slate-900/50 to-sky-950/30 border-y border-slate-800/60">
+          <div class="mx-auto max-w-4xl px-4">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-2">Mission Statement</h2>
+              <h3 class="text-2xl font-bold text-sky-300 mb-6">The 9Count Manifesto</h3>
+              
+              <div class="space-y-6">
+                <div class="border-l-4 border-sky-400 pl-6 py-2">
+                  <p class="text-xl font-semibold text-slate-100 mb-3">
+                    "The fight isn't over until you stop getting up."
+                  </p>
+                  <p class="text-slate-300 text-lg">
+                    Our mission is to bridge the gap between decades of hard-won business experience and the cutting-edge technical "wherewithal" required to thrive in the modern digital landscape.
+                  </p>
+                </div>
+
+                <div class="space-y-4 mt-8">
+                  <div class="card-glass border border-slate-700/60 p-6">
+                    <h4 class="text-lg font-bold text-sky-300 mb-2">Experience is the Ultimate Foundation</h4>
+                    <p class="text-slate-300">We prove that "old dogs" don't just learn new tricks—they master them to innovate.</p>
+                  </div>
+                  
+                  <div class="card-glass border border-slate-700/60 p-6">
+                    <h4 class="text-lg font-bold text-sky-300 mb-2">Systems Should Serve the Operator</h4>
+                    <p class="text-slate-300">We build modular tools designed to remove technical overwhelm and streamline back-office friction.</p>
+                  </div>
+                  
+                  <div class="card-glass border border-slate-700/60 p-6">
+                    <h4 class="text-lg font-bold text-sky-300 mb-2">Resilience is a Resource</h4>
+                    <p class="text-slate-300">We create specifically for the "fighters"—the small business owners and creators who have been on the canvas, dusted themselves off, and are ready to come back swinging.</p>
+                  </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-slate-700/60">
+                  <p class="text-slate-300 text-lg leading-relaxed">
+                    We don't just develop software; we build the dashboards that empower you to reclaim your time, your voice, and your business.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Get Back in the Ring -->
+        <section class="py-12 md:py-16">
+          <div class="mx-auto max-w-4xl px-4">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-6">Get Back in the Ring</h2>
+              <div class="space-y-6 text-slate-300 text-lg leading-relaxed">
+                <p>
+                  Whether you are a creator looking to take the friction out of your audio workflow or a small business owner ready to modernize your operations, we're ready to help you build.
+                </p>
+                
+                <div class="bg-slate-900/50 border border-slate-700/60 rounded-lg p-6 my-8">
+                  <p class="text-slate-100 font-semibold mb-4">Let's talk strategy.</p>
+                  <p>
+                    If you're facing a technical "9-count" or simply looking for a system built by someone who understands the weight of the helm, reach out today.
+                  </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                  <a href="mailto:hello@olddogsystems.com" class="card-glass border border-slate-700/60 p-6 hover:border-sky-500/70 hover:bg-slate-900/90 transition-all group">
+                    <h4 class="text-lg font-bold text-sky-300 mb-2">Send an Email</h4>
+                    <p class="text-slate-300 mb-4">hello@olddogsystems.com</p>
+                    <span class="text-sky-400 group-hover:text-sky-200 text-sm">Get in touch →</span>
+                  </a>
+                  
+                  <a href="#contact-form" class="card-glass border border-slate-700/60 p-6 hover:border-sky-500/70 hover:bg-slate-900/90 transition-all group">
+                    <h4 class="text-lg font-bold text-sky-300 mb-2">Book a Discovery Call</h4>
+                    <p class="text-slate-300 mb-4">Let's discuss your vision</p>
+                    <span class="text-sky-400 group-hover:text-sky-200 text-sm">Schedule a call →</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Our Ecosystem -->
+        <section class="py-12 md:py-16 bg-slate-900/30 border-y border-slate-800/60">
+          <div class="mx-auto max-w-4xl px-4">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-12">Our Ecosystem: Systems for the Fighters</h2>
+              
+              <div class="space-y-12">
+                <!-- Media & Content Platforms -->
+                <div>
+                  <h3 class="text-2xl font-bold text-sky-300 mb-4">1. Media & Content Platforms</h3>
+                  <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+                    We believe creators have the voice but often lack the workflow to sustain it. Our media wing proves that decades of business experience can fuel modern storytelling.
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-4 ml-4">
+                    <div class="border-l-2 border-sky-400 pl-4 py-2">
+                      <h4 class="font-bold text-slate-100 mb-2">Business on Purpose</h4>
+                      <p class="text-slate-400 text-sm">A deep dive into intentional leadership and operational grit.</p>
+                    </div>
+                    <div class="border-l-2 border-fuchsia-400 pl-4 py-2">
+                      <h4 class="font-bold text-slate-100 mb-2">When Life Bites</h4>
+                      <p class="text-slate-400 text-sm">A podcast exploring the resilience required when the "foundations give way".</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Rough Diamond Studio -->
+                <div>
+                  <h3 class="text-2xl font-bold text-sky-300 mb-4">2. Rough Diamond Studio (Flagship)</h3>
+                  <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+                    The solution for the technical overwhelm that stops most creators in their tracks.
+                  </p>
+                  <div class="space-y-3 ml-4">
+                    <div class="border-l-2 border-sky-400 pl-4 py-2">
+                      <p class="font-semibold text-slate-100">Status:</p>
+                      <p class="text-slate-400">Entering final iterations for Alpha Testing.</p>
+                    </div>
+                    <div class="border-l-2 border-sky-400 pl-4 py-2">
+                      <p class="font-semibold text-slate-100">The Goal:</p>
+                      <p class="text-slate-400">A specialized dashboard designed to take the friction out of audio creation, allowing "operators" to focus on their message rather than the management.</p>
+                    </div>
+                    <div class="border-l-2 border-sky-400 pl-4 py-2">
+                      <p class="font-semibold text-slate-100">Future:</p>
+                      <p class="text-slate-400">Audio/Visual expansion modules are currently in the planning phase.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Enterprise & Industrial Solutions -->
+                <div>
+                  <h3 class="text-2xl font-bold text-sky-300 mb-4">3. Enterprise & Industrial Solutions</h3>
+                  <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+                    We build modular systems designed for those who have been on the canvas and are ready to streamline their comeback.
+                  </p>
+                  <div class="space-y-4 ml-4">
+                    <div class="border-l-2 border-sky-400 pl-4 py-2">
+                      <h4 class="font-bold text-slate-100 mb-1">Old Dog ERP</h4>
+                      <p class="text-slate-400 text-sm">A comprehensive Enterprise Resource Planning module with multi-industry plugins. Designed for both Desktop and Mobile (50% complete).</p>
+                    </div>
+                    <div class="border-l-2 border-sky-400 pl-4 py-2">
+                      <h4 class="font-bold text-slate-100 mb-1">CPM-AI (Construction Project Management)</h4>
+                      <p class="text-slate-400 text-sm">Leveraging decades of construction mastery to provide an AI-driven management tool for the field.</p>
+                    </div>
+                    <div class="border-l-2 border-sky-400 pl-4 py-2">
+                      <h4 class="font-bold text-slate-100 mb-1">PropAI-Pro</h4>
+                      <p class="text-slate-400 text-sm">A high-end property management application tailored for sophisticated landlords (In development).</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Why Old Dog Systems -->
+        <section class="py-12 md:py-16">
+          <div class="mx-auto max-w-4xl px-4">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-6">Why Old Dog Systems?</h2>
+              <div class="space-y-6">
+                <div class="text-lg text-slate-300 leading-relaxed">
+                  <p>
+                    The world expects you to stay down after a loss. We chose to get up at the count of nine. At 60, I am proving that experience is the best foundation for coding, development, and innovation. We don't just build software; we build tools for the "operators" who refuse to let the count reach ten.
+                  </p>
+                </div>
+                
+                <div class="border-t border-slate-700/60 pt-8 mt-8">
+                  <p class="text-2xl font-bold text-sky-400 italic">
+                    "A loss is only official at the count of ten. We haven't reached ten yet."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-12 md:py-16 bg-gradient-to-br from-sky-950/40 to-slate-900/50 border-t border-slate-800/60">
+          <div class="mx-auto max-w-4xl px-4 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-50 mb-6">Ready to Build Something Great?</h2>
+            <p class="text-lg text-slate-300 mb-8">Let's discuss how we can help you streamline your operations or take your creative work to the next level.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="./downloads.html" class="px-8 py-3 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-lg transition-colors">
+                Explore Our Products
+              </a>
+              <a href="mailto:hello@olddogsystems.com" class="px-8 py-3 border border-sky-400 text-sky-300 hover:bg-sky-950/50 font-semibold rounded-lg transition-colors">
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="mt-16 border-t border-slate-800/60 bg-slate-950/50 py-8 px-4">
+        <div class="mx-auto max-w-6xl">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Company</h3>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li><a href="./about.html" class="hover:text-slate-200">About</a></li>
+                <li><a href="./index.html" class="hover:text-slate-200">Home</a></li>
+                <li><a href="./media.html" class="hover:text-slate-200">Media</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Products</h3>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li><a href="./studio.html" class="hover:text-slate-200">Rough Diamond</a></li>
+                <li><a href="./old-dog-erp.html" class="hover:text-slate-200">Old Dog ERP</a></li>
+                <li><a href="./downloads.html" class="hover:text-slate-200">All Products</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Support</h3>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li><a href="mailto:hello@olddogsystems.com" class="hover:text-slate-200">Contact</a></li>
+                <li><a href="./shop.html" class="hover:text-slate-200">Shop</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Legal</h3>
+              <ul class="space-y-2 text-sm text-slate-400">
+                <li><a href="#" class="hover:text-slate-200">Privacy Policy</a></li>
+                <li><a href="#" class="hover:text-slate-200">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-t border-slate-800/60 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
+            <p>&copy; 2026 Old Dog Systems. All rights reserved.</p>
+            <p>Built with resilience. Powered by experience.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      });
+
+      // Mobile dropdowns
+      document.querySelectorAll('[data-mobile-dropdown]').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const dropdownId = this.getAttribute('data-mobile-dropdown');
+          const dropdown = document.getElementById(dropdownId + '-mobile');
+          dropdown.classList.toggle('hidden');
+        });
+      });
+
+      // Desktop dropdown handlers
+      document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+        const dropdownName = dropdown.getAttribute('data-dropdown');
+        const button = dropdown.querySelector('button');
+        const panel = document.querySelector(`[data-dropdown-panel="${dropdownName}"]`);
+
+        if (button && panel) {
+          button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', !isOpen);
+            panel.classList.toggle('opacity-0');
+            panel.classList.toggle('pointer-events-none');
+          });
+        }
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-dropdown]')) {
+          document.querySelectorAll('[data-dropdown] button').forEach(btn => {
+            btn.setAttribute('aria-expanded', 'false');
+          });
+          document.querySelectorAll('[data-dropdown-panel]').forEach(panel => {
+            panel.classList.add('opacity-0', 'pointer-events-none');
+          });
+        }
+      });
+
+      // Prevent body scroll when dropdown is open
+      document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+        const button = dropdown.querySelector('button');
+        const panel = document.querySelector(`[data-dropdown-panel="${dropdown.getAttribute('data-dropdown')}"]`);
+        
+        if (button && panel) {
+          button.addEventListener('click', function() {
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+            if (isOpen) {
+              document.body.style.overflow = 'hidden';
+            } else {
+              document.body.style.overflow = 'auto';
+            }
+          });
+        }
+      });
+
+      document.addEventListener('click', function() {
+        const anyOpen = Array.from(document.querySelectorAll('[data-dropdown] button'))
+          .some(btn => btn.getAttribute('aria-expanded') === 'true');
+        if (!anyOpen) {
+          document.body.style.overflow = 'auto';
+        }
+      });
+    </script>
+  </body>
+</html>
