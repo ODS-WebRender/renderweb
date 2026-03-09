@@ -60,13 +60,18 @@
               <button
                 type="button"
                 class="inline-flex items-center gap-1 nav-underline"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Media menu including podcasts and resources"
               >
                 <span>Media</span>
                 <span class="text-xs text-slate-400">▾</span>
               </button>
               <div
-                class="opacity-0 pointer-events-auto transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px] group-hover:opacity-100"
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px] group-hover:opacity-100 group-hover:pointer-events-auto md:group-hover:pointer-events-auto"
                 data-dropdown-panel="media"
+                role="region"
+                aria-label="Media menu content"
               >
                 <div
                   class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
@@ -135,11 +140,22 @@
 
             <!-- Products mega (consolidated Software + Offerings) -->
             <div class="relative group z-50" data-dropdown="products">
-              <button type="button" class="inline-flex items-center gap-1 nav-underline">
+              <button 
+                type="button" 
+                class="inline-flex items-center gap-1 nav-underline"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Products menu including software and enterprise solutions"
+              >
                 <span>Products</span>
                 <span class="text-xs text-slate-400">▾</span>
               </button>
-              <div class="opacity-0 pointer-events-auto transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50 group-hover:opacity-100" data-dropdown-panel="products">
+              <div 
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50 group-hover:opacity-100 group-hover:pointer-events-auto md:group-hover:pointer-events-auto" 
+                data-dropdown-panel="products"
+                role="region"
+                aria-label="Products menu content"
+              >
                 <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
                   <div class="mb-3 flex items-center justify-between text-xs">
                     <div class="flex items-center gap-2 text-slate-400">
@@ -782,37 +798,178 @@
       document.addEventListener('DOMContentLoaded', () => {
         loadFeaturedProducts();
         loadAlphaCount();
+        initializeAccessibleDropdowns();
       });
 
-      // Dropdown toggle function
-      function toggleDropdown(dropdownId) {
-        const menu = document.getElementById(dropdownId.replace('-dropdown', '-menu'));
-        const arrow = document.getElementById(dropdownId.replace('-dropdown', '-arrow'));
-        
-        if (menu.classList.contains('invisible')) {
-          // Show dropdown
-          menu.classList.remove('invisible', 'opacity-0');
-          menu.classList.add('visible', 'opacity-100');
-          arrow.style.transform = 'rotate(180deg)';
-        } else {
-          // Hide dropdown
-          menu.classList.remove('visible', 'opacity-100');
-          menu.classList.add('invisible', 'opacity-0');
-          arrow.style.transform = 'rotate(0deg)';
-        }
+      /**
+       * ACCESSIBILITY ENHANCEMENT: Initialize dropdowns with full keyboard and touch support
+       * Fixes issues with mobile tap, keyboard navigation, and focus management
+       */
+      function initializeAccessibleDropdowns() {
+        const dropdownWrappers = document.querySelectorAll('[data-dropdown]');
+
+        dropdownWrappers.forEach(wrapper => {
+          const dropdownName = wrapper.getAttribute('data-dropdown');
+          const button = wrapper.querySelector('button');
+          const panel = wrapper.querySelector('[data-dropdown-panel]');
+          const arrow = button.querySelector('.text-xs');
+
+          if (!button || !panel) return;
+
+          // Add ARIA attributes
+          button.setAttribute('aria-haspopup', 'true');
+          button.setAttribute('aria-expanded', 'false');
+          button.setAttribute('aria-label', `${dropdownName.charAt(0).toUpperCase() + dropdownName.slice(1)} menu`);
+          panel.setAttribute('role', 'region');
+          panel.setAttribute('aria-label', `${dropdownName} menu content`);
+
+          // Store state
+          let isOpen = false;
+
+          /**
+           * Toggle dropdown visibility
+           */
+          function toggleDropdown(open = null) {
+            isOpen = open !== null ? open : !isOpen;
+            
+            if (isOpen) {
+              panel.classList.remove('opacity-0', 'pointer-events-none');
+              panel.classList.add('opacity-100', 'pointer-events-auto');
+              button.setAttribute('aria-expanded', 'true');
+              if (arrow) arrow.style.transform = 'rotate(180deg)';
+              // Focus first link in panel for keyboard navigation
+              const firstLink = panel.querySelector('a');
+              if (firstLink) firstLink.focus();
+            } else {
+              panel.classList.add('opacity-0', 'pointer-events-none');
+              panel.classList.remove('opacity-100', 'pointer-events-auto');
+              button.setAttribute('aria-expanded', 'false');
+              if (arrow) arrow.style.transform = 'rotate(0deg)';
+              // Return focus to button
+              button.focus();
+            }
+          }
+
+          /**
+           * Close all dropdowns
+           */
+          function closeAllDropdowns() {
+            document.querySelectorAll('[data-dropdown]').forEach(drop => {
+              const btn = drop.querySelector('button');
+              const pnl = drop.querySelector('[data-dropdown-panel]');
+              if (btn && pnl) {
+                pnl.classList.add('opacity-0', 'pointer-events-none');
+                pnl.classList.remove('opacity-100', 'pointer-events-auto');
+                btn.setAttribute('aria-expanded', 'false');
+                const arr = btn.querySelector('.text-xs');
+                if (arr) arr.style.transform = 'rotate(0deg)';
+              }
+            });
+          }
+
+          /**
+           * Button click handler - toggle dropdown
+           */
+          button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isOpen) {
+              closeAllDropdowns();
+              isOpen = false;
+            } else {
+              closeAllDropdowns();
+              toggleDropdown(true);
+            }
+          });
+
+          /**
+           * Keyboard navigation within dropdown
+           */
+          panel.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              toggleDropdown(false);
+              e.preventDefault();
+            } else if (e.key === 'ArrowDown') {
+              const links = Array.from(panel.querySelectorAll('a, button'));
+              const currentIndex = links.indexOf(document.activeElement);
+              if (currentIndex < links.length - 1) {
+                links[currentIndex + 1].focus();
+              }
+              e.preventDefault();
+            } else if (e.key === 'ArrowUp') {
+              const links = Array.from(panel.querySelectorAll('a, button'));
+              const currentIndex = links.indexOf(document.activeElement);
+              if (currentIndex > 0) {
+                links[currentIndex - 1].focus();
+              }
+              e.preventDefault();
+            }
+          });
+
+          /**
+           * Button keyboard navigation
+           */
+          button.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+              toggleDropdown(true);
+              e.preventDefault();
+            } else if (e.key === 'Escape' && isOpen) {
+              toggleDropdown(false);
+              e.preventDefault();
+            }
+          });
+
+          /**
+           * Click outside to close
+           */
+          document.addEventListener('click', (e) => {
+            if (!wrapper.contains(e.target) && isOpen) {
+              closeAllDropdowns();
+              isOpen = false;
+            }
+          });
+
+          /**
+           * Tab key handling - keep focus within dropdown when open
+           */
+          panel.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+              const links = Array.from(panel.querySelectorAll('a, button'));
+              if (links.length === 0) return;
+              
+              if (e.shiftKey) {
+                // Shift+Tab - wrap to last element
+                if (document.activeElement === links[0]) {
+                  links[links.length - 1].focus();
+                  e.preventDefault();
+                }
+              } else {
+                // Tab - wrap to first element
+                if (document.activeElement === links[links.length - 1]) {
+                  links[0].focus();
+                  e.preventDefault();
+                }
+              }
+            }
+          });
+        });
+
+        /**
+         * Close dropdowns on Escape key globally
+         */
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('[data-dropdown-panel]').forEach(panel => {
+              panel.classList.add('opacity-0', 'pointer-events-none');
+              panel.classList.remove('opacity-100', 'pointer-events-auto');
+            });
+            document.querySelectorAll('[data-dropdown] button').forEach(btn => {
+              btn.setAttribute('aria-expanded', 'false');
+              const arrow = btn.querySelector('.text-xs');
+              if (arrow) arrow.style.transform = 'rotate(0deg)';
+            });
+          }
+        });
       }
-
-      // Close dropdowns when clicking outside
-      document.addEventListener('click', (e) => {
-        const offeringsDropdown = document.getElementById('offerings-dropdown');
-        if (!offeringsDropdown.contains(e.target)) {
-          const menu = document.getElementById('offerings-menu');
-          const arrow = document.getElementById('offerings-arrow');
-          menu.classList.remove('visible', 'opacity-100');
-          menu.classList.add('invisible', 'opacity-0');
-          arrow.style.transform = 'rotate(0deg)';
-        }
-      });
     </script>
   </body>
 </html>
