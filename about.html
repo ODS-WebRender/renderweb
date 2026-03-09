@@ -26,9 +26,9 @@
     <div class="min-h-screen flex flex-col">
       <!-- Navigation -->
       <header
-        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl overflow-visible"
       >
-        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl overflow-visible relative z-30">
           <div class="flex items-center gap-3">
             <a href="./index.html" class="flex items-center gap-3">
               <img
@@ -67,12 +67,12 @@
                 <span class="text-xs text-slate-400">▾</span>
               </button>
               <div
-                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px] group-hover:opacity-100 group-hover:pointer-events-auto"
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[560px] group-hover:opacity-100 group-hover:pointer-events-auto z-50"
                 data-dropdown-panel="media"
                 role="region"
                 aria-label="Media menu"
               >
-                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
+                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60 max-h-none">
                   <div class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400">
                     <div class="flex items-center gap-2">
                       <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300">Podcast Arm</span>
@@ -101,12 +101,12 @@
                 <span class="text-xs text-slate-400">▾</span>
               </button>
               <div
-                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px] group-hover:opacity-100 group-hover:pointer-events-auto"
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[560px] group-hover:opacity-100 group-hover:pointer-events-auto z-50"
                 data-dropdown-panel="products"
                 role="region"
                 aria-label="Products menu"
               >
-                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
+                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60 max-h-none">
                   <div class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400">
                     <span>Enterprise & Creator Solutions</span>
                   </div>
@@ -189,7 +189,7 @@
           <div class="mx-auto max-w-4xl px-4">
             <div class="space-y-8">
               <div>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-10">The Story</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">The Story</h2>
                 <div class="space-y-4 text-slate-300 text-lg leading-relaxed">
                   <p>
                     For years, I stood at the helm of a successful construction company. We were growing, building, and thriving—until, without warning, the foundations gave way. In a sudden turn of events, a single contract in a coastal town became the catalyst for a total collapse. I found myself at rock bottom, facing a level of loss that felt final.
@@ -210,7 +210,7 @@
         <section class="py-12 md:py-16 bg-slate-900/30 border-y border-slate-800/60">
           <div class="mx-auto max-w-4xl px-4">
             <div>
-              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-10">The 9Count Philosophy</h2>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">The 9Count Philosophy</h2>
               <div class="space-y-4 text-slate-300 text-lg leading-relaxed mb-8">
                 <p>
                   In boxing, the 9-count is the last moment of hope. It is the moment when the crowd has gone quiet, the lights feel dim, and everyone assumes the fight is over. But at the count of nine, I chose to get up. I went back to my corner, wiped away the blood, and came back swinging.
@@ -241,7 +241,7 @@
         <section class="py-12 md:py-16">
           <div class="mx-auto max-w-4xl px-4">
             <div>
-              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-10">What We Build</h2>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">What We Build</h2>
               <div class="space-y-4 text-slate-300 text-lg leading-relaxed">
                 <p>
                   Our flagship project, Rough Diamond Studio, is a specialized dashboard designed to take the friction out of audio creation. It is currently in development and moving toward its initial testing phases. Behind it, a suite of modular systems for small businesses is being crafted—each designed to streamline operations for the "operators" of the world.
@@ -259,7 +259,7 @@
           <div class="mx-auto max-w-4xl px-4">
             <div>
               <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-4">Mission Statement</h2>
-              <h3 class="text-2xl font-bold text-sky-300 mb-10">The 9Count Manifesto</h3>
+              <h3 class="text-2xl font-bold text-sky-300 mb-3">The 9Count Manifesto</h3>
               
               <div class="space-y-6">
                 <div class="border-l-4 border-sky-400 pl-6 py-2">
@@ -302,7 +302,7 @@
         <section class="py-12 md:py-16">
           <div class="mx-auto max-w-4xl px-4">
             <div>
-              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-10">Get Back in the Ring</h2>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">Get Back in the Ring</h2>
               <div class="space-y-6 text-slate-300 text-lg leading-relaxed">
                 <p>
                   Whether you are a creator looking to take the friction out of your audio workflow or a small business owner ready to modernize your operations, we're ready to help you build.
@@ -409,7 +409,7 @@
         <section class="py-12 md:py-16">
           <div class="mx-auto max-w-4xl px-4">
             <div>
-              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-10">Why Old Dog Systems?</h2>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">Why Old Dog Systems?</h2>
               <div class="space-y-6">
                 <div class="text-lg text-slate-300 leading-relaxed">
                   <p>
