@@ -1,0 +1,52 @@
+﻿New “About” section text- please use text below
+The Story
+For years, I stood at the helm of a successful construction company. We were growing, building, and thriving—until, without warning, the foundations gave way. In a sudden turn of events, a single contract in a coastal town became the catalyst for a total collapse. I found myself at rock bottom, facing a level of loss that felt final.
+During the quiet of that recovery, I began researching business systems for Back Office Management and BPO outsourcing. That search led me to a podcasting bootcamp. As a novice in the space, I quickly saw the gap: most creators have the voice, but they lack the technical "wherewithal" to manage the workflow.
+What started as a personal dashboard to solve my own problems evolved into a mission to empower others. I realized that my decades of business experience combined with new technology could help others build their own platforms without the technical overwhelm.
+
+The 9Count Philosophy
+In boxing, the 9-count is the last moment of hope. It is the moment when the crowd has gone quiet, the lights feel dim, and everyone assumes the fight is over. But at the count of nine, I chose to get up. I went back to my corner, wiped away the blood, and came back swinging.
+In my world, a loss is only official at the count of ten. We haven’t reached ten yet. This resilience is the heartbeat of my two brands:
+    • Old Dog Systems: A defiant nod to the phrase "you can't teach an old dog new tricks". I am proving that experience is the best foundation for innovation as I master coding and application development.
+    • 9Count Systems: A tribute to the grit it takes to stand up when the world expects you to stay down.
+
+What We Build
+Our flagship project, Rough Diamond Studio, is a specialized dashboard designed to take the friction out of audio creation. It is currently in development and moving toward its initial testing phases. Behind it, a suite of modular systems for small businesses is being crafted—each designed to streamline operations for the "operators" of the world.
+We don’t just build software; we build tools for the fighters. We create systems and content for those who have been on the canvas, dusted themselves off, and are ready to come back swinging.
+
+Then separately please create a space for a “Mission Statement”
+
+Mission Statement: The 9Count Manifesto
+At the heart of everything we build is a single conviction: The fight isn’t over until you stop getting up.
+Our mission is to bridge the gap between decades of hard-won business experience and the cutting-edge technical "wherewithal" required to thrive in the modern digital landscape.  We believe that:
+Experience is the Ultimate Foundation: We prove that "old dogs" don’t just learn new tricks—they master them to innovate. 
+Systems Should Serve the Operator: We build modular tools designed to remove technical overwhelm and streamline back-office friction. 
+Resilience is a Resource: We create specifically for the "fighters"—the small business owners and creators who have been on the canvas, dusted themselves off, and are ready to come back swinging. 
+We don’t just develop software; we build the dashboards that empower you to reclaim your time, your voice, and your business. 
+Get Back in the Ring
+Whether you are a creator looking to take the friction out of your audio workflow or a small business owner ready to modernize your operations, we’re ready to help you build. 
+Let’s talk strategy.** If you’re facing a technical "9-count" or simply looking for a system built by someone who understands the weight of the helm, reach out today. 
+Email:** [TBC, Email Address]
+Inquiry: [Link to a "Book a Discovery Call" or Contact Form]
+"A loss is only official at the count of ten. We haven't reached ten yet."
+
+Then where applicable please find a space for:
+Our Ecosystem: Systems for the Fighters
+1. Media & Content Platforms
+We believe creators have the voice but often lack the workflow to sustain it. Our media wing proves that decades of business experience can fuel modern storytelling.
+    • Business on Purpose: A deep dive into intentional leadership and operational grit.
+    • When Life Bites: A podcast exploring the resilience required when the "foundations give way".
+2. Rough Diamond Studio (Flagship)
+The solution for the technical overwhelm that stops most creators in their tracks.
+    • Status: Entering final iterations for Alpha Testing.
+    • The Goal: A specialized dashboard designed to take the friction out of audio creation, allowing "operators" to focus on their message rather than the management.
+    • Future: Audio/Visual expansion modules are currently in the planning phase.
+3. Enterprise & Industrial Solutions
+We build modular systems designed for those who have been on the canvas and are ready to streamline their comeback.
+    • Old Dog ERP: A comprehensive Enterprise Resource Planning module with multi-industry plugins. Designed for both Desktop and Mobile (50% complete).
+    • CPM-AI (Construction Project Management): Leveraging decades of construction mastery to provide an AI-driven management tool for the field.
+    • PropAI-Pro: A high-end property management application tailored for sophisticated landlords (In development).
+
+Why Old Dog Systems?
+The world expects you to stay down after a loss. We chose to get up at the count of nine. At 60, I am proving that experience is the best foundation for coding, development, and innovation. We don’t just build software; we build tools for the "operators" who refuse to let the count reach ten
+

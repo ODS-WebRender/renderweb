@@ -1,0 +1,84 @@
+﻿
+I currently have a website - /mnt/Master_Storage/Project Folders/Old_Dog_Web that is deployed via render.com - https://old-dog-systems1.onrender.com see /mnt/Master_Storage/Project Folders/Old_Dog_Web/DEPLOYMENT_CREDENTIALS.md
+I have since bought a domain name,  old-dog-systems.co.za
+Below are the ftp details. can you please help with transferring the site
+Here is the FTP info:
+Site address: ftp.old-dog-systems.co.za
+Port: 21
+Username: olddofyxcg
+Password: zk1R95Z1t3G8jS4lWKdh
+
+You must place the files in the public_html folder
+
+Your email account has successfully been created.
+If you use Microsoft Outlook or Mozilla Thunderbird you may make use of automatic email configuration.
+Alternatively you can make use of the mail settings below:
+
+Email Address: info@old-dog-systems.co.za
+
+Account / User Name: info@old-dog-systems.co.za
+
+Password: log26M1KB9v2
+
+
+Incoming server: mail.old-dog-systems.co.za
+
+Ports: IMAP 993 / POP 995
+
+Outgoing (SMTP) server: smtp.old-dog-systems.co.za
+
+SMTP Port: 465 (authentication required)
+
+SSL / TLS: On
+
+If you prefer to access your email in a web browser then the Webmail service is available at:
+http://mail.old-dog-systems.co.za
+
+Your email account has successfully been created.
+If you use Microsoft Outlook or Mozilla Thunderbird you may make use of automatic email configuration.
+Alternatively you can make use of the mail settings below:
+
+Email Address: sales@old-dog-systems.co.za
+
+Account / User Name: sales@old-dog-systems.co.za
+
+Password: AF8HgZj17RAr
+
+
+Incoming server: mail.old-dog-systems.co.za
+
+Ports: IMAP 993 / POP 995
+
+Outgoing (SMTP) server: smtp.old-dog-systems.co.za
+
+SMTP Port: 465 (authentication required)
+
+SSL / TLS: On
+
+If you prefer to access your email in a web browser then the Webmail service is available at:
+http://mail.old-dog-systems.co.za
+
+Your email account has successfully been created.
+
+If you use Microsoft Outlook or Mozilla Thunderbird you may make use of automatic email configuration.
+Alternatively you can make use of the mail settings below:
+
+Email Address: sales@old-dog-systems.co.za
+
+Account / User Name: sales@old-dog-systems.co.za
+
+Password: AF8HgZj17RAr
+
+
+Incoming server: mail.old-dog-systems.co.za
+
+Ports: IMAP 993 / POP 995
+
+Outgoing (SMTP) server: smtp.old-dog-systems.co.za
+
+SMTP Port: 465 (authentication required)
+
+SSL / TLS: On
+
+If you prefer to access your email in a web browser then the Webmail service is available at:
+http://mail.old-dog-systems.co.za

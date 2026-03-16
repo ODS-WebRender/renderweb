@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact Us — Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Get in touch with Old Dog Systems. We're here to help with inquiries, partnerships, and support for all our products and services."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./images/OLD-DOG-CircBlue.png" />
+    <meta property="og:image" content="./images/OLD-DOG-CircBlue.png" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/OLD-DOG-CircBlue.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./about.html" class="nav-underline">About</a>
+            <a href="./contacts.html" class="nav-underline text-sky-300">Contacts</a>
+
+            <!-- Media mega -->
+            <div class="relative group z-50" data-dropdown="media">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 nav-underline"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Media menu including podcasts and resources"
+              >
+                <span>Media</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[540px] group-hover:opacity-100 group-hover:pointer-events-auto md:group-hover:pointer-events-auto"
+                data-dropdown-panel="media"
+                role="region"
+                aria-label="Media menu content"
+              >
+                <div
+                  class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60"
+                >
+                  <div
+                    class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300"
+                        >Podcast Arm</span
+                      >
+                      <span>Long-form, founder-grade conversations.</span>
+                    </div>
+                    <a
+                      href="./media.html"
+                      class="inline-flex items-center gap-1 text-sky-300 hover:text-sky-200"
+                    >
+                      View Media House
+                      <span class="text-[10px]">↗</span>
+                    </a>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <a
+                      href="./media.html#business-on-purpose"
+                      class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors"
+                    >
+                      <div class="mb-1 flex items-center justify-between gap-3">
+                        <span class="text-slate-50">Business on Purpose</span>
+                        <span
+                          class="tag-pill px-2 py-0.5 text-[10px] text-sky-300"
+                          >Flagship</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400">
+                        Operational clarity for owners building durable systems.
+                      </p>
+                    </a>
+
+                    <a
+                      href="./media.html#when-life-bites"
+                      class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors"
+                    >
+                      <div class="mb-1 flex items-center justify-between gap-3">
+                        <span class="text-slate-50">When Life Bites</span>
+                        <span
+                          class="tag-pill px-2 py-0.5 text-[10px] text-fuchsia-300"
+                          >Human</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400">
+                        Resilient founders navigating grief, pressure, and high-stakes seasons.
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products mega -->
+            <div class="relative group z-50" data-dropdown="products">
+              <button 
+                type="button" 
+                class="inline-flex items-center gap-1 nav-underline"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Products menu including software and enterprise solutions"
+              >
+                <span>Products</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div 
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 mt-4 w-[900px] z-50 max-h-[70vh] overflow-y-auto group-hover:opacity-100 group-hover:pointer-events-auto md:group-hover:pointer-events-auto" 
+                data-dropdown-panel="products"
+                role="region"
+                aria-label="Products menu content"
+              >
+                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
+                  <a href="./studio.html" class="flex items-start gap-3 rounded-xl border border-sky-500/60 bg-slate-900/80 p-3 hover:border-sky-400 hover:bg-slate-900 transition-colors mb-4">
+                    <div class="mt-0.5 h-8 w-8 rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center text-sky-300 text-xs">α</div>
+                    <div class="text-sm">
+                      <div class="flex items-center gap-2">
+                        <span class="text-slate-50">Rough Diamond Studio</span>
+                        <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300 ring-1 ring-emerald-500/40">Alpha</span>
+                      </div>
+                      <p class="mt-1 text-xs text-slate-400">Audio podcasting and content systems for teams that ship weekly.</p>
+                    </div>
+                  </a>
+                  <a href="./old-dog-erp.html" class="flex items-start gap-3 rounded-xl border border-orange-500/60 bg-slate-900/80 p-3 hover:border-orange-400 hover:bg-slate-900 transition-colors">
+                    <div class="mt-0.5 h-8 w-8 rounded-lg bg-orange-500/15 ring-1 ring-orange-400/40 flex items-center justify-center text-orange-300 text-xs">📊</div>
+                    <div class="text-sm">
+                      <div class="flex items-center gap-2">
+                        <span class="text-slate-50">Old Dog ERP</span>
+                        <span class="rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-medium text-orange-300 ring-1 ring-orange-500/40">Available</span>
+                      </div>
+                      <p class="mt-1 text-xs text-slate-400">Enterprise resource planning system.</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./dashboard.html" class="nav-underline">Dashboard</a>
+          </div>
+
+          <!-- Mobile trigger -->
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
+            aria-label="Open navigation"
+            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          >
+            <span class="block h-0.5 w-4 rounded-full bg-slate-200 mb-0.5"></span>
+            <span class="block h-0.5 w-4 rounded-full bg-slate-400 mb-0.5"></span>
+            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile nav -->
+        <div
+          id="mobile-nav"
+          class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden"
+        >
+          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
+            <a href="./index.html" class="block">Home</a>
+            <a href="./about.html" class="block">About</a>
+            <a href="./contacts.html" class="block text-sky-300 font-medium">Contacts</a>
+            <a href="./media.html" class="block">Media</a>
+            <a href="./shop.html" class="block">Shop</a>
+            <a href="./dashboard.html" class="block">Dashboard</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden py-12 md:py-16 lg:py-20">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="text-center">
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50 mb-4 leading-tight">
+                Get in Touch
+              </h1>
+              <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+                We're here to help. Reach out with any questions, partnerships, or support needs.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="py-12 md:py-16">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+              <!-- Email Contact -->
+              <div class="card-glass border border-slate-700/60 p-8 rounded-2xl">
+                <h2 class="text-2xl font-bold text-slate-50 mb-6">Email Us</h2>
+                <div class="space-y-4">
+                  <div>
+                    <p class="text-sm text-slate-500 mb-2 uppercase tracking-wider">General Inquiries</p>
+                    <a href="mailto:info@old-dog-systems.co.za" class="text-sky-400 hover:text-sky-300 text-lg font-medium">
+                      info@old-dog-systems.co.za
+                    </a>
+                  </div>
+                  <div>
+                    <p class="text-sm text-slate-500 mb-2 uppercase tracking-wider">Sales & Partnerships</p>
+                    <a href="mailto:sales@old-dog-systems.co.za" class="text-sky-400 hover:text-sky-300 text-lg font-medium">
+                      sales@old-dog-systems.co.za
+                    </a>
+                  </div>
+                  <div>
+                    <p class="text-sm text-slate-500 mb-2 uppercase tracking-wider">Technical Support</p>
+                    <a href="mailto:admin@old-dog-systems.co.za" class="text-sky-400 hover:text-sky-300 text-lg font-medium">
+                      admin@old-dog-systems.co.za
+                    </a>
+                  </div>
+                  <div>
+                    <p class="text-sm text-slate-500 mb-2 uppercase tracking-wider">Alpha Testing Program</p>
+                    <a href="mailto:rds-alpha@old-dog-systems.co.za" class="text-sky-400 hover:text-sky-300 text-lg font-medium">
+                      rds-alpha@old-dog-systems.co.za
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social & Communities -->
+              <div class="card-glass border border-slate-700/60 p-8 rounded-2xl">
+                <h2 class="text-2xl font-bold text-slate-50 mb-6">Join Our Communities</h2>
+                <div class="space-y-4">
+                  <div>
+                    <p class="text-sm text-slate-400 mb-3">Business on Purpose Podcast</p>
+                    <a href="https://www.facebook.com/groups/1958524688071453" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors">
+                      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      Visit Facebook Group
+                    </a>
+                  </div>
+                  <div>
+                    <p class="text-sm text-slate-400 mb-3">When Life Bites Podcast</p>
+                    <a href="https://www.facebook.com/groups/2743309449357360" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors">
+                      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      Visit Facebook Group
+                    </a>
+                  </div>
+                  <div>
+                    <p class="text-sm text-slate-400 mb-3">Old Dog Systems Community</p>
+                    <a href="https://www.facebook.com/groups/986794454010404" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+                      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      Visit Facebook Group
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Response Time -->
+            <div class="bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
+              <h3 class="text-xl font-bold text-sky-100 mb-2">Response Time</h3>
+              <p class="text-sky-200">
+                We typically respond to inquiries within 24-48 business hours. For urgent matters, please mark your subject line with [URGENT].
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-800/80 py-8">
+        <div class="mx-auto max-w-6xl px-4">
+          <!-- Contact Info Section -->
+          <div class="mb-6 pb-6 border-b border-slate-800/60">
+            <h3 class="text-sm font-semibold text-slate-100 mb-3">Get in Touch</h3>
+            <div class="flex flex-col sm:flex-row gap-6 text-xs text-slate-400">
+              <div>
+                <p class="text-slate-500 mb-1">General Inquiries</p>
+                <a href="mailto:info@old-dog-systems.co.za" class="text-sky-400 hover:text-sky-300">info@old-dog-systems.co.za</a>
+              </div>
+              <div>
+                <p class="text-slate-500 mb-1">Sales & Partnerships</p>
+                <a href="mailto:sales@old-dog-systems.co.za" class="text-sky-400 hover:text-sky-300">sales@old-dog-systems.co.za</a>
+              </div>
+              <div>
+                <p class="text-slate-500 mb-1">Administrator</p>
+                <a href="mailto:admin@old-dog-systems.co.za" class="text-sky-400 hover:text-sky-300">admin@old-dog-systems.co.za</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="mb-6 pb-6 border-b border-slate-800/60">
+            <h3 class="text-sm font-semibold text-slate-100 mb-3">Follow Us</h3>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <a href="https://www.facebook.com/groups/1958524688071453" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Business on Purpose
+              </a>
+              <a href="https://www.facebook.com/groups/2743309449357360" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                When Life Bites
+              </a>
+              <a href="https://www.facebook.com/groups/986794454010404" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Old Dog Systems
+              </a>
+            </div>
+          </div>
+
+          <!-- Footer Links -->
+          <div class="flex flex-col items-center justify-between gap-3 sm:flex-row">
+            <p class="text-xs text-slate-500">
+              © <span id="year"></span>
+              <span data-brand></span>. All rights reserved.
+            </p>
+            <div class="flex items-center gap-4 text-xs">
+              <a href="./index.html" class="text-slate-500 hover:text-slate-300">Home</a>
+              <a href="./shop.html" class="text-slate-500 hover:text-slate-300">Shop</a>
+              <a href="./media.html" class="text-slate-500 hover:text-slate-300">Media</a>
+              <a href="./about.html" class="text-slate-500 hover:text-slate-300">About</a>
+              <a href="./contacts.html" class="text-slate-500 hover:text-slate-300">Contacts</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

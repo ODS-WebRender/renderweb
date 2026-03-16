@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Business on Purpose Podcast — Ethical Leadership & Strategic Growth | Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Business on Purpose: A podcast for entrepreneurs building sustainable, ethical enterprises rooted in servant leadership, biblical wisdom, and authentic resilience."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./images/OLD-DOG-CircBlue.png" />
+    <meta property="og:image" content="./images/OLD-DOG-CircBlue.png" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl overflow-visible"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl overflow-visible relative z-30">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/OLD-DOG-CircBlue.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./about.html" class="nav-underline">About</a>
+            <a href="./podcasts.html" class="nav-underline text-sky-300">Podcasts</a>
+            <a href="./studio.html" class="nav-underline">Products</a>
+            <a href="./downloads.html" class="nav-underline">Downloads</a>
+            <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./contacts.html" class="nav-underline">Contact</a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button
+            type="button"
+            class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700/60 hover:border-slate-600 transition-colors"
+            id="mobile-menu-btn"
+            aria-label="Toggle mobile menu"
+          >
+            <span class="text-lg">☰</span>
+          </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden bg-slate-900/95 border-t border-slate-800/80 px-4 py-3"
+        >
+          <div class="space-y-2">
+            <a href="./index.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Home</a>
+            <a href="./about.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">About</a>
+            <a href="./podcasts.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Podcasts</a>
+            <a href="./studio.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Products</a>
+            <a href="./downloads.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Downloads</a>
+            <a href="./shop.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Shop</a>
+            <a href="./contacts.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Contact</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex-1">
+        <!-- Hero Section - BoP Branding (Navy/Gold) -->
+        <section class="relative overflow-hidden py-16 md:py-28 lg:py-36 bg-gradient-to-br from-amber-950/40 via-slate-950 to-slate-950">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <!-- Left: Content -->
+              <div>
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-xl font-bold">📈</div>
+                  <span class="text-amber-300/80 text-sm font-semibold uppercase tracking-wider">Podcast Series</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-bold text-slate-50 mb-6 leading-tight">
+                  Business on Purpose
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
+                  For entrepreneurs and leaders building sustainable enterprises rooted in biblical wisdom, servant leadership, and authentic ethical practice. This is business beyond the bottom line—where profit becomes the fuel for purpose.
+                </p>
+
+                <div class="space-y-4 mb-10">
+                  <div class="flex gap-3">
+                    <span class="text-amber-400 text-lg">✓</span>
+                    <p class="text-slate-300"><span class="font-semibold text-slate-100">Servant Leadership</span> — Leading by lifting others up</p>
+                  </div>
+                  <div class="flex gap-3">
+                    <span class="text-amber-400 text-lg">✓</span>
+                    <p class="text-slate-300"><span class="font-semibold text-slate-100">Biblical Stewardship</span> — Profit as responsibility, not just reward</p>
+                  </div>
+                  <div class="flex gap-3">
+                    <span class="text-amber-400 text-lg">✓</span>
+                    <p class="text-slate-300"><span class="font-semibold text-slate-100">Ethical Practice</span> — Integrity as your competitive advantage</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <a href="#episodes" class="px-8 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold transition-all text-center">
+                    Listen to Episodes
+                  </a>
+                  <a href="./podcasts.html" class="px-8 py-3 rounded-lg bg-slate-800/50 border border-slate-700/60 hover:border-amber-500/60 text-slate-100 font-semibold transition-all text-center">
+                    All Podcasts
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Visual -->
+              <div class="relative hidden md:block">
+                <div class="aspect-square rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-500/30 flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-8xl mb-4">📈</div>
+                    <p class="text-amber-200/60 font-semibold">Coming This Week</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mission Statement -->
+        <section class="py-16 md:py-20 bg-slate-900/30 border-y border-slate-800/60">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-4">Why This Podcast?</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors">
+                <div class="text-4xl mb-4">📚</div>
+                <h3 class="text-xl font-bold text-amber-300 mb-3">Biblical Wisdom</h3>
+                <p class="text-slate-300 leading-relaxed">
+                  Parables and proverbs that directly apply to modern business, from the Parable of the Talents to the Armor of God.
+                </p>
+              </div>
+
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors">
+                <div class="text-4xl mb-4">🤝</div>
+                <h3 class="text-xl font-bold text-amber-300 mb-3">Servant Leadership</h3>
+                <p class="text-slate-300 leading-relaxed">
+                  How to lead teams by asking "How can I help you rise?" instead of "What can you do for me?"
+                </p>
+              </div>
+
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors">
+                <div class="text-4xl mb-4">⚓</div>
+                <h3 class="text-xl font-bold text-amber-300 mb-3">Resilient Systems</h3>
+                <p class="text-slate-300 leading-relaxed">
+                  Building enterprises that weather recessions, crises, and market shifts through integrity and excellence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Episode Guide -->
+        <section id="episodes" class="py-16 md:py-24">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="mb-16">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">Episodes</h2>
+              <p class="text-slate-400 text-lg">New episodes every week. All episodes free to listen.</p>
+            </div>
+
+            <!-- Arc 1 -->
+            <div class="mb-16">
+              <div class="mb-8">
+                <h3 class="text-2xl font-bold text-amber-300 mb-2">Arc 1: Core Principles</h3>
+                <p class="text-slate-400">Foundation & stewardship — establishing the mindset shift from self-serving profit to God-honoring purpose.</p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <!-- Episode 1 -->
+                <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors">
+                  <div class="flex items-start justify-between mb-6">
+                    <div>
+                      <p class="text-xs text-amber-300 uppercase tracking-wider font-semibold mb-2">Episode 1</p>
+                      <h3 class="text-xl font-bold text-slate-100">Planted With Purpose</h3>
+                      <p class="text-sm text-slate-400 mt-2">Finding your unique calling in the marketplace</p>
+                    </div>
+                    <span class="text-3xl">🌱</span>
+                  </div>
+
+                  <div class="mb-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/40">
+                    <p class="text-xs text-slate-500 mb-2">Audio Player</p>
+                    <audio controls class="w-full h-8">
+                      <source src="/podcasts/business-on-purpose/episode-1.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p class="text-xs text-slate-500 mt-2">~32 minutes</p>
+                  </div>
+
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    God never plants a seed without purpose. In this episode, we explore how vocation is a calling—a specific assignment designed to carry value into your industry and market.
+                  </p>
+
+                  <div class="space-y-2 text-sm text-slate-400 mb-6">
+                    <p><span class="font-semibold text-slate-300">Scripture Focus:</span> Mark 4:26-29</p>
+                    <p><span class="font-semibold text-slate-300">Topics:</span> Vocation, purpose, roots before fruit, patience in process</p>
+                  </div>
+
+                  <button class="w-full px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-colors font-semibold text-sm">
+                    Add to Reading List
+                  </button>
+                </div>
+
+                <!-- Episode 2 -->
+                <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors">
+                  <div class="flex items-start justify-between mb-6">
+                    <div>
+                      <p class="text-xs text-amber-300 uppercase tracking-wider font-semibold mb-2">Episode 2</p>
+                      <h3 class="text-xl font-bold text-slate-100">Maximizing Your Assets</h3>
+                      <p class="text-sm text-slate-400 mt-2">The Talent Principle — turning fear into action</p>
+                    </div>
+                    <span class="text-3xl">💰</span>
+                  </div>
+
+                  <div class="mb-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/40">
+                    <p class="text-xs text-slate-500 mb-2">Audio Player</p>
+                    <audio controls class="w-full h-8">
+                      <source src="/podcasts/business-on-purpose/episode-2.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p class="text-xs text-slate-500 mt-2">~28 minutes</p>
+                  </div>
+
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    Fear paralyzes. Action liberates. In the Parable of the Talents, the master rewards those who invested their resources and punishes the one who buried them in fear. What talent are you burying?
+                  </p>
+
+                  <div class="space-y-2 text-sm text-slate-400 mb-6">
+                    <p><span class="font-semibold text-slate-300">Scripture Focus:</span> Matthew 25:14-30</p>
+                    <p><span class="font-semibold text-slate-300">Topics:</span> Stewardship, ROI, fear, investment, scaling</p>
+                  </div>
+
+                  <button class="w-full px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-colors font-semibold text-sm">
+                    Add to Reading List
+                  </button>
+                </div>
+
+                <!-- Episode 3 -->
+                <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors">
+                  <div class="flex items-start justify-between mb-6">
+                    <div>
+                      <p class="text-xs text-amber-300 uppercase tracking-wider font-semibold mb-2">Episode 3</p>
+                      <h3 class="text-xl font-bold text-slate-100">Building on Rock</h3>
+                      <p class="text-sm text-slate-400 mt-2">The foundation of sustainable business</p>
+                    </div>
+                    <span class="text-3xl">🏔️</span>
+                  </div>
+
+                  <div class="mb-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/40">
+                    <p class="text-xs text-slate-500 mb-2">Audio Player</p>
+                    <audio controls class="w-full h-8">
+                      <source src="/podcasts/business-on-purpose/episode-3.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p class="text-xs text-slate-500 mt-2">~31 minutes</p>
+                  </div>
+
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    Integrity is not glamorous. It's the unseen foundation that allows your business to survive storms. The wise builder invests in invisible infrastructure; the fool takes shortcuts.
+                  </p>
+
+                  <div class="space-y-2 text-sm text-slate-400 mb-6">
+                    <p><span class="font-semibold text-slate-300">Scripture Focus:</span> Matthew 7:24-27</p>
+                    <p><span class="font-semibold text-slate-300">Topics:</span> Integrity, core values, resilience, ethics, reputation</p>
+                  </div>
+
+                  <button class="w-full px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-colors font-semibold text-sm">
+                    Add to Reading List
+                  </button>
+                </div>
+
+                <!-- Episode 4 -->
+                <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors">
+                  <div class="flex items-start justify-between mb-6">
+                    <div>
+                      <p class="text-xs text-amber-300 uppercase tracking-wider font-semibold mb-2">Episode 4</p>
+                      <h3 class="text-xl font-bold text-slate-100">Equipping Your Enterprise</h3>
+                      <p class="text-sm text-slate-400 mt-2">The strategic armor for business</p>
+                    </div>
+                    <span class="text-3xl">🛡️</span>
+                  </div>
+
+                  <div class="mb-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/40">
+                    <p class="text-xs text-slate-500 mb-2">Audio Player</p>
+                    <audio controls class="w-full h-8">
+                      <source src="/podcasts/business-on-purpose/episode-4.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p class="text-xs text-slate-500 mt-2">~29 minutes</p>
+                  </div>
+
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    The Armor of God isn't just spiritual—it's strategic. Truth, righteousness, preparation, faith, and knowledge are your offensive and defensive weapons in the marketplace.
+                  </p>
+
+                  <div class="space-y-2 text-sm text-slate-400 mb-6">
+                    <p><span class="font-semibold text-slate-300">Scripture Focus:</span> Ephesians 6:10-18</p>
+                    <p><span class="font-semibold text-slate-300">Topics:</span> Strategic preparation, protection, mental strength, competitive strategy</p>
+                  </div>
+
+                  <button class="w-full px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-colors font-semibold text-sm">
+                    Add to Reading List
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Arc 2 Teaser -->
+            <div class="card-glass border border-amber-500/30 bg-gradient-to-r from-amber-500/10 to-orange-500/10 p-8 rounded-xl">
+              <h3 class="text-2xl font-bold text-amber-300 mb-3">Arc 2: Coming Soon</h3>
+              <p class="text-slate-300 mb-4">
+                Servant Leadership & Diligence — Episodes 5-8 launching next month will dive deeper into how you lead your team, the power of excellence, fair compensation, and wise counsel.
+              </p>
+              <a href="#subscribe" class="inline-flex items-center gap-2 text-amber-300 hover:text-amber-200 transition-colors font-semibold">
+                Subscribe to Get Notified →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Resources Preview -->
+        <section class="py-16 md:py-24 bg-slate-900/30 border-y border-slate-800/60">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">Companion Resources</h2>
+              <p class="text-slate-400 text-lg">Deepen your learning with journals, playbooks, and cohort experiences.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+              <!-- Journals -->
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors group">
+                <div class="text-4xl mb-4">📔</div>
+                <h3 class="text-xl font-bold text-amber-300 mb-3">Episode Journals</h3>
+                <p class="text-slate-300 mb-6">
+                  Structured reflection workbooks for each episode. Pause, write, and process at your own pace.
+                </p>
+                <div class="pt-4 border-t border-slate-700/40">
+                  <p class="text-sm text-slate-400 mb-4">Starting at <span class="font-bold text-amber-300">$29</span> each</p>
+                  <a href="./shop.html" class="inline-flex items-center gap-2 text-amber-300 group-hover:text-amber-200 transition-colors font-semibold text-sm">
+                    Shop Now →
+                  </a>
+                </div>
+              </div>
+
+              <!-- Playbooks -->
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors group">
+                <div class="text-4xl mb-4">📘</div>
+                <h3 class="text-xl font-bold text-amber-300 mb-3">Strategic Playbooks</h3>
+                <p class="text-slate-300 mb-6">
+                  Practical implementation guides adapted to your business—from servant leadership frameworks to stewardship models.
+                </p>
+                <div class="pt-4 border-t border-slate-700/40">
+                  <p class="text-sm text-slate-400 mb-4">Starting at <span class="font-bold text-amber-300">$49</span> each</p>
+                  <a href="./shop.html" class="inline-flex items-center gap-2 text-amber-300 group-hover:text-amber-200 transition-colors font-semibold text-sm">
+                    Shop Now →
+                  </a>
+                </div>
+              </div>
+
+              <!-- Cohorts -->
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-amber-500/40 transition-colors group">
+                <div class="text-4xl mb-4">🤝</div>
+                <h3 class="text-xl font-bold text-amber-300 mb-3">Cohort Workshops</h3>
+                <p class="text-slate-300 mb-6">
+                  Live, facilitated groups where business leaders meet to apply concepts and hold each other accountable.
+                </p>
+                <div class="pt-4 border-t border-slate-700/40">
+                  <p class="text-sm text-slate-400 mb-4">Starting at <span class="font-bold text-amber-300">$199</span> per cohort</p>
+                  <a href="./shop.html" class="inline-flex items-center gap-2 text-amber-300 group-hover:text-amber-200 transition-colors font-semibold text-sm">
+                    Learn More →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 text-center">
+              <a href="./shop.html" class="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold transition-all">
+                Browse All Resources →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section id="subscribe" class="py-16 md:py-24">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="bg-gradient-to-br from-amber-900/30 via-slate-900/50 to-slate-950 border border-amber-500/30 rounded-2xl p-12 text-center">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-4">Never Miss an Episode</h2>
+              <p class="text-slate-300 text-lg mb-8">Get new episodes delivered to your inbox every week—plus exclusive follower updates and early access to resources.</p>
+              
+              <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  class="flex-1 px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/60 transition-colors"
+                  required
+                />
+                <button 
+                  type="submit" 
+                  class="px-6 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold transition-all whitespace-nowrap"
+                >
+                  Subscribe
+                </button>
+              </form>
+
+              <p class="text-xs text-slate-400">We respect your privacy. Unsubscribe anytime.</p>
+
+              <!-- Social / Platform Links -->
+              <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <p class="text-slate-400 text-sm">Also available on:</p>
+                <div class="flex gap-3 justify-center">
+                  <a href="#" class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-300 text-sm hover:border-amber-500/60 transition-colors">
+                    🎵 Spotify
+                  </a>
+                  <a href="#" class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-300 text-sm hover:border-amber-500/60 transition-colors">
+                    🎙️ Apple
+                  </a>
+                  <a href="#" class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-300 text-sm hover:border-amber-500/60 transition-colors">
+                    ▶️ YouTube
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-800/60 bg-slate-950/70 backdrop-blur-xl">
+        <div class="mx-auto max-w-6xl px-4 py-12">
+          <div class="grid md:grid-cols-3 gap-12 mb-12">
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Podcasts</h3>
+              <ul class="space-y-2">
+                <li><a href="./podcast-business-on-purpose.html" class="text-slate-400 hover:text-amber-300 transition-colors">Business on Purpose</a></li>
+                <li><a href="./podcast-when-life-bites.html" class="text-slate-400 hover:text-amber-300 transition-colors">When Life Bites</a></li>
+                <li><a href="./podcasts.html" class="text-slate-400 hover:text-amber-300 transition-colors">All Podcasts</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Old Dog Systems</h3>
+              <ul class="space-y-2">
+                <li><a href="./index.html" class="text-slate-400 hover:text-amber-300 transition-colors">Home</a></li>
+                <li><a href="./about.html" class="text-slate-400 hover:text-amber-300 transition-colors">About</a></li>
+                <li><a href="./shop.html" class="text-slate-400 hover:text-amber-300 transition-colors">Shop</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Get in Touch</h3>
+              <ul class="space-y-2">
+                <li><a href="./contacts.html" class="text-slate-400 hover:text-amber-300 transition-colors">Contact</a></li>
+                <li><a href="./contacts.html" class="text-slate-400 hover:text-amber-300 transition-colors">Discovery Call</a></li>
+                <li><a href="mailto:hello@olddogsystems.com" class="text-slate-400 hover:text-amber-300 transition-colors">Email</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-800/60 pt-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+              <p class="text-slate-500 text-sm">© 2026 Old Dog Systems. All rights reserved.</p>
+              <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-amber-300 transition-colors text-sm">Privacy</a>
+                <a href="#" class="text-slate-400 hover:text-amber-300 transition-colors text-sm">Terms</a>
+                <a href="#" class="text-slate-400 hover:text-amber-300 transition-colors text-sm">Sitemap</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

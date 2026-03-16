@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Podcasts — Business on Purpose & When Life Bites | Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Discover two powerful podcast series: Business on Purpose for ethical leadership and resilient growth, and When Life Bites for faith-based healing through life's crises."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./images/OLD-DOG-CircBlue.png" />
+    <meta property="og:image" content="./images/OLD-DOG-CircBlue.png" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl overflow-visible"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl overflow-visible relative z-30">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/OLD-DOG-CircBlue.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./about.html" class="nav-underline">About</a>
+            <a href="./podcasts.html" class="nav-underline text-sky-300">Podcasts</a>
+
+            <!-- Products mega -->
+            <div class="relative group z-50" data-dropdown="products">
+              <button 
+                type="button" 
+                class="inline-flex items-center gap-1 nav-underline"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Products menu"
+              >
+                <span>Products</span>
+                <span class="text-xs text-slate-400">▾</span>
+              </button>
+              <div
+                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[900px] z-50 max-h-[70vh] overflow-y-auto group-hover:opacity-100 group-hover:pointer-events-auto"
+                data-dropdown-panel="products"
+                role="region"
+                aria-label="Products menu"
+              >
+                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
+                  <div class="mb-3 flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-2 text-slate-400">
+                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300">Flagship</span>
+                      <span>Media & content systems</span>
+                    </div>
+                  </div>
+                  <a href="./studio.html" class="flex items-start gap-3 rounded-xl border border-sky-500/60 bg-slate-900/80 p-3 hover:border-sky-400 hover:bg-slate-900 transition-colors mb-4">
+                    <div class="mt-0.5 h-8 w-8 rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center text-sky-300 text-xs">α</div>
+                    <div class="text-sm">
+                      <div class="flex items-center gap-2">
+                        <span class="text-slate-50">Rough Diamond Studio</span>
+                        <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300 ring-1 ring-emerald-500/40">Alpha Access</span>
+                      </div>
+                      <p class="mt-1 text-xs text-slate-400">Audio podcasting and content systems built for teams that ship weekly.</p>
+                    </div>
+                  </a>
+
+                  <div class="mb-3 text-xs font-semibold text-slate-400 uppercase tracking-[0.15em]">Enterprise Solutions</div>
+                  <a href="./cpm-ai.html" class="flex items-start gap-3 rounded-xl border border-amber-500/60 bg-slate-900/80 p-3 hover:border-amber-400 hover:bg-slate-900 transition-colors mb-2">
+                    <div class="mt-0.5 h-8 w-8 rounded-lg bg-amber-500/15 ring-1 ring-amber-400/40 flex items-center justify-center text-amber-300 text-xs">🏗️</div>
+                    <div class="text-sm"><div class="flex items-center gap-2"><span class="text-slate-50">CPM‑AI™ Suite</span><span class="rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-medium text-amber-300 ring-1 ring-amber-500/40">Soon</span></div><p class="mt-1 text-xs text-slate-400">AI for on-site automation, safety & waste reduction.</p></div>
+                  </a>
+                  <a href="./propaI-pro.html" class="flex items-start gap-3 rounded-xl border border-emerald-500/60 bg-slate-900/80 p-3 hover:border-emerald-400 hover:bg-slate-900 transition-colors mb-2">
+                    <div class="mt-0.5 h-8 w-8 rounded-lg bg-emerald-500/15 ring-1 ring-emerald-400/40 flex items-center justify-center text-emerald-300 text-xs">🏘️</div>
+                    <div class="text-sm"><div class="flex items-center gap-2"><span class="text-slate-50">PropAI‑Pro™</span><span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300 ring-1 ring-emerald-500/40">Soon</span></div><p class="mt-1 text-xs text-slate-400">End-to-end AI for high-end residential property.</p></div>
+                  </a>
+                  <a href="./old-dog-erp.html" class="flex items-start gap-3 rounded-xl border border-orange-500/60 bg-slate-900/80 p-3 hover:border-orange-400 hover:bg-slate-900 transition-colors">
+                    <div class="mt-0.5 h-8 w-8 rounded-lg bg-orange-500/15 ring-1 ring-orange-400/40 flex items-center justify-center text-orange-300 text-xs">📊</div>
+                    <div class="text-sm"><div class="flex items-center gap-2"><span class="text-slate-50">Old Dog ERP</span><span class="rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-medium text-orange-300 ring-1 ring-orange-500/40">Available</span></div><p class="mt-1 text-xs text-slate-400">Enterprise resource planning system.</p></div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <a href="./downloads.html" class="nav-underline">Downloads</a>
+            <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./contacts.html" class="nav-underline">Contact</a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button
+            type="button"
+            class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700/60 hover:border-slate-600 transition-colors"
+            id="mobile-menu-btn"
+            aria-label="Toggle mobile menu"
+          >
+            <span class="text-lg">☰</span>
+          </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden bg-slate-900/95 border-t border-slate-800/80 px-4 py-3"
+        >
+          <div class="space-y-2">
+            <a href="./index.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Home</a>
+            <a href="./about.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">About</a>
+            <a href="./podcasts.html" class="block px-3 py-2 rounded-lg bg-slate-800/60">Podcasts</a>
+            <button type="button" class="w-full text-left px-3 py-2 flex items-center justify-between hover:bg-slate-800/80 transition-colors" data-mobile-dropdown="products">
+              <span>Products</span>
+              <span class="text-xs">▾</span>
+            </button>
+            <div id="products-mobile" class="hidden pl-4 space-y-1">
+              <a href="./studio.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors text-sm">Rough Diamond Studio</a>
+              <a href="./old-dog-erp.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors text-sm">Old Dog ERP</a>
+            </div>
+            <a href="./downloads.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Downloads</a>
+            <a href="./shop.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Shop</a>
+            <a href="./contacts.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Contact</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden py-16 md:py-24 lg:py-32">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="text-center mb-12 md:mb-16">
+              <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-50 mb-4 leading-tight">
+                Two Voices.<br>One Mission.
+              </h1>
+              <p class="text-lg md:text-xl lg:text-2xl text-slate-300 max-w-3xl mx-auto">
+                Exploring ethical leadership, resilience, and the faith that sustains us through life's greatest challenges.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Podcast Showcase -->
+        <section class="py-16 md:py-24">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+              
+              <!-- Business on Purpose Card -->
+              <a href="./podcast-business-on-purpose.html" class="group">
+                <div class="card-glass border border-slate-700/60 overflow-hidden hover:border-amber-500/60 transition-all duration-300 h-full flex flex-col">
+                  <!-- Header with branding -->
+                  <div class="bg-gradient-to-br from-amber-900/30 to-orange-900/20 border-b border-slate-700/60 p-8">
+                    <div class="flex items-start gap-4 mb-4">
+                      <div class="h-16 w-16 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-2xl font-bold">📈</div>
+                      <div class="flex-1">
+                        <h2 class="text-2xl md:text-3xl font-bold text-amber-100">Business on Purpose</h2>
+                        <p class="text-amber-200/70 text-sm mt-1">Servant Leadership & Ethical Growth</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Content -->
+                  <div class="p-8 flex-1 flex flex-col">
+                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
+                      For entrepreneurs and leaders ready to build sustainable enterprises rooted in biblical stewardship, servant leadership, and integrity. This is business beyond the bottom line.
+                    </p>
+
+                    <!-- Latest Episode Preview -->
+                    <div class="bg-slate-900/50 rounded-lg p-6 mb-6 border border-slate-700/40">
+                      <p class="text-xs text-amber-300/80 uppercase tracking-wider mb-2">Latest Episode</p>
+                      <h3 class="text-lg font-semibold text-slate-100 mb-2">Planted With Purpose</h3>
+                      <p class="text-sm text-slate-400">Finding your unique calling in the marketplace through the parable of the growing seed.</p>
+                      <p class="text-xs text-slate-500 mt-3">Ep. 1 • ~32 min</p>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                      <div class="bg-slate-900/40 rounded-lg p-4 border border-slate-700/30">
+                        <p class="text-xs text-slate-400 mb-1">Episodes</p>
+                        <p class="text-2xl font-bold text-amber-300">4+</p>
+                      </div>
+                      <div class="bg-slate-900/40 rounded-lg p-4 border border-slate-700/30">
+                        <p class="text-xs text-slate-400 mb-1">Audience</p>
+                        <p class="text-sm text-amber-300">Operators</p>
+                      </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="mt-auto pt-4 border-t border-slate-700/40">
+                      <div class="flex items-center gap-2 text-amber-300 group-hover:text-amber-200 transition-colors">
+                        <span class="font-semibold">Explore Podcast</span>
+                        <span class="text-lg">→</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <!-- When Life Bites Card -->
+              <a href="./podcast-when-life-bites.html" class="group">
+                <div class="card-glass border border-slate-700/60 overflow-hidden hover:border-purple-500/60 transition-all duration-300 h-full flex flex-col">
+                  <!-- Header with branding -->
+                  <div class="bg-gradient-to-br from-purple-900/30 to-rose-900/20 border-b border-slate-700/60 p-8">
+                    <div class="flex items-start gap-4 mb-4">
+                      <div class="h-16 w-16 rounded-lg bg-gradient-to-br from-purple-500 to-rose-600 flex items-center justify-center text-white text-2xl font-bold">🕊️</div>
+                      <div class="flex-1">
+                        <h2 class="text-2xl md:text-3xl font-bold text-purple-100">When Life Bites</h2>
+                        <p class="text-purple-200/70 text-sm mt-1">Faith, Resilience & Healing</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Content -->
+                  <div class="p-8 flex-1 flex flex-col">
+                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
+                      For survivors navigating trauma, grief, betrayal, and life's crises. This is your companion through the hardest seasons—rooted in faith, grounded in real stories, focused on healing.
+                    </p>
+
+                    <!-- Latest Episode Preview -->
+                    <div class="bg-slate-900/50 rounded-lg p-6 mb-6 border border-slate-700/40">
+                      <p class="text-xs text-purple-300/80 uppercase tracking-wider mb-2">Latest Episode</p>
+                      <h3 class="text-lg font-semibold text-slate-100 mb-2">The Shattered Trust</h3>
+                      <p class="text-sm text-slate-400">When a loved one harms a child—navigating shock, justice, and healing.</p>
+                      <p class="text-xs text-slate-500 mt-3">Ep. 1 • ~28 min</p>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                      <div class="bg-slate-900/40 rounded-lg p-4 border border-slate-700/30">
+                        <p class="text-xs text-slate-400 mb-1">Episodes</p>
+                        <p class="text-2xl font-bold text-purple-300">12</p>
+                      </div>
+                      <div class="bg-slate-900/40 rounded-lg p-4 border border-slate-700/30">
+                        <p class="text-xs text-slate-400 mb-1">Audience</p>
+                        <p class="text-sm text-purple-300">Survivors</p>
+                      </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="mt-auto pt-4 border-t border-slate-700/40">
+                      <div class="flex items-center gap-2 text-purple-300 group-hover:text-purple-200 transition-colors">
+                        <span class="font-semibold">Explore Podcast</span>
+                        <span class="text-lg">→</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Platform Links Section -->
+        <section class="py-16 md:py-24 bg-slate-900/30 border-y border-slate-800/60">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">Where to Listen</h2>
+              <p class="text-slate-300 text-lg">Available on all major platforms. New episodes weekly.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+              <a href="#" class="card-glass border border-slate-700/60 p-6 hover:border-sky-500/60 hover:bg-slate-900/90 transition-all group text-center">
+                <div class="text-3xl mb-3">🎵</div>
+                <h3 class="font-semibold text-slate-100 mb-1">Spotify</h3>
+                <p class="text-xs text-slate-400">Listen & Follow</p>
+                <p class="text-sky-400 group-hover:text-sky-300 text-xs mt-3 transition-colors">Coming Soon →</p>
+              </a>
+
+              <a href="#" class="card-glass border border-slate-700/60 p-6 hover:border-sky-500/60 hover:bg-slate-900/90 transition-all group text-center">
+                <div class="text-3xl mb-3">🎙️</div>
+                <h3 class="font-semibold text-slate-100 mb-1">Apple Podcasts</h3>
+                <p class="text-xs text-slate-400">Subscribe & Rate</p>
+                <p class="text-sky-400 group-hover:text-sky-300 text-xs mt-3 transition-colors">Coming Soon →</p>
+              </a>
+
+              <a href="#" class="card-glass border border-slate-700/60 p-6 hover:border-sky-500/60 hover:bg-slate-900/90 transition-all group text-center">
+                <div class="text-3xl mb-3">▶️</div>
+                <h3 class="font-semibold text-slate-100 mb-1">YouTube</h3>
+                <p class="text-xs text-slate-400">Watch & Subscribe</p>
+                <p class="text-sky-400 group-hover:text-sky-300 text-xs mt-3 transition-colors">Coming Soon →</p>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-16 md:py-24">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="bg-gradient-to-br from-sky-900/30 via-slate-900/50 to-purple-900/20 border border-slate-700/60 rounded-2xl p-12 text-center">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-4">Never Miss an Episode</h2>
+              <p class="text-slate-300 text-lg mb-8">Get new episodes delivered to your inbox every week—plus exclusive follower updates from our community.</p>
+              
+              <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  class="flex-1 px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500/60 transition-colors"
+                  required
+                />
+                <button 
+                  type="submit" 
+                  class="px-6 py-3 rounded-lg bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-semibold transition-all whitespace-nowrap"
+                >
+                  Subscribe
+                </button>
+              </form>
+
+              <p class="text-xs text-slate-400 mt-4">We respect your privacy. Unsubscribe anytime.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-800/60 bg-slate-950/70 backdrop-blur-xl">
+        <div class="mx-auto max-w-6xl px-4 py-12">
+          <div class="grid md:grid-cols-3 gap-12 mb-12">
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Podcasts</h3>
+              <ul class="space-y-2">
+                <li><a href="./podcast-business-on-purpose.html" class="text-slate-400 hover:text-sky-300 transition-colors">Business on Purpose</a></li>
+                <li><a href="./podcast-when-life-bites.html" class="text-slate-400 hover:text-sky-300 transition-colors">When Life Bites</a></li>
+                <li><a href="./shop.html" class="text-slate-400 hover:text-sky-300 transition-colors">Shop Resources</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Old Dog Systems</h3>
+              <ul class="space-y-2">
+                <li><a href="./index.html" class="text-slate-400 hover:text-sky-300 transition-colors">Home</a></li>
+                <li><a href="./about.html" class="text-slate-400 hover:text-sky-300 transition-colors">About</a></li>
+                <li><a href="./studio.html" class="text-slate-400 hover:text-sky-300 transition-colors">Products</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Get in Touch</h3>
+              <ul class="space-y-2">
+                <li><a href="./contacts.html" class="text-slate-400 hover:text-sky-300 transition-colors">Contact Us</a></li>
+                <li><a href="./contacts.html" class="text-slate-400 hover:text-sky-300 transition-colors">Discovery Call</a></li>
+                <li><a href="mailto:hello@olddogsystems.com" class="text-slate-400 hover:text-sky-300 transition-colors">hello@olddogsystems.com</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-800/60 pt-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+              <p class="text-slate-500 text-sm">© 2026 Old Dog Systems. All rights reserved.</p>
+              <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-sky-300 transition-colors text-sm">Privacy</a>
+                <a href="#" class="text-slate-400 hover:text-sky-300 transition-colors text-sm">Terms</a>
+                <a href="#" class="text-slate-400 hover:text-sky-300 transition-colors text-sm">Sitemap</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      });
+
+      // Mobile dropdown toggles
+      document.querySelectorAll('[data-mobile-dropdown]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = document.getElementById(btn.dataset.mobileDropdown + '-mobile');
+          target.classList.toggle('hidden');
+        });
+      });
+    </script>
+  </body>
+</html>

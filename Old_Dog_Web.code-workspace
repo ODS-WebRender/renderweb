@@ -4,8 +4,13 @@
 			"path": "."
 		},
 		{
-			"path": "../RDS_Content_Module"
+			"path": "../Rough Diamond Studio V1"
+		},
+		{
+			"path": "../Old Dog ERP"
+		},
+		{
+			"path": "../CPM-AI-Suite"
 		}
-	],
-	"settings": {}
+	]
 }

@@ -1,584 +1,533 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-slate-950">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard — Old Dog Systems</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="./styles.css" />
-    <script type="module">
-      import { applyBranding } from './constants.js';
-      window.addEventListener('DOMContentLoaded', () => {
-        applyBranding();
-      });
-    </script>
-  </head>
-  <body class="h-full text-slate-100 antialiased">
-    <div class="min-h-screen flex flex-col">
-      <!-- Navigation -->
-      <header
-        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
-      >
-        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
-          <div class="flex items-center gap-3">
-            <div class="flex items-center gap-3">
-              <img
-                src="./images/dog-logo.png"
-                alt="Old Dog Systems Logo"
-                class="h-12 w-12 rounded-xl object-cover border border-slate-700/60"
-              />
-              <div class="flex flex-col">
-                <span
-                  data-brand
-                  class="text-sm font-semibold tracking-tight text-slate-100"
-                ></span>
-                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500"
-                  >Admin Console</span
-                >
-              </div>
-            </div>
-          </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      [data-brand]::before {
+        content: 'Old Dog Systems';
+      }
 
-          <!-- Desktop nav -->
-          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
-            <a href="./index.html" class="nav-underline">Home</a>
-            <a href="./admin-dashboard.html" class="nav-underline" aria-current="page">Admin</a>
-            <button
+      .nav-underline {
+        position: relative;
+        padding-bottom: 0.25rem;
+      }
+
+      .nav-underline::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+      }
+
+      .nav-underline:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .card-glass {
+        background: rgba(30, 41, 59, 0.5);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(71, 85, 105, 0.3);
+      }
+
+      .nav-glass {
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(8px);
+      }
+
+      .hidden-admin {
+        display: none;
+      }
+
+      .tab-button {
+        position: relative;
+      }
+
+      .tab-button.active {
+        color: #f59e0b;
+      }
+
+      .tab-button.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #f59e0b, #f97316);
+      }
+
+      .credential-field {
+        position: relative;
+      }
+
+      .credential-field input {
+        font-family: 'Courier New', monospace;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #64748b;
+        font-size: 18px;
+      }
+
+      .status-indicator {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .status-active {
+        background-color: #34d399;
+      }
+
+      .status-inactive {
+        background-color: #ef4444;
+      }
+    </style>
+  </head>
+
+  <body class="bg-slate-950 text-slate-200" style="font-family: system-ui, sans-serif">
+    <div class="flex flex-col min-h-screen">
+      <!-- Header -->
+      <header class="border-b border-slate-800/70 bg-slate-950/95 py-4">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 text-sm">
+          <a href="./index.html" class="inline-flex items-center gap-2">
+            <div class="h-8 w-8 rounded-full bg-amber-500/20 flex items-center justify-center">
+              <svg class="h-5 w-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-semibold text-slate-50" data-brand></div>
+              <div class="text-xs text-slate-500">Admin Dashboard</div>
+            </div>
+          </a>
+
+          <div class="flex items-center gap-4">
+            <button 
               onclick="logout()"
-              class="rounded-full border border-slate-700 px-4 py-2 text-sm hover:border-red-500 hover:text-red-400 transition-colors"
+              class="text-sm font-medium text-slate-200 hover:text-slate-50 transition-colors"
             >
               Logout
             </button>
           </div>
-
-          <!-- Mobile trigger -->
-          <button
-            type="button"
-            class="inline-flex items-center justify-center rounded-full border border-slate-700/70 p-2 text-slate-200 md:hidden"
-            aria-label="Open navigation"
-            onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
-          >
-            <span class="block h-0.5 w-4 rounded-full bg-slate-200 mb-0.5"></span>
-            <span class="block h-0.5 w-4 rounded-full bg-slate-400 mb-0.5"></span>
-            <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
-          </button>
         </nav>
-
-        <!-- Mobile nav -->
-        <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
-          <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
-            <a href="./index.html" class="block">Home</a>
-            <a href="./admin-dashboard.html" class="block" aria-current="page">Admin</a>
-            <button onclick="logout()" class="w-full text-left text-red-400 hover:text-red-300">Logout</button>
-          </div>
-        </div>
       </header>
 
-      <!-- Main -->
+      <!-- Main Content -->
       <main class="flex-1">
-        <!-- Login Form -->
-        <div id="login-section" class="min-h-screen flex items-center justify-center bg-slate-950">
-          <div class="w-full max-w-md">
-            <div class="card-glass rounded-2xl border border-slate-700/60 p-8">
-              <div class="text-center mb-8">
-                <img
-                  src="./images/dog-logo.png"
-                  alt="Old Dog Systems Logo"
-                  class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40 mx-auto mb-4"
-                />
-                <h1 class="text-2xl font-bold text-slate-100 mb-2">Admin Login</h1>
-                <p class="text-slate-400">Enter your admin password to access the dashboard</p>
-              </div>
+        <!-- Admin Auth Section -->
+        <section id="admin-login-section" class="border-b border-slate-800/70 bg-slate-950/70">
+          <div class="mx-auto max-w-2xl px-4 py-12 sm:py-16">
+            <div class="card-glass rounded-2xl border border-slate-800/80 p-6 sm:p-8">
+              <h2 class="text-xl font-semibold text-slate-50 mb-2">Admin Access</h2>
+              <p class="text-sm text-slate-400 mb-6">Enter the admin password to manage tester credentials</p>
 
-              <form id="login-form" class="space-y-6">
+              <form id="admin-login-form" class="space-y-4">
                 <div>
-                  <label for="password" class="block text-sm font-medium text-slate-300 mb-2">
+                  <label for="admin-password" class="block text-xs font-medium text-slate-300 mb-2">
                     Admin Password
                   </label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter admin password"
-                  />
+                  <div class="credential-field">
+                    <input
+                      id="admin-password"
+                      type="password"
+                      class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 pr-10 text-sm text-slate-100 placeholder-slate-500 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                      placeholder="••••••••"
+                      autocomplete="off"
+                      required
+                    />
+                    <span class="toggle-password" onclick="togglePasswordVisibility('admin-password')">👁️</span>
+                  </div>
+                </div>
+
+                <div id="admin-error" class="hidden rounded-lg bg-red-500/10 border border-red-500/20 p-3 text-sm text-red-300">
+                  Incorrect password
                 </div>
 
                 <button
                   type="submit"
-                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                  class="w-full rounded-full bg-amber-500 px-4 py-2.5 text-sm font-medium text-slate-950 hover:bg-amber-400 transition-colors"
                 >
-                  Login to Dashboard
+                  Access Dashboard
                 </button>
               </form>
 
-              <div id="login-error" class="mt-4 text-red-400 text-sm text-center hidden">
-                Invalid password. Please try again.
-              </div>
+              <p class="text-xs text-slate-500 text-center mt-6">
+                <strong>Quick reference:</strong> Admin password = <code class="bg-slate-900/70 px-2 py-1 rounded">AdminODS-2026</code>
+              </p>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Dashboard Content (hidden initially) -->
-        <div id="dashboard-section" class="hidden">
-          <!-- Hero -->
-          <section class="relative overflow-hidden border-b border-slate-800/80">
-            <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-              <h1 class="text-3xl sm:text-4xl font-bold text-slate-50 mb-2">Admin Dashboard</h1>
-              <p class="text-slate-400">Manage orders, analytics, and refunds</p>
+        <!-- Dashboard Section (Hidden Initially) -->
+        <section id="admin-dashboard-section" class="hidden-admin border-b border-slate-800/70 bg-slate-950/50">
+          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+            <!-- Dashboard Header -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold text-slate-50 mb-2">Credential Management</h2>
+              <p class="text-slate-400">Manage product passwords and tester access</p>
             </div>
-          </section>
 
-          <!-- Dashboard Content -->
-          <section class="bg-slate-950/50">
-            <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-              <!-- Key Metrics -->
-              <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-12">
-                <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                    Total Revenue
-                  </p>
-                  <p id="metric-revenue" class="text-3xl font-bold text-emerald-400">$0.00</p>
+            <!-- Tab Navigation -->
+            <div class="flex gap-4 mb-8 border-b border-slate-700/50 pb-4 overflow-x-auto">
+              <button class="tab-button active py-2 px-4 text-sm font-medium whitespace-nowrap" onclick="switchTab('rough-diamond-studio')">
+                Rough Diamond Studio
+              </button>
+              <button class="tab-button py-2 px-4 text-sm font-medium whitespace-nowrap" onclick="switchTab('old-dog-erp')">
+                Old Dog ERP
+              </button>
+              <button class="tab-button py-2 px-4 text-sm font-medium whitespace-nowrap" onclick="switchTab('cpm-ai-suite')">
+                CPM-AI Suite
+              </button>
+            </div>
+
+            <!-- Product Credential Editors -->
+            <div class="space-y-8">
+              <!-- Rough Diamond Studio -->
+              <div id="tab-rough-diamond-studio" class="card-glass rounded-2xl border border-slate-800/80 p-6">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-lg font-semibold text-slate-50">Rough Diamond Studio</h3>
+                    <p class="text-sm text-slate-400 mt-1">Professional audio podcasting and content production system</p>
+                  </div>
+                  <span class="status-indicator status-active"></span>
                 </div>
 
-                <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                    Total Orders
-                  </p>
-                  <p id="metric-orders" class="text-3xl font-bold text-sky-400">0</p>
-                </div>
-
-                <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                    Unique Customers
-                  </p>
-                  <p id="metric-customers" class="text-3xl font-bold text-purple-400">0</p>
-                </div>
-
-                <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                    Avg. Order Value
-                  </p>
-                <p id="metric-aov" class="text-3xl font-bold text-rose-400">$0.00</p>
-              </div>
-
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-2">
-                  Alpha Applications
-                </p>
-                <p id="metric-alpha" class="text-3xl font-bold text-violet-400">0</p>
-              </div>
-            </div>
-
-            <!-- Charts Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-              <!-- Revenue Chart -->
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                <h2 class="text-lg font-semibold text-slate-50 mb-4">Revenue (Last 30 Days)</h2>
-                <canvas id="revenue-chart" class="max-h-64"></canvas>
-              </div>
-
-              <!-- Top Products -->
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                <h2 class="text-lg font-semibold text-slate-50 mb-4">Top Products</h2>
-                <canvas id="products-chart" class="max-h-64"></canvas>
-              </div>
-            </div>
-
-            <!-- Alpha & Customer Charts -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-              <!-- Alpha Growth Chart -->
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                <h2 class="text-lg font-semibold text-slate-50 mb-4">Alpha Program Growth</h2>
-                <canvas id="alpha-chart" class="max-h-64"></canvas>
-              </div>
-
-              <!-- Customer Segments -->
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                <h2 class="text-lg font-semibold text-slate-50 mb-4">Customer Segments</h2>
-                <canvas id="customer-chart" class="max-h-64"></canvas>
-              </div>
-            </div>
-
-            <!-- Recent Orders -->
-            <div class="mb-12">
-              <h2 class="text-2xl font-bold text-slate-50 mb-6">Recent Orders</h2>
-              <div class="card-glass rounded-2xl border border-slate-700/60 overflow-hidden">
-                <div class="overflow-x-auto">
-                  <table class="w-full text-sm">
-                    <thead class="border-b border-slate-700/50 bg-slate-800/30">
-                      <tr>
-                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Order ID</th>
-                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Customer</th>
-                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Product</th>
-                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Amount</th>
-                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Status</th>
-                        <th class="px-6 py-3 text-left font-semibold text-slate-300">Date</th>
-                      </tr>
-                    </thead>
-                    <tbody id="orders-tbody" class="divide-y divide-slate-700/30">
-                      <!-- Rendered orders -->
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <!-- Refund Management -->
-            <div class="mb-12">
-              <h2 class="text-2xl font-bold text-slate-50 mb-6">Refund Management</h2>
-              <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
                 <div class="space-y-4">
-                  <div>
-                    <label class="block text-sm font-medium text-slate-200 mb-2">
-                      Search Order
-                    </label>
-                    <input
-                      type="text"
-                      id="refund-search"
-                      placeholder="Enter order ID or customer email"
-                      class="w-full rounded-lg bg-slate-800 border border-slate-600 px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-                    />
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-xs font-medium text-slate-300 mb-2">Username</label>
+                      <div class="credential-field">
+                        <input
+                          type="text"
+                          value="alpha-tester"
+                          class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 pr-10 text-sm text-slate-100 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          id="username-rough-diamond-studio"
+                        />
+                        <span class="toggle-password" onclick="copyToClipboard('username-rough-diamond-studio')">📋</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="block text-xs font-medium text-slate-300 mb-2">Password</label>
+                      <div class="credential-field">
+                        <input
+                          type="password"
+                          value="Alpha-V1x"
+                          class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 pr-10 text-sm text-slate-100 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          id="password-rough-diamond-studio"
+                        />
+                        <span class="toggle-password" onclick="togglePasswordVisibility('password-rough-diamond-studio')">👁️</span>
+                      </div>
+                    </div>
                   </div>
-                  <div id="refund-results" class="space-y-3 mt-6">
-                    <!-- Refund options rendered here -->
+
+                  <div class="flex gap-3">
+                    <button
+                      onclick="saveCredentials('rough-diamond-studio')"
+                      class="inline-flex items-center gap-2 rounded-lg bg-amber-500/20 border border-amber-500/50 px-4 py-2 text-sm font-medium text-amber-300 hover:bg-amber-500/30 transition-colors"
+                    >
+                      💾 Save Changes
+                    </button>
+                    <button
+                      onclick="copyCredentials('rough-diamond-studio')"
+                      class="inline-flex items-center gap-2 rounded-lg bg-slate-700/50 border border-slate-600/50 px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 transition-colors"
+                    >
+                      📋 Copy Credentials
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Old Dog ERP -->
+              <div id="tab-old-dog-erp" class="hidden card-glass rounded-2xl border border-slate-800/80 p-6">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-lg font-semibold text-slate-50">Old Dog ERP</h3>
+                    <p class="text-sm text-slate-400 mt-1">Enterprise resource planning system for construction operations</p>
+                  </div>
+                  <span class="status-indicator status-active"></span>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-xs font-medium text-slate-300 mb-2">Username</label>
+                      <div class="credential-field">
+                        <input
+                          type="text"
+                          value="alpha-tester"
+                          class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 pr-10 text-sm text-slate-100 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          id="username-old-dog-erp"
+                        />
+                        <span class="toggle-password" onclick="copyToClipboard('username-old-dog-erp')">📋</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="block text-xs font-medium text-slate-300 mb-2">Password</label>
+                      <div class="credential-field">
+                        <input
+                          type="password"
+                          value="ODERP-Alpha1"
+                          class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 pr-10 text-sm text-slate-100 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          id="password-old-dog-erp"
+                        />
+                        <span class="toggle-password" onclick="togglePasswordVisibility('password-old-dog-erp')">👁️</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-3">
+                    <button
+                      onclick="saveCredentials('old-dog-erp')"
+                      class="inline-flex items-center gap-2 rounded-lg bg-amber-500/20 border border-amber-500/50 px-4 py-2 text-sm font-medium text-amber-300 hover:bg-amber-500/30 transition-colors"
+                    >
+                      💾 Save Changes
+                    </button>
+                    <button
+                      onclick="copyCredentials('old-dog-erp')"
+                      class="inline-flex items-center gap-2 rounded-lg bg-slate-700/50 border border-slate-600/50 px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 transition-colors"
+                    >
+                      📋 Copy Credentials
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CPM-AI Suite -->
+              <div id="tab-cpm-ai-suite" class="hidden card-glass rounded-2xl border border-slate-800/80 p-6">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-lg font-semibold text-slate-50">CPM-AI Suite</h3>
+                    <p class="text-sm text-slate-400 mt-1">AI-powered construction project management with intelligent planning</p>
+                  </div>
+                  <span class="status-indicator status-active"></span>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-xs font-medium text-slate-300 mb-2">Username</label>
+                      <div class="credential-field">
+                        <input
+                          type="text"
+                          value="alpha-tester"
+                          class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 pr-10 text-sm text-slate-100 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          id="username-cpm-ai-suite"
+                        />
+                        <span class="toggle-password" onclick="copyToClipboard('username-cpm-ai-suite')">📋</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="block text-xs font-medium text-slate-300 mb-2">Password</label>
+                      <div class="credential-field">
+                        <input
+                          type="password"
+                          value="CPM-Alpha1"
+                          class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 pr-10 text-sm text-slate-100 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          id="password-cpm-ai-suite"
+                        />
+                        <span class="toggle-password" onclick="togglePasswordVisibility('password-cpm-ai-suite')">👁️</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-3">
+                    <button
+                      onclick="saveCredentials('cpm-ai-suite')"
+                      class="inline-flex items-center gap-2 rounded-lg bg-amber-500/20 border border-amber-500/50 px-4 py-2 text-sm font-medium text-amber-300 hover:bg-amber-500/30 transition-colors"
+                    >
+                      💾 Save Changes
+                    </button>
+                    <button
+                      onclick="copyCredentials('cpm-ai-suite')"
+                      class="inline-flex items-center gap-2 rounded-lg bg-slate-700/50 border border-slate-600/50 px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 transition-colors"
+                    >
+                      📋 Copy Credentials
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Customer Segments -->
-            <div>
-              <h2 class="text-2xl font-bold text-slate-50 mb-6">Customer Insights</h2>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div class="card-glass rounded-2xl border border-slate-700/60 p-6">
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-4">
-                    Customer Breakdown
-                  </p>
-                  <canvas id="customer-chart" class="max-h-48"></canvas>
-                </div>
-
-                <div class="card-glass rounded-2xl border border-slate-700/60 p-6 space-y-4">
-                  <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-3">
-                      Export Data
-                    </p>
-                    <button
-                      onclick="exportOrders('csv')"
-                      class="block w-full rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors px-4 py-2 text-sm font-medium text-slate-100 mb-2"
-                    >
-                      Export Orders (CSV)
-                    </button>
-                    <button
-                      onclick="exportOrders('json')"
-                      class="block w-full rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors px-4 py-2 text-sm font-medium text-slate-100"
-                    >
-                      Export Orders (JSON)
-                    </button>
-                  </div>
-                </div>
-              </div>
+            <!-- Info Section -->
+            <div class="mt-12 card-glass rounded-2xl border border-slate-800/80 p-6">
+              <h3 class="text-lg font-semibold text-slate-50 mb-4">ℹ️ How This Works</h3>
+              <ul class="space-y-3 text-sm text-slate-400">
+                <li class="flex gap-3">
+                  <span class="text-amber-400">•</span>
+                  <span><strong>Credentials:</strong> Currently hardcoded in the HTML. Changes here are for your reference only.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-amber-400">•</span>
+                  <span><strong>Future:</strong> To make credentials editable, we'll move them to a server-side JSON file.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-amber-400">•</span>
+                  <span><strong>Session:</strong> Testers stay logged in during their browser session using sessionStorage.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-amber-400">•</span>
+                  <span><strong>Access:</strong> Share download links with specific credentials for each product.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
       </main>
 
-      <footer class="border-t border-slate-800/80 py-6">
-        <div
-          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row"
-        >
-          <p>
-            © <span id="year"></span>
-            <span data-brand></span>. All rights reserved.
-          </p>
-          <div class="flex items-center gap-4">
-            <a href="./shop.html" class="hover:text-slate-300">Shop</a>
-          </div>
-        </div>
+      <!-- Footer -->
+      <footer class="border-t border-slate-800/70 bg-slate-950/70 py-8 text-center text-sm text-slate-500">
+        <p>© <span id="year">2024</span> Old Dog Systems. All rights reserved.</p>
       </footer>
     </div>
 
     <script>
-      let adminData = null;
-      let revenueChart = null;
-      let productsChart = null;
-      let customerChart = null;
-      let alphaChart = null;
-      let authToken = localStorage.getItem('admin_token');
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-      document.addEventListener('DOMContentLoaded', async () => {
-        document.getElementById('year').textContent = new Date().getFullYear();
+      // ===== ADMIN PASSWORD =====
+      const ADMIN_PASSWORD = 'AdminODS-2026';
 
-        // Check if already authenticated
-        if (authToken) {
-          showDashboard();
-          return;
+      // ===== CREDENTIAL STORAGE =====
+      let credentials = {
+        'rough-diamond-studio': {
+          username: 'alpha-tester',
+          password: 'Alpha-V1x'
+        },
+        'old-dog-erp': {
+          username: 'alpha-tester',
+          password: 'ODERP-Alpha1'
+        },
+        'cpm-ai-suite': {
+          username: 'alpha-tester',
+          password: 'CPM-Alpha1'
         }
+      };
 
-        // Show login form
-        document.getElementById('login-section').classList.remove('hidden');
-        document.getElementById('dashboard-section').classList.add('hidden');
+      // ===== ADMIN AUTHENTICATION =====
+      document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
 
-        // Handle login form
-        document.getElementById('login-form').addEventListener('submit', async (e) => {
-          e.preventDefault();
-          
-          const password = document.getElementById('password').value;
-          const errorDiv = document.getElementById('login-error');
-          
-          try {
-            const response = await fetch('/api/admin/login', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ password })
-            });
+        const password = document.getElementById('admin-password').value;
+        const errorDiv = document.getElementById('admin-error');
 
-            if (response.ok) {
-              const data = await response.json();
-              authToken = data.token;
-              localStorage.setItem('admin_token', authToken);
-              showDashboard();
-            } else {
-              errorDiv.classList.remove('hidden');
-            }
-          } catch (error) {
-            console.error('Login error:', error);
-            errorDiv.textContent = 'Login failed. Please try again.';
-            errorDiv.classList.remove('hidden');
-          }
-        });
-      });
-
-      async function showDashboard() {
-        document.getElementById('login-section').classList.add('hidden');
-        document.getElementById('dashboard-section').classList.remove('hidden');
-
-        try {
-          const response = await fetch('/api/admin/dashboard', {
-            headers: { 'Authorization': `Bearer ${authToken}` }
-          });
-
-          if (!response.ok) {
-            if (response.status === 401) {
-              logout();
-              return;
-            }
-            throw new Error('Failed to load dashboard');
-          }
-
-          adminData = await response.json();
-          renderDashboard();
-        } catch (error) {
-          console.error('Error:', error);
-          alert('Failed to load admin dashboard');
-          logout();
-        }
-      }
-
-      function renderDashboard() {
-        // Metrics
-        document.getElementById('metric-revenue').textContent = `$${(adminData.stats.totalRevenue / 100).toFixed(2)}`;
-        document.getElementById('metric-orders').textContent = adminData.stats.totalOrders;
-
-          if (!response.ok) {
-            alert('Invalid admin password');
-            window.location.href = './index.html';
-            return;
-          }
-
-          adminData = await response.json();
-          renderDashboard();
-        } catch (error) {
-          console.error('Error:', error);
-          alert('Failed to load admin dashboard');
-          window.location.href = './index.html';
+        if (password === ADMIN_PASSWORD) {
+          // Success
+          errorDiv.classList.add('hidden');
+          document.getElementById('admin-login-section').classList.add('hidden-admin');
+          document.getElementById('admin-dashboard-section').classList.remove('hidden-admin');
+          sessionStorage.setItem('admin_authenticated', 'true');
+          sessionStorage.setItem('admin_login_time', new Date().getTime());
+        } else {
+          // Error
+          errorDiv.classList.remove('hidden');
+          document.getElementById('admin-password').focus();
         }
       });
 
-      function renderDashboard() {
-        // Metrics
-        document.getElementById('metric-revenue').textContent = `$${(adminData.stats.totalRevenue / 100).toFixed(2)}`;
-        document.getElementById('metric-orders').textContent = adminData.stats.totalOrders;
-        document.getElementById('metric-customers').textContent = adminData.stats.uniqueCustomers;
-        document.getElementById('metric-aov').textContent = `$${(adminData.stats.averageOrderValue / 100).toFixed(2)}`;
-        document.getElementById('metric-alpha').textContent = adminData.alphaStats?.totalApplications || 0;
+      // ===== TAB SWITCHING =====
+      function switchTab(productId) {
+        // Hide all tabs
+        document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+          tab.classList.add('hidden');
+        });
 
-        // Recent Orders Table
-        const tbody = document.getElementById('orders-tbody');
-        tbody.innerHTML = adminData.recentOrders.map(order => `
-          <tr class="hover:bg-slate-700/20">
-            <td class="px-6 py-3">${order.id.slice(-8)}</td>
-            <td class="px-6 py-3">${order.customerEmail}</td>
-            <td class="px-6 py-3">${order.items.map(i => i.name).join(', ')}</td>
-            <td class="px-6 py-3">$${(order.totalAmount / 100).toFixed(2)}</td>
-            <td class="px-6 py-3">
-              <span class="rounded-full px-2 py-1 text-xs font-medium ${
-                order.status === 'completed'
-                  ? 'bg-emerald-500/10 text-emerald-300'
-                  : 'bg-amber-500/10 text-amber-300'
-              }">
-                ${order.status}
-              </span>
-            </td>
-            <td class="px-6 py-3 text-slate-400">${new Date(order.createdAt).toLocaleDateString()}</td>
-          </tr>
-        `).join('');
+        // Remove active from all buttons
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
 
-        // Charts
-        renderCharts();
+        // Show selected tab
+        document.getElementById('tab-' + productId).classList.remove('hidden');
+
+        // Mark selected button as active
+        event.target.classList.add('active');
       }
 
-      function renderCharts() {
-        // Revenue Chart
-        const ctxRevenue = document.getElementById('revenue-chart').getContext('2d');
-        if (revenueChart) revenueChart.destroy();
-        revenueChart = new Chart(ctxRevenue, {
-          type: 'line',
-          data: {
-            labels: adminData.chartData.dailyRevenue.map(d => d.date),
-            datasets: [{
-              label: 'Revenue',
-              data: adminData.chartData.dailyRevenue.map(d => d.amount / 100),
-              borderColor: '#10b981',
-              backgroundColor: 'rgba(16, 185, 129, 0.1)',
-              tension: 0.4,
-              fill: true
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: { legend: { display: false } },
-            scales: {
-              y: { 
-                beginAtZero: true,
-                ticks: { color: '#cbd5e1' },
-                grid: { color: 'rgba(51, 65, 85, 0.3)' }
-              },
-              x: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
-            }
-          }
-        });
+      // ===== UTILITY FUNCTIONS =====
+      function togglePasswordVisibility(fieldId) {
+        const field = document.getElementById(fieldId);
+        if (field.type === 'password') {
+          field.type = 'text';
+        } else {
+          field.type = 'password';
+        }
+      }
 
-        // Products Chart
-        const ctxProducts = document.getElementById('products-chart').getContext('2d');
-        if (productsChart) productsChart.destroy();
-        productsChart = new Chart(ctxProducts, {
-          type: 'doughnut',
-          data: {
-            labels: adminData.chartData.topProducts.map(p => p.name),
-            datasets: [{
-              data: adminData.chartData.topProducts.map(p => p.count),
-              backgroundColor: ['#0ea5e9', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: { legend: { labels: { color: '#cbd5e1' } } }
-          }
+      function copyToClipboard(fieldId) {
+        const field = document.getElementById(fieldId);
+        navigator.clipboard.writeText(field.value).then(() => {
+          showNotification('Copied to clipboard');
         });
+      }
 
-        // Customer Chart
-        const ctxCustomer = document.getElementById('customer-chart').getContext('2d');
-        if (customerChart) customerChart.destroy();
-        customerChart = new Chart(ctxCustomer, {
-          type: 'bar',
-          data: {
-            labels: ['First Purchase', 'Repeat Customer', 'VIP'],
-            datasets: [{
-              label: 'Customers',
-              data: [
-                adminData.chartData.customerSegments.firstTime,
-                adminData.chartData.customerSegments.repeat,
-                adminData.chartData.customerSegments.vip
-              ],
-              backgroundColor: ['#0ea5e9', '#10b981', '#f59e0b']
-            }]
-          },
-          options: {
-            indexAxis: 'y',
-            responsive: true,
-            plugins: { legend: { display: false } },
-            scales: {
-              x: { ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(51, 65, 85, 0.3)' } },
-              y: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
-            }
-          }
+      function copyCredentials(productId) {
+        const usernameField = document.getElementById('username-' + productId);
+        const passwordField = document.getElementById('password-' + productId);
+        
+        const text = `Username: ${usernameField.value}\nPassword: ${passwordField.value}`;
+        navigator.clipboard.writeText(text).then(() => {
+          showNotification('Credentials copied to clipboard');
         });
+      }
 
-        // Alpha Growth Chart
-        const ctxAlpha = document.getElementById('alpha-chart').getContext('2d');
-        if (alphaChart) alphaChart.destroy();
-        alphaChart = new Chart(ctxAlpha, {
-          type: 'line',
-          data: {
-            labels: (adminData.chartData.alphaGrowth || []).map(d => d.date),
-            datasets: [{
-              label: 'Alpha Applicants (Cumulative)',
-              data: (adminData.chartData.alphaGrowth || []).map(d => d.count),
-              borderColor: '#a78bfa',
-              backgroundColor: 'rgba(167, 139, 250, 0.1)',
-              borderWidth: 3,
-              tension: 0.4,
-              fill: true,
-              pointBackgroundColor: '#a78bfa',
-              pointRadius: 4
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: { 
-              legend: { labels: { color: '#cbd5e1' } }
-            },
-            scales: {
-              y: { 
-                beginAtZero: true,
-                ticks: { color: '#cbd5e1' },
-                grid: { color: 'rgba(51, 65, 85, 0.3)' }
-              },
-              x: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
-            }
-          }
-        });
+      function saveCredentials(productId) {
+        const usernameField = document.getElementById('username-' + productId);
+        const passwordField = document.getElementById('password-' + productId);
+
+        credentials[productId] = {
+          username: usernameField.value,
+          password: passwordField.value
+        };
+
+        showNotification('Credentials saved (local only)');
+      }
+
+      function showNotification(message) {
+        // Create a temporary notification
+        const notif = document.createElement('div');
+        notif.className = 'fixed bottom-4 right-4 bg-emerald-500 text-slate-950 px-4 py-2 rounded-lg font-semibold text-sm z-50';
+        notif.textContent = message;
+        document.body.appendChild(notif);
+
+        setTimeout(() => {
+          notif.remove();
+        }, 2000);
       }
 
       function logout() {
-        localStorage.removeItem('admin_token');
-        authToken = null;
-        window.location.href = './admin-dashboard.html';
+        sessionStorage.removeItem('admin_authenticated');
+        sessionStorage.removeItem('admin_login_time');
+        location.reload();
       }
 
-      function exportOrders(format) {
-        const data = format === 'csv' 
-          ? convertToCSV(adminData.recentOrders)
-          : JSON.stringify(adminData.recentOrders, null, 2);
-        
-        const blob = new Blob([data], { type: format === 'csv' ? 'text/csv' : 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `orders.${format}`;
-        a.click();
-      }
-
-      function convertToCSV(data) {
-        const headers = ['Order ID', 'Customer', 'Product', 'Amount', 'Status', 'Date'];
-        const rows = data.map(order => [
-          order.id,
-          order.customerEmail,
-          order.items.map(i => i.name).join('; '),
-          order.totalAmount / 100,
-          order.status,
-          new Date(order.createdAt).toISOString()
-        ]);
-        return [headers, ...rows].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
-      }
+      // ===== CHECK ADMIN SESSION =====
+      document.addEventListener('DOMContentLoaded', () => {
+        if (sessionStorage.getItem('admin_authenticated') === 'true') {
+          document.getElementById('admin-login-section').classList.add('hidden-admin');
+          document.getElementById('admin-dashboard-section').classList.remove('hidden-admin');
+        }
+      });
     </script>
   </body>
 </html>

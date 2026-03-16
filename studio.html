@@ -195,10 +195,7 @@
             <a href="./rough-diamond-studio/overview.html" class="nav-underline">Rough Diamond Demo</a>
 
             <a href="./dashboard.html" class="nav-underline">Dashboard</a>
-            <a href="./index.html#about" class="nav-underline">About</a>
-            <a href="./studio.html#alpha-access" class="nav-underline"
-              >Alpha Access</a
-            >
+            <a href="./studio.html#alpha-access" class="nav-underline">Alpha Access</a>
           </div>
 
           <button
@@ -645,11 +642,10 @@
                       Approved alpha testers can download directly. Contact us first for access.
                     </p>
                     <button
-                      onclick="alert('Please submit the alpha access form below to request download credentials.')"
-                      class="w-full rounded-full bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 disabled:opacity-50 disabled:cursor-not-allowed"
-                      disabled
+                      onclick="document.location.href='./studio.html#alpha-access';"
+                      class="w-full rounded-full bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors"
                     >
-                      Download Module
+                      Request Access
                     </button>
                   </div>
                 </div>
@@ -821,6 +817,7 @@
 
               <div>
                 <form
+                  id="alpha-form"
                   class="card-glass space-y-4 rounded-2xl border border-slate-800/80 p-4 text-sm"
                 >
                   <div class="grid gap-3 sm:grid-cols-2">
@@ -921,6 +918,36 @@
                     </button>
                   </div>
                 </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="border-b border-slate-800/50 bg-gradient-to-b from-slate-950/90 via-slate-950 to-slate-950/80">
+          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+            <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-8">
+              <div class="flex items-start gap-4 max-w-2xl">
+                <div class="flex-shrink-0 mt-0.5">
+                  <svg class="h-6 w-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-2xl font-semibold text-slate-50 mb-2">Ready to Start Testing?</h3>
+                  <p class="text-slate-400 mb-4">
+                    After submitting your alpha access request above, you'll receive download credentials to access the complete Rough Diamond Studio testing package across all platforms.
+                  </p>
+                  <a 
+                    href="./downloads.html" 
+                    class="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-emerald-400 transition-colors"
+                  >
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                    Go to Secure Downloads
+                  </a>
+                </div>
               </div>
             </div>
           </div>

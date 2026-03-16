@@ -13,8 +13,8 @@
     />
     <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="icon" href="./images/dog-logo.png" />
-    <meta property="og:image" content="./images/dog-logo.png" />
+    <link rel="icon" href="./images/OLD-DOG-CircBlue.png" />
+    <meta property="og:image" content="./images/OLD-DOG-CircBlue.png" />
     <script type="module">
       import { applyBranding } from './constants.js';
       window.addEventListener('DOMContentLoaded', () => {
@@ -53,68 +53,7 @@
           <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
             <a href="./index.html" class="nav-underline">Home</a>
             <a href="./about.html" class="nav-underline text-sky-300">About</a>
-
-            <!-- Media mega -->
-            <div class="relative group z-50" data-dropdown="media">
-              <button
-                type="button"
-                class="inline-flex items-center gap-1 nav-underline"
-                aria-haspopup="true"
-                aria-expanded="false"
-                aria-label="Media menu"
-              >
-                <span>Media</span>
-                <span class="text-xs text-slate-400">▾</span>
-              </button>
-              <div
-                class="opacity-0 pointer-events-none transition duration-200 ease-out absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[540px] group-hover:opacity-100 group-hover:pointer-events-auto z-50"
-                data-dropdown-panel="media"
-                role="region"
-                aria-label="Media menu"
-              >
-                <div class="mega-panel card-glass p-5 shadow-2xl border border-slate-700/60">
-                  <div class="mb-4 flex items-center justify-between gap-4 text-xs text-slate-400">
-                    <div class="flex items-center gap-2">
-                      <span class="tag-pill px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-300">Podcast Arm</span>
-                      <span>Long-form, founder-grade conversations.</span>
-                    </div>
-                    <a href="./media.html" class="inline-flex items-center gap-1 text-sky-300 hover:text-sky-200">
-                      View Media House
-                      <span class="text-[10px]">↗</span>
-                    </a>
-                  </div>
-
-                  <div class="grid grid-cols-2 gap-4 text-sm">
-                    <a href="./media.html#business-on-purpose" class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors">
-                      <div class="mb-1 flex items-center justify-between gap-3">
-                        <span class="text-slate-50">Business on Purpose</span>
-                        <span class="tag-pill px-2 py-0.5 text-[10px] text-sky-300">Flagship</span>
-                      </div>
-                      <p class="text-xs text-slate-400">
-                        Operational clarity for owners building durable systems.
-                      </p>
-                      <p class="mt-2 text-[11px] text-slate-500">
-                        Journals, playbooks, and cohort workshops.
-                      </p>
-                    </a>
-
-                    <a href="./media.html#when-life-bites" class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-3 hover:border-sky-500/70 hover:bg-slate-900/90 transition-colors">
-                      <div class="mb-1 flex items-center justify-between gap-3">
-                        <span class="text-slate-50">When Life Bites</span>
-                        <span class="tag-pill px-2 py-0.5 text-[10px] text-fuchsia-300">Human</span>
-                      </div>
-                      <p class="text-xs text-slate-400">
-                        Resilient founders navigating grief, pressure, and
-                        high-stakes seasons.
-                      </p>
-                      <p class="mt-2 text-[11px] text-slate-500">
-                        Companion guides, reflection journals, and retreats.
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <a href="./podcasts.html" class="nav-underline">Podcasts</a>
 
             <!-- Products mega -->
             <div class="relative group z-50" data-dropdown="products">
@@ -183,6 +122,7 @@
 
             <a href="./downloads.html" class="nav-underline">Downloads</a>
             <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./contacts.html" class="nav-underline">Contact</a>
           </div>
 
           <!-- Mobile menu button -->
@@ -204,13 +144,7 @@
           <div class="space-y-2">
             <a href="./index.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Home</a>
             <a href="./about.html" class="block px-3 py-2 rounded-lg bg-slate-800/60">About</a>
-            <button type="button" class="w-full text-left px-3 py-2 flex items-center justify-between hover:bg-slate-800/80 transition-colors" data-mobile-dropdown="media">
-              <span>Media</span>
-              <span class="text-xs">▾</span>
-            </button>
-            <div id="media-mobile" class="hidden pl-4 space-y-1">
-              <a href="./media.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors text-sm">Media House</a>
-            </div>
+            <a href="./podcasts.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Podcasts</a>
             <button type="button" class="w-full text-left px-3 py-2 flex items-center justify-between hover:bg-slate-800/80 transition-colors" data-mobile-dropdown="products">
               <span>Products</span>
               <span class="text-xs">▾</span>
@@ -221,6 +155,7 @@
             </div>
             <a href="./downloads.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Downloads</a>
             <a href="./shop.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Shop</a>
+            <a href="./contacts.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Contact</a>
           </div>
         </div>
       </header>
@@ -510,6 +445,7 @@
               <ul class="space-y-2 text-sm text-slate-400">
                 <li><a href="./about.html" class="hover:text-slate-200">About</a></li>
                 <li><a href="./index.html" class="hover:text-slate-200">Home</a></li>
+                <li><a href="./contacts.html" class="hover:text-slate-200">Contacts</a></li>
                 <li><a href="./media.html" class="hover:text-slate-200">Media</a></li>
               </ul>
             </div>
@@ -522,17 +458,18 @@
               </ul>
             </div>
             <div>
-              <h3 class="font-semibold text-slate-100 mb-4">Support</h3>
+              <h3 class="font-semibold text-slate-100 mb-4">Communities</h3>
               <ul class="space-y-2 text-sm text-slate-400">
-                <li><a href="mailto:hello@olddogsystems.com" class="hover:text-slate-200">Contact</a></li>
-                <li><a href="./shop.html" class="hover:text-slate-200">Shop</a></li>
+                <li><a href="https://www.facebook.com/groups/1958524688071453" target="_blank" rel="noopener noreferrer" class="hover:text-slate-200 inline-flex items-center gap-1">Business on Purpose <span class="text-xs">↗</span></a></li>
+                <li><a href="https://www.facebook.com/groups/2743309449357360" target="_blank" rel="noopener noreferrer" class="hover:text-slate-200 inline-flex items-center gap-1">When Life Bites <span class="text-xs">↗</span></a></li>
+                <li><a href="https://www.facebook.com/groups/986794454010404" target="_blank" rel="noopener noreferrer" class="hover:text-slate-200 inline-flex items-center gap-1">Old Dog Systems <span class="text-xs">↗</span></a></li>
               </ul>
             </div>
             <div>
-              <h3 class="font-semibold text-slate-100 mb-4">Legal</h3>
+              <h3 class="font-semibold text-slate-100 mb-4">Support</h3>
               <ul class="space-y-2 text-sm text-slate-400">
-                <li><a href="#" class="hover:text-slate-200">Privacy Policy</a></li>
-                <li><a href="#" class="hover:text-slate-200">Terms of Service</a></li>
+                <li><a href="./contacts.html" class="hover:text-slate-200">Contact</a></li>
+                <li><a href="./shop.html" class="hover:text-slate-200">Shop</a></li>
               </ul>
             </div>
           </div>

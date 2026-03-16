@@ -1,0 +1,94 @@
+# Quick Reference - FTP Migration
+
+## Server Credentials
+
+### FTP Access
+```
+Host:     ftp.old-dog-systems.co.za
+Port:     21
+User:     olddofyxcg
+Password: zk1R95Z1t3G8jS4lWKdh
+Target:   public_html/
+```
+
+### Email: info@old-dog-systems.co.za
+```
+IMAP:  mail.old-dog-systems.co.za:993 (SSL/TLS)
+SMTP:  smtp.old-dog-systems.co.za:465 (SSL/TLS)
+User:  info@old-dog-systems.co.za
+Pass:  log26M1KB9v2
+Web:   http://mail.old-dog-systems.co.za
+```
+
+### Email: sales@old-dog-systems.co.za
+```
+IMAP:  mail.old-dog-systems.co.za:993 (SSL/TLS)
+SMTP:  smtp.old-dog-systems.co.za:465 (SSL/TLS)
+User:  sales@old-dog-systems.co.za
+Pass:  AF8HgZj17RAr
+Web:   http://mail.old-dog-systems.co.za
+```
+
+## Quick Deploy Commands
+
+### 1. One-Line Deploy (Using Script)
+```bash
+cd /mnt/Master_Storage/Project\ Folders/Old_Dog_Web && chmod +x deploy-to-ftp.sh && ./deploy-to-ftp.sh
+```
+
+### 2. Manual lftp Deploy
+```bash
+lftp -e "open -u olddofyxcg,zk1R95Z1t3G8jS4lWKdh ftp://ftp.old-dog-systems.co.za:21; cd public_html; mirror -R --verbose --exclude-glob '.*' --exclude-glob 'node_modules' --exclude-glob '.git' --exclude-glob '*.md' /mnt/Master_Storage/Project\ Folders/Old_Dog_Web .; bye"
+```
+
+### 3. Install lftp (if needed)
+```bash
+sudo apt-get update && sudo apt-get install -y lftp
+```
+
+## Domain Info
+- **Domain:** old-dog-systems.co.za
+- **Current:** https://old-dog-systems1.onrender.com (Render)
+- **Target:** https://old-dog-systems.co.za (FTP/Host Africa)
+- **Backup:** Keep Render active for 48 hours
+
+## Files to Upload
+✓ All .html files  
+✓ All .js files (except node_modules)  
+✓ styles.css  
+✓ images/ directory  
+✓ products.json, olddog-erp-product.json  
+
+✗ node_modules/  
+✗ .git/  
+✗ *.md files  
+✗ .env (create separately on server)  
+✗ Development folders  
+
+## Next Steps
+1. Install lftp: `sudo apt-get install lftp`
+2. Run deploy script: `./deploy-to-ftp.sh`
+3. Wait for "✓ Deployment completed successfully!"
+4. Verify files uploaded to public_html
+5. Configure DNS at domain registrar
+6. Test https://old-dog-systems.co.za
+7. Update email settings if using SMTP in your app
+8. Monitor for 48 hours before decommissioning Render
+
+## Verify Deployment
+```bash
+# List files on FTP server
+lftp -e "open -u olddofyxcg,zk1R95Z1t3G8jS4lWKdh ftp://ftp.old-dog-systems.co.za:21; cd public_html; ls -la; bye"
+
+# Check if index.html exists
+curl -I http://old-dog-systems.co.za
+```
+
+## Rollback (If Needed)
+- Update DNS back to render.com nameservers
+- Site will return to Render deployment
+- Keep FTP files as backup
+
+---
+**Save these credentials securely. Do not commit to version control.**  
+**Last Updated: March 14, 2026**

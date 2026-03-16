@@ -1,52 +1,117 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-slate-950">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Downloads — Old Dog Systems</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="description" content="Download Old Dog Systems applications including Rough Diamond Studio, Old Dog ERP, and CPM-AI Suite." />
-    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
-    <link rel="stylesheet" href="./styles.css" />
-    <script type="module">
-      import { applyBranding } from './constants.js';
-      window.addEventListener('DOMContentLoaded', () => {
-        applyBranding();
-      });
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpha Tester Downloads — Old Dog Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      [data-brand]::before {
+        content: 'Old Dog Systems';
+      }
+
+      .nav-underline {
+        position: relative;
+        padding-bottom: 0.25rem;
+      }
+
+      .nav-underline::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+      }
+
+      .nav-underline:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .card-glass {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-glass {
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(8px);
+      }
+
+      .glass-card {
+        background: rgba(30, 41, 59, 0.5);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(71, 85, 105, 0.3);
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tag-pill {
+        background: rgba(51, 65, 85, 0.5);
+        border: 1px solid rgba(71, 85, 105, 0.5);
+        border-radius: 9999px;
+      }
+
+      .hidden-password {
+        display: none;
+      }
+
+      .product-tab {
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .product-tab.active {
+        color: #38bdf8;
+      }
+
+      .product-tab.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #38bdf8, #06b6d4);
+      }
+    </style>
   </head>
 
-  <body class="h-full text-slate-100 antialiased">
-    <div class="min-h-screen flex flex-col">
-      <!-- HEADER -->
-      <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
-        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl">
-          <div class="flex items-center gap-3">
-            <a href="./index.html" class="flex items-center gap-3">
-              <img
-                src="./images/OLD-DOG-CircBlue.png"
-                alt="Old Dog Systems Logo"
-                title="Old Dog Systems"
-                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
-              />
-              <div class="flex flex-col">
-                <span
-                  data-brand
-                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
-                ></span>
-                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
-                  >Old Dog · New Tricks</span
-                >
-              </div>
-            </a>
-          </div>
+  <body class="bg-slate-950 text-slate-200" style="font-family: system-ui, sans-serif">
+    <div class="flex flex-col min-h-screen">
+      <!-- Header -->
+      <header class="border-b border-slate-800/70 bg-slate-950/95 py-4">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 text-sm">
+          <a href="./index.html" class="inline-flex items-center gap-2">
+            <div class="h-8 w-8 rounded-full bg-sky-500/20 flex items-center justify-center">
+              <svg class="h-5 w-5 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-semibold text-slate-50" data-brand></div>
+              <div class="text-xs text-slate-500">Old Dog · New Tricks</div>
+            </div>
+          </a>
 
-          <div class="hidden md:flex items-center gap-8">
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
             <a href="./index.html" class="nav-underline">Home</a>
-            <a href="./media.html" class="nav-underline">Media</a>
-            <a href="./shop.html" class="nav-underline">Shop</a>
-            <a href="./downloads.html" class="nav-underline text-emerald-400">Downloads</a>
-            <a href="./dashboard.html" class="nav-underline">Dashboard</a>
-            <a href="./index.html#about" class="nav-underline">About</a>
+            <a href="./about.html" class="nav-underline">About</a>
+            <a href="./studio.html" class="nav-underline">Studio</a>
+            <a href="./contacts.html" class="nav-underline">Contacts</a>
+            <a href="./downloads.html" class="nav-underline text-sky-300">Downloads</a>
           </div>
 
           <button
@@ -55,181 +120,465 @@
             aria-label="Open navigation"
             onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
           >
-            <span class="block h-0.5 w-4 rounded-full bg-slate-200 mb-0.5"></span>
-            <span class="block h-0.5 w-4 rounded-full bg-slate-400 mb-0.5"></span>
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-200"></span>
+            <span class="mb-0.5 block h-0.5 w-4 rounded-full bg-slate-400"></span>
             <span class="block h-0.5 w-3 rounded-full bg-slate-500"></span>
           </button>
         </nav>
 
+        <!-- Mobile nav -->
         <div id="mobile-nav" class="mx-auto mt-2 hidden max-w-6xl px-4 pb-3 md:hidden">
           <div class="nav-glass rounded-2xl p-4 text-sm text-slate-100 space-y-3">
             <a href="./index.html" class="block">Home</a>
-            <a href="./media.html" class="block">Media</a>
-            <a href="./shop.html" class="block">Shop</a>
-            <a href="./downloads.html" class="block text-emerald-400">Downloads</a>
-            <a href="./dashboard.html" class="block">Dashboard</a>
-            <a href="./index.html#about" class="block">About</a>
+            <a href="./about.html" class="block">About</a>
+            <a href="./studio.html" class="block">Rough Diamond Studio</a>
+            <a href="./contacts.html" class="block">Contacts</a>
+            <a href="./downloads.html" class="block text-sky-300">Alpha Tester Downloads</a>
           </div>
         </div>
       </header>
 
       <main class="flex-1">
-        <!-- HERO SECTION -->
-        <section class="border-b border-slate-800/80 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 lg:py-20">
-          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4">
-              <h1 class="text-4xl sm:text-5xl font-bold text-white">Download Our Apps</h1>
-              <p class="text-lg text-slate-400 max-w-2xl mx-auto">Get access to Old Dog Systems applications. Download Rough Diamond Studio or join the beta program for upcoming releases.</p>
+        <!-- Hero Section -->
+        <section class="border-b border-slate-800/70 bg-slate-950/70">
+          <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+            <div class="max-w-2xl">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                Alpha Testing Program
+              </p>
+              <h1 class="mt-3 text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
+                Beta Downloads
+              </h1>
+              <p class="mt-3 text-base text-slate-400">
+                Secure downloads for authorized alpha testers. Select a product below to get started.
+              </p>
             </div>
           </div>
         </section>
 
-        <!-- DOWNLOADS GRID -->
-        <section class="py-12 sm:py-16 lg:py-20">
-          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-6">
-              <!-- Rough Diamond Studio - READY -->
-              <div class="card-glass border border-sky-500/60 p-6 rounded-2xl hover:border-sky-400 transition-colors">
-                <div class="flex items-start justify-between mb-4">
-                  <div class="h-12 w-12 rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40 flex items-center justify-center text-sky-300 text-lg">α</div>
-                  <span class="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300 ring-1 ring-emerald-500/40">Ready</span>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2">Rough Diamond Studio</h3>
-                <p class="text-sm text-slate-400 mb-4">Professional audio podcasting and content systems built for teams that ship weekly.</p>
-                
-                <div class="space-y-3 mb-6">
-                  <div class="flex items-center gap-2 text-xs text-slate-400">
-                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    Status: Alpha Testing
-                  </div>
-                  <div class="flex items-center gap-2 text-xs text-slate-400">
-                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    Ready to Download
-                  </div>
-                </div>
+        <!-- Authentication Section -->
+        <section class="border-b border-slate-800/70 bg-slate-950/50">
+          <div class="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+            <div id="password-section" class="card-glass rounded-2xl border border-slate-800/80 p-6 sm:p-8">
+              <h2 class="text-xl font-semibold text-slate-50 mb-6">
+                Select Product & Unlock Access
+              </h2>
 
-                <a href="./studio.html#alpha-access" class="block w-full text-center bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-semibold py-3 px-4 rounded-xl transition-all">
-                  Get Alpha Access
-                </a>
-                <a href="#" class="block w-full text-center mt-2 border border-sky-500/60 hover:border-sky-400 text-sky-400 font-semibold py-3 px-4 rounded-xl transition-colors">
-                  View Documentation
-                </a>
-              </div>
-
-              <!-- Old Dog ERP - IN DEVELOPMENT -->
-              <div class="card-glass border border-orange-500/60 p-6 rounded-2xl hover:border-orange-400 transition-colors">
-                <div class="flex items-start justify-between mb-4">
-                  <div class="h-12 w-12 rounded-lg bg-orange-500/15 ring-1 ring-orange-400/40 flex items-center justify-center text-orange-300 text-lg">📊</div>
-                  <span class="rounded-full bg-orange-500/20 px-3 py-1 text-xs font-semibold text-orange-300 ring-1 ring-orange-500/40">50% Ready</span>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2">Old Dog ERP</h3>
-                <p class="text-sm text-slate-400 mb-4">Enterprise resource planning system designed specifically for construction and contracting businesses.</p>
-                
-                <div class="space-y-3 mb-6">
-                  <div class="flex items-center gap-2 text-xs text-slate-400">
-                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-orange-600"></span>
-                    Development: 50% Complete
-                  </div>
-                  <div class="flex items-center gap-2 text-xs text-slate-400">
-                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-orange-600"></span>
-                    Expected: Q3 2026
-                  </div>
-                </div>
-
-                <button disabled class="block w-full text-center bg-slate-700 text-slate-400 font-semibold py-3 px-4 rounded-xl cursor-not-allowed opacity-50">
-                  Coming Soon
+              <!-- Product Tabs -->
+              <div class="flex gap-4 mb-8 border-b border-slate-700/50">
+                <button class="product-tab active py-3 px-4 text-sm font-medium whitespace-nowrap" onclick="switchProduct('rough-diamond-studio', this)">
+                  Rough Diamond Studio
                 </button>
-                <a href="./old-dog-erp.html" class="block w-full text-center mt-2 border border-orange-500/60 hover:border-orange-400 text-orange-400 font-semibold py-3 px-4 rounded-xl transition-colors">
-                  Learn More
-                </a>
-              </div>
-
-              <!-- CPM-AI Suite - IN DEVELOPMENT -->
-              <div class="card-glass border border-amber-500/60 p-6 rounded-2xl hover:border-amber-400 transition-colors">
-                <div class="flex items-start justify-between mb-4">
-                  <div class="h-12 w-12 rounded-lg bg-amber-500/15 ring-1 ring-amber-400/40 flex items-center justify-center text-amber-300 text-lg">🏗️</div>
-                  <span class="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-300 ring-1 ring-amber-500/40">50% Ready</span>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2">CPM‑AI™ Suite</h3>
-                <p class="text-sm text-slate-400 mb-4">AI-powered solutions for construction project management, safety, and waste reduction.</p>
-                
-                <div class="space-y-3 mb-6">
-                  <div class="flex items-center gap-2 text-xs text-slate-400">
-                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-600"></span>
-                    Development: 50% Complete
-                  </div>
-                  <div class="flex items-center gap-2 text-xs text-slate-400">
-                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-600"></span>
-                    Expected: Q4 2026
-                  </div>
-                </div>
-
-                <button disabled class="block w-full text-center bg-slate-700 text-slate-400 font-semibold py-3 px-4 rounded-xl cursor-not-allowed opacity-50">
-                  Coming Soon
+                <button class="product-tab py-3 px-4 text-sm font-medium whitespace-nowrap" onclick="switchProduct('old-dog-erp', this)">
+                  Old Dog ERP
                 </button>
-                <a href="./cpm-ai.html" class="block w-full text-center mt-2 border border-amber-500/60 hover:border-amber-400 text-amber-400 font-semibold py-3 px-4 rounded-xl transition-colors">
-                  Learn More
-                </a>
+                <button class="product-tab py-3 px-4 text-sm font-medium whitespace-nowrap" onclick="switchProduct('cpm-ai-suite', this)">
+                  CPM-AI Suite
+                </button>
               </div>
+
+              <!-- Product Description -->
+              <p id="product-info" class="text-sm text-slate-400 mb-6">Product description will appear here</p>
+
+              <!-- Authentication Form -->
+              <form id="auth-form" class="space-y-4">
+                <input type="hidden" id="selected-product" value="rough-diamond-studio" />
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="username" class="block text-xs font-medium text-slate-300 mb-2">
+                      Username
+                    </label>
+                    <input
+                      id="username"
+                      type="text"
+                      class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                      placeholder="alpha-tester"
+                      autocomplete="off"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label for="password" class="block text-xs font-medium text-slate-300 mb-2">
+                      Password
+                    </label>
+                    <input
+                      id="password"
+                      type="password"
+                      class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                      placeholder="••••••••"
+                      autocomplete="off"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div id="error-message" class="hidden rounded-lg bg-red-500/10 border border-red-500/20 p-3 text-sm text-red-300">
+                  Incorrect credentials. Please try again.
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full rounded-full bg-sky-500 px-4 py-2.5 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors"
+                >
+                  Unlock Downloads
+                </button>
+              </form>
             </div>
           </div>
         </section>
 
-        <!-- BETA PROGRAM SECTION -->
-        <section class="border-t border-slate-800/80 bg-slate-900/50 py-12 sm:py-16 lg:py-20">
-          <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div class="card-glass border border-slate-700/60 p-8 rounded-2xl">
-              <h2 class="text-2xl font-bold text-white mb-4">Join Our Beta Program</h2>
-              <p class="text-slate-400 mb-6">Become an early tester for upcoming applications. Get exclusive access to new features and help shape the future of Old Dog Systems.</p>
-              
-              <div class="grid sm:grid-cols-2 gap-4 mb-6">
-                <div class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg">✓</span>
-                  <div>
-                    <h4 class="font-semibold text-white">Early Access</h4>
-                    <p class="text-sm text-slate-400">Use apps before general release</p>
-                  </div>
+        <!-- Downloads Section (Hidden Initially) -->
+        <section id="downloads-section" class="hidden-password border-b border-slate-800/70 bg-slate-950/50">
+          <div class="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+            <!-- Success Message -->
+            <div class="mb-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
-                <div class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg">✓</span>
-                  <div>
-                    <h4 class="font-semibold text-white">Direct Feedback</h4>
-                    <p class="text-sm text-slate-400">Influence development priorities</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg">✓</span>
-                  <div>
-                    <h4 class="font-semibold text-white">Special Pricing</h4>
-                    <p class="text-sm text-slate-400">Beta pricing locked for life</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg">✓</span>
-                  <div>
-                    <h4 class="font-semibold text-white">Community</h4>
-                    <p class="text-sm text-slate-400">Connect with other operators</p>
-                  </div>
+                <div>
+                  <h3 class="font-semibold text-emerald-300" id="success-title">Access Unlocked</h3>
+                  <p class="mt-1 text-sm text-slate-400" id="success-description">
+                    Downloading files...
+                  </p>
                 </div>
               </div>
-
-              <a href="./index.html#alpha-access" class="inline-block bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-3 px-8 rounded-xl transition-all">
-                Apply for Beta Access
-              </a>
             </div>
+
+            <!-- Product-Specific Downloads Container -->
+            <div id="product-downloads"></div>
           </div>
         </section>
       </main>
 
-      <footer class="border-t border-slate-800/80 py-6">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-400">
-          <p>&copy; <span id="year"></span> Old Dog Systems. All rights reserved.</p>
+      <!-- Footer -->
+      <footer class="border-t border-slate-800/70 bg-slate-950/70 py-8">
+        <div class="mx-auto max-w-6xl px-4 text-center text-sm text-slate-500">
+          <p>© <span id="year">2024</span> Old Dog Systems. All rights reserved.</p>
         </div>
       </footer>
     </div>
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // ===== MULTI-PRODUCT CREDENTIALS & DATA =====
+      const PRODUCTS = {
+        'rough-diamond-studio': {
+          name: 'Rough Diamond Studio',
+          username: 'alpha-tester',
+          password: 'Alpha-V1x',
+          description: 'Professional audio podcasting and content production system with advanced automation.',
+          successTitle: 'Rough Diamond Studio Access Unlocked',
+          successDescription: 'You now have access to the complete Rough Diamond Studio testing package.',
+          files: [
+            {
+              name: 'Linux Portable (Recommended)',
+              description: 'Ready-to-run executable for any Linux system with glibc',
+              size: '1.5 MB',
+              url: 'https://old-dog-systems.co.za/downloads/rough-diamond-studio/RoughDiamondStudio-1.0-Linux-portable.tar.gz',
+              type: 'Binary'
+            },
+            {
+              name: 'AppImage (Universal Linux)',
+              description: 'Single executable for most Linux distributions',
+              size: '1.7 MB',
+              url: 'https://old-dog-systems.co.za/downloads/rough-diamond-studio/Rough_Diamond_Studio_V1-x86_64.AppImage',
+              type: 'Binary'
+            },
+            {
+              name: 'Windows Installer',
+              description: 'Full installation script for Windows systems',
+              size: 'Script',
+              url: 'https://old-dog-systems.co.za/downloads/rough-diamond-studio/install_windows.bat',
+              type: 'Script'
+            },
+            {
+              name: 'macOS Installer',
+              description: 'Full installation script for macOS systems',
+              size: 'Script',
+              url: 'https://old-dog-systems.co.za/downloads/rough-diamond-studio/install_macos.sh',
+              type: 'Script'
+            },
+            {
+              name: 'Complete Feature List',
+              description: 'Full technical specification with code examples',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/rough-diamond-studio/COMPLETE_FEATURE_LIST.md',
+              type: 'Documentation'
+            },
+            {
+              name: 'User Manual',
+              description: 'Complete testing and usage guide',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/rough-diamond-studio/User_Manual.md',
+              type: 'Documentation'
+            },
+            {
+              name: 'Quick Start Guide',
+              description: 'Get running in 5 minutes',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/rough-diamond-studio/QUICKSTART.txt',
+              type: 'Documentation'
+            },
+            {
+              name: 'Alpha Tester README',
+              description: 'What we\'re looking for in feedback',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/rough-diamond-studio/ALPHA_TESTER_README.md',
+              type: 'Documentation'
+            }
+          ]
+        },
+        'old-dog-erp': {
+          name: 'Old Dog ERP',
+          username: 'alpha-tester',
+          password: 'ODERP-Alpha1',
+          description: 'Enterprise resource planning system designed for construction and contracting operations.',
+          successTitle: 'Old Dog ERP Access Unlocked',
+          successDescription: 'You now have access to the Old Dog ERP testing package including documentation and setup guides.',
+          files: [
+            {
+              name: 'Launch Script',
+              description: 'Startup script for running the ERP system',
+              size: '1 KB',
+              url: 'https://old-dog-systems.co.za/downloads/old-dog-erp/launch.sh',
+              type: 'Script'
+            },
+            {
+              name: 'README',
+              description: 'Project overview and system requirements',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/old-dog-erp/README.md',
+              type: 'Documentation'
+            },
+            {
+              name: 'Quick Start Guide',
+              description: 'Step-by-step setup and configuration guide',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/old-dog-erp/QUICKSTART.md',
+              type: 'Documentation'
+            },
+            {
+              name: 'Security Implementation Guide',
+              description: 'Security best practices and architectural overview',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/old-dog-erp/SECURITY_GUIDE.md',
+              type: 'Documentation'
+            },
+            {
+              name: 'Distribution Package',
+              description: 'Distribution and deployment information',
+              size: '18 KB',
+              url: 'https://old-dog-systems.co.za/downloads/old-dog-erp/erp-download.html',
+              type: 'Information'
+            }
+          ]
+        },
+        'cpm-ai-suite': {
+          name: 'CPM-AI Suite',
+          username: 'alpha-tester',
+          password: 'CPM-Alpha1',
+          description: 'AI-powered construction project management suite with intelligent planning and automation.',
+          successTitle: 'CPM-AI Suite Access Unlocked',
+          successDescription: 'You now have access to the CPM-AI Suite application and complete documentation.',
+          files: [
+            {
+              name: 'CPM-AI Construction Suite (AppImage)',
+              description: 'Cross-platform executable for Linux systems',
+              size: '105 MB',
+              url: 'https://old-dog-systems.co.za/downloads/cpm-ai-suite/CPM-AI%20Construction%20Suite-0.1.0.AppImage',
+              type: 'Application'
+            },
+            {
+              name: 'README',
+              description: 'Deployment guide and system overview',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/cpm-ai-suite/README.md',
+              type: 'Documentation'
+            },
+            {
+              name: 'Features Roadmap',
+              description: 'Planned features and current capabilities',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/cpm-ai-suite/FEATURES.md',
+              type: 'Documentation'
+            },
+            {
+              name: 'Developer Guide',
+              description: 'Development setup and contribution guidelines',
+              size: 'Doc',
+              url: 'https://old-dog-systems.co.za/downloads/cpm-ai-suite/DEVELOPER_GUIDE.md',
+              type: 'Documentation'
+            }
+          ]
+        }
+      };
+
+      const authForm = document.getElementById('auth-form');
+      const passwordSection = document.getElementById('password-section');
+      const downloadsSection = document.getElementById('downloads-section');
+      const errorMessage = document.getElementById('error-message');
+      const selectedProductInput = document.getElementById('selected-product');
+
+      // Initialize with first product
+      let currentProduct = 'rough-diamond-studio';
+      updateProductInfo();
+
+      function switchProduct(productId, element) {
+        // Update tab styling
+        document.querySelectorAll('.product-tab').forEach(tab => tab.classList.remove('active'));
+        element.classList.add('active');
+
+        currentProduct = productId;
+        selectedProductInput.value = productId;
+        updateProductInfo();
+
+        // Reset form
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        errorMessage.classList.add('hidden');
+      }
+
+      function updateProductInfo() {
+        const product = PRODUCTS[currentProduct];
+        if (product) {
+          document.getElementById('product-info').textContent = product.description;
+        }
+      }
+
+      authForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const product = PRODUCTS[currentProduct];
+
+        if (!product) {
+          errorMessage.textContent = 'Invalid product selected';
+          errorMessage.classList.remove('hidden');
+          return;
+        }
+
+        // Validate credentials
+        if (username === product.username && password === product.password) {
+          // Success - hide password section, show downloads
+          errorMessage.classList.add('hidden');
+          passwordSection.classList.add('hidden-password');
+          downloadsSection.classList.remove('hidden-password');
+
+          // Update success message
+          document.getElementById('success-title').textContent = product.successTitle;
+          document.getElementById('success-description').textContent = product.successDescription;
+
+          // Render product downloads
+          renderProductDownloads(currentProduct);
+
+          // Smooth scroll to downloads
+          setTimeout(() => {
+            downloadsSection.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+
+          // Store auth state in session
+          sessionStorage.setItem('authenticated_product', currentProduct);
+          sessionStorage.setItem('authenticated_at', new Date().getTime());
+        } else {
+          // Show error
+          errorMessage.textContent = `Incorrect credentials for ${product.name}`;
+          errorMessage.classList.remove('hidden');
+          document.getElementById('password').focus();
+        }
+      });
+
+      function renderProductDownloads(productId) {
+        const product = PRODUCTS[productId];
+        if (!product) return;
+
+        let html = `
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-slate-50">📥 Available Downloads</h3>
+        `;
+
+        product.files.forEach(file => {
+          html += `
+            <div class="card-glass rounded-2xl border border-slate-800/80 p-4">
+              <div class="flex items-start justify-between gap-4 flex-wrap">
+                <div class="flex-1 min-w-0">
+                  <h4 class="font-semibold text-slate-50">${file.name}</h4>
+                  <p class="text-xs text-slate-400 mt-1">${file.description}</p>
+                </div>
+                <span class="tag-pill px-2 py-1 text-xs text-sky-300 flex-shrink-0">${file.size}</span>
+              </div>
+              <div class="mt-4">
+                <a
+                  href="${file.url}"
+                  class="inline-flex items-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 transition-colors"
+                  download
+                >
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Download
+                </a>
+              </div>
+            </div>
+          `;
+        });
+
+        html += `</div>`;
+        document.getElementById('product-downloads').innerHTML = html;
+      }
+
+      // Check if already authenticated in this session
+      document.addEventListener('DOMContentLoaded', () => {
+        const authenticatedProduct = sessionStorage.getItem('authenticated_product');
+        if (authenticatedProduct) {
+          currentProduct = authenticatedProduct;
+          selectedProductInput.value = authenticatedProduct;
+          updateProductInfo();
+          passwordSection.classList.add('hidden-password');
+          downloadsSection.classList.remove('hidden-password');
+          
+          // Update tab styling
+          const tabs = document.querySelectorAll('.product-tab');
+          tabs.forEach((tab, idx) => {
+            const productIds = ['rough-diamond-studio', 'old-dog-erp', 'cpm-ai-suite'];
+            if (productIds[idx] === authenticatedProduct) {
+              tab.classList.add('active');
+            } else {
+              tab.classList.remove('active');
+            }
+          });
+
+          // Render authenticated product downloads
+          renderProductDownloads(authenticatedProduct);
+          document.getElementById('success-title').textContent = PRODUCTS[authenticatedProduct].successTitle;
+          document.getElementById('success-description').textContent = PRODUCTS[authenticatedProduct].successDescription;
+        }
+      });
+
+      // Expose API to admin dashboard
+      window.DownloadsAdmin = {
+        getProducts: () => PRODUCTS,
+        updateCredential: (productId, field, value) => {
+          if (PRODUCTS[productId] && (field === 'username' || field === 'password')) {
+            PRODUCTS[productId][field] = value;
+            return true;
+          }
+          return false;
+        },
+        addProduct: (productId, config) => {
+          if (!PRODUCTS[productId]) {
+            PRODUCTS[productId] = config;
+            return true;
+          }
+          return false;
+        }
+      };
     </script>
   </body>
 </html>

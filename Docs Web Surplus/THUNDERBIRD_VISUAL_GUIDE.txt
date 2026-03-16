@@ -1,0 +1,197 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║     THUNDERBIRD EMAIL ALERTS - VISUAL SETUP GUIDE (Fedora KDE)            ║
+║                          10-Minute Configuration                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+📌 IMPORTANT: You Already Have Everything Installed!
+   • KDE Plasma notifications ✓
+   • Audio system working ✓  
+   • Thunderbird ready ✓
+   
+   You just need to ENABLE alerts in Thunderbird settings.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP-BY-STEP VISUAL GUIDE
+
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣  OPEN THUNDERBIRD SETTINGS
+
+   In Thunderbird window:
+   
+   [≡ Menu] (top right corner)
+        ↓
+   Click: "Settings"
+        ↓
+   You see Settings window with left sidebar
+
+
+2️⃣  NAVIGATE TO NOTIFICATIONS
+
+   Left sidebar → Click: "General"
+        ↓
+   Scroll down until you see: "Notifications" section
+        ↓
+   You should see options about:
+      • "When new messages arrive"
+      • "Play a sound"
+      • "Show an alert"
+
+
+3️⃣  ENABLE SOUND ALERT
+
+   ☑ Put a checkmark in: "Play a sound"
+   
+   Then click: [Choose...]  button
+        ↓
+   File dialog opens, navigate to:
+   
+   /usr/share/sounds/freedesktop/stereo/
+   
+   Recommended files:
+   • complete.oga        ← LOUD (for important emails)
+   • message.oga         ← Soft (for regular emails)
+   
+   Select one, click: [Open]
+        ↓
+   Click: [Play] button to TEST
+        ↓
+   Do you hear a sound? YES ✓ → Continue
+                        NO  ✗ → Check volume: pamixer --increase 20
+
+
+4️⃣  ENABLE VISUAL ALERT (POPUP)
+
+   ☑ Put a checkmark in: "Show an alert"
+   
+   This creates desktop notification popup when email arrives
+   (KDE handles display automatically - no other setting needed)
+
+
+5️⃣  SAVE SETTINGS
+
+   Click: [Apply] or [OK] button (bottom)
+   
+   Settings window closes
+
+
+6️⃣  CONFIGURE SECOND EMAIL ACCOUNT
+
+   Left Sidebar:
+   
+   Find: info@old-dog-systems.co.za
+   Right-click it
+        ↓
+   Select: "Settings"
+        ↓
+   Left menu → "Notifications"
+        ↓
+   Repeat steps 3-4 above for this account
+        ↓
+   Close settings
+
+
+7️⃣  REPEAT FOR SALES ACCOUNT
+
+   Left Sidebar:
+   
+   Find: sales@old-dog-systems.co.za
+   Right-click it
+        ↓
+   Select: "Settings"
+        ↓
+   Left menu → "Notifications"
+        ↓
+   Repeat steps 3-4 above again
+        ↓
+   Close settings
+
+
+8️⃣  TEST YOUR SETUP
+
+   Keep Thunderbird OPEN in front of you
+        ↓
+   Open another browser tab/app
+        ↓
+   Send yourself an email:
+      • From: phone Gmail
+      • From: web email account
+      • From: webmail of your email provider
+        ↓
+   WAIT for it to arrive...
+        ↓
+   YOU SHOULD SEE/HEAR:
+   
+   ✓ Sound plays (complete.oga or message.oga)
+   ✓ Desktop notification appears (KDE popup)
+   ✓ Email shows in inbox
+   ✓ Notification shows sender name
+   ✓ Notification shows subject line
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+❓ IF SOMETHING ISN'T WORKING
+
+1. No Sound?
+   → Check: Thunderbird → Settings → Notifications → "Play a sound" ☑
+   → Test manually: paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+
+2. No Popup?
+   → Check: Thunderbird → Settings → Notifications → "Show an alert" ☑
+   → Try sending from different email account
+
+3. One account works, other doesn't?
+   → Make sure BOTH accounts have notifications enabled
+   → Right-click EACH account → Settings → Notifications → Enable both
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ VERIFICATION CHECKLIST
+
+After setup, you should be able to check these:
+
+[ ] Opened Settings in Thunderbird
+[ ] Found Notifications section
+[ ] Played the sound file (heard it?)
+[ ] Checked "Play a sound"
+[ ] Checked "Show an alert"
+[ ] Configured info@ account
+[ ] Configured sales@ account
+[ ] Tested with sample email
+[ ] Sound played when email arrived
+[ ] Popup notification appeared
+[ ] Can click notification to open email
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎉 YOU'RE DONE!
+
+Now you have:
+✓ Email sound alerts (you'll HEAR them)
+✓ Desktop notifications (you'll SEE them)
+✓ Never miss important emails
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📞 ONE-MAN OPERATION PRO TIP:
+
+Create message filters for critical emails:
+
+Tools → Message Filters → New
+
+   IF:   From contains "customer"
+      OR Subject contains "order"
+   
+   THEN: Play Sound (loud one)
+         AND Move to: Important folder
+
+Result: Sales emails get DISTINCTIVE LOUD beep + moved to special folder
+        You'll NEVER miss a customer inquiry! 
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Detailed guide: See "FEDORA_KDE_THUNDERBIRD_SETUP.md"
+
+═══════════════════════════════════════════════════════════════════════════════

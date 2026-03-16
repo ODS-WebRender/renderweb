@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <title>When Life Bites Podcast — Faith, Healing & Resilience | Old Dog Systems</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="When Life Bites: A faith-based podcast for survivors navigating trauma, grief, betrayal, and life-altering crises. Find healing, hope, and biblical wisdom through real stories."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./images/OLD-DOG-CircBlue.png" />
+    <meta property="og:image" content="./images/OLD-DOG-CircBlue.png" />
+    <script type="module">
+      import { applyBranding } from './constants.js';
+      window.addEventListener('DOMContentLoaded', () => {
+        applyBranding();
+      });
+    </script>
+  </head>
+  <body class="h-full text-slate-100 antialiased">
+    <div class="min-h-screen flex flex-col">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl overflow-visible"
+      >
+        <nav class="nav-glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 mt-2 rounded-2xl overflow-visible relative z-30">
+          <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
+              <img
+                src="./images/OLD-DOG-CircBlue.png"
+                alt="Old Dog Systems Logo"
+                title="Old Dog Systems"
+                class="h-16 w-16 rounded-2xl object-cover border border-slate-700/60 ring-1 ring-slate-600/30 shadow-lg bg-slate-900/40"
+              />
+              <div class="flex flex-col">
+                <span
+                  data-brand
+                  class="text-lg font-bold tracking-tight text-slate-100 leading-snug"
+                ></span>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400"
+                  >Old Dog · New Tricks</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+            <a href="./index.html" class="nav-underline">Home</a>
+            <a href="./about.html" class="nav-underline">About</a>
+            <a href="./podcasts.html" class="nav-underline text-sky-300">Podcasts</a>
+            <a href="./studio.html" class="nav-underline">Products</a>
+            <a href="./downloads.html" class="nav-underline">Downloads</a>
+            <a href="./shop.html" class="nav-underline">Shop</a>
+            <a href="./contacts.html" class="nav-underline">Contact</a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button
+            type="button"
+            class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700/60 hover:border-slate-600 transition-colors"
+            id="mobile-menu-btn"
+            aria-label="Toggle mobile menu"
+          >
+            <span class="text-lg">☰</span>
+          </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden bg-slate-900/95 border-t border-slate-800/80 px-4 py-3"
+        >
+          <div class="space-y-2">
+            <a href="./index.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Home</a>
+            <a href="./about.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">About</a>
+            <a href="./podcasts.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Podcasts</a>
+            <a href="./studio.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Products</a>
+            <a href="./downloads.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Downloads</a>
+            <a href="./shop.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Shop</a>
+            <a href="./contacts.html" class="block px-3 py-2 rounded-lg hover:bg-slate-800/80 transition-colors">Contact</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex-1">
+        <!-- Hero Section - WLB Branding (Purple/Rose) -->
+        <section class="relative overflow-hidden py-16 md:py-28 lg:py-36 bg-gradient-to-br from-purple-950/40 via-slate-950 to-slate-950">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <!-- Left: Content -->
+              <div>
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-purple-500 to-rose-600 flex items-center justify-center text-white text-xl font-bold">🕊️</div>
+                  <span class="text-purple-300/80 text-sm font-semibold uppercase tracking-wider">Podcast Series</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-bold text-slate-50 mb-6 leading-tight">
+                  When Life Bites
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
+                  For survivors navigating the crises that reshape us—trauma, grief, betrayal, and loss. This is your companion through the hardest seasons. A place where pain meets faith, where real stories meet biblical hope, and where healing becomes possible.
+                </p>
+
+                <div class="space-y-4 mb-10">
+                  <div class="flex gap-3">
+                    <span class="text-purple-400 text-lg">✓</span>
+                    <p class="text-slate-300"><span class="font-semibold text-slate-100">Real Stories</span> — Honest accounts from those who've survived</p>
+                  </div>
+                  <div class="flex gap-3">
+                    <span class="text-purple-400 text-lg">✓</span>
+                    <p class="text-slate-300"><span class="font-semibold text-slate-100">Biblical Foundation</span> — Faith-centered guidance through Scripture</p>
+                  </div>
+                  <div class="flex gap-3">
+                    <span class="text-purple-400 text-lg">✓</span>
+                    <p class="text-slate-300"><span class="font-semibold text-slate-100">Path to Healing</span> — Journeys from trauma to resilience to purpose</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <a href="#episodes" class="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-rose-600 hover:from-purple-600 hover:to-rose-700 text-white font-semibold transition-all text-center">
+                    Listen to Episodes
+                  </a>
+                  <a href="./podcasts.html" class="px-8 py-3 rounded-lg bg-slate-800/50 border border-slate-700/60 hover:border-purple-500/60 text-slate-100 font-semibold transition-all text-center">
+                    All Podcasts
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Visual -->
+              <div class="relative hidden md:block">
+                <div class="aspect-square rounded-2xl bg-gradient-to-br from-purple-500/20 to-rose-600/20 border border-purple-500/30 flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-8xl mb-4">🕊️</div>
+                    <p class="text-purple-200/60 font-semibold">Coming This Week</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mission Statement -->
+        <section class="py-16 md:py-20 bg-slate-900/30 border-y border-slate-800/60">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-4">Why This Podcast?</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors">
+                <div class="text-4xl mb-4">💔</div>
+                <h3 class="text-xl font-bold text-purple-300 mb-3">You're Not Alone</h3>
+                <p class="text-slate-300 leading-relaxed">
+                  When life falls apart, isolation multiplies the pain. Real voices share real journeys—proof that healing is possible.
+                </p>
+              </div>
+
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors">
+                <div class="text-4xl mb-4">📖</div>
+                <h3 class="text-xl font-bold text-purple-300 mb-3">Scripture-Rooted</h3>
+                <p class="text-slate-300 leading-relaxed">
+                  Ancient wisdom for modern pain. We explore biblical truths—from Psalm 23 to 1 Peter to Job—that sustain us through crisis.
+                </p>
+              </div>
+
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors">
+                <div class="text-4xl mb-4">🌱</div>
+                <h3 class="text-xl font-bold text-purple-300 mb-3">Path Forward</h3>
+                <p class="text-slate-300 leading-relaxed">
+                  Moving beyond survival mode to thriving. Resources for forgiveness, reconciliation, and stepping into purpose after tragedy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Episode Guide -->
+        <section id="episodes" class="py-16 md:py-24">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="mb-16">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">Episodes</h2>
+              <p class="text-slate-400 text-lg">New episodes every week. All episodes free to listen.</p>
+            </div>
+
+            <!-- Arc 1 -->
+            <div class="mb-16">
+              <div class="mb-8">
+                <h3 class="text-2xl font-bold text-purple-300 mb-2">Arc 1: The Shock of Betrayal</h3>
+                <p class="text-slate-400">Navigating the immediate devastation when trust is shattered—sexual trauma, marital deception, identity crisis, financial loss.</p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <!-- Episode 1 -->
+                <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors">
+                  <div class="flex items-start justify-between mb-6">
+                    <div>
+                      <p class="text-xs text-purple-300 uppercase tracking-wider font-semibold mb-2">Episode 1</p>
+                      <h3 class="text-xl font-bold text-slate-100">The Shattered Trust</h3>
+                      <p class="text-sm text-slate-400 mt-2">When a loved one harms a child</p>
+                    </div>
+                    <span class="text-3xl">💔</span>
+                  </div>
+
+                  <div class="mb-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/40">
+                    <p class="text-xs text-slate-500 mb-2">Audio Player</p>
+                    <audio controls class="w-full h-8">
+                      <source src="/podcasts/when-life-bites/episode-1.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p class="text-xs text-slate-500 mt-2">~28 minutes</p>
+                  </div>
+
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    Sexual abuse by a trusted family member or friend. Navigating shock, rage, justice, and the long path to protecting your child and healing the wound.
+                  </p>
+
+                  <div class="space-y-2 text-sm text-slate-400 mb-6">
+                    <p><span class="font-semibold text-slate-300">Scripture Focus:</span> Psalm 34:18</p>
+                    <p><span class="font-semibold text-slate-300">Topics:</span> Trauma, justice, protection, God's nearness</p>
+                  </div>
+
+                  <button class="w-full px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/40 text-purple-300 hover:bg-purple-500/30 transition-colors font-semibold text-sm">
+                    Add to Reading List
+                  </button>
+                </div>
+
+                <!-- Episode 2 -->
+                <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors">
+                  <div class="flex items-start justify-between mb-6">
+                    <div>
+                      <p class="text-xs text-purple-300 uppercase tracking-wider font-semibold mb-2">Episode 2</p>
+                      <h3 class="text-xl font-bold text-slate-100">The Mask Falls</h3>
+                      <p class="text-sm text-slate-400 mt-2">Marital deception and betrayal</p>
+                    </div>
+                    <span class="text-3xl">🎭</span>
+                  </div>
+
+                  <div class="mb-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/40">
+                    <p class="text-xs text-slate-500 mb-2">Audio Player</p>
+                    <audio controls class="w-full h-8">
+                      <source src="/podcasts/when-life-bites/episode-2.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p class="text-xs text-slate-500 mt-2">~31 minutes</p>
+                  </div>
+
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    The spouse who is not who you thought they were. Hidden identity, chronic infidelity, a baby that isn't yours. Navigating truth, accountability, and choosing your next step.
+                  </p>
+
+                  <div class="space-y-2 text-sm text-slate-400 mb-6">
+                    <p><span class="font-semibold text-slate-300">Scripture Focus:</span> Jeremiah 17:9-10</p>
+                    <p><span class="font-semibold text-slate-300">Topics:</span> Betrayal, truth, boundaries, restoration or separation</p>
+                  </div>
+
+                  <button class="w-full px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/40 text-purple-300 hover:bg-purple-500/30 transition-colors font-semibold text-sm">
+                    Add to Reading List
+                  </button>
+                </div>
+
+                <!-- Episode 3 -->
+                <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors">
+                  <div class="flex items-start justify-between mb-6">
+                    <div>
+                      <p class="text-xs text-purple-300 uppercase tracking-wider font-semibold mb-2">Episode 3</p>
+                      <h3 class="text-xl font-bold text-slate-100">Love Without Agenda</h3>
+                      <p class="text-sm text-slate-400 mt-2">Your child's LGBTQ+ identity</p>
+                    </div>
+                    <span class="text-3xl">🏳️‍🌈</span>
+                  </div>
+
+                  <div class="mb-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/40">
+                    <p class="text-xs text-slate-500 mb-2">Audio Player</p>
+                    <audio controls class="w-full h-8">
+                      <source src="/podcasts/when-life-bites/episode-3.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p class="text-xs text-slate-500 mt-2">~26 minutes</p>
+                  </div>
+
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    Your son or daughter declares they are gay. Or they identify as transgender. As a Christian parent, how do you respond with grace, listen without judgment, and keep love as the loudest voice?
+                  </p>
+
+                  <div class="space-y-2 text-sm text-slate-400 mb-6">
+                    <p><span class="font-semibold text-slate-300">Scripture Focus:</span> 1 John 4:7-8</p>
+                    <p><span class="font-semibold text-slate-300">Topics:</span> Parental identity, faith crisis, unconditional love, listening</p>
+                  </div>
+
+                  <button class="w-full px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/40 text-purple-300 hover:bg-purple-500/30 transition-colors font-semibold text-sm">
+                    Add to Reading List
+                  </button>
+                </div>
+
+                <!-- Episode 4 -->
+                <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors">
+                  <div class="flex items-start justify-between mb-6">
+                    <div>
+                      <p class="text-xs text-purple-300 uppercase tracking-wider font-semibold mb-2">Episode 4</p>
+                      <h3 class="text-xl font-bold text-slate-100">The Bottom Line</h3>
+                      <p class="text-sm text-slate-400 mt-2">Financial ruin and identity</p>
+                    </div>
+                    <span class="text-3xl">📉</span>
+                  </div>
+
+                  <div class="mb-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/40">
+                    <p class="text-xs text-slate-500 mb-2">Audio Player</p>
+                    <audio controls class="w-full h-8">
+                      <source src="/podcasts/when-life-bites/episode-4.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p class="text-xs text-slate-500 mt-2">~30 minutes</p>
+                  </div>
+
+                  <p class="text-slate-300 mb-6 leading-relaxed">
+                    Your business has collapsed. You've lost everything. And now the world measures your worth by what you no longer have. Finding identity beyond the balance sheet, and hope beyond shame.
+                  </p>
+
+                  <div class="space-y-2 text-sm text-slate-400 mb-6">
+                    <p><span class="font-semibold text-slate-300">Scripture Focus:</span> Habakkuk 3:17-18</p>
+                    <p><span class="font-semibold text-slate-300">Topics:</span> Financial loss, identity, shame, defiant hope</p>
+                  </div>
+
+                  <button class="w-full px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/40 text-purple-300 hover:bg-purple-500/30 transition-colors font-semibold text-sm">
+                    Add to Reading List
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Arcs 2 & 3 Teaser -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="card-glass border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-rose-500/10 p-8 rounded-xl">
+                <h3 class="text-xl font-bold text-purple-300 mb-3">Arc 2: Navigating Crisis</h3>
+                <p class="text-slate-300 mb-4 text-sm">
+                  Episodes 5-8 launch next month, covering sudden loss, natural disasters, chronic illness, and loving someone in addiction.
+                </p>
+              </div>
+
+              <div class="card-glass border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-rose-500/10 p-8 rounded-xl">
+                <h3 class="text-xl font-bold text-purple-300 mb-3">Arc 3: Long Road to Healing</h3>
+                <p class="text-slate-300 mb-4 text-sm">
+                  Episodes 9-12 guide you through forgiveness, reconciliation, faith in suffering, and discovering your new purpose.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-8 text-center">
+              <a href="#subscribe" class="inline-flex items-center gap-2 text-purple-300 hover:text-purple-200 transition-colors font-semibold">
+                Subscribe to Get Notified of New Episodes →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Resources Preview -->
+        <section class="py-16 md:py-24 bg-slate-900/30 border-y border-slate-800/60">
+          <div class="mx-auto max-w-6xl px-4">
+            <div class="mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-3">Companion Resources</h2>
+              <p class="text-slate-400 text-lg">Go deeper with guided journaling, reflection workbooks, and retreat experiences.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+              <!-- Guides -->
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors group">
+                <div class="text-4xl mb-4">📋</div>
+                <h3 class="text-xl font-bold text-purple-300 mb-3">Companion Guides</h3>
+                <p class="text-slate-300 mb-6">
+                  Structured resources for each episode—biblically rooted, practically grounding, designed to help you process at your own pace.
+                </p>
+                <div class="pt-4 border-t border-slate-700/40">
+                  <p class="text-sm text-slate-400 mb-4">Starting at <span class="font-bold text-purple-300">$24</span> each</p>
+                  <a href="./shop.html" class="inline-flex items-center gap-2 text-purple-300 group-hover:text-purple-200 transition-colors font-semibold text-sm">
+                    Shop Now →
+                  </a>
+                </div>
+              </div>
+
+              <!-- Journals -->
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors group">
+                <div class="text-4xl mb-4">📔</div>
+                <h3 class="text-xl font-bold text-purple-300 mb-3">Reflection Journals</h3>
+                <p class="text-slate-300 mb-6">
+                  Safe spaces to cry, write, remember, and heal. Guided prompts rooted in Scripture and trauma-informed care.
+                </p>
+                <div class="pt-4 border-t border-slate-700/40">
+                  <p class="text-sm text-slate-400 mb-4">Starting at <span class="font-bold text-purple-300">$34</span> each</p>
+                  <a href="./shop.html" class="inline-flex items-center gap-2 text-purple-300 group-hover:text-purple-200 transition-colors font-semibold text-sm">
+                    Shop Now →
+                  </a>
+                </div>
+              </div>
+
+              <!-- Retreats -->
+              <div class="card-glass border border-slate-700/60 p-8 hover:border-purple-500/40 transition-colors group">
+                <div class="text-4xl mb-4">🏞️</div>
+                <h3 class="text-xl font-bold text-purple-300 mb-3">Retreat Experiences</h3>
+                <p class="text-slate-300 mb-6">
+                  Immersive weekends with others on the healing journey. Guided sessions, community, pastoral care, and space to breathe.
+                </p>
+                <div class="pt-4 border-t border-slate-700/40">
+                  <p class="text-sm text-slate-400 mb-4">Starting at <span class="font-bold text-purple-300">$399</span></p>
+                  <a href="./shop.html" class="inline-flex items-center gap-2 text-purple-300 group-hover:text-purple-200 transition-colors font-semibold text-sm">
+                    Learn More →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 text-center">
+              <a href="./shop.html" class="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-rose-600 hover:from-purple-600 hover:to-rose-700 text-white font-semibold transition-all">
+                Browse All Resources →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section id="subscribe" class="py-16 md:py-24">
+          <div class="mx-auto max-w-4xl px-4">
+            <div class="bg-gradient-to-br from-purple-900/30 via-slate-900/50 to-slate-950 border border-purple-500/30 rounded-2xl p-12 text-center">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-4">Never Miss an Episode</h2>
+              <p class="text-slate-300 text-lg mb-8">Get new episodes delivered to your inbox every week—plus exclusive resources, community updates, and early access to retreats.</p>
+              
+              <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  class="flex-1 px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-purple-500/60 transition-colors"
+                  required
+                />
+                <button 
+                  type="submit" 
+                  class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-rose-600 hover:from-purple-600 hover:to-rose-700 text-white font-semibold transition-all whitespace-nowrap"
+                >
+                  Subscribe
+                </button>
+              </form>
+
+              <p class="text-xs text-slate-400">We respect your privacy. Unsubscribe anytime.</p>
+
+              <!-- Social / Platform Links -->
+              <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <p class="text-slate-400 text-sm">Also available on:</p>
+                <div class="flex gap-3 justify-center">
+                  <a href="#" class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-300 text-sm hover:border-purple-500/60 transition-colors">
+                    🎵 Spotify
+                  </a>
+                  <a href="#" class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-300 text-sm hover:border-purple-500/60 transition-colors">
+                    🎙️ Apple
+                  </a>
+                  <a href="#" class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/60 text-slate-300 text-sm hover:border-purple-500/60 transition-colors">
+                    ▶️ YouTube
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-800/60 bg-slate-950/70 backdrop-blur-xl">
+        <div class="mx-auto max-w-6xl px-4 py-12">
+          <div class="grid md:grid-cols-3 gap-12 mb-12">
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Podcasts</h3>
+              <ul class="space-y-2">
+                <li><a href="./podcast-business-on-purpose.html" class="text-slate-400 hover:text-purple-300 transition-colors">Business on Purpose</a></li>
+                <li><a href="./podcast-when-life-bites.html" class="text-slate-400 hover:text-purple-300 transition-colors">When Life Bites</a></li>
+                <li><a href="./podcasts.html" class="text-slate-400 hover:text-purple-300 transition-colors">All Podcasts</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Old Dog Systems</h3>
+              <ul class="space-y-2">
+                <li><a href="./index.html" class="text-slate-400 hover:text-purple-300 transition-colors">Home</a></li>
+                <li><a href="./about.html" class="text-slate-400 hover:text-purple-300 transition-colors">About</a></li>
+                <li><a href="./shop.html" class="text-slate-400 hover:text-purple-300 transition-colors">Shop</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-100 mb-4">Resources</h3>
+              <ul class="space-y-2">
+                <li><a href="./contacts.html" class="text-slate-400 hover:text-purple-300 transition-colors">Contact</a></li>
+                <li><a href="./contacts.html" class="text-slate-400 hover:text-purple-300 transition-colors">Support</a></li>
+                <li><a href="mailto:hello@olddogsystems.com" class="text-slate-400 hover:text-purple-300 transition-colors">Email</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-800/60 pt-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+              <p class="text-slate-500 text-sm">© 2026 Old Dog Systems. All rights reserved.</p>
+              <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-purple-300 transition-colors text-sm">Privacy</a>
+                <a href="#" class="text-slate-400 hover:text-purple-300 transition-colors text-sm">Terms</a>
+                <a href="#" class="text-slate-400 hover:text-purple-300 transition-colors text-sm">Sitemap</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

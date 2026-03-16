@@ -113,3 +113,25 @@ body {
   display: none !important;
 }
 
+/* Logo styling for headers - Enhanced professional appearance */
+header img[alt="Old Dog Systems Logo"] {
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 12px rgba(56, 189, 248, 0.15),
+    0 0 0 1px rgba(56, 189, 248, 0.1);
+}
+
+header img[alt="Old Dog Systems Logo"]:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 20px rgba(56, 189, 248, 0.25),
+    0 0 0 1px rgba(56, 189, 248, 0.2);
+}
+
+/* Logo in navigation - Smooth scaling */
+nav img[src*="CircBlue.png"] {
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.5), rgba(30, 41, 59, 0.3));
+}
+

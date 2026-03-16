@@ -40,3 +40,9 @@ data/
 logs/
 *.log
 .github-token
+
+# Downloads & Large Files
+downloads/
+*.AppImage
+*.iso
+*.zip
